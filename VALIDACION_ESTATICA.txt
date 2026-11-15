@@ -1,0 +1,22 @@
+VALIDACIÓN ESTÁTICA — DESBLOQUEAR MAPA v1.3
+
+Bytecode: 4794 bytes
+Escrituras de mapa: 100 sectores + 1 contador
+Estadística de ciudades: STAT_CITIES_PASSED (181) = 4
+Propiedades: 32 pickups disponibles + 32 marcadores de radar
+Propiedades ya compradas: comprobación de 32 banderas (no se recrean)
+Limpieza previa: 32 pickups + 32 marcadores
+Interiores normales habilitados: 25
+Control de misión activa: sí
+Saltos relativos: 33; todos apuntan a límites de instrucción válidos
+Integridad del ZIP: correcta
+
+Auditoría de los refrescos originales de propiedades:
+- OPENUP helper 1AA78 limpia 5 marcadores y 5 pickups.
+- OPENUP helper 1AAAC limpia 6 marcadores y 6 pickups.
+- OPENUP helper 1AAEA limpia 3 marcadores y 3 pickups.
+- OPENUP helper 1AB0A limpia 9 marcadores y 9 pickups.
+- BUY1/BUY2/BUY3 limpian los pickups correspondientes antes de crearlos de nuevo.
+- No se escriben las banderas de historia $169, $170, $171, $172 ni $173.
+
+No se ha ejecutado dentro del juego. La prueba de funcionamiento real en el dispositivo sigue pendiente.

@@ -1,0 +1,3 @@
+MAPLOAD	~w~Procesando mapa, ciudades, propiedades y comercios...
+MAPDONE	~g~Listo: mapa, ciudades y servicios normales desbloqueados.
+MAPBUSY	~r~No ejecutes el script durante una mision.
