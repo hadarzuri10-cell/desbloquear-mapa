@@ -1,0 +1,41 @@
+name: Compile CLEO script
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  compile:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Download Sanny Builder 4.2.0
+        shell: pwsh
+        run: |
+          $url = 'https://github.com/sannybuilder/dev/releases/download/v4.2.0/SannyBuilder-v4.2.0.zip'
+          Invoke-WebRequest -Uri $url -OutFile "$env:RUNNER_TEMP\sanny.zip"
+          Expand-Archive -Path "$env:RUNNER_TEMP\sanny.zip" -DestinationPath "$env:RUNNER_TEMP\sanny" -Force
+          $exe = Get-ChildItem "$env:RUNNER_TEMP\sanny" -Filter sanny.exe -Recurse | Select-Object -First 1
+          if (-not $exe) { throw 'sanny.exe was not found.' }
+          "SANNY_EXE=$($exe.FullName)" | Out-File -FilePath $env:GITHUB_ENV -Append
+
+      - name: Compile CLEO source
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force -Path build | Out-Null
+          & "$env:SANNY_EXE" --game sa_mobile --compile "Desbloquear Mapa v1.3.source.txt" "build/Desbloquear Mapa v1.3.csi"
+          if ($LASTEXITCODE -ne 0) { throw "Compilation failed." }
+          if (-not (Test-Path "build/Desbloquear Mapa v1.3.csi")) { throw 'Output file missing.' }
+          Copy-Item "Desbloquear Mapa.fxt" build/
+          Copy-Item "VALIDACION_ESTATICA.txt" build/
+
+      - name: Upload compiled artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Desbloquear-Mapa-compiled-test
+          path: build/*
+          if-no-files-found: error
