@@ -189,7 +189,7 @@
 00D6: if 0
 0038: $727(0@,32i) == 0
 004D: jump_if_false @prop_skip_1
-0518: $3071 = create_available_asset_pickup PROP_3 at $2910 $2942 $2974 price $3039
+0518: $3071 = create_available_asset_pickup 'PROP_3' at $2910 $2942 $2974 price $3039
 0570: $65 = create_asset_radar_marker_with_icon 31 at $2910 $2942 $2974
 018B: set_marker $65 radar_mode 2
 :prop_skip_1
@@ -197,7 +197,7 @@
 00D6: if 0
 0038: $727(0@,32i) == 0
 004D: jump_if_false @prop_skip_2
-0518: $3072 = create_available_asset_pickup PROP_3 at $2911 $2943 $2975 price $3040
+0518: $3072 = create_available_asset_pickup 'PROP_3' at $2911 $2943 $2975 price $3040
 0570: $526 = create_asset_radar_marker_with_icon 31 at $2911 $2943 $2975
 018B: set_marker $526 radar_mode 2
 :prop_skip_2
@@ -205,7 +205,7 @@
 00D6: if 0
 0038: $727(0@,32i) == 0
 004D: jump_if_false @prop_skip_3
-0518: $3073 = create_available_asset_pickup PROP_3 at $2912 $2944 $2976 price $3041
+0518: $3073 = create_available_asset_pickup 'PROP_3' at $2912 $2944 $2976 price $3041
 0570: $54 = create_asset_radar_marker_with_icon 31 at $2912 $2944 $2976
 018B: set_marker $54 radar_mode 2
 :prop_skip_3
@@ -213,7 +213,7 @@
 00D6: if 0
 0038: $727(0@,32i) == 0
 004D: jump_if_false @prop_skip_4
-0518: $3074 = create_available_asset_pickup PROP_3 at $2913 $2945 $2977 price $3042
+0518: $3074 = create_available_asset_pickup 'PROP_3' at $2913 $2945 $2977 price $3042
 0570: $3010 = create_asset_radar_marker_with_icon 31 at $2913 $2945 $2977
 018B: set_marker $3010 radar_mode 2
 :prop_skip_4
@@ -221,7 +221,7 @@
 00D6: if 0
 0038: $727(0@,32i) == 0
 004D: jump_if_false @prop_skip_5
-0518: $3075 = create_available_asset_pickup PROP_3 at $2914 $2946 $2978 price $3043
+0518: $3075 = create_available_asset_pickup 'PROP_3' at $2914 $2946 $2978 price $3043
 0570: $3011 = create_asset_radar_marker_with_icon 31 at $2914 $2946 $2978
 018B: set_marker $3011 radar_mode 2
 :prop_skip_5
@@ -229,7 +229,7 @@
 00D6: if 0
 0038: $727(0@,32i) == 0
 004D: jump_if_false @prop_skip_6
-0518: $3076 = create_available_asset_pickup PROP_3 at $2915 $2947 $2979 price $3044
+0518: $3076 = create_available_asset_pickup 'PROP_3' at $2915 $2947 $2979 price $3044
 0570: $3012 = create_asset_radar_marker_with_icon 31 at $2915 $2947 $2979
 018B: set_marker $3012 radar_mode 2
 :prop_skip_6
@@ -237,7 +237,7 @@
 00D6: if 0
 0038: $727(0@,32i) == 0
 004D: jump_if_false @prop_skip_7
-0518: $3077 = create_available_asset_pickup PROP_3 at $2916 $2948 $2980 price $3045
+0518: $3077 = create_available_asset_pickup 'PROP_3' at $2916 $2948 $2980 price $3045
 0570: $3013 = create_asset_radar_marker_with_icon 31 at $2916 $2948 $2980
 018B: set_marker $3013 radar_mode 2
 :prop_skip_7
@@ -245,7 +245,7 @@
 00D6: if 0
 0038: $727(0@,32i) == 0
 004D: jump_if_false @prop_skip_8
-0518: $3078 = create_available_asset_pickup PROP_3 at $2917 $2949 $2981 price $3046
+0518: $3078 = create_available_asset_pickup 'PROP_3' at $2917 $2949 $2981 price $3046
 0570: $3014 = create_asset_radar_marker_with_icon 31 at $2917 $2949 $2981
 018B: set_marker $3014 radar_mode 2
 :prop_skip_8
@@ -253,7 +253,7 @@
 00D6: if 0
 0038: $727(0@,32i) == 0
 004D: jump_if_false @prop_skip_9
-0518: $3079 = create_available_asset_pickup PROP_3 at $2918 $2950 $2982 price $3047
+0518: $3079 = create_available_asset_pickup 'PROP_3' at $2918 $2950 $2982 price $3047
 0570: $3015 = create_asset_radar_marker_with_icon 31 at $2918 $2950 $2982
 018B: set_marker $3015 radar_mode 2
 :prop_skip_9
@@ -261,7 +261,7 @@
 00D6: if 0
 0038: $727(0@,32i) == 0
 004D: jump_if_false @prop_skip_10
-0518: $3080 = create_available_asset_pickup PROP_3 at $2919 $2951 $2983 price $3048
+0518: $3080 = create_available_asset_pickup 'PROP_3' at $2919 $2951 $2983 price $3048
 0570: $3016 = create_asset_radar_marker_with_icon 31 at $2919 $2951 $2983
 018B: set_marker $3016 radar_mode 2
 :prop_skip_10
@@ -269,7 +269,7 @@
 00D6: if 0
 0038: $727(0@,32i) == 0
 004D: jump_if_false @prop_skip_11
-0518: $3081 = create_available_asset_pickup PROP_3 at $2920 $2952 $2984 price $3049
+0518: $3081 = create_available_asset_pickup 'PROP_3' at $2920 $2952 $2984 price $3049
 0570: $3017 = create_asset_radar_marker_with_icon 31 at $2920 $2952 $2984
 018B: set_marker $3017 radar_mode 2
 :prop_skip_11
@@ -277,7 +277,7 @@
 00D6: if 0
 0038: $727(0@,32i) == 0
 004D: jump_if_false @prop_skip_12
-0518: $3082 = create_available_asset_pickup PROP_3 at $2921 $2953 $2985 price $3050
+0518: $3082 = create_available_asset_pickup 'PROP_3' at $2921 $2953 $2985 price $3050
 0570: $3018 = create_asset_radar_marker_with_icon 31 at $2921 $2953 $2985
 018B: set_marker $3018 radar_mode 2
 :prop_skip_12
@@ -285,7 +285,7 @@
 00D6: if 0
 0038: $727(0@,32i) == 0
 004D: jump_if_false @prop_skip_13
-0518: $3083 = create_available_asset_pickup PROP_3 at $2922 $2954 $2986 price $3051
+0518: $3083 = create_available_asset_pickup 'PROP_3' at $2922 $2954 $2986 price $3051
 0570: $3019 = create_asset_radar_marker_with_icon 31 at $2922 $2954 $2986
 018B: set_marker $3019 radar_mode 2
 :prop_skip_13
@@ -293,7 +293,7 @@
 00D6: if 0
 0038: $727(0@,32i) == 0
 004D: jump_if_false @prop_skip_14
-0518: $3084 = create_available_asset_pickup PROP_3 at $2923 $2955 $2987 price $3052
+0518: $3084 = create_available_asset_pickup 'PROP_3' at $2923 $2955 $2987 price $3052
 0570: $3020 = create_asset_radar_marker_with_icon 31 at $2923 $2955 $2987
 018B: set_marker $3020 radar_mode 2
 :prop_skip_14
@@ -301,7 +301,7 @@
 00D6: if 0
 0038: $727(0@,32i) == 0
 004D: jump_if_false @prop_skip_15
-0518: $3085 = create_available_asset_pickup PROP_3 at $2924 $2956 $2988 price $3053
+0518: $3085 = create_available_asset_pickup 'PROP_3' at $2924 $2956 $2988 price $3053
 0570: $3021 = create_asset_radar_marker_with_icon 31 at $2924 $2956 $2988
 018B: set_marker $3021 radar_mode 2
 :prop_skip_15
@@ -309,7 +309,7 @@
 00D6: if 0
 0038: $727(0@,32i) == 0
 004D: jump_if_false @prop_skip_16
-0518: $3086 = create_available_asset_pickup PROP_3 at $2925 $2957 $2989 price $3054
+0518: $3086 = create_available_asset_pickup 'PROP_3' at $2925 $2957 $2989 price $3054
 0570: $3022 = create_asset_radar_marker_with_icon 31 at $2925 $2957 $2989
 018B: set_marker $3022 radar_mode 2
 :prop_skip_16
@@ -317,7 +317,7 @@
 00D6: if 0
 0038: $727(0@,32i) == 0
 004D: jump_if_false @prop_skip_17
-0518: $3087 = create_available_asset_pickup PROP_3 at $2926 $2958 $2990 price $3055
+0518: $3087 = create_available_asset_pickup 'PROP_3' at $2926 $2958 $2990 price $3055
 0570: $3023 = create_asset_radar_marker_with_icon 31 at $2926 $2958 $2990
 018B: set_marker $3023 radar_mode 2
 :prop_skip_17
@@ -325,7 +325,7 @@
 00D6: if 0
 0038: $727(0@,32i) == 0
 004D: jump_if_false @prop_skip_18
-0518: $3088 = create_available_asset_pickup PROP_3 at $2927 $2959 $2991 price $3056
+0518: $3088 = create_available_asset_pickup 'PROP_3' at $2927 $2959 $2991 price $3056
 0570: $3024 = create_asset_radar_marker_with_icon 31 at $2927 $2959 $2991
 018B: set_marker $3024 radar_mode 2
 :prop_skip_18
@@ -333,7 +333,7 @@
 00D6: if 0
 0038: $727(0@,32i) == 0
 004D: jump_if_false @prop_skip_19
-0518: $3089 = create_available_asset_pickup PROP_3 at $2928 $2960 $2992 price $3057
+0518: $3089 = create_available_asset_pickup 'PROP_3' at $2928 $2960 $2992 price $3057
 0570: $3025 = create_asset_radar_marker_with_icon 31 at $2928 $2960 $2992
 018B: set_marker $3025 radar_mode 2
 :prop_skip_19
@@ -341,7 +341,7 @@
 00D6: if 0
 0038: $727(0@,32i) == 0
 004D: jump_if_false @prop_skip_20
-0518: $3090 = create_available_asset_pickup PROP_3 at $2929 $2961 $2993 price $3058
+0518: $3090 = create_available_asset_pickup 'PROP_3' at $2929 $2961 $2993 price $3058
 0570: $3026 = create_asset_radar_marker_with_icon 31 at $2929 $2961 $2993
 018B: set_marker $3026 radar_mode 2
 :prop_skip_20
@@ -349,7 +349,7 @@
 00D6: if 0
 0038: $727(0@,32i) == 0
 004D: jump_if_false @prop_skip_21
-0518: $3091 = create_available_asset_pickup PROP_3 at $2930 $2962 $2994 price $3059
+0518: $3091 = create_available_asset_pickup 'PROP_3' at $2930 $2962 $2994 price $3059
 0570: $3027 = create_asset_radar_marker_with_icon 31 at $2930 $2962 $2994
 018B: set_marker $3027 radar_mode 2
 :prop_skip_21
@@ -357,7 +357,7 @@
 00D6: if 0
 0038: $727(0@,32i) == 0
 004D: jump_if_false @prop_skip_22
-0518: $3092 = create_available_asset_pickup PROP_3 at $2931 $2963 $2995 price $3060
+0518: $3092 = create_available_asset_pickup 'PROP_3' at $2931 $2963 $2995 price $3060
 0570: $3028 = create_asset_radar_marker_with_icon 31 at $2931 $2963 $2995
 018B: set_marker $3028 radar_mode 2
 :prop_skip_22
@@ -365,7 +365,7 @@
 00D6: if 0
 0038: $727(0@,32i) == 0
 004D: jump_if_false @prop_skip_23
-0518: $3093 = create_available_asset_pickup PROP_3 at $2932 $2964 $2996 price $3061
+0518: $3093 = create_available_asset_pickup 'PROP_3' at $2932 $2964 $2996 price $3061
 0570: $3029 = create_asset_radar_marker_with_icon 31 at $2932 $2964 $2996
 018B: set_marker $3029 radar_mode 2
 :prop_skip_23
@@ -373,7 +373,7 @@
 00D6: if 0
 0038: $727(0@,32i) == 0
 004D: jump_if_false @prop_skip_24
-0518: $3094 = create_available_asset_pickup PROP_3 at $2933 $2965 $2997 price $3062
+0518: $3094 = create_available_asset_pickup 'PROP_3' at $2933 $2965 $2997 price $3062
 0570: $3030 = create_asset_radar_marker_with_icon 31 at $2933 $2965 $2997
 018B: set_marker $3030 radar_mode 2
 :prop_skip_24
@@ -381,7 +381,7 @@
 00D6: if 0
 0038: $727(0@,32i) == 0
 004D: jump_if_false @prop_skip_25
-0518: $3095 = create_available_asset_pickup PROP_3 at $2934 $2966 $2998 price $3063
+0518: $3095 = create_available_asset_pickup 'PROP_3' at $2934 $2966 $2998 price $3063
 0570: $3031 = create_asset_radar_marker_with_icon 31 at $2934 $2966 $2998
 018B: set_marker $3031 radar_mode 2
 :prop_skip_25
@@ -389,7 +389,7 @@
 00D6: if 0
 0038: $727(0@,32i) == 0
 004D: jump_if_false @prop_skip_26
-0518: $3096 = create_available_asset_pickup PROP_3 at $2935 $2967 $2999 price $3064
+0518: $3096 = create_available_asset_pickup 'PROP_3' at $2935 $2967 $2999 price $3064
 0570: $3032 = create_asset_radar_marker_with_icon 31 at $2935 $2967 $2999
 018B: set_marker $3032 radar_mode 2
 :prop_skip_26
@@ -397,7 +397,7 @@
 00D6: if 0
 0038: $727(0@,32i) == 0
 004D: jump_if_false @prop_skip_27
-0518: $3097 = create_available_asset_pickup PROP_3 at $2936 $2968 $3000 price $3065
+0518: $3097 = create_available_asset_pickup 'PROP_3' at $2936 $2968 $3000 price $3065
 0570: $3033 = create_asset_radar_marker_with_icon 31 at $2936 $2968 $3000
 018B: set_marker $3033 radar_mode 2
 :prop_skip_27
@@ -405,7 +405,7 @@
 00D6: if 0
 0038: $727(0@,32i) == 0
 004D: jump_if_false @prop_skip_28
-0518: $3098 = create_available_asset_pickup PROP_3 at $2937 $2969 $3001 price $3066
+0518: $3098 = create_available_asset_pickup 'PROP_3' at $2937 $2969 $3001 price $3066
 0570: $3034 = create_asset_radar_marker_with_icon 31 at $2937 $2969 $3001
 018B: set_marker $3034 radar_mode 2
 :prop_skip_28
@@ -413,7 +413,7 @@
 00D6: if 0
 0038: $727(0@,32i) == 0
 004D: jump_if_false @prop_skip_29
-0518: $3099 = create_available_asset_pickup PROP_3 at $2938 $2970 $3002 price $3067
+0518: $3099 = create_available_asset_pickup 'PROP_3' at $2938 $2970 $3002 price $3067
 0570: $3035 = create_asset_radar_marker_with_icon 31 at $2938 $2970 $3002
 018B: set_marker $3035 radar_mode 2
 :prop_skip_29
@@ -421,7 +421,7 @@
 00D6: if 0
 0038: $727(0@,32i) == 0
 004D: jump_if_false @prop_skip_30
-0518: $3100 = create_available_asset_pickup PROP_3 at $2939 $2971 $3003 price $3068
+0518: $3100 = create_available_asset_pickup 'PROP_3' at $2939 $2971 $3003 price $3068
 0570: $3036 = create_asset_radar_marker_with_icon 31 at $2939 $2971 $3003
 018B: set_marker $3036 radar_mode 2
 :prop_skip_30
@@ -429,7 +429,7 @@
 00D6: if 0
 0038: $727(0@,32i) == 0
 004D: jump_if_false @prop_skip_31
-0518: $3101 = create_available_asset_pickup PROP_3 at $2940 $2972 $3004 price $3069
+0518: $3101 = create_available_asset_pickup 'PROP_3' at $2940 $2972 $3004 price $3069
 0570: $3037 = create_asset_radar_marker_with_icon 31 at $2940 $2972 $3004
 018B: set_marker $3037 radar_mode 2
 :prop_skip_31
@@ -437,7 +437,7 @@
 00D6: if 0
 0038: $727(0@,32i) == 0
 004D: jump_if_false @prop_skip_32
-0518: $3102 = create_available_asset_pickup PROP_3 at $2941 $2973 $3005 price $3070
+0518: $3102 = create_available_asset_pickup 'PROP_3' at $2941 $2973 $3005 price $3070
 0570: $3038 = create_asset_radar_marker_with_icon 31 at $2941 $2973 $3005
 018B: set_marker $3038 radar_mode 2
 :prop_skip_32
