@@ -518,9 +518,6 @@
 0A93: end_custom_thread
 :busy
 01BD: 1@ = get_game_timer
-0A93: end_custom_thread
-:busy
-01BD: 1@ = get_game_timer
 :error_draw
 0001: wait 0
 03F0: use_text_commands 1
