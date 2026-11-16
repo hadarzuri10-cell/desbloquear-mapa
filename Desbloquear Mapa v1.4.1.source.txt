@@ -18,13 +18,16 @@
 0029: 2@ >= 1500
 004D: jump_if_false @loading_draw
 0001: wait 500
-00D6: if 0
-0038: $ONMISSION == 0
-004D: jump_if_false @busy
+// Comprobar primero si otra instancia ya está trabajando.
+// Una segunda ejecución nunca debe mostrar MAP ERROR ni interferir con la primera.
 0DDD: 0@ = get_mutex_var 7413
 00D6: if 0
 0038: 0@ == 0
 004D: jump_if_false @already_running
+// Solo la instancia que puede adquirir el bloqueo comprueba el estado de misión.
+00D6: if 0
+0038: $ONMISSION == 0
+004D: jump_if_false @busy
 0DDC: set_mutex_var 7413 to 1
 01BD: 1@ = get_game_timer
 :processing_draw
