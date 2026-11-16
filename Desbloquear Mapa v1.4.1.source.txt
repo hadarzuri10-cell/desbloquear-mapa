@@ -474,6 +474,298 @@
 0570: $3038 = create_asset_radar_marker_with_icon 31 at $2941 $2973 $3005
 018B: set_marker $3038 radar_mode 2
 :prop_skip_32
+// MARCADORES DE COMERCIOS Y TALLERES: accesibles desde una partida nueva.
+// BARBERÍAS
+0005: 5@ = 2070.2703
+0005: 6@ = -1791.0918
+0005: 7@ = 17.1484
+0570: 8@ = create_asset_radar_marker_with_icon 7 at 5@ 6@ 7@
+018B: set_marker 8@ radar_mode 2
+0005: 5@ = 822.6
+0005: 6@ = -1590.3
+0005: 7@ = 13.5
+0570: 8@ = create_asset_radar_marker_with_icon 7 at 5@ 6@ 7@
+018B: set_marker 8@ radar_mode 2
+0005: 5@ = -2570.1
+0005: 6@ = 245.4
+0005: 7@ = 10.3
+0570: 8@ = create_asset_radar_marker_with_icon 7 at 5@ 6@ 7@
+018B: set_marker 8@ radar_mode 2
+0005: 5@ = 2726.6
+0005: 6@ = -2026.4
+0005: 7@ = 17.5
+0570: 8@ = create_asset_radar_marker_with_icon 7 at 5@ 6@ 7@
+018B: set_marker 8@ radar_mode 2
+0005: 5@ = 2080.3
+0005: 6@ = 2119
+0005: 7@ = 10.8
+0570: 8@ = create_asset_radar_marker_with_icon 7 at 5@ 6@ 7@
+018B: set_marker 8@ radar_mode 2
+0005: 5@ = 675.7
+0005: 6@ = -496.6
+0005: 7@ = 16.8
+0570: 8@ = create_asset_radar_marker_with_icon 7 at 5@ 6@ 7@
+018B: set_marker 8@ radar_mode 2
+// PIZZERÍAS
+0005: 5@ = -1805.7
+0005: 6@ = 943.2
+0005: 7@ = 24.8
+0570: 8@ = create_asset_radar_marker_with_icon 29 at 5@ 6@ 7@
+018B: set_marker 8@ radar_mode 2
+0005: 5@ = 2750.9
+0005: 6@ = 2470.9
+0005: 7@ = 11
+0570: 8@ = create_asset_radar_marker_with_icon 29 at 5@ 6@ 7@
+018B: set_marker 8@ radar_mode 2
+0005: 5@ = 2351.8
+0005: 6@ = 2529
+0005: 7@ = 10.8
+0570: 8@ = create_asset_radar_marker_with_icon 29 at 5@ 6@ 7@
+018B: set_marker 8@ radar_mode 2
+0005: 5@ = 2635.5
+0005: 6@ = 1847.4
+0005: 7@ = 11
+0570: 8@ = create_asset_radar_marker_with_icon 29 at 5@ 6@ 7@
+018B: set_marker 8@ radar_mode 2
+0005: 5@ = 2083.4
+0005: 6@ = 2221
+0005: 7@ = 11
+0570: 8@ = create_asset_radar_marker_with_icon 29 at 5@ 6@ 7@
+018B: set_marker 8@ radar_mode 2
+0005: 5@ = -1719.1
+0005: 6@ = 1359.4
+0005: 7@ = 8.6
+0570: 8@ = create_asset_radar_marker_with_icon 29 at 5@ 6@ 7@
+018B: set_marker 8@ radar_mode 2
+0005: 5@ = 2330.2
+0005: 6@ = 75.2
+0005: 7@ = 31
+0570: 8@ = create_asset_radar_marker_with_icon 29 at 5@ 6@ 7@
+018B: set_marker 8@ radar_mode 2
+0005: 5@ = 203.2
+0005: 6@ = -200.4
+0005: 7@ = 6.5
+0570: 8@ = create_asset_radar_marker_with_icon 29 at 5@ 6@ 7@
+018B: set_marker 8@ radar_mode 2
+// BURGER SHOT
+0005: 5@ = 812.9
+0005: 6@ = -1616.1
+0005: 7@ = 13.6
+0570: 8@ = create_asset_radar_marker_with_icon 10 at 5@ 6@ 7@
+018B: set_marker 8@ radar_mode 2
+0005: 5@ = 1199.1
+0005: 6@ = -924
+0005: 7@ = 43.3
+0570: 8@ = create_asset_radar_marker_with_icon 10 at 5@ 6@ 7@
+018B: set_marker 8@ radar_mode 2
+0005: 5@ = 2362.2
+0005: 6@ = 2069.9
+0005: 7@ = 10.8
+0570: 8@ = create_asset_radar_marker_with_icon 10 at 5@ 6@ 7@
+018B: set_marker 8@ radar_mode 2
+0005: 5@ = 2469.5
+0005: 6@ = 2033.8
+0005: 7@ = 10.8
+0570: 8@ = create_asset_radar_marker_with_icon 10 at 5@ 6@ 7@
+018B: set_marker 8@ radar_mode 2
+0005: 5@ = 2172.9
+0005: 6@ = 2795.7
+0005: 7@ = 10.8
+0570: 8@ = create_asset_radar_marker_with_icon 10 at 5@ 6@ 7@
+018B: set_marker 8@ radar_mode 2
+0005: 5@ = 1875.3
+0005: 6@ = 2072
+0005: 7@ = 10.8
+0570: 8@ = create_asset_radar_marker_with_icon 10 at 5@ 6@ 7@
+018B: set_marker 8@ radar_mode 2
+0005: 5@ = 1161.5
+0005: 6@ = 2072
+0005: 7@ = 10.8
+0570: 8@ = create_asset_radar_marker_with_icon 10 at 5@ 6@ 7@
+018B: set_marker 8@ radar_mode 2
+0005: 5@ = -2356
+0005: 6@ = 1009
+0005: 7@ = 49
+0570: 8@ = create_asset_radar_marker_with_icon 10 at 5@ 6@ 7@
+018B: set_marker 8@ radar_mode 2
+0005: 5@ = -1913.3
+0005: 6@ = 826.2
+0005: 7@ = 36.9
+0570: 8@ = create_asset_radar_marker_with_icon 10 at 5@ 6@ 7@
+018B: set_marker 8@ radar_mode 2
+0005: 5@ = -2335.6
+0005: 6@ = -165.6
+0005: 7@ = 39.5
+0570: 8@ = create_asset_radar_marker_with_icon 10 at 5@ 6@ 7@
+018B: set_marker 8@ radar_mode 2
+// CLUCKIN' BELL
+0005: 5@ = 2397.8
+0005: 6@ = -1895.6
+0005: 7@ = 13.7
+0570: 8@ = create_asset_radar_marker_with_icon 14 at 5@ 6@ 7@
+018B: set_marker 8@ radar_mode 2
+0005: 5@ = 2421.6
+0005: 6@ = -1509.6
+0005: 7@ = 24.1
+0570: 8@ = create_asset_radar_marker_with_icon 14 at 5@ 6@ 7@
+018B: set_marker 8@ radar_mode 2
+0005: 5@ = -2671.6
+0005: 6@ = 257.4
+0005: 7@ = 4.6
+0570: 8@ = create_asset_radar_marker_with_icon 14 at 5@ 6@ 7@
+018B: set_marker 8@ radar_mode 2
+0005: 5@ = 2392.4
+0005: 6@ = 2046.5
+0005: 7@ = 10.8
+0570: 8@ = create_asset_radar_marker_with_icon 14 at 5@ 6@ 7@
+018B: set_marker 8@ radar_mode 2
+0005: 5@ = 2844.5
+0005: 6@ = 2401.1
+0005: 7@ = 11
+0570: 8@ = create_asset_radar_marker_with_icon 14 at 5@ 6@ 7@
+018B: set_marker 8@ radar_mode 2
+0005: 5@ = 2635.5
+0005: 6@ = 1674.3
+0005: 7@ = 11
+0570: 8@ = create_asset_radar_marker_with_icon 14 at 5@ 6@ 7@
+018B: set_marker 8@ radar_mode 2
+0005: 5@ = 2105.7
+0005: 6@ = 2228.7
+0005: 7@ = 11
+0570: 8@ = create_asset_radar_marker_with_icon 14 at 5@ 6@ 7@
+018B: set_marker 8@ radar_mode 2
+0005: 5@ = -2154
+0005: 6@ = -2461.2
+0005: 7@ = 30.8
+0570: 8@ = create_asset_radar_marker_with_icon 14 at 5@ 6@ 7@
+018B: set_marker 8@ radar_mode 2
+0005: 5@ = -1816.2
+0005: 6@ = 620.8
+0005: 7@ = 37.5
+0570: 8@ = create_asset_radar_marker_with_icon 14 at 5@ 6@ 7@
+018B: set_marker 8@ radar_mode 2
+0005: 5@ = -1216
+0005: 6@ = 1831.4
+0005: 7@ = 45.3
+0570: 8@ = create_asset_radar_marker_with_icon 14 at 5@ 6@ 7@
+018B: set_marker 8@ radar_mode 2
+0005: 5@ = 172.73
+0005: 6@ = 1176.76
+0005: 7@ = 13.7
+0570: 8@ = create_asset_radar_marker_with_icon 14 at 5@ 6@ 7@
+018B: set_marker 8@ radar_mode 2
+0005: 5@ = 932
+0005: 6@ = -1353
+0005: 7@ = 14
+0570: 8@ = create_asset_radar_marker_with_icon 14 at 5@ 6@ 7@
+018B: set_marker 8@ radar_mode 2
+// TIENDAS DE ROPA
+0005: 5@ = -2376.4
+0005: 6@ = 909.2
+0005: 7@ = 45.4
+0570: 8@ = create_asset_radar_marker_with_icon 45 at 5@ 6@ 7@
+018B: set_marker 8@ radar_mode 2
+0005: 5@ = 1654
+0005: 6@ = 1733.4
+0005: 7@ = 11
+0570: 8@ = create_asset_radar_marker_with_icon 45 at 5@ 6@ 7@
+018B: set_marker 8@ radar_mode 2
+0005: 5@ = 2105.7
+0005: 6@ = 2257.4
+0005: 7@ = 11
+0570: 8@ = create_asset_radar_marker_with_icon 45 at 5@ 6@ 7@
+018B: set_marker 8@ radar_mode 2
+0005: 5@ = -2371.1
+0005: 6@ = 910.2
+0005: 7@ = 47.2
+0570: 8@ = create_asset_radar_marker_with_icon 45 at 5@ 6@ 7@
+018B: set_marker 8@ radar_mode 2
+0005: 5@ = 501.7
+0005: 6@ = -1358.5
+0005: 7@ = 16.4
+0570: 8@ = create_asset_radar_marker_with_icon 45 at 5@ 6@ 7@
+018B: set_marker 8@ radar_mode 2
+0005: 5@ = 2818.6
+0005: 6@ = 2401.5
+0005: 7@ = 11
+0570: 8@ = create_asset_radar_marker_with_icon 45 at 5@ 6@ 7@
+018B: set_marker 8@ radar_mode 2
+0005: 5@ = 2112.8
+0005: 6@ = -1214.7
+0005: 7@ = 23.9
+0570: 8@ = create_asset_radar_marker_with_icon 45 at 5@ 6@ 7@
+018B: set_marker 8@ radar_mode 2
+0005: 5@ = 2772
+0005: 6@ = 2447.6
+0005: 7@ = 11
+0570: 8@ = create_asset_radar_marker_with_icon 45 at 5@ 6@ 7@
+018B: set_marker 8@ radar_mode 2
+0005: 5@ = -2489
+0005: 6@ = -26.9
+0005: 7@ = 32.6
+0570: 8@ = create_asset_radar_marker_with_icon 45 at 5@ 6@ 7@
+018B: set_marker 8@ radar_mode 2
+0005: 5@ = 1458.7
+0005: 6@ = -1140
+0005: 7@ = 24.2
+0570: 8@ = create_asset_radar_marker_with_icon 45 at 5@ 6@ 7@
+018B: set_marker 8@ radar_mode 2
+0005: 5@ = -1886.1
+0005: 6@ = 862.4
+0005: 7@ = 35.2
+0570: 8@ = create_asset_radar_marker_with_icon 45 at 5@ 6@ 7@
+018B: set_marker 8@ radar_mode 2
+0005: 5@ = 2574.3
+0005: 6@ = 1901.7
+0005: 7@ = 11
+0570: 8@ = create_asset_radar_marker_with_icon 45 at 5@ 6@ 7@
+018B: set_marker 8@ radar_mode 2
+0005: 5@ = 457.2
+0005: 6@ = -1500.7
+0005: 7@ = 31.3
+0570: 8@ = create_asset_radar_marker_with_icon 45 at 5@ 6@ 7@
+018B: set_marker 8@ radar_mode 2
+0005: 5@ = 2795.2
+0005: 6@ = 2424.6
+0005: 7@ = 11
+0570: 8@ = create_asset_radar_marker_with_icon 45 at 5@ 6@ 7@
+018B: set_marker 8@ radar_mode 2
+0005: 5@ = -1692.9
+0005: 6@ = 952.8
+0005: 7@ = 26.3
+0570: 8@ = create_asset_radar_marker_with_icon 45 at 5@ 6@ 7@
+018B: set_marker 8@ radar_mode 2
+0005: 5@ = 451.9
+0005: 6@ = -1480
+0005: 7@ = 30.9
+0570: 8@ = create_asset_radar_marker_with_icon 45 at 5@ 6@ 7@
+018B: set_marker 8@ radar_mode 2
+// TALLERES DE MODIFICACIÓN
+0005: 5@ = 1038.24
+0005: 6@ = -1025.67
+0005: 7@ = 31.1027
+0570: 8@ = create_asset_radar_marker_with_icon 27 at 5@ 6@ 7@
+018B: set_marker 8@ radar_mode 2
+0005: 5@ = -1941.04
+0005: 6@ = 251.714
+0005: 7@ = 33.4274
+0570: 8@ = create_asset_radar_marker_with_icon 27 at 5@ 6@ 7@
+018B: set_marker 8@ radar_mode 2
+0005: 5@ = 2382.28
+0005: 6@ = 1044
+0005: 7@ = 9.8337
+0570: 8@ = create_asset_radar_marker_with_icon 27 at 5@ 6@ 7@
+018B: set_marker 8@ radar_mode 2
+0005: 5@ = 2640.78
+0005: 6@ = -2049.99
+0005: 7@ = 12.543
+0570: 8@ = create_asset_radar_marker_with_icon 27 at 5@ 6@ 7@
+018B: set_marker 8@ radar_mode 2
+0005: 5@ = -2728.53
+0005: 6@ = 212.295
+0005: 7@ = 3.45112
+0570: 8@ = create_asset_radar_marker_with_icon 27 at 5@ 6@ 7@
+018B: set_marker 8@ radar_mode 2
 07FB: set_interior 'BARBERS' access 1
 07FB: set_interior 'BARBER2' access 1
 07FB: set_interior 'BARBER3' access 1
