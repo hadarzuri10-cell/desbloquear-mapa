@@ -11,8 +11,10 @@ INSTALACIÓN DE PRUEBA
 3. Mantén Desbloquear Mapa.csi y Desbloquear Mapa.fxt juntos. El FXT contiene los textos de los mensajes; si falta o no se carga, el juego puede mostrar las claves MAPLOAD, MAPPROC, MAPRDY o MAPERR.
 4. Ejecuta el script desde el menú CLEO.
 5. Prueba únicamente en una partida nueva de prueba. No uses la partida principal.
+6. Comprueba por separado que aparezcan los iconos de barberías, comida, ropa y talleres, y que se pueda entrar a los establecimientos. Los iconos de los talleres no garantizan que sus puertas estén activadas.
 
 IMPORTANTE
+- Incluye 57 marcadores de comercios y talleres; sus posiciones y aparición real deben comprobarse dentro del juego.
 - Este es un candidato de prueba, no una versión declarada estable.
 - La compilación correcta no demuestra que funcione dentro del juego.
 - Si el juego se cierra, no repitas la prueba en la partida principal.
