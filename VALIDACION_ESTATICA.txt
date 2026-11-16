@@ -13,3 +13,10 @@ Artefacto .csi generado y verificado dentro del ZIP de compilación.
 Pruebas dentro del juego y compatibilidad real con GTA SA Android 2.10: pendientes.
 Presentación visual (posición, tamaño y tonos apagados): pendiente de implementación y verificación.
 Pruebas exclusivamente en partidas nuevas; no usar la partida principal.
+ 
+AUDITORÍA ADICIONAL:
+- La revisión de v1.4 en main usa la clave GXT MAPBUSY; su FXT de main sí contiene MAPBUSY.
+- La rama v1.4.1-development cambió esa salida a MAPERR y su FXT de desarrollo contiene MAPERR. No mezclar el .csi de una rama con el .fxt de la otra.
+- La documentación de Sanny Builder confirma que DISPLAY_TEXT (033E) debe ejecutarse cada frame dentro de un bucle con WAIT 0 y que los comandos deben quedar entre USE_TEXT_COMMANDS (03F0) activado y desactivado para evitar efectos no deseados o crashes.
+- SET_TEXT_SCALE (033F) y SET_TEXT_COLOUR (0340) permiten tamaño y RGBA personalizados; por tanto, la presentación con tonos apagados es técnicamente viable con text draws.
+- Estos comandos visuales todavía no se han incorporado al script. No se declara corregido el crash observado en MAPBUSY: su causa sigue sin confirmarse.
