@@ -70,7 +70,34 @@ jobs:
           if ($process.ExitCode -ne 0) { throw "Compilation failed with exit code $($process.ExitCode)." }
           if (Test-Path 'build\sanny-compile.log') {
             $compilerErrors = Select-String -Path 'build\sanny-compile.log' -Pattern '(?i)^\s*error:'
-            if ($compilerErrors) { throw "Sanny Builder reported compilation errors. See build/sanny-compile.log." }
+            if ($compilerErrors) {
+              Remove-Item $output -ErrorAction SilentlyContinue
+              $sourceText = Get-Content $source -Raw
+              $diagnosticSource = Join-Path $PWD 'build\diagnostic-without-property32.txt'
+              $diagnosticOutput = Join-Path $PWD 'build\diagnostic-without-property32.csi'
+              $pattern = '(?ms)^0004: 0@ = 32\r?\n.*?^:prop_skip_32\r?\n'
+              $diagnosticText = [regex]::Replace($sourceText, $pattern, ":prop_skip_32`r`n")
+              if ($diagnosticText -ne $sourceText) {
+                Set-Content -Path $diagnosticSource -Value $diagnosticText -NoNewline
+                Remove-Item $diagnosticOutput -ErrorAction SilentlyContinue
+                Remove-Item $sannyLog -ErrorAction SilentlyContinue
+                $diagnosticArguments = @('--no-splash', '--game', 'sa_mobile', '--compile', "`"$diagnosticSource`"", "`"$diagnosticOutput`"")
+                $diagnosticProcess = Start-Process -FilePath $env:SANNY_EXE -ArgumentList $diagnosticArguments -WorkingDirectory $PWD -PassThru -NoNewWindow -RedirectStandardOutput (Join-Path $PWD 'build\diagnostic-stdout.log') -RedirectStandardError (Join-Path $PWD 'build\diagnostic-stderr.log')
+                if ($diagnosticProcess.WaitForExit(120000)) {
+                  "Diagnostic compile without property 32 exit code: $($diagnosticProcess.ExitCode)" | Add-Content build\compile.log
+                  if (Test-Path $sannyLog) {
+                    Copy-Item $sannyLog build\diagnostic-sanny-compile.log -Force
+                    Get-Content $sannyLog | Add-Content build\compile.log
+                  }
+                } else {
+                  $diagnosticProcess.Kill()
+                  'Diagnostic compile without property 32 timed out.' | Add-Content build\compile.log
+                }
+              } else {
+                'Could not isolate property block 32 for diagnostic compile.' | Add-Content build\compile.log
+              }
+              throw "Sanny Builder reported compilation errors. See build/sanny-compile.log and diagnostic logs."
+            }
           }
           if (-not (Test-Path $output)) { throw 'Compiler exited without producing the .csi file.' }
 
