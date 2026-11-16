@@ -9,7 +9,7 @@ Los textos visibles están escritos completos; las claves FXT se mantienen en 7 
 MAP READY: dibujo por fotograma con alternancia cada 250 ms, usando un temporizador total de 5000 ms; duración y ritmo pendientes de validación en el dispositivo.
 La secuencia MAP READY se ha compactado en un bucle para evitar diez bloques repetidos.
 Compilación CLEO Android (Sanny Builder 4.2.0): correcta en la revisión c47ab82.
-La compilación de aquella revisión terminó correctamente y generó un artefacto ZIP; el contenido interno del ZIP no fue inspeccionado, por lo que no se afirma que el .csi se haya extraído o verificado.
+El ZIP de esa ejecución se inspeccionó y contiene Desbloquear Mapa.csi (25.426 bytes). Su SHA-256 coincide con el artefacto publicado por GitHub Actions. Esta verificación corresponde a c47ab82, antes de los cambios visuales descritos abajo; no valida la versión actual.
 Pruebas dentro del juego y compatibilidad real con GTA SA Android 2.10: pendientes.
 Presentación visual: implementada con DISPLAY_TEXT (033E), escala (033F), color RGBA (0340), centrado (0342), fuente (0349) y USE_TEXT_COMMANDS (03F0). Posición inferior-central y tonos apagados diferenciados por estado; compilación y prueba en dispositivo pendientes.
 Pruebas exclusivamente en partidas nuevas; no usar la partida principal.
@@ -19,7 +19,7 @@ AUDITORÍA ADICIONAL:
 - La rama v1.4.1-development cambió esa salida a MAPERR y su FXT de desarrollo contiene MAPERR. No mezclar el .csi de una rama con el .fxt de la otra.
 - La documentación de Sanny Builder confirma que DISPLAY_TEXT (033E) debe ejecutarse cada frame dentro de un bucle con WAIT 0 y que los comandos deben quedar entre USE_TEXT_COMMANDS (03F0) activado y desactivado para evitar efectos no deseados o crashes.
 - SET_TEXT_SCALE (033F) y SET_TEXT_COLOUR (0340) permiten tamaño y RGBA personalizados; por tanto, la presentación con tonos apagados es técnicamente viable con text draws.
-- Estos comandos visuales todavía no se han incorporado al script. No se declara corregido el crash observado en MAPBUSY: su causa sigue sin confirmarse.
+- Los comandos visuales ya están incorporados en v1.4.1-development; la compilación de esta revisión y la prueba en el teléfono siguen pendientes. No se declara corregido el crash observado en MAPBUSY: su causa sigue sin confirmarse.
 
 
 CAMBIO DE PRESENTACIÓN EN DESARROLLO:
