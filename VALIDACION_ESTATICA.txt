@@ -1,16 +1,18 @@
-VALIDACIÓN — DESBLOQUEAR MAPA v1.4
+VALIDACIÓN — DESBLOQUEAR MAPA v1.4.1 (BORRADOR)
 
-Compilación: correcta con Sanny Builder 4.2.0, modo SA Mobile.
-Formato generado: .csi
-Fuente: Desbloquear Mapa v1.4.source.txt
+Base: v1.4, conservada sin cambios.
+Rama: v1.4.1-development.
 
-MAPLOAD: 1500 ms
-MAP READY: 10 ciclos de 250 ms de texto + 250 ms de pausa = 5000 ms
-Propiedades: 32 bloques; matriz 1..32; pickups $3071..$3102
-Marcadores: 32 handles únicos; 32 limpiezas previas
-Interiores normales: 22
-Saltos: 33; etiquetas resueltas: 33
-Mapa: 100 bytes consecutivos + contador 100
+Cambios de secuencia:
+- MAP LOADING al iniciar.
+- MAP PROCESSING después de superar las protecciones y adquirir el mutex.
+- MAP READY solo después de completar las operaciones del mapa; 10 ciclos de 250 ms de texto + 250 ms de pausa = 5000 ms.
+- MAP ERROR cuando no se puede iniciar por misión activa o mutex ocupado.
+- Claves completas: MAPLOAD, MAPPROC, MAPREADY y MAPERROR.
 
-No probado dentro del juego.
-Compatibilidad real con GTA San Andreas Android 2.10 pendiente de prueba.
+Pendiente antes de compilar/probar:
+- Sustituir el sistema 00BC por un dibujo de texto controlado para fijar posición, tamaño y colores RGB apagados.
+- Revisar la causa del cierre durante la ruta de error y validar direcciones de memoria/operaciones en GTA SA Android 2.10.
+- Compilar y revisar logs; no se declara estable ni probado en juego.
+
+Pruebas exclusivamente en partidas nuevas.
