@@ -22,7 +22,7 @@ MENSAJES FXT
 AUDITORÍA DE FLUJO
 - El script adquiere el mutex antes de escribir los sectores y lo libera al finalizar la ruta correcta.
 - Una segunda instancia que encuentre el mutex ocupado termina sin alterar el mutex de la primera.
-- El error de cierre/crash observado después de MAP READY no está demostrado como resuelto. Requiere inspección del flujo compilado y prueba controlada en GTA SA Android 2.10.
+- Se corrigió el orden de las comprobaciones para impedir que una segunda instancia salte a MAP ERROR antes de detectar que la primera mantiene el mutex. Esto elimina una ruta plausible para el MAP ERROR simultáneo observado tras MAP READY; no demuestra por sí solo que el crash esté resuelto. Requiere prueba controlada en GTA SA Android 2.10.
 - No declarar estabilidad ni corrección del crash hasta una prueba real.
 
 COMERCIOS Y TALLERES
