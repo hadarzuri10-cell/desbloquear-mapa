@@ -1,32 +1,19 @@
-DESBLOQUEAR MAPA v1.3 — PAQUETE COMPILADO Y REVISADO
+DESBLOQUEAR MAPA — PAQUETE DE PRUEBA v1.4.2
 
-Contenido:
-- Desbloquear Mapa v1.3.csi
-- Desbloquear Mapa.fxt
-- Desbloquear Mapa v1.3.source.txt
-- VALIDACION_ESTATICA.txt
+CONTENIDO
+- cleo/Desbloquear Mapa.csi
+- cleo/Desbloquear Mapa.fxt
+- cleo/VALIDACION_ESTATICA.txt
 
-Funciones incluidas:
-- Revela los 100 sectores del mapa y actualiza el contador de sectores.
-- Establece STAT_CITIES_PASSED (181) en 4 para habilitar el acceso a las cuatro ciudades sin el bloqueo de acceso por historia.
-- Reconstruye los 32 marcadores de propiedades que todavía no estén compradas, usando las coordenadas, precios, variables y manejadores originales del juego.
-- Comprueba la matriz original de propiedades compradas: no crea marcadores para propiedades ya adquiridas.
-- Mantiene el proceso de compra original; no compra propiedades automáticamente ni cambia el dinero.
-- Habilita interiores de peluquerías, tiendas de ropa, restaurantes, gimnasios, tatuajes y RC Play.
-- Los talleres, garajes y servicios de vehículos conservan sus sistemas originales; el desbloqueo de ciudades permite llegar a sus ubicaciones.
-- Incluye un control para impedir la ejecución mientras una misión está activa.
+INSTALACIÓN DE PRUEBA
+1. Extrae el ZIP del artefacto.
+2. Copia los archivos de la carpeta cleo/ a la misma carpeta CLEO donde están los demás scripts de GTA San Andreas.
+3. Mantén Desbloquear Mapa.csi y Desbloquear Mapa.fxt juntos. El FXT contiene los textos de los mensajes; si falta o no se carga, el juego puede mostrar las claves MAPLOAD, MAPPROC, MAPRDY o MAPERR.
+4. Ejecuta el script desde el menú CLEO.
+5. Prueba únicamente en una partida nueva de prueba. No uses la partida principal.
 
-Integridad y compatibilidad con el progreso:
-- No modifica banderas de misiones, dinero, vehículos, inventario ni propiedad adquirida.
-- No altera el daño por caída ni el script Camera Teletransporte.
-- Las rutinas originales BUY1/BUY2/BUY3 y OPENUP limpian los mismos manejadores antes de regenerar sus marcadores, por lo que los marcadores creados por este script pueden ser refrescados por el juego cuando se alcance el progreso correspondiente.
-- No incorpora funciones de tiendas de armas ni actividades de casino/apuestas.
-
-Instalación prevista: coloca el .csi y el .fxt juntos en la carpeta CLEO y ejecútalo manualmente desde el menú CLEO, fuera de misiones y cinemáticas. Haz una copia de seguridad de la partida antes de probarlo.
-
-Validación:
-- Bytecode ensamblado y revisado estáticamente.
-- Las 32 coordenadas, precios, pickups y manejadores de marcadores se cotejaron con mainV1.scm.
-- Las rutinas de limpieza de OPENUP se cotejaron con los 23 marcadores/pickups que reemplazan.
-- Las direcciones de mapa se cotejaron con libGTASA.so de la APK recuperada.
-- No se ha ejecutado dentro del juego; por tanto, la prueba real de funcionamiento en GTA SA Android 2.10 sigue pendiente.
+IMPORTANTE
+- Este es un candidato de prueba, no una versión declarada estable.
+- La compilación correcta no demuestra que funcione dentro del juego.
+- Si el juego se cierra, no repitas la prueba en la partida principal.
+- No se debe considerar MAP READY como éxito si después aparece MAP ERROR o el juego se cierra.
