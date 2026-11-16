@@ -15,7 +15,8 @@ CAMBIOS PREPARADOS PARA LA SIGUIENTE COMPILACIÓN
 MENSAJES FXT
 - Claves: MAPLOAD, MAPPROC, MAPRDY y MAPERR.
 - Textos visibles completos: MAP LOADING, MAP PROCESSING, MAP READY y MAP ERROR.
-- El archivo Desbloquear Mapa.fxt debe acompañar al CSI en la carpeta de scripts de CLEO SA. El paquete de compilación incluye ambos archivos.
+- El FXT usa el formato correcto: clave, un espacio ASCII y el texto completo (no tabuladores).
+- El archivo Desbloquear Mapa.fxt debe acompañar al CSI en la misma carpeta de scripts CLEO SA. El artefacto se estructura como carpeta cleo/ para copiarla junto a los demás scripts.
 - El usuario observó las claves internas en pantalla; por tanto, la carga real del FXT sigue pendiente de comprobar en su instalación Android. Una compilación correcta no demuestra que CLEO haya cargado el FXT.
 
 AUDITORÍA DE FLUJO
