@@ -1,14 +1,15 @@
 VALIDACIÓN — DESBLOQUEAR MAPA v1.4.1
 
 Base: v1.4, conservada sin cambios.
-Rama: v1.4.1-development.
+Rama de desarrollo: v1.4.1-development.
 
 Secuencia de mensajes: MAP LOADING → MAP PROCESSING → MAP READY.
 Si el script no puede iniciar por misión activa o mutex ocupado: MAP ERROR.
-Los textos visibles están escritos completos; las claves FXT se mantienen en 7 caracteres o menos (límite del formato CLEO FXT).
-MAP READY: 10 ciclos de 250 ms visibles + 250 ms de pausa = 5000 ms.
-Pruebas exclusivamente en partidas nuevas.
-
-Compilación de fuente v1.4.1: pendiente de nueva ejecución tras esta corrección.
-Prueba dentro del juego y compatibilidad con GTA SA Android 2.10: pendientes.
+Los textos visibles están escritos completos; las claves FXT se mantienen en 7 caracteres o menos.
+MAP READY: bucle de 10 ciclos, cada uno con 250 ms visible + 250 ms de pausa = 5000 ms totales.
+La secuencia MAP READY se ha compactado en un bucle para evitar diez bloques repetidos.
+Compilación CLEO Android (Sanny Builder 4.2.0): correcta en la revisión c47ab82.
+Artefacto .csi generado y verificado dentro del ZIP de compilación.
+Pruebas dentro del juego y compatibilidad real con GTA SA Android 2.10: pendientes.
 Presentación visual (posición, tamaño y tonos apagados): pendiente de implementación y verificación.
+Pruebas exclusivamente en partidas nuevas; no usar la partida principal.
