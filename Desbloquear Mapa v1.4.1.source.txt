@@ -506,6 +506,12 @@
 0005: 7@ = 16.8
 0570: 8@ = create_asset_radar_marker_with_icon 7 at 5@ 6@ 7@
 018B: set_marker 8@ radar_mode 2
+// BARBERÍA DE EL QUEBRADOS (no tiene icono normal en el mapa).
+0005: 5@ = -1449.87
+0005: 6@ = 2591.85
+0005: 7@ = 54.84
+0570: 8@ = create_asset_radar_marker_with_icon 7 at 5@ 6@ 7@
+018B: set_marker 8@ radar_mode 2
 // PIZZERÍAS
 0005: 5@ = -1805.7
 0005: 6@ = 943.2
