@@ -18,7 +18,7 @@ AUDITORÍA ADICIONAL:
 - La revisión de v1.4 en main usa la clave GXT MAPBUSY; su FXT de main sí contiene MAPBUSY.
 - La rama v1.4.1-development cambió esa salida a MAPERR y su FXT de desarrollo contiene MAPERR. No mezclar el .csi de una rama con el .fxt de la otra.
 - La fuente contiene comandos de dibujo por fotograma y los cuatro mensajes completos. Esta revisión estática no demuestra que la sintaxis sea aceptada por el compilador ni que la presentación se vea correctamente en el juego.
-- La compilación de esta revisión y la prueba en el teléfono siguen pendientes. No se declara corregido el crash observado al llegar a MAPBUSY: su causa sigue sin confirmarse.
+- La compilación de esta revisión se solicita mediante el flujo automático al actualizar esta rama; el resultado debe verificarse en GitHub Actions. La prueba en el teléfono sigue pendiente. No se declara corregido el crash observado al llegar a MAPBUSY: su causa sigue sin confirmarse.
 - La comprobación de flujo debe verificar especialmente el salto a MAP ERROR cuando el mutex está ocupado y que únicamente la ruta que adquirió el mutex lo libere.
 
 
