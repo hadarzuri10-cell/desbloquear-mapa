@@ -3,8 +3,13 @@
 00BC: show_text_highpriority GXT 'MAPLOAD' time 1500 flag 1
 0001: wait 500
 00D6: if 0
-0038: $409 == 0
+0038: $ONMISSION == 0
 004D: jump_if_false @busy
+0DDD: 0@ = get_mutex_var 7413
+00D6: if 0
+0038: 0@ == 0
+004D: jump_if_false @busy
+0DDC: set_mutex_var 7413 to 1
 0DD9: write_mem_addr 0x0098D252 value 1 size 1 add_ib 1 protect 0
 0DD9: write_mem_addr 0x0098D253 value 1 size 1 add_ib 1 protect 0
 0DD9: write_mem_addr 0x0098D254 value 1 size 1 add_ib 1 protect 0
@@ -459,25 +464,26 @@
 07FB: set_interior 'CARLS' access 1
 07FB: set_interior 'RCPLAY' access 1
 00BC: show_text_highpriority GXT 'MAPRDY' time 250 flag 1
-0001: wait 500
+0001: wait 250
 00BC: show_text_highpriority GXT 'MAPRDY' time 250 flag 1
-0001: wait 500
+0001: wait 250
 00BC: show_text_highpriority GXT 'MAPRDY' time 250 flag 1
-0001: wait 500
+0001: wait 250
 00BC: show_text_highpriority GXT 'MAPRDY' time 250 flag 1
-0001: wait 500
+0001: wait 250
 00BC: show_text_highpriority GXT 'MAPRDY' time 250 flag 1
-0001: wait 500
+0001: wait 250
 00BC: show_text_highpriority GXT 'MAPRDY' time 250 flag 1
-0001: wait 500
+0001: wait 250
 00BC: show_text_highpriority GXT 'MAPRDY' time 250 flag 1
-0001: wait 500
+0001: wait 250
 00BC: show_text_highpriority GXT 'MAPRDY' time 250 flag 1
-0001: wait 500
+0001: wait 250
 00BC: show_text_highpriority GXT 'MAPRDY' time 250 flag 1
-0001: wait 500
+0001: wait 250
 00BC: show_text_highpriority GXT 'MAPRDY' time 250 flag 1
-0001: wait 500
+0001: wait 250
+0DDC: set_mutex_var 7413 to 0
 0A93: end_custom_thread
 :busy
 00BC: show_text_highpriority GXT 'MAPBUSY' time 5000 flag 1
