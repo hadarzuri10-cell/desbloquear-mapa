@@ -27,15 +27,16 @@ jobs:
         shell: pwsh
         run: |
           New-Item -ItemType Directory -Force -Path build | Out-Null
-          & "$env:SANNY_EXE" --game sa_mobile --compile "Desbloquear Mapa v1.3.source.txt" "build/Desbloquear Mapa v1.3.csi"
-          if ($LASTEXITCODE -ne 0) { throw "Compilation failed." }
-          if (-not (Test-Path "build/Desbloquear Mapa v1.3.csi")) { throw 'Output file missing.' }
+          & "$env:SANNY_EXE" --game sa_mobile --compile "Desbloquear Mapa v1.4.source.txt" "build/Desbloquear Mapa.csi" 2>&1 | Tee-Object -FilePath build/compile.log
+          if ($LASTEXITCODE -ne 0) { throw "Compilation failed. See build/compile.log." }
+          if (-not (Test-Path "build/Desbloquear Mapa.csi")) { throw 'Output file missing.' }
           Copy-Item "Desbloquear Mapa.fxt" build/
           Copy-Item "VALIDACION_ESTATICA.txt" build/
 
-      - name: Upload compiled artifact
+      - name: Upload build diagnostics and artifact
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: Desbloquear-Mapa-compiled-test
           path: build/*
-          if-no-files-found: error
+          if-no-files-found: warn
