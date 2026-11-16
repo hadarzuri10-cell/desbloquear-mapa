@@ -464,28 +464,28 @@
 07FB: set_interior 'TSDINER' access 1
 07FB: set_interior 'CARLS' access 1
 07FB: set_interior 'RCPLAY' access 1
-00BC: show_text_highpriority GXT 'MAPREADY' time 250 flag 1
+00BC: show_text_highpriority GXT 'MAPRDY' time 250 flag 1
 0001: wait 250
-00BC: show_text_highpriority GXT 'MAPREADY' time 250 flag 1
+00BC: show_text_highpriority GXT 'MAPRDY' time 250 flag 1
 0001: wait 250
-00BC: show_text_highpriority GXT 'MAPREADY' time 250 flag 1
+00BC: show_text_highpriority GXT 'MAPRDY' time 250 flag 1
 0001: wait 250
-00BC: show_text_highpriority GXT 'MAPREADY' time 250 flag 1
+00BC: show_text_highpriority GXT 'MAPRDY' time 250 flag 1
 0001: wait 250
-00BC: show_text_highpriority GXT 'MAPREADY' time 250 flag 1
+00BC: show_text_highpriority GXT 'MAPRDY' time 250 flag 1
 0001: wait 250
-00BC: show_text_highpriority GXT 'MAPREADY' time 250 flag 1
+00BC: show_text_highpriority GXT 'MAPRDY' time 250 flag 1
 0001: wait 250
-00BC: show_text_highpriority GXT 'MAPREADY' time 250 flag 1
+00BC: show_text_highpriority GXT 'MAPRDY' time 250 flag 1
 0001: wait 250
-00BC: show_text_highpriority GXT 'MAPREADY' time 250 flag 1
+00BC: show_text_highpriority GXT 'MAPRDY' time 250 flag 1
 0001: wait 250
-00BC: show_text_highpriority GXT 'MAPREADY' time 250 flag 1
+00BC: show_text_highpriority GXT 'MAPRDY' time 250 flag 1
 0001: wait 250
-00BC: show_text_highpriority GXT 'MAPREADY' time 250 flag 1
+00BC: show_text_highpriority GXT 'MAPRDY' time 250 flag 1
 0001: wait 250
 0DDC: set_mutex_var 7413 to 0
 0A93: end_custom_thread
 :busy
-00BC: show_text_highpriority GXT 'MAPERROR' time 5000 flag 1
+00BC: show_text_highpriority GXT 'MAPERR' time 5000 flag 1
 0A93: end_custom_thread
