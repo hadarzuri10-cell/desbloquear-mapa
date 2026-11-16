@@ -486,6 +486,7 @@
 07FB: set_interior 'LACS1' access 1
 07FB: set_interior 'CLOTHGP' access 1
 07FB: set_interior 'CSDESGN' access 1
+07FB: set_interior 'CSEXL' access 1
 07FB: set_interior 'GYM1' access 1
 07FB: set_interior 'GYM2' access 1
 07FB: set_interior 'GYM3' access 1
