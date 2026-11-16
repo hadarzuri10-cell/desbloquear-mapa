@@ -26,15 +26,51 @@ jobs:
           if (-not $exe) { throw 'sanny.exe was not found.' }
           "SANNY_EXE=$($exe.FullName)" | Out-File -FilePath $env:GITHUB_ENV -Append
 
-      - name: Compile CLEO source
+      - name: Compile CLEO source (120-second limit)
         shell: pwsh
         run: |
+          $source = Join-Path $PWD 'Desbloquear Mapa v1.4.source.txt'
+          $output = Join-Path $PWD 'build\Desbloquear Mapa.csi'
+          $stdout = Join-Path $PWD 'build\compiler-stdout.log'
+          $stderr = Join-Path $PWD 'build\compiler-stderr.log'
           New-Item -ItemType Directory -Force -Path build | Out-Null
-          & "$env:SANNY_EXE" --game sa_mobile --compile "Desbloquear Mapa v1.4.source.txt" "build/Desbloquear Mapa.csi" 2>&1 | Tee-Object -FilePath build/compile.log
-          if ($LASTEXITCODE -ne 0) { throw "Compilation failed. See build/compile.log." }
-          if (-not (Test-Path "build/Desbloquear Mapa.csi")) { throw 'Output file missing.' }
-          Copy-Item "Desbloquear Mapa.fxt" build/
-          Copy-Item "VALIDACION_ESTATICA.txt" build/
+
+          if (-not (Test-Path $source)) { throw "Source file missing: $source" }
+
+          $arguments = @(
+            '--no-splash',
+            '--game', 'sa_mobile',
+            '--compile',
+            "`"$source`"",
+            "`"$output`""
+          )
+
+          "Compiler: $env:SANNY_EXE" | Set-Content build\compile.log
+          "Arguments: $($arguments -join ' ')" | Add-Content build\compile.log
+
+          $process = Start-Process -FilePath $env:SANNY_EXE -ArgumentList $arguments -WorkingDirectory $PWD -PassThru -NoNewWindow -RedirectStandardOutput $stdout -RedirectStandardError $stderr
+          if (-not $process.WaitForExit(120000)) {
+            $process.Kill()
+            $process.WaitForExit()
+            'ERROR: Sanny Builder exceeded the 120-second compilation limit.' | Add-Content build\compile.log
+            throw 'Sanny Builder timed out after 120 seconds.'
+          }
+
+          "Exit code: $($process.ExitCode)" | Add-Content build\compile.log
+          if (Test-Path $stdout) { Get-Content $stdout | Add-Content build\compile.log }
+          if (Test-Path $stderr) { Get-Content $stderr | Add-Content build\compile.log }
+
+          $sannyLog = Join-Path (Split-Path $env:SANNY_EXE) 'compile.log'
+          if (Test-Path $sannyLog) {
+            Copy-Item $sannyLog build\sanny-compile.log -Force
+            Get-Content $sannyLog | Add-Content build\compile.log
+          }
+
+          if ($process.ExitCode -ne 0) { throw "Compilation failed with exit code $($process.ExitCode)." }
+          if (-not (Test-Path $output)) { throw 'Compiler exited without producing the .csi file.' }
+
+          Copy-Item 'Desbloquear Mapa.fxt' build\
+          Copy-Item 'VALIDACION_ESTATICA.txt' build\
 
       - name: Upload build diagnostics and artifact
         if: always()
