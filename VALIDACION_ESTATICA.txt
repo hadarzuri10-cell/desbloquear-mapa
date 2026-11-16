@@ -6,12 +6,12 @@ Rama de desarrollo: v1.4.1-development.
 Secuencia de mensajes: MAP LOADING → MAP PROCESSING → MAP READY.
 Si el script no puede iniciar por misión activa o mutex ocupado: MAP ERROR.
 Los textos visibles están escritos completos; las claves FXT se mantienen en 7 caracteres o menos.
-MAP READY: bucle de 10 ciclos, cada uno con 250 ms visible + 250 ms de pausa = 5000 ms totales.
+MAP READY: dibujo por fotograma con alternancia cada 250 ms, usando un temporizador total de 5000 ms; duración y ritmo pendientes de validación en el dispositivo.
 La secuencia MAP READY se ha compactado en un bucle para evitar diez bloques repetidos.
 Compilación CLEO Android (Sanny Builder 4.2.0): correcta en la revisión c47ab82.
-Artefacto .csi generado y verificado dentro del ZIP de compilación.
+La compilación de aquella revisión terminó correctamente y generó un artefacto ZIP; el contenido interno del ZIP no fue inspeccionado, por lo que no se afirma que el .csi se haya extraído o verificado.
 Pruebas dentro del juego y compatibilidad real con GTA SA Android 2.10: pendientes.
-Presentación visual (posición, tamaño y tonos apagados): pendiente de implementación y verificación.
+Presentación visual: implementada con DISPLAY_TEXT (033E), escala (033F), color RGBA (0340), centrado (0342), fuente (0349) y USE_TEXT_COMMANDS (03F0). Posición inferior-central y tonos apagados diferenciados por estado; compilación y prueba en dispositivo pendientes.
 Pruebas exclusivamente en partidas nuevas; no usar la partida principal.
  
 AUDITORÍA ADICIONAL:
@@ -20,3 +20,12 @@ AUDITORÍA ADICIONAL:
 - La documentación de Sanny Builder confirma que DISPLAY_TEXT (033E) debe ejecutarse cada frame dentro de un bucle con WAIT 0 y que los comandos deben quedar entre USE_TEXT_COMMANDS (03F0) activado y desactivado para evitar efectos no deseados o crashes.
 - SET_TEXT_SCALE (033F) y SET_TEXT_COLOUR (0340) permiten tamaño y RGBA personalizados; por tanto, la presentación con tonos apagados es técnicamente viable con text draws.
 - Estos comandos visuales todavía no se han incorporado al script. No se declara corregido el crash observado en MAPBUSY: su causa sigue sin confirmarse.
+
+
+CAMBIO DE PRESENTACIÓN EN DESARROLLO:
+- MAP LOADING: gris azulado apagado.
+- MAP PROCESSING: ocre apagado.
+- MAP READY: verde oliva apagado, parpadeo con intervalo objetivo de 250 ms y temporizador global de 5000 ms.
+- MAP ERROR: rojo apagado.
+- Los cuatro textos visibles se mantienen completos. Las claves internas FXT (MAPLOAD, MAPPROC, MAPRDY y MAPERR) son identificadores abreviados, no el contenido mostrado.
+- La salida de texto se dibuja cada fotograma con WAIT 0 y se encierra entre USE_TEXT_COMMANDS activado/desactivado.
