@@ -1,31 +1,37 @@
-VALIDACIÓN — DESBLOQUEAR MAPA v1.4.1
+VALIDACIÓN — DESBLOQUEAR MAPA v1.4.2 (DESARROLLO)
 
-Base: v1.4, conservada sin cambios.
-Rama de desarrollo: v1.4.1-development.
+Base: rama de desarrollo v1.4.1-development. La rama main permanece intacta.
+La versión 1.4.1 fue probada por el usuario y presentó fallos graves; no se considera válida.
 
-Secuencia de mensajes: MAP LOADING → MAP PROCESSING → MAP READY.
-Si el script no puede iniciar por misión activa o mutex ocupado: MAP ERROR.
-Los textos visibles están escritos completos; las claves FXT se mantienen en 7 caracteres o menos.
-MAP READY: dibujo por fotograma con alternancia cada 250 ms, usando un temporizador total de 5000 ms; duración y ritmo pendientes de validación en el dispositivo.
-La secuencia MAP READY se ha compactado en un bucle para evitar diez bloques repetidos.
-Compilación CLEO Android (Sanny Builder 4.2.0): correcta en la revisión c47ab82.
-El ZIP de esa ejecución se inspeccionó y contiene Desbloquear Mapa.csi (25.426 bytes). Su SHA-256 coincide con el artefacto publicado por GitHub Actions. Esta verificación corresponde a c47ab82, antes de los cambios visuales descritos abajo; no valida la versión actual.
-Pruebas dentro del juego y compatibilidad real con GTA SA Android 2.10: pendientes.
-Presentación visual: implementada con DISPLAY_TEXT (033E), escala (033F), color RGBA (0340), centrado (0342), fuente (0349) y USE_TEXT_COMMANDS (03F0). Posición inferior-central y tonos apagados diferenciados por estado; compilación y prueba en dispositivo pendientes.
-Pruebas exclusivamente en partidas nuevas; no usar la partida principal.
- 
-AUDITORÍA ADICIONAL:
-- La revisión de v1.4 en main usa la clave GXT MAPBUSY; su FXT de main sí contiene MAPBUSY.
-- La rama v1.4.1-development cambió esa salida a MAPERR y su FXT de desarrollo contiene MAPERR. No mezclar el .csi de una rama con el .fxt de la otra.
-- La fuente contiene comandos de dibujo por fotograma y los cuatro mensajes completos. Esta revisión estática no demuestra que la sintaxis sea aceptada por el compilador ni que la presentación se vea correctamente en el juego.
-- La compilación de esta revisión se solicita mediante el flujo automático al actualizar esta rama; el resultado debe verificarse en GitHub Actions. La prueba en el teléfono sigue pendiente. No se declara corregido el crash observado al llegar a MAPBUSY: su causa sigue sin confirmarse.
-- La comprobación de flujo debe verificar especialmente el salto a MAP ERROR cuando el mutex está ocupado y que únicamente la ruta que adquirió el mutex lo libere.
+CAMBIOS PREPARADOS PARA LA SIGUIENTE COMPILACIÓN
+- Los cuatro mensajes se dibujan arriba, centrados, en Y=70.0.
+- Escala visual aumentada a 0.90 × 1.75.
+- Se conservan los colores apagados estilo GTA SA: gris azulado, ocre, verde oliva y rojo.
+- MAP READY permanece visible de forma continua durante 5000 ms; ya no parpadea.
+- Si otra instancia encuentra el mutex ocupado, termina sin mostrar un MAP ERROR falso.
+- MAP ERROR queda reservado para el bloqueo por misión activa.
+- Se restauró el acceso al interior CSEXL (Didier Sachs), además de las tiendas ya enumeradas.
 
+MENSAJES FXT
+- Claves: MAPLOAD, MAPPROC, MAPRDY y MAPERR.
+- Textos visibles completos: MAP LOADING, MAP PROCESSING, MAP READY y MAP ERROR.
+- El archivo Desbloquear Mapa.fxt debe acompañar al CSI en la carpeta de scripts de CLEO SA. El paquete de compilación incluye ambos archivos.
+- El usuario observó las claves internas en pantalla; por tanto, la carga real del FXT sigue pendiente de comprobar en su instalación Android. Una compilación correcta no demuestra que CLEO haya cargado el FXT.
 
-CAMBIO DE PRESENTACIÓN EN DESARROLLO:
-- MAP LOADING: gris azulado apagado.
-- MAP PROCESSING: ocre apagado.
-- MAP READY: verde oliva apagado, parpadeo con intervalo objetivo de 250 ms y temporizador global de 5000 ms.
-- MAP ERROR: rojo apagado.
-- Los cuatro textos visibles se mantienen completos. Las claves internas FXT (MAPLOAD, MAPPROC, MAPRDY y MAPERR) son identificadores abreviados, no el contenido mostrado.
-- La salida de texto se dibuja cada fotograma con WAIT 0 y se encierra entre USE_TEXT_COMMANDS activado/desactivado.
+AUDITORÍA DE FLUJO
+- El script adquiere el mutex antes de escribir los sectores y lo libera al finalizar la ruta correcta.
+- Una segunda instancia que encuentre el mutex ocupado termina sin alterar el mutex de la primera.
+- El error de cierre/crash observado después de MAP READY no está demostrado como resuelto. Requiere inspección del flujo compilado y prueba controlada en GTA SA Android 2.10.
+- No declarar estabilidad ni corrección del crash hasta una prueba real.
+
+COMERCIOS Y TALLERES
+- 07FB set_interior access 1 habilita el acceso al interior; no crea por sí mismo los iconos del mapa.
+- La fuente actual contiene accesos a barberías, restaurantes, tiendas de ropa y otros interiores normales.
+- Se restauró CSEXL (Didier Sachs), que faltaba en la lista anterior.
+- Siguen pendientes la auditoría de los blips de barberías, restaurantes, tiendas y talleres de modificación, y la forma correcta de habilitarlos en GTA SA Android 2.10 sin alterar misiones ni partidas.
+- El usuario requiere que esos establecimientos aparezcan incluso en partidas nuevas. No se dará por cumplido hasta verificar tanto acceso como iconos.
+
+PRUEBAS
+- La compilación automática de GitHub Actions debe completarse y el artefacto debe inspeccionarse.
+- La prueba in-game sigue pendiente; usar exclusivamente una partida nueva de prueba, nunca la partida principal.
+- No se declara MAP READY como éxito hasta que el desbloqueo real termine sin crash y los resultados esperados estén presentes.
