@@ -514,39 +514,6 @@
 0029: 2@ >= 5000
 004D: jump_if_false @ready_draw
 0DDC: set_mutex_var 7413 to 0
-0001: wait 0
-00D6: if 0
-0038: 0@ == 1
-004D: jump_if_false @ready_text_hidden
-03F0: use_text_commands 1
-0340: set_text_draw_RGBA 143 161 113 255
-033F: set_text_draw_letter_size 0.90 1.75
-0342: set_text_draw_centered 1
-0343: set_text_draw_linewidth 640.0
-0348: enable_text_draw_proportional 1
-0349: set_text_draw_font 1
-033E: set_draw_text_position 320.0 70.0 GXT 'MAPRDY'
-03F0: use_text_commands 0
-:ready_text_hidden
-01BD: 3@ = get_game_timer
-00D6: if 0
-0029: 3@ >= 2@
-004D: jump_if_false @ready_check_total
-00D6: if 0
-0038: 0@ == 1
-004D: jump_if_false @ready_switch_on
-0004: 0@ = 0
-0002: jump @ready_after_switch
-:ready_switch_on
-0004: 0@ = 1
-:ready_after_switch
-000A: 2@ += 250
-:ready_check_total
-0007: 4@ = 3@
-0062: 4@ -= 1@
-00D6: if 0
-0029: 4@ >= 5000
-004D: jump_if_false @ready_blink
 :already_running
 0A93: end_custom_thread
 :busy
