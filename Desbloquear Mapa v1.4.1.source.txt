@@ -5,12 +5,12 @@
 0001: wait 0
 03F0: use_text_commands 1
 0340: set_text_draw_RGBA 123 146 156 255
-033F: set_text_draw_letter_size 0.70 1.55
+033F: set_text_draw_letter_size 0.90 1.75
 0342: set_text_draw_centered 1
 0343: set_text_draw_linewidth 640.0
 0348: enable_text_draw_proportional 1
 0349: set_text_draw_font 1
-033E: set_draw_text_position 320.0 350.0 GXT 'MAPLOAD'
+033E: set_draw_text_position 320.0 70.0 GXT 'MAPLOAD'
 03F0: use_text_commands 0
 01BD: 2@ = get_game_timer
 0062: 2@ -= 1@
@@ -24,19 +24,19 @@
 0DDD: 0@ = get_mutex_var 7413
 00D6: if 0
 0038: 0@ == 0
-004D: jump_if_false @busy
+004D: jump_if_false @already_running
 0DDC: set_mutex_var 7413 to 1
 01BD: 1@ = get_game_timer
 :processing_draw
 0001: wait 0
 03F0: use_text_commands 1
 0340: set_text_draw_RGBA 181 153 105 255
-033F: set_text_draw_letter_size 0.70 1.55
+033F: set_text_draw_letter_size 0.90 1.75
 0342: set_text_draw_centered 1
 0343: set_text_draw_linewidth 640.0
 0348: enable_text_draw_proportional 1
 0349: set_text_draw_font 1
-033E: set_draw_text_position 320.0 350.0 GXT 'MAPPROC'
+033E: set_draw_text_position 320.0 70.0 GXT 'MAPPROC'
 03F0: use_text_commands 0
 01BD: 2@ = get_game_timer
 0062: 2@ -= 1@
@@ -497,22 +497,35 @@
 07FB: set_interior 'CARLS' access 1
 07FB: set_interior 'RCPLAY' access 1
 01BD: 1@ = get_game_timer
-0007: 2@ = 1@
-000A: 2@ += 250
-0004: 0@ = 1
-:ready_blink
+:ready_draw
+0001: wait 0
+03F0: use_text_commands 1
+0340: set_text_draw_RGBA 143 161 113 255
+033F: set_text_draw_letter_size 0.90 1.75
+0342: set_text_draw_centered 1
+0343: set_text_draw_linewidth 640.0
+0348: enable_text_draw_proportional 1
+0349: set_text_draw_font 1
+033E: set_draw_text_position 320.0 70.0 GXT 'MAPRDY'
+03F0: use_text_commands 0
+01BD: 2@ = get_game_timer
+0062: 2@ -= 1@
+00D6: if 0
+0029: 2@ >= 5000
+004D: jump_if_false @ready_draw
+0DDC: set_mutex_var 7413 to 0
 0001: wait 0
 00D6: if 0
 0038: 0@ == 1
 004D: jump_if_false @ready_text_hidden
 03F0: use_text_commands 1
 0340: set_text_draw_RGBA 143 161 113 255
-033F: set_text_draw_letter_size 0.70 1.55
+033F: set_text_draw_letter_size 0.90 1.75
 0342: set_text_draw_centered 1
 0343: set_text_draw_linewidth 640.0
 0348: enable_text_draw_proportional 1
 0349: set_text_draw_font 1
-033E: set_draw_text_position 320.0 350.0 GXT 'MAPRDY'
+033E: set_draw_text_position 320.0 70.0 GXT 'MAPRDY'
 03F0: use_text_commands 0
 :ready_text_hidden
 01BD: 3@ = get_game_timer
@@ -534,8 +547,10 @@
 00D6: if 0
 0029: 4@ >= 5000
 004D: jump_if_false @ready_blink
-:ready_blink_done
-0DDC: set_mutex_var 7413 to 0
+:already_running
+0A93: end_custom_thread
+:busy
+01BD: 1@ = get_game_timer
 0A93: end_custom_thread
 :busy
 01BD: 1@ = get_game_timer
@@ -543,12 +558,12 @@
 0001: wait 0
 03F0: use_text_commands 1
 0340: set_text_draw_RGBA 164 107 101 255
-033F: set_text_draw_letter_size 0.70 1.55
+033F: set_text_draw_letter_size 0.90 1.75
 0342: set_text_draw_centered 1
 0343: set_text_draw_linewidth 640.0
 0348: enable_text_draw_proportional 1
 0349: set_text_draw_font 1
-033E: set_draw_text_position 320.0 350.0 GXT 'MAPERR'
+033E: set_draw_text_position 320.0 70.0 GXT 'MAPERR'
 03F0: use_text_commands 0
 01BD: 2@ = get_game_timer
 0062: 2@ -= 1@
