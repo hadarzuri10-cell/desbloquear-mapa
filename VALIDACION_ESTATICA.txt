@@ -17,9 +17,9 @@ Pruebas exclusivamente en partidas nuevas; no usar la partida principal.
 AUDITORÍA ADICIONAL:
 - La revisión de v1.4 en main usa la clave GXT MAPBUSY; su FXT de main sí contiene MAPBUSY.
 - La rama v1.4.1-development cambió esa salida a MAPERR y su FXT de desarrollo contiene MAPERR. No mezclar el .csi de una rama con el .fxt de la otra.
-- La documentación de Sanny Builder confirma que DISPLAY_TEXT (033E) debe ejecutarse cada frame dentro de un bucle con WAIT 0 y que los comandos deben quedar entre USE_TEXT_COMMANDS (03F0) activado y desactivado para evitar efectos no deseados o crashes.
-- SET_TEXT_SCALE (033F) y SET_TEXT_COLOUR (0340) permiten tamaño y RGBA personalizados; por tanto, la presentación con tonos apagados es técnicamente viable con text draws.
-- Los comandos visuales ya están incorporados en v1.4.1-development; la compilación de esta revisión y la prueba en el teléfono siguen pendientes. No se declara corregido el crash observado en MAPBUSY: su causa sigue sin confirmarse.
+- La fuente contiene comandos de dibujo por fotograma y los cuatro mensajes completos. Esta revisión estática no demuestra que la sintaxis sea aceptada por el compilador ni que la presentación se vea correctamente en el juego.
+- La compilación de esta revisión y la prueba en el teléfono siguen pendientes. No se declara corregido el crash observado al llegar a MAPBUSY: su causa sigue sin confirmarse.
+- La comprobación de flujo debe verificar especialmente el salto a MAP ERROR cuando el mutex está ocupado y que únicamente la ruta que adquirió el mutex lo libere.
 
 
 CAMBIO DE PRESENTACIÓN EN DESARROLLO:
