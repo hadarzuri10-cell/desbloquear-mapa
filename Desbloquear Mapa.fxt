@@ -1,3 +1,4 @@
-MAPLOAD	~w~Procesando mapa, ciudades, propiedades y comercios...
-MAPRDY	~g~MAP READY
-MAPBUSY	~r~No ejecutes el script durante una mision.
+MAPLOAD	MAP LOADING
+MAPPROC	MAP PROCESSING
+MAPREADY	MAP READY
+MAPERROR	MAP ERROR
