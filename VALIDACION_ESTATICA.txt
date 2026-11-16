@@ -1,18 +1,14 @@
-VALIDACIÓN — DESBLOQUEAR MAPA v1.4.1 (BORRADOR)
+VALIDACIÓN — DESBLOQUEAR MAPA v1.4.1
 
 Base: v1.4, conservada sin cambios.
 Rama: v1.4.1-development.
 
-Cambios de secuencia:
-- MAP LOADING al iniciar.
-- MAP PROCESSING después de superar las protecciones y adquirir el mutex.
-- MAP READY solo después de completar las operaciones del mapa; 10 ciclos de 250 ms de texto + 250 ms de pausa = 5000 ms.
-- MAP ERROR cuando no se puede iniciar por misión activa o mutex ocupado.
-- Claves completas: MAPLOAD, MAPPROC, MAPREADY y MAPERROR.
-
-Pendiente antes de compilar/probar:
-- Sustituir el sistema 00BC por un dibujo de texto controlado para fijar posición, tamaño y colores RGB apagados.
-- Revisar la causa del cierre durante la ruta de error y validar direcciones de memoria/operaciones en GTA SA Android 2.10.
-- Compilar y revisar logs; no se declara estable ni probado en juego.
-
+Secuencia de mensajes: MAP LOADING → MAP PROCESSING → MAP READY.
+Si el script no puede iniciar por misión activa o mutex ocupado: MAP ERROR.
+Los textos visibles están escritos completos; las claves FXT se mantienen en 7 caracteres o menos (límite del formato CLEO FXT).
+MAP READY: 10 ciclos de 250 ms visibles + 250 ms de pausa = 5000 ms.
 Pruebas exclusivamente en partidas nuevas.
+
+Compilación de fuente v1.4.1: pendiente de nueva ejecución tras esta corrección.
+Prueba dentro del juego y compatibilidad con GTA SA Android 2.10: pendientes.
+Presentación visual (posición, tamaño y tonos apagados): pendiente de implementación y verificación.
