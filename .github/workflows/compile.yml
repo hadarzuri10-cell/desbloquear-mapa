@@ -68,8 +68,8 @@ jobs:
           }
 
           if ($process.ExitCode -ne 0) { throw "Compilation failed with exit code $($process.ExitCode)." }
-          if (Test-Path 'build\\sanny-compile.log') {
-            $compilerErrors = Select-String -Path 'build\\sanny-compile.log' -Pattern '(?i)^\\s*error:'
+          if (Test-Path 'build\sanny-compile.log') {
+            $compilerErrors = Select-String -Path 'build\sanny-compile.log' -Pattern '(?i)^\s*error:'
             if ($compilerErrors) { throw "Sanny Builder reported compilation errors. See build/sanny-compile.log." }
           }
           if (-not (Test-Path $output)) { throw 'Compiler exited without producing the .csi file.' }
