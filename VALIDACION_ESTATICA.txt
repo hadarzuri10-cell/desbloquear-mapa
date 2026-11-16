@@ -29,8 +29,8 @@ COMERCIOS Y TALLERES
 - 07FB set_interior access 1 habilita el acceso al interior; no crea por sí mismo los iconos del mapa.
 - La fuente actual contiene accesos a barberías, restaurantes, tiendas de ropa y otros interiores normales, además de los 57 marcadores indicados abajo.
 - Se restauró CSEXL (Didier Sachs), que faltaba en la lista anterior.
-- Se añadieron 57 marcadores de mapa: 6 barberías, 8 pizzerías, 10 Burger Shot, 12 Cluckin' Bell, 16 tiendas de ropa y 5 talleres de modificación.
-- Los 52 puntos de barberías/comida/ropa se cotejaron con coordenadas presentes en el mainV1.scm del paquete Android del usuario. Las 5 posiciones de talleres se basan en coordenadas públicas de las entradas y requieren verificación dentro del juego.
+- Se añadieron 58 marcadores de mapa: 7 barberías, 8 pizzerías, 10 Burger Shot, 12 Cluckin' Bell, 16 tiendas de ropa y 5 talleres de modificación.
+- Los 52 puntos de las 6 barberías iniciales, comida y ropa se cotejaron con coordenadas presentes en el mainV1.scm del paquete Android del usuario. Se añadió además la barbería de El Quebrados, que no aparece marcada normalmente en el mapa. Su coordenada y las 5 posiciones de talleres se basan en referencias públicas de las entradas y requieren verificación dentro del juego.
 - Cada marcador se crea con 0570 y se configura con radar_mode 2. La compilación confirma la sintaxis, no que el juego muestre cada icono correctamente.
 - Los iconos de los talleres y la apertura real de sus puertas son cosas distintas. La activación de las cinco puertas sigue pendiente de confirmar; no se declara que ya puedan usarse.
 - El usuario requiere que los establecimientos aparezcan incluso en partidas nuevas. La prueba in-game debe comprobar iconos y acceso por separado.
