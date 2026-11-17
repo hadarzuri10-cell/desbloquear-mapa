@@ -15,7 +15,7 @@ INSTALACIÓN (SOLO CUANDO SE AUTORICE UNA PRUEBA)
 6. Comprueba por separado la aparición de iconos y el acceso/funcionamiento de los establecimientos.
 
 CONTENIDO FUNCIONAL PREVISTO
-- 32 pickups y 32 marcadores de propiedades.
+- 32 pickups y 32 marcadores de propiedades, usando las arrays originales del juego (propertyX/Y/Z, save_houseprice, save_housepickup y already_bought_house).
 - 58 marcadores comerciales: barberías, comida, ropa y talleres.
 - 3 marcadores de gimnasios: Ganton Gym, Cobra Martial Arts Gym y Below the Belt Gym.
 - Acceso habilitado por script a los interiores de los tres gimnasios y otros establecimientos.
@@ -23,6 +23,7 @@ CONTENIDO FUNCIONAL PREVISTO
 
 ESTADO
 - Este paquete es un candidato de desarrollo, NO una versión declarada estable ni lista para instalar.
+- Se corrigió una colisión grave: la fuente anterior reutilizaba variables globales que pertenecen a pickups coleccionables y handles de marcadores del juego. La fuente actual usa las arrays de propiedades originales y handles CLEO separados. La compilación y la revisión estática no prueban estabilidad.
 - La compilación correcta solo confirma que el compilador generó el archivo; no demuestra estabilidad dentro del juego.
 - La aparición de los marcadores de gimnasios, la entrada a los gimnasios y el entrenamiento real todavía requieren validación dentro del juego.
 - No se debe considerar MAP READY como éxito si después aparece MAP ERROR, el juego se cierra o el teléfono se reinicia.
