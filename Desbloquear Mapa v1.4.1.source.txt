@@ -166,27 +166,6 @@
 0DD9: write_mem_addr 0x0098D2B5 value 1 size 1 add_ib 1 protect 0
 0DD9: write_mem_addr 0x0098D2B8 value 100 size 4 add_ib 1 protect 0
 0629: change_integer_stat 181 to 4
-0004: 0@ = 0
-00D6: if 0
-09D1: pickup $1685(0@,32i) created
-004D: jump_if_false @skip_property_pickup_0
-0215: destroy_pickup $1685(0@,32i)
-:skip_property_pickup_0
-0004: $1685(0@,32i) = 0
-0004: 0@ = 1
-00D6: if 0
-09D1: pickup $1685(0@,32i) created
-004D: jump_if_false @skip_property_pickup_1
-0215: destroy_pickup $1685(0@,32i)
-:skip_property_pickup_1
-0004: $1685(0@,32i) = 0
-0004: 0@ = 2
-00D6: if 0
-09D1: pickup $1685(0@,32i) created
-004D: jump_if_false @skip_property_pickup_2
-0215: destroy_pickup $1685(0@,32i)
-:skip_property_pickup_2
-0004: $1685(0@,32i) = 0
 0004: 0@ = 3
 00D6: if 0
 09D1: pickup $1685(0@,32i) created
@@ -222,7 +201,6 @@
 0215: destroy_pickup $1685(0@,32i)
 :skip_property_pickup_7
 0004: $1685(0@,32i) = 0
-0001: wait 100 // Pausa: limpieza escalonada de pickups de propiedades.
 0004: 0@ = 8
 00D6: if 0
 09D1: pickup $1685(0@,32i) created
@@ -244,6 +222,7 @@
 0215: destroy_pickup $1685(0@,32i)
 :skip_property_pickup_10
 0004: $1685(0@,32i) = 0
+0001: wait 100 // Pausa: limpieza escalonada de pickups de propiedades.
 0004: 0@ = 11
 00D6: if 0
 09D1: pickup $1685(0@,32i) created
@@ -279,7 +258,6 @@
 0215: destroy_pickup $1685(0@,32i)
 :skip_property_pickup_15
 0004: $1685(0@,32i) = 0
-0001: wait 100 // Pausa: limpieza escalonada de pickups de propiedades.
 0004: 0@ = 16
 00D6: if 0
 09D1: pickup $1685(0@,32i) created
@@ -301,6 +279,7 @@
 0215: destroy_pickup $1685(0@,32i)
 :skip_property_pickup_18
 0004: $1685(0@,32i) = 0
+0001: wait 100 // Pausa: limpieza escalonada de pickups de propiedades.
 0004: 0@ = 19
 00D6: if 0
 09D1: pickup $1685(0@,32i) created
@@ -336,7 +315,6 @@
 0215: destroy_pickup $1685(0@,32i)
 :skip_property_pickup_23
 0004: $1685(0@,32i) = 0
-0001: wait 100 // Pausa: limpieza escalonada de pickups de propiedades.
 0004: 0@ = 24
 00D6: if 0
 09D1: pickup $1685(0@,32i) created
@@ -358,6 +336,7 @@
 0215: destroy_pickup $1685(0@,32i)
 :skip_property_pickup_26
 0004: $1685(0@,32i) = 0
+0001: wait 100 // Pausa: limpieza escalonada de pickups de propiedades.
 0004: 0@ = 27
 00D6: if 0
 09D1: pickup $1685(0@,32i) created
@@ -393,7 +372,6 @@
 0215: destroy_pickup $1685(0@,32i)
 :skip_property_pickup_31
 0004: $1685(0@,32i) = 0
-0001: wait 100 // Pausa: limpieza escalonada de pickups de propiedades.
 // Limpieza de marcadores de propiedades creados por una ejecución anterior.
 // Los handles se conservan en mutex vars 1145919700-1145919731, sin ocupar globals del juego.
 0DDD: 9@ = get_mutex_var 1145919700
@@ -623,33 +601,7 @@
 0164: disable_marker 9@
 0DDC: set_mutex_var 1145919731 to 0
 :property_marker_old_32_skip
-0004: 0@ = 0
-00D6: if 0
-0038: $728(0@,32i) == 0
-004D: jump_if_false @prop_skip_1
-0518: $1685(0@,32i) = create_available_asset_pickup 'PROP_3' at $1524(0@,32f) $1556(0@,32f) $1588(0@,32f) price $1653(0@,32i)
-0570: 8@ = create_asset_radar_marker_with_icon 31 at $1524(0@,32f) $1556(0@,32f) $1588(0@,32f)
-018B: set_marker 8@ radar_mode 2
-0DDC: set_mutex_var 1145919700 to 8@
-:prop_skip_1
-0004: 0@ = 1
-00D6: if 0
-0038: $728(0@,32i) == 0
-004D: jump_if_false @prop_skip_2
-0518: $1685(0@,32i) = create_available_asset_pickup 'PROP_3' at $1524(0@,32f) $1556(0@,32f) $1588(0@,32f) price $1653(0@,32i)
-0570: 8@ = create_asset_radar_marker_with_icon 31 at $1524(0@,32f) $1556(0@,32f) $1588(0@,32f)
-018B: set_marker 8@ radar_mode 2
-0DDC: set_mutex_var 1145919701 to 8@
-:prop_skip_2
-0004: 0@ = 2
-00D6: if 0
-0038: $728(0@,32i) == 0
-004D: jump_if_false @prop_skip_3
-0518: $1685(0@,32i) = create_available_asset_pickup 'PROP_3' at $1524(0@,32f) $1556(0@,32f) $1588(0@,32f) price $1653(0@,32i)
-0570: 8@ = create_asset_radar_marker_with_icon 31 at $1524(0@,32f) $1556(0@,32f) $1588(0@,32f)
-018B: set_marker 8@ radar_mode 2
-0DDC: set_mutex_var 1145919702 to 8@
-:prop_skip_3
+
 0004: 0@ = 3
 00D6: if 0
 0038: $728(0@,32i) == 0
