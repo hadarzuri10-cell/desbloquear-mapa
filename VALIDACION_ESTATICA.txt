@@ -62,11 +62,11 @@ PRUEBAS
 
 
 PLAN DE PROCESAMIENTO ESCALONADO (revisión de estabilidad)
-- Se añadieron pausas de 100 ms tras cada grupo de 8 limpiezas de pickups (32 operaciones).
-- Se añadieron pausas de 100 ms tras cada grupo de 8 desactivaciones de marcadores globales (32 operaciones) y de handles comerciales anteriores (58 operaciones).
-- Se añadieron pausas de 100 ms entre cada grupo de 4 propiedades (8 pausas para 32 posiciones).
+- Se añadieron pausas de 100 ms tras cada grupo de 8 limpiezas de pickups de propiedades (29 operaciones, 3 pausas).
+- Se añadieron pausas de 100 ms tras cada grupo de 8 handles de marcadores de propiedades anteriores (32 slots, 3 pausas) y de marcadores comerciales anteriores (58 handles, 7 pausas).
+- Se añadieron pausas de 100 ms entre grupos de propiedades en venta (8 pausas para los índices 3–31).
 - Se añadieron pausas de 100 ms después de cada 3 iconos comerciales (19 pausas para 58 iconos).
-- Tiempo adicional nominal aproximado: 4.3 segundos; el tiempo real depende de la ejecución y de las condiciones del juego.
+- Tiempo adicional nominal aproximado: 4.1 segundos; el tiempo real depende de la ejecución y de las condiciones del juego.
 - Las pausas distribuyen la carga en varios ciclos; no reducen la cantidad de entidades que el juego debe mantener en memoria ni demuestran que el bloqueo esté resuelto.
 - No se modificaron comandos de dibujo, escala, coordenadas, fuente, colores ni posiciones de los textos o marcadores.
 - No se eliminaron iconos, pickups, desbloqueos ni operaciones de memoria.
@@ -74,7 +74,7 @@ PLAN DE PROCESAMIENTO ESCALONADO (revisión de estabilidad)
 
 
 DEFENSIVE PICKUP CLEANUP
-- Las 32 operaciones 0215 de limpieza ahora están protegidas por 09D1 (pickup created). Si un handle no corresponde a un pickup existente, se omite la destrucción en lugar de pasar un handle no válido a 0215.
+- Las 29 operaciones 0215 de limpieza de propiedades en venta ahora están protegidas por 09D1 (pickup created). Si un handle no corresponde a un pickup existente, se omite la destrucción en lugar de pasar un handle no válido a 0215.
 - Se mantienen los 32 handles, sus creaciones, las coordenadas y la distribución por grupos.
 - Esta protección reduce el riesgo de destruir pickups inexistentes, pero no demuestra que sea la causa del cierre/crash ni valida los demás handles globales.
 
@@ -95,5 +95,5 @@ PROTECCIÓN CONTRA REEJECUCIÓN TRAS MAP READY
 
 TAMAÑO Y CARGA
 - Última compilación verificada: 63,750 bytes para Desbloquear Mapa.csi y 81 bytes para Desbloquear Mapa.fxt.
-- El tamaño del archivo no es el principal coste en ejecución. La carga del juego proviene sobre todo de mantener 93 marcadores y 32 pickups; las pausas de 100 ms distribuyen su creación y limpieza en el tiempo, pero no reducen el número de entidades activas.
-- Se contabilizan 43 pausas de 100 ms (4.3 segundos adicionales nominales) en las etapas de limpieza y creación, aparte de las esperas de interfaz y las pausas previas de 50 ms entre escrituras de memoria.
+- El tamaño del archivo no es el principal coste en ejecución. La carga del juego proviene sobre todo de mantener hasta 93 iconos de mapa y 32 pickups de propiedades (29 en venta y 3 bloqueados originales); las pausas de 100 ms distribuyen su creación y limpieza en el tiempo, pero no reducen el número de entidades activas.
+- Se contabilizan 41 pausas de 100 ms (4.1 segundos adicionales nominales) en las etapas de limpieza y creación, aparte de las esperas de interfaz y las pausas previas de 50 ms entre escrituras de memoria.
