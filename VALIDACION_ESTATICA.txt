@@ -35,6 +35,10 @@ COMERCIOS Y TALLERES
 - Los iconos de los talleres y la apertura real de sus puertas son cosas distintas. La activación de las cinco puertas sigue pendiente de confirmar; no se declara que ya puedan usarse.
 - El usuario requiere que los establecimientos aparezcan incluso en partidas nuevas. La prueba in-game debe comprobar iconos y acceso por separado.
 
+- Corrección de gestión de marcadores comerciales: cada uno de los 58 handles creados por 0570 se guarda en una mutex var CLEO independiente (IDs 7500–7557). Antes de crear la siguiente tanda, el script recupera cada handle, ejecuta 0164 disable_marker y limpia su slot. Esto evita que la variable temporal 8@ pierda las referencias y permite retirar los marcadores de una ejecución anterior antes de recrearlos.
+- Los mutex vars son almacenamiento compartido entre scripts CLEO durante la vida del proceso; el código de CLEO-ANDROID devuelve 0 para IDs no inicializados. La corrección requiere confirmación in-game para descartar handles obsoletos después de cargar partidas o cambiar de mundo.
+- En la primera ejecución de esta versión, los marcadores creados por versiones antiguas no pueden limpiarse porque nunca guardaron sus handles. Cerrar y volver a abrir GTA antes de probar esta versión elimina esos marcadores antiguos junto con la sesión anterior.
+
 PRUEBAS
 - La compilación automática de GitHub Actions debe completarse y el artefacto debe inspeccionarse. La carpeta build/cleo debe contener exclusivamente Desbloquear Mapa.csi y Desbloquear Mapa.fxt; LEEME.txt y VALIDACION_ESTATICA.txt quedan en la raíz de build/.
 - La prueba in-game sigue pendiente; usar exclusivamente una partida nueva de prueba, nunca la partida principal.
