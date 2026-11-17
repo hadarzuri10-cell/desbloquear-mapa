@@ -1443,7 +1443,7 @@
 0DDC: set_mutex_var 1145919857 to 8@
 018B: set_marker 8@ radar_mode 2
 // ICONOS DE LOS TRES GIMNASIOS (RADAR_SPRITE_GYM = 54).
-// Coordenadas exteriores de las puertas; handles persistidos en 7560-7562.
+// Coordenadas exteriores de las puertas; handles persistidos en 1145919860-1145919862.
 // GANTON GYM
 0005: 5@ = 2229.63
 0005: 6@ = -1721.63
