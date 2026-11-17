@@ -12,7 +12,8 @@ INSTALACIÓN (SOLO CUANDO SE AUTORICE UNA PRUEBA)
 3. Mantén ambos archivos juntos. El FXT contiene los textos de los mensajes; si no se carga, podrían mostrarse las claves MAPLOAD, MAPPROC, MAPRDY o MAPERR.
 4. Ejecuta el script desde el menú CLEO.
 5. Si se autoriza una prueba, utiliza exclusivamente una partida nueva de prueba, nunca la partida principal.
-6. Comprueba por separado la aparición de iconos y el acceso/funcionamiento de los establecimientos.
+6. El script está limitado a una ejecución por proceso de GTA. Para repetir una prueba o volver a ejecutarlo tras cambiar de partida, cierra GTA completamente y vuelve a abrirlo.
+7. Comprueba por separado la aparición de iconos y el acceso/funcionamiento de los establecimientos.
 
 CONTENIDO FUNCIONAL PREVISTO
 - 29 pickups de propiedades en venta y 29 marcadores nuevos (índices 3–31), usando las arrays originales del juego. Se preservan los 3 pickups bloqueados y los 3 blips originales de Showroom, Zero's y Airstrip (índices 0–2).
