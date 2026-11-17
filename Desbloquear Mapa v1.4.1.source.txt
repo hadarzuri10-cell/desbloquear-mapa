@@ -1,5 +1,17 @@
 {$CLEO .csi}
 03A4: 'MAPOPEN'
+// Adquirir el bloqueo inmediatamente al iniciar el hilo.
+// Una segunda instancia no debe esperar hasta el final de MAP READY
+// para comprobar la misión y mostrar un MAP ERROR falso.
+0DDD: 0@ = get_mutex_var 7413
+00D6: if 0
+0038: 0@ == 0
+004D: jump_if_false @already_running
+0DDC: set_mutex_var 7413 to 1
+// El bloqueo ya pertenece a esta instancia; ahora se comprueba la misión.
+00D6: if 0
+0038: $ONMISSION == 0
+004D: jump_if_false @busy
 01BD: 1@ = get_game_timer
 :loading_draw
 0001: wait 0
@@ -18,17 +30,6 @@
 0029: 2@ >= 1500
 004D: jump_if_false @loading_draw
 0001: wait 500
-// Comprobar primero si otra instancia ya está trabajando.
-// Una segunda ejecución nunca debe mostrar MAP ERROR ni interferir con la primera.
-0DDD: 0@ = get_mutex_var 7413
-00D6: if 0
-0038: 0@ == 0
-004D: jump_if_false @already_running
-// Solo la instancia que puede adquirir el bloqueo comprueba el estado de misión.
-00D6: if 0
-0038: $ONMISSION == 0
-004D: jump_if_false @busy
-0DDC: set_mutex_var 7413 to 1
 01BD: 1@ = get_game_timer
 :processing_draw
 0001: wait 0
@@ -1302,4 +1303,5 @@
 00D6: if 0
 0029: 2@ >= 5000
 004D: jump_if_false @error_draw
+0DDC: set_mutex_var 7413 to 0
 0A93: end_custom_thread
