@@ -34,7 +34,7 @@ COMERCIOS Y TALLERES
 - La fuente actual contiene accesos a barberías, restaurantes, tiendas de ropa y otros interiores normales, además de los 58 marcadores indicados abajo.
 - Se restauró CSEXL (Didier Sachs), que faltaba en la lista anterior.
 - Se mantienen los 58 marcadores comerciales: 7 barberías, 8 pizzerías, 10 Burger Shot, 12 Cluckin' Bell, 16 tiendas de ropa y 5 talleres de modificación.
-- Se añadieron 3 marcadores de gimnasios con RADAR_SPRITE_GYM (ID 54): Ganton Gym, Cobra Marital Arts Gym y Below the Belt Gym. Total previsto: 61 marcadores (58 comerciales + 3 gimnasios).
+- Se añadieron 3 marcadores de gimnasios con RADAR_SPRITE_GYM (ID 54): Ganton Gym, Cobra Marital Arts Gym y Below the Belt Gym. Total previsto: 93 marcadores (32 de propiedades + 58 comerciales + 3 gimnasios), además de 32 pickups de propiedades.
 - Los 52 puntos de las 6 barberías iniciales, comida y ropa se cotejaron con coordenadas presentes en el mainV1.scm del paquete Android del usuario. Se añadió además la barbería de El Quebrados, que no aparece marcada normalmente en el mapa. Su coordenada y las 5 posiciones de talleres se basan en referencias públicas de las entradas y requieren verificación dentro del juego.
 - Cada marcador se crea con 0570 y se configura con radar_mode 2. La compilación confirma la sintaxis, no que el juego muestre cada icono correctamente.
 - Los iconos de los talleres y la apertura real de sus puertas son cosas distintas. La activación de las cinco puertas sigue pendiente de confirmar; no se declara que ya puedan usarse.
@@ -56,7 +56,7 @@ PLAN DE PROCESAMIENTO ESCALONADO (revisión de estabilidad)
 - Se añadieron pausas de 100 ms tras cada grupo de 8 desactivaciones de marcadores globales (32 operaciones) y de handles comerciales anteriores (58 operaciones).
 - Se añadieron pausas de 100 ms entre cada grupo de 4 propiedades (8 pausas para 32 posiciones).
 - Se añadieron pausas de 100 ms después de cada 3 iconos comerciales (19 pausas para 58 iconos).
-- Tiempo adicional nominal aproximado: 4.2 segundos; el tiempo real depende de la ejecución y de las condiciones del juego.
+- Tiempo adicional nominal aproximado: 4.3 segundos; el tiempo real depende de la ejecución y de las condiciones del juego.
 - Las pausas distribuyen la carga en varios ciclos; no reducen la cantidad de entidades que el juego debe mantener en memoria ni demuestran que el bloqueo esté resuelto.
 - No se modificaron comandos de dibujo, escala, coordenadas, fuente, colores ni posiciones de los textos o marcadores.
 - No se eliminaron iconos, pickups, desbloqueos ni operaciones de memoria.
@@ -81,3 +81,9 @@ PROTECCIÓN CONTRA REEJECUCIÓN TRAS MAP READY
 - Mutex var 7413 sigue siendo el bloqueo de ejecución simultánea. La ruta de misión activa libera 7413 sin marcar 7414, permitiendo un intento posterior cuando sea seguro.
 - Al completar MAP READY, se marca 7414=1 y se libera 7413. Las mutex vars se reinician al cerrar completamente el proceso del juego; si el usuario carga otra partida sin reiniciar GTA, el script no se volverá a ejecutar en esa misma sesión.
 - Esta protección busca evitar una segunda ejecución tardía; no demuestra por sí sola que el crash del juego/teléfono esté resuelto.
+
+
+TAMAÑO Y CARGA
+- Última compilación verificada: 63,750 bytes para Desbloquear Mapa.csi y 81 bytes para Desbloquear Mapa.fxt.
+- El tamaño del archivo no es el principal coste en ejecución. La carga del juego proviene sobre todo de mantener 93 marcadores y 32 pickups; las pausas de 100 ms distribuyen su creación y limpieza en el tiempo, pero no reducen el número de entidades activas.
+- Se contabilizan 43 pausas de 100 ms (4.3 segundos adicionales nominales) en las etapas de limpieza y creación, aparte de las esperas de interfaz y las pausas previas de 50 ms entre escrituras de memoria.
