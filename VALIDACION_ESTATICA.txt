@@ -5,7 +5,7 @@ La versión 1.4.1 fue probada por el usuario y presentó fallos graves; no se co
 
 CAMBIOS PREPARADOS PARA LA SIGUIENTE COMPILACIÓN
 - Los cuatro mensajes se dibujan arriba, centrados, en Y=70.0.
-- Escala visual aumentada a 0.90 × 1.75.
+- Escala visual actual en el código: 1.35 × 2.40. El usuario aún reporta que el texto se ve pequeño; el tamaño final requiere ajuste y prueba visual.
 - Se conservan los colores apagados estilo GTA SA: gris azulado, ocre, verde oliva y rojo.
 - MAP READY permanece visible de forma continua durante 5000 ms; ya no parpadea.
 - Si otra instancia encuentra el mutex ocupado, termina sin mostrar un MAP ERROR falso.
@@ -36,6 +36,6 @@ COMERCIOS Y TALLERES
 - El usuario requiere que los establecimientos aparezcan incluso en partidas nuevas. La prueba in-game debe comprobar iconos y acceso por separado.
 
 PRUEBAS
-- La compilación automática de GitHub Actions debe completarse y el artefacto debe inspeccionarse.
+- La compilación automática de GitHub Actions debe completarse y el artefacto debe inspeccionarse. La carpeta build/cleo debe contener exclusivamente Desbloquear Mapa.csi y Desbloquear Mapa.fxt; LEEME.txt y VALIDACION_ESTATICA.txt quedan en la raíz de build/.
 - La prueba in-game sigue pendiente; usar exclusivamente una partida nueva de prueba, nunca la partida principal.
 - No se declara MAP READY como éxito hasta que el desbloqueo real termine sin crash y los resultados esperados estén presentes.
