@@ -59,3 +59,9 @@ PLAN DE PROCESAMIENTO ESCALONADO (revisión de estabilidad)
 - No se modificaron comandos de dibujo, escala, coordenadas, fuente, colores ni posiciones de los textos o marcadores.
 - No se eliminaron iconos, pickups, desbloqueos ni operaciones de memoria.
 - Esta revisión no es apta para prueba en el teléfono hasta completar auditoría estática y compilación.
+
+
+DEFENSIVE PICKUP CLEANUP
+- Las 32 operaciones 0215 de limpieza ahora están protegidas por 09D1 (pickup created). Si un handle no corresponde a un pickup existente, se omite la destrucción en lugar de pasar un handle no válido a 0215.
+- Se mantienen los 32 handles, sus creaciones, las coordenadas y la distribución por grupos.
+- Esta protección reduce el riesgo de destruir pickups inexistentes, pero no demuestra que sea la causa del cierre/crash ni valida los demás handles globales.
