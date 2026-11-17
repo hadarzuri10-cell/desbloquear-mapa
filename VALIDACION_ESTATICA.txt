@@ -1,11 +1,11 @@
-VALIDACIÓN — DESBLOQUEAR MAPA v1.4.2 (DESARROLLO)
+VALIDACIÓN — DESBLOQUEAR MAPA v1.4.3 (DESARROLLO)
 
 Base: rama de desarrollo v1.4.1-development. La rama main permanece intacta.
 La versión 1.4.1 fue probada por el usuario y presentó fallos graves; no se considera válida.
 
 CAMBIOS PREPARADOS PARA LA SIGUIENTE COMPILACIÓN
 - Los cuatro mensajes se dibujan arriba, centrados, en Y=70.0.
-- Escala visual actual en el código: 1.35 × 2.40. El usuario aún reporta que el texto se ve pequeño; el tamaño final requiere ajuste y prueba visual.
+- Escala visual confirmada por el usuario como exacta: 1.35 × 2.40. No modificar tamaño, posición, fuente, anchura ni colores.
 - Se conservan los colores apagados estilo GTA SA: gris azulado, ocre, verde oliva y rojo.
 - MAP READY permanece visible de forma continua durante 5000 ms; ya no parpadea.
 - Si otra instancia encuentra el mutex ocupado, termina sin mostrar un MAP ERROR falso.
@@ -33,7 +33,8 @@ COMERCIOS Y TALLERES
 - 07FB set_interior access 1 habilita el acceso al interior; no crea por sí mismo los iconos del mapa.
 - La fuente actual contiene accesos a barberías, restaurantes, tiendas de ropa y otros interiores normales, además de los 58 marcadores indicados abajo.
 - Se restauró CSEXL (Didier Sachs), que faltaba en la lista anterior.
-- Se añadieron 58 marcadores de mapa: 7 barberías, 8 pizzerías, 10 Burger Shot, 12 Cluckin' Bell, 16 tiendas de ropa y 5 talleres de modificación.
+- Se mantienen los 58 marcadores comerciales: 7 barberías, 8 pizzerías, 10 Burger Shot, 12 Cluckin' Bell, 16 tiendas de ropa y 5 talleres de modificación.
+- Se añadieron 3 marcadores de gimnasios con RADAR_SPRITE_GYM (ID 54): Ganton Gym, Cobra Marital Arts Gym y Below the Belt Gym. Total previsto: 61 marcadores (58 comerciales + 3 gimnasios).
 - Los 52 puntos de las 6 barberías iniciales, comida y ropa se cotejaron con coordenadas presentes en el mainV1.scm del paquete Android del usuario. Se añadió además la barbería de El Quebrados, que no aparece marcada normalmente en el mapa. Su coordenada y las 5 posiciones de talleres se basan en referencias públicas de las entradas y requieren verificación dentro del juego.
 - Cada marcador se crea con 0570 y se configura con radar_mode 2. La compilación confirma la sintaxis, no que el juego muestre cada icono correctamente.
 - Los iconos de los talleres y la apertura real de sus puertas son cosas distintas. La activación de las cinco puertas sigue pendiente de confirmar; no se declara que ya puedan usarse.
@@ -46,6 +47,7 @@ COMERCIOS Y TALLERES
 PRUEBAS
 - La compilación automática de GitHub Actions debe completarse y el artefacto debe inspeccionarse. La carpeta build/cleo debe contener exclusivamente Desbloquear Mapa.csi y Desbloquear Mapa.fxt; LEEME.txt y VALIDACION_ESTATICA.txt quedan en la raíz de build/.
 - La prueba in-game sigue pendiente; usar exclusivamente una partida nueva de prueba, nunca la partida principal.
+- Los tres iconos de gimnasios se basan en coordenadas exteriores de las puertas documentadas para Ganton, Garcia y Redsands East. Su alineación visual y el acceso/entrenamiento real siguen pendientes de comprobar en el juego.
 - No se declara MAP READY como éxito hasta que el desbloqueo real termine sin crash y los resultados esperados estén presentes.
 
 
@@ -65,3 +67,10 @@ DEFENSIVE PICKUP CLEANUP
 - Las 32 operaciones 0215 de limpieza ahora están protegidas por 09D1 (pickup created). Si un handle no corresponde a un pickup existente, se omite la destrucción en lugar de pasar un handle no válido a 0215.
 - Se mantienen los 32 handles, sus creaciones, las coordenadas y la distribución por grupos.
 - Esta protección reduce el riesgo de destruir pickups inexistentes, pero no demuestra que sea la causa del cierre/crash ni valida los demás handles globales.
+
+
+ICONOS DE GIMNASIOS — IMPLEMENTACIÓN
+- Se usa el sprite oficial RADAR_SPRITE_GYM, ID 54.
+- Coordenadas exteriores: Ganton Gym 2229.63, -1721.63, 12.65; Cobra Marital Arts Gym -2270.46, -155.96, 34.36; Below the Belt Gym 1968.70, 2295.30, 15.50.
+- Los tres handles se guardan en mutex vars 7560–7562 y se limpian antes de recrearse.
+- 07FB mantiene el acceso de interiores GYM1/GYM2/GYM3. La creación del blip no modifica ni simula el sistema de entrenamiento; la funcionalidad real debe verificarse dentro del juego.
