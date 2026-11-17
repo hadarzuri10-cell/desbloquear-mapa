@@ -47,3 +47,15 @@ PRUEBAS
 - La compilación automática de GitHub Actions debe completarse y el artefacto debe inspeccionarse. La carpeta build/cleo debe contener exclusivamente Desbloquear Mapa.csi y Desbloquear Mapa.fxt; LEEME.txt y VALIDACION_ESTATICA.txt quedan en la raíz de build/.
 - La prueba in-game sigue pendiente; usar exclusivamente una partida nueva de prueba, nunca la partida principal.
 - No se declara MAP READY como éxito hasta que el desbloqueo real termine sin crash y los resultados esperados estén presentes.
+
+
+PLAN DE PROCESAMIENTO ESCALONADO (revisión de estabilidad)
+- Se añadieron pausas de 100 ms tras cada grupo de 8 limpiezas de pickups (32 operaciones).
+- Se añadieron pausas de 100 ms tras cada grupo de 8 desactivaciones de marcadores globales (32 operaciones) y de handles comerciales anteriores (58 operaciones).
+- Se añadieron pausas de 100 ms entre cada grupo de 4 propiedades (8 pausas para 32 posiciones).
+- Se añadieron pausas de 100 ms después de cada 3 iconos comerciales (19 pausas para 58 iconos).
+- Tiempo adicional nominal aproximado: 4.2 segundos; el tiempo real depende de la ejecución y de las condiciones del juego.
+- Las pausas distribuyen la carga en varios ciclos; no reducen la cantidad de entidades que el juego debe mantener en memoria ni demuestran que el bloqueo esté resuelto.
+- No se modificaron comandos de dibujo, escala, coordenadas, fuente, colores ni posiciones de los textos o marcadores.
+- No se eliminaron iconos, pickups, desbloqueos ni operaciones de memoria.
+- Esta revisión no es apta para prueba en el teléfono hasta completar auditoría estática y compilación.
