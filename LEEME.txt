@@ -15,7 +15,7 @@ INSTALACIÓN (SOLO CUANDO SE AUTORICE UNA PRUEBA)
 6. Comprueba por separado la aparición de iconos y el acceso/funcionamiento de los establecimientos.
 
 CONTENIDO FUNCIONAL PREVISTO
-- 32 pickups y 32 marcadores de propiedades, usando las arrays originales del juego (propertyX/Y/Z, save_houseprice, save_housepickup y already_bought_house).
+- 29 pickups de propiedades en venta y 29 marcadores nuevos (índices 3–31), usando las arrays originales del juego. Se preservan los 3 pickups bloqueados y los 3 blips originales de Showroom, Zero's y Airstrip (índices 0–2).
 - 58 marcadores comerciales: barberías, comida, ropa y talleres.
 - 3 marcadores de gimnasios: Ganton Gym, Cobra Martial Arts Gym y Below the Belt Gym.
 - Acceso habilitado por script a los interiores de los tres gimnasios y otros establecimientos.
