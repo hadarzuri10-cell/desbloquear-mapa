@@ -20,10 +20,14 @@ MENSAJES FXT
 - El usuario observó las claves internas en pantalla; por tanto, la carga real del FXT sigue pendiente de comprobar en su instalación Android. Una compilación correcta no demuestra que CLEO haya cargado el FXT.
 
 AUDITORÍA DE FLUJO
-- El script adquiere el mutex antes de escribir los sectores y lo libera al finalizar la ruta correcta.
-- Una segunda instancia que encuentre el mutex ocupado termina sin alterar el mutex de la primera.
-- Se corrigió el orden de las comprobaciones para impedir que una segunda instancia salte a MAP ERROR antes de detectar que la primera mantiene el mutex. Esto elimina una ruta plausible para el MAP ERROR simultáneo observado tras MAP READY; no demuestra por sí solo que el crash esté resuelto. Requiere prueba controlada en GTA SA Android 2.10.
-- No declarar estabilidad ni corrección del crash hasta una prueba real.
+- El mutex 7413 se consulta y se adquiere al comienzo del hilo, antes de mostrar MAP LOADING y antes de cualquier espera.
+- Una segunda instancia que encuentre el mutex ocupado termina sin mostrar MAP ERROR, sin cambiar el mutex de la primera y sin ejecutar operaciones del mapa.
+- La instancia propietaria comprueba $ONMISSION después de adquirir el mutex. Si hay una misión activa, muestra MAP ERROR y libera el mutex antes de terminar.
+- En la ruta correcta, el mutex se libera al terminar los 5 segundos de MAP READY y el hilo termina inmediatamente.
+- Este cambio busca cerrar la ventana en la que una instancia iniciada tarde podía alcanzar la comprobación de misión justo después de que la primera liberara el mutex.
+- El cambio no demuestra por sí solo que el crash esté resuelto. Tampoco descarta que las operaciones de memoria, pickups o marcadores sean responsables del bloqueo del juego/teléfono.
+- No se modificaron las letras: escala 1.35 × 2.40, posición X=320.0/Y=70.0, centrado, fuente, anchura ni colores. Tampoco se modificaron las coordenadas, tamaños, iconos ni posiciones de los marcadores comerciales.
+- Requiere compilación y revisión del artefacto antes de cualquier prueba controlada. No declarar estabilidad hasta una prueba real.
 
 COMERCIOS Y TALLERES
 - 07FB set_interior access 1 habilita el acceso al interior; no crea por sí mismo los iconos del mapa.
