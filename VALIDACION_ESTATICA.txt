@@ -42,6 +42,7 @@ COMERCIOS Y TALLERES
 
 - Corrección de gestión de marcadores comerciales: cada uno de los 58 handles creados por 0570 se guarda en una mutex var CLEO independiente (IDs 7500–7557). Antes de crear la siguiente tanda, el script recupera cada handle, ejecuta 0164 disable_marker y limpia su slot. Esto evita que la variable temporal 8@ pierda las referencias y permite retirar los marcadores de una ejecución anterior antes de recrearlos.
 - Los mutex vars son almacenamiento compartido entre scripts CLEO durante la vida del proceso; el código de CLEO-ANDROID devuelve 0 para IDs no inicializados. La corrección requiere confirmación in-game para descartar handles obsoletos después de cargar partidas o cambiar de mundo.
+- Se cambió el espacio de IDs de mutex a un bloque con prefijo numérico DMAP (7413/7414 → 1145919744/1145919745; 7500–7557 → 1145919800–1145919857; 7560–7562 → 1145919860–1145919862) para reducir colisiones accidentales con otros scripts CLEO. No garantiza unicidad absoluta; debe conservarse este bloque reservado para este proyecto.
 - En la primera ejecución de esta versión, los marcadores creados por versiones antiguas no pueden limpiarse porque nunca guardaron sus handles. Cerrar y volver a abrir GTA antes de probar esta versión elimina esos marcadores antiguos junto con la sesión anterior.
 
 PRUEBAS
