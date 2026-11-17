@@ -158,41 +158,169 @@
 0DD9: write_mem_addr 0x0098D2B5 value 1 size 1 add_ib 1 protect 0
 0DD9: write_mem_addr 0x0098D2B8 value 100 size 4 add_ib 1 protect 0
 0629: change_integer_stat 181 to 4
+00D6: if 0
+09D1: pickup $3071 created
+004D: jump_if_false @skip_destroy_3071
 0215: destroy_pickup $3071
+:skip_destroy_3071
+00D6: if 0
+09D1: pickup $3072 created
+004D: jump_if_false @skip_destroy_3072
 0215: destroy_pickup $3072
+:skip_destroy_3072
+00D6: if 0
+09D1: pickup $3073 created
+004D: jump_if_false @skip_destroy_3073
 0215: destroy_pickup $3073
+:skip_destroy_3073
+00D6: if 0
+09D1: pickup $3074 created
+004D: jump_if_false @skip_destroy_3074
 0215: destroy_pickup $3074
+:skip_destroy_3074
+00D6: if 0
+09D1: pickup $3075 created
+004D: jump_if_false @skip_destroy_3075
 0215: destroy_pickup $3075
+:skip_destroy_3075
+00D6: if 0
+09D1: pickup $3076 created
+004D: jump_if_false @skip_destroy_3076
 0215: destroy_pickup $3076
+:skip_destroy_3076
+00D6: if 0
+09D1: pickup $3077 created
+004D: jump_if_false @skip_destroy_3077
 0215: destroy_pickup $3077
+:skip_destroy_3077
+00D6: if 0
+09D1: pickup $3078 created
+004D: jump_if_false @skip_destroy_3078
 0215: destroy_pickup $3078
+:skip_destroy_3078
 0001: wait 100 // Pausa: liberar un ciclo entre grupos de limpieza.
+00D6: if 0
+09D1: pickup $3079 created
+004D: jump_if_false @skip_destroy_3079
 0215: destroy_pickup $3079
+:skip_destroy_3079
+00D6: if 0
+09D1: pickup $3080 created
+004D: jump_if_false @skip_destroy_3080
 0215: destroy_pickup $3080
+:skip_destroy_3080
+00D6: if 0
+09D1: pickup $3081 created
+004D: jump_if_false @skip_destroy_3081
 0215: destroy_pickup $3081
+:skip_destroy_3081
+00D6: if 0
+09D1: pickup $3082 created
+004D: jump_if_false @skip_destroy_3082
 0215: destroy_pickup $3082
+:skip_destroy_3082
+00D6: if 0
+09D1: pickup $3083 created
+004D: jump_if_false @skip_destroy_3083
 0215: destroy_pickup $3083
+:skip_destroy_3083
+00D6: if 0
+09D1: pickup $3084 created
+004D: jump_if_false @skip_destroy_3084
 0215: destroy_pickup $3084
+:skip_destroy_3084
+00D6: if 0
+09D1: pickup $3085 created
+004D: jump_if_false @skip_destroy_3085
 0215: destroy_pickup $3085
+:skip_destroy_3085
+00D6: if 0
+09D1: pickup $3086 created
+004D: jump_if_false @skip_destroy_3086
 0215: destroy_pickup $3086
+:skip_destroy_3086
 0001: wait 100 // Pausa: liberar un ciclo entre grupos de limpieza.
+00D6: if 0
+09D1: pickup $3087 created
+004D: jump_if_false @skip_destroy_3087
 0215: destroy_pickup $3087
+:skip_destroy_3087
+00D6: if 0
+09D1: pickup $3088 created
+004D: jump_if_false @skip_destroy_3088
 0215: destroy_pickup $3088
+:skip_destroy_3088
+00D6: if 0
+09D1: pickup $3089 created
+004D: jump_if_false @skip_destroy_3089
 0215: destroy_pickup $3089
+:skip_destroy_3089
+00D6: if 0
+09D1: pickup $3090 created
+004D: jump_if_false @skip_destroy_3090
 0215: destroy_pickup $3090
+:skip_destroy_3090
+00D6: if 0
+09D1: pickup $3091 created
+004D: jump_if_false @skip_destroy_3091
 0215: destroy_pickup $3091
+:skip_destroy_3091
+00D6: if 0
+09D1: pickup $3092 created
+004D: jump_if_false @skip_destroy_3092
 0215: destroy_pickup $3092
+:skip_destroy_3092
+00D6: if 0
+09D1: pickup $3093 created
+004D: jump_if_false @skip_destroy_3093
 0215: destroy_pickup $3093
+:skip_destroy_3093
+00D6: if 0
+09D1: pickup $3094 created
+004D: jump_if_false @skip_destroy_3094
 0215: destroy_pickup $3094
+:skip_destroy_3094
 0001: wait 100 // Pausa: liberar un ciclo entre grupos de limpieza.
+00D6: if 0
+09D1: pickup $3095 created
+004D: jump_if_false @skip_destroy_3095
 0215: destroy_pickup $3095
+:skip_destroy_3095
+00D6: if 0
+09D1: pickup $3096 created
+004D: jump_if_false @skip_destroy_3096
 0215: destroy_pickup $3096
+:skip_destroy_3096
+00D6: if 0
+09D1: pickup $3097 created
+004D: jump_if_false @skip_destroy_3097
 0215: destroy_pickup $3097
+:skip_destroy_3097
+00D6: if 0
+09D1: pickup $3098 created
+004D: jump_if_false @skip_destroy_3098
 0215: destroy_pickup $3098
+:skip_destroy_3098
+00D6: if 0
+09D1: pickup $3099 created
+004D: jump_if_false @skip_destroy_3099
 0215: destroy_pickup $3099
+:skip_destroy_3099
+00D6: if 0
+09D1: pickup $3100 created
+004D: jump_if_false @skip_destroy_3100
 0215: destroy_pickup $3100
+:skip_destroy_3100
+00D6: if 0
+09D1: pickup $3101 created
+004D: jump_if_false @skip_destroy_3101
 0215: destroy_pickup $3101
+:skip_destroy_3101
+00D6: if 0
+09D1: pickup $3102 created
+004D: jump_if_false @skip_destroy_3102
 0215: destroy_pickup $3102
+:skip_destroy_3102
 0001: wait 100 // Pausa: liberar un ciclo entre grupos de limpieza.
 0164: disable_marker $65
 0164: disable_marker $526
