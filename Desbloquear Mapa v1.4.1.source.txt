@@ -366,7 +366,7 @@
 0164: disable_marker $3037
 0164: disable_marker $3038
 0001: wait 100 // Pausa: limpieza escalonada de marcadores.
-0004: 0@ = 1
+0004: 0@ = 0
 00D6: if 0
 0038: $727(0@,32i) == 0
 004D: jump_if_false @prop_skip_1
@@ -374,7 +374,7 @@
 0570: $65 = create_asset_radar_marker_with_icon 31 at $2910 $2942 $2974
 018B: set_marker $65 radar_mode 2
 :prop_skip_1
-0004: 0@ = 2
+0004: 0@ = 1
 00D6: if 0
 0038: $727(0@,32i) == 0
 004D: jump_if_false @prop_skip_2
@@ -382,7 +382,7 @@
 0570: $526 = create_asset_radar_marker_with_icon 31 at $2911 $2943 $2975
 018B: set_marker $526 radar_mode 2
 :prop_skip_2
-0004: 0@ = 3
+0004: 0@ = 2
 00D6: if 0
 0038: $727(0@,32i) == 0
 004D: jump_if_false @prop_skip_3
@@ -390,7 +390,7 @@
 0570: $54 = create_asset_radar_marker_with_icon 31 at $2912 $2944 $2976
 018B: set_marker $54 radar_mode 2
 :prop_skip_3
-0004: 0@ = 4
+0004: 0@ = 3
 00D6: if 0
 0038: $727(0@,32i) == 0
 004D: jump_if_false @prop_skip_4
@@ -399,7 +399,7 @@
 018B: set_marker $3010 radar_mode 2
 :prop_skip_4
 0001: wait 100 // Pausa entre grupos de propiedades.
-0004: 0@ = 5
+0004: 0@ = 4
 00D6: if 0
 0038: $727(0@,32i) == 0
 004D: jump_if_false @prop_skip_5
@@ -407,7 +407,7 @@
 0570: $3011 = create_asset_radar_marker_with_icon 31 at $2914 $2946 $2978
 018B: set_marker $3011 radar_mode 2
 :prop_skip_5
-0004: 0@ = 6
+0004: 0@ = 5
 00D6: if 0
 0038: $727(0@,32i) == 0
 004D: jump_if_false @prop_skip_6
@@ -415,7 +415,7 @@
 0570: $3012 = create_asset_radar_marker_with_icon 31 at $2915 $2947 $2979
 018B: set_marker $3012 radar_mode 2
 :prop_skip_6
-0004: 0@ = 7
+0004: 0@ = 6
 00D6: if 0
 0038: $727(0@,32i) == 0
 004D: jump_if_false @prop_skip_7
@@ -423,7 +423,7 @@
 0570: $3013 = create_asset_radar_marker_with_icon 31 at $2916 $2948 $2980
 018B: set_marker $3013 radar_mode 2
 :prop_skip_7
-0004: 0@ = 8
+0004: 0@ = 7
 00D6: if 0
 0038: $727(0@,32i) == 0
 004D: jump_if_false @prop_skip_8
@@ -432,7 +432,7 @@
 018B: set_marker $3014 radar_mode 2
 :prop_skip_8
 0001: wait 100 // Pausa entre grupos de propiedades.
-0004: 0@ = 9
+0004: 0@ = 8
 00D6: if 0
 0038: $727(0@,32i) == 0
 004D: jump_if_false @prop_skip_9
@@ -440,7 +440,7 @@
 0570: $3015 = create_asset_radar_marker_with_icon 31 at $2918 $2950 $2982
 018B: set_marker $3015 radar_mode 2
 :prop_skip_9
-0004: 0@ = 10
+0004: 0@ = 9
 00D6: if 0
 0038: $727(0@,32i) == 0
 004D: jump_if_false @prop_skip_10
@@ -448,7 +448,7 @@
 0570: $3016 = create_asset_radar_marker_with_icon 31 at $2919 $2951 $2983
 018B: set_marker $3016 radar_mode 2
 :prop_skip_10
-0004: 0@ = 11
+0004: 0@ = 10
 00D6: if 0
 0038: $727(0@,32i) == 0
 004D: jump_if_false @prop_skip_11
@@ -456,7 +456,7 @@
 0570: $3017 = create_asset_radar_marker_with_icon 31 at $2920 $2952 $2984
 018B: set_marker $3017 radar_mode 2
 :prop_skip_11
-0004: 0@ = 12
+0004: 0@ = 11
 00D6: if 0
 0038: $727(0@,32i) == 0
 004D: jump_if_false @prop_skip_12
@@ -465,7 +465,7 @@
 018B: set_marker $3018 radar_mode 2
 :prop_skip_12
 0001: wait 100 // Pausa entre grupos de propiedades.
-0004: 0@ = 13
+0004: 0@ = 12
 00D6: if 0
 0038: $727(0@,32i) == 0
 004D: jump_if_false @prop_skip_13
@@ -473,7 +473,7 @@
 0570: $3019 = create_asset_radar_marker_with_icon 31 at $2922 $2954 $2986
 018B: set_marker $3019 radar_mode 2
 :prop_skip_13
-0004: 0@ = 14
+0004: 0@ = 13
 00D6: if 0
 0038: $727(0@,32i) == 0
 004D: jump_if_false @prop_skip_14
@@ -481,7 +481,7 @@
 0570: $3020 = create_asset_radar_marker_with_icon 31 at $2923 $2955 $2987
 018B: set_marker $3020 radar_mode 2
 :prop_skip_14
-0004: 0@ = 15
+0004: 0@ = 14
 00D6: if 0
 0038: $727(0@,32i) == 0
 004D: jump_if_false @prop_skip_15
@@ -489,7 +489,7 @@
 0570: $3021 = create_asset_radar_marker_with_icon 31 at $2924 $2956 $2988
 018B: set_marker $3021 radar_mode 2
 :prop_skip_15
-0004: 0@ = 16
+0004: 0@ = 15
 00D6: if 0
 0038: $727(0@,32i) == 0
 004D: jump_if_false @prop_skip_16
@@ -498,7 +498,7 @@
 018B: set_marker $3022 radar_mode 2
 :prop_skip_16
 0001: wait 100 // Pausa entre grupos de propiedades.
-0004: 0@ = 17
+0004: 0@ = 16
 00D6: if 0
 0038: $727(0@,32i) == 0
 004D: jump_if_false @prop_skip_17
@@ -506,7 +506,7 @@
 0570: $3023 = create_asset_radar_marker_with_icon 31 at $2926 $2958 $2990
 018B: set_marker $3023 radar_mode 2
 :prop_skip_17
-0004: 0@ = 18
+0004: 0@ = 17
 00D6: if 0
 0038: $727(0@,32i) == 0
 004D: jump_if_false @prop_skip_18
@@ -514,7 +514,7 @@
 0570: $3024 = create_asset_radar_marker_with_icon 31 at $2927 $2959 $2991
 018B: set_marker $3024 radar_mode 2
 :prop_skip_18
-0004: 0@ = 19
+0004: 0@ = 18
 00D6: if 0
 0038: $727(0@,32i) == 0
 004D: jump_if_false @prop_skip_19
@@ -522,7 +522,7 @@
 0570: $3025 = create_asset_radar_marker_with_icon 31 at $2928 $2960 $2992
 018B: set_marker $3025 radar_mode 2
 :prop_skip_19
-0004: 0@ = 20
+0004: 0@ = 19
 00D6: if 0
 0038: $727(0@,32i) == 0
 004D: jump_if_false @prop_skip_20
@@ -531,7 +531,7 @@
 018B: set_marker $3026 radar_mode 2
 :prop_skip_20
 0001: wait 100 // Pausa entre grupos de propiedades.
-0004: 0@ = 21
+0004: 0@ = 20
 00D6: if 0
 0038: $727(0@,32i) == 0
 004D: jump_if_false @prop_skip_21
@@ -539,7 +539,7 @@
 0570: $3027 = create_asset_radar_marker_with_icon 31 at $2930 $2962 $2994
 018B: set_marker $3027 radar_mode 2
 :prop_skip_21
-0004: 0@ = 22
+0004: 0@ = 21
 00D6: if 0
 0038: $727(0@,32i) == 0
 004D: jump_if_false @prop_skip_22
@@ -547,7 +547,7 @@
 0570: $3028 = create_asset_radar_marker_with_icon 31 at $2931 $2963 $2995
 018B: set_marker $3028 radar_mode 2
 :prop_skip_22
-0004: 0@ = 23
+0004: 0@ = 22
 00D6: if 0
 0038: $727(0@,32i) == 0
 004D: jump_if_false @prop_skip_23
@@ -555,7 +555,7 @@
 0570: $3029 = create_asset_radar_marker_with_icon 31 at $2932 $2964 $2996
 018B: set_marker $3029 radar_mode 2
 :prop_skip_23
-0004: 0@ = 24
+0004: 0@ = 23
 00D6: if 0
 0038: $727(0@,32i) == 0
 004D: jump_if_false @prop_skip_24
@@ -564,7 +564,7 @@
 018B: set_marker $3030 radar_mode 2
 :prop_skip_24
 0001: wait 100 // Pausa entre grupos de propiedades.
-0004: 0@ = 25
+0004: 0@ = 24
 00D6: if 0
 0038: $727(0@,32i) == 0
 004D: jump_if_false @prop_skip_25
@@ -572,7 +572,7 @@
 0570: $3031 = create_asset_radar_marker_with_icon 31 at $2934 $2966 $2998
 018B: set_marker $3031 radar_mode 2
 :prop_skip_25
-0004: 0@ = 26
+0004: 0@ = 25
 00D6: if 0
 0038: $727(0@,32i) == 0
 004D: jump_if_false @prop_skip_26
@@ -580,7 +580,7 @@
 0570: $3032 = create_asset_radar_marker_with_icon 31 at $2935 $2967 $2999
 018B: set_marker $3032 radar_mode 2
 :prop_skip_26
-0004: 0@ = 27
+0004: 0@ = 26
 00D6: if 0
 0038: $727(0@,32i) == 0
 004D: jump_if_false @prop_skip_27
@@ -588,7 +588,7 @@
 0570: $3033 = create_asset_radar_marker_with_icon 31 at $2936 $2968 $3000
 018B: set_marker $3033 radar_mode 2
 :prop_skip_27
-0004: 0@ = 28
+0004: 0@ = 27
 00D6: if 0
 0038: $727(0@,32i) == 0
 004D: jump_if_false @prop_skip_28
@@ -597,7 +597,7 @@
 018B: set_marker $3034 radar_mode 2
 :prop_skip_28
 0001: wait 100 // Pausa entre grupos de propiedades.
-0004: 0@ = 29
+0004: 0@ = 28
 00D6: if 0
 0038: $727(0@,32i) == 0
 004D: jump_if_false @prop_skip_29
@@ -605,7 +605,7 @@
 0570: $3035 = create_asset_radar_marker_with_icon 31 at $2938 $2970 $3002
 018B: set_marker $3035 radar_mode 2
 :prop_skip_29
-0004: 0@ = 30
+0004: 0@ = 29
 00D6: if 0
 0038: $727(0@,32i) == 0
 004D: jump_if_false @prop_skip_30
@@ -613,7 +613,7 @@
 0570: $3036 = create_asset_radar_marker_with_icon 31 at $2939 $2971 $3003
 018B: set_marker $3036 radar_mode 2
 :prop_skip_30
-0004: 0@ = 31
+0004: 0@ = 30
 00D6: if 0
 0038: $727(0@,32i) == 0
 004D: jump_if_false @prop_skip_31
@@ -621,7 +621,7 @@
 0570: $3037 = create_asset_radar_marker_with_icon 31 at $2940 $2972 $3004
 018B: set_marker $3037 radar_mode 2
 :prop_skip_31
-0004: 0@ = 32
+0004: 0@ = 31
 00D6: if 0
 0038: $727(0@,32i) == 0
 004D: jump_if_false @prop_skip_32
