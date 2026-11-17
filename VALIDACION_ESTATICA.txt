@@ -32,13 +32,14 @@ AUDITORÍA DE FLUJO
 
 AUDITORÍA CRÍTICA DE VARIABLES GLOBALES — CORREGIDA EN LA FUENTE ACTUAL
 - La auditoría encontró que la fuente anterior usaba variables globales pertenecientes a arrays de pickups coleccionables como si fueran coordenadas, precios y handles de propiedades. En concreto, los rangos 2910–3005 y 3039–3102 se superponían con los arrays originales de herraduras, fotografías, ostras y armas; esto podía sobrescribir handles del juego y era un candidato serio a los fallos observados.
-- La fuente actual utiliza las arrays reales declaradas por el juego: `propertyX` (base 1524), `propertyY` (1556), `propertyZ` (1588), `save_houseprice` (1653), `save_housepickup` (1685) y `already_bought_house` (728), siempre con índices 0–31.
+- La fuente actual utiliza las arrays reales declaradas por el juego: `propertyX` (base 1524), `propertyY` (1556), `propertyZ` (1588), `save_houseprice` (1653), `save_housepickup` (1685) y `already_bought_house` (728). Las propiedades en venta se procesan con índices 3–31; los índices 0–2 quedan intactos.
 - La limpieza de pickups ahora comprueba y destruye únicamente los handles de `save_housepickup[3..31]` y pone cada slot a cero antes de recrear las propiedades en venta. Conserva intactos los tres pickups bloqueados de `save_housepickup[0..2]`. Ya no destruye los handles de `pickup_weapon[39..70]` ni altera los arrays de coleccionables.
-- Los 32 marcadores de propiedades ya no se guardan en globals del juego como 65, 526, 54 y 3010–3038. Sus handles se guardan y limpian en mutex vars 1145919700–1145919728. Se eliminó la limpieza antigua que deshabilitaba esas variables globales.
+- Los 29 marcadores de propiedades creados por el script ya no se guardan en globals del juego como 65, 526, 54 y 3010–3038. Sus handles se guardan y limpian en mutex vars 1145919700–1145919728. Se eliminó la limpieza antigua que deshabilitaba esas variables globales.
 - Esta corrección elimina colisiones estáticas identificadas en la fuente, pero no prueba que el juego sea estable ni demuestra que sea la única causa del crash. Requiere compilación, inspección del artefacto y validación controlada posterior; no instalar todavía.
 
 COMERCIOS Y TALLERES
-- Corrección crítica de variables de propiedades cotejada con las declaraciones de `mainV1.sc` y `CustomArrays.ini`: `save_house_index` es el escalar 727; `already_bought_house[32]` empieza en 728. Las 32 comprobaciones ahora usan `$728(0@,32i)` con índices 0–31. La versión anterior indexaba erróneamente desde `$727`.\n- 07FB set_interior access 1 habilita el acceso al interior; no crea por sí mismo los iconos del mapa.
+- Corrección crítica de variables de propiedades cotejada con las declaraciones de `mainV1.sc` y `CustomArrays.ini`: `save_house_index` es el escalar 727; `already_bought_house[32]` empieza en 728. Las 29 comprobaciones ahora usan `$728(0@,32i)` con índices 3–31. La versión anterior indexaba erróneamente desde `$727`.
+- 07FB set_interior access 1 habilita el acceso al interior; no crea por sí mismo los iconos del mapa.
 - La fuente actual contiene accesos a barberías, restaurantes, tiendas de ropa y otros interiores normales, además de los 58 marcadores indicados abajo.
 - Se restauró CSEXL (Didier Sachs), que faltaba en la lista anterior.
 - Se mantienen los 58 marcadores comerciales: 7 barberías, 8 pizzerías, 10 Burger Shot, 12 Cluckin' Bell, 16 tiendas de ropa y 5 talleres de modificación.
