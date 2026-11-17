@@ -103,8 +103,9 @@ jobs:
           if (-not (Test-Path $output)) { throw 'Compiler exited without producing the .csi file.' }
 
           Copy-Item 'Desbloquear Mapa.fxt' build\cleo\
-          Copy-Item 'VALIDACION_ESTATICA.txt' build\cleo\
-          Copy-Item 'LEEME.txt' build\cleo\
+          # Keep documentation outside the CLEO install folder.
+          Copy-Item 'LEEME.txt' build\
+          Copy-Item 'VALIDACION_ESTATICA.txt' build\
 
       - name: Upload build diagnostics and artifact
         if: always()
