@@ -167,178 +167,494 @@
 0DD9: write_mem_addr 0x0098D2B8 value 100 size 4 add_ib 1 protect 0
 0629: change_integer_stat 181 to 4
 00D6: if 0
-09D1: pickup $3071 created
+0004: 0@ = 0
+00D6: if 0
+09D1: pickup $1685(0@,32i) created
 004D: jump_if_false @skip_destroy_3071
-0215: destroy_pickup $3071
+0215: destroy_pickup $1685(0@,32i)
 :skip_destroy_3071
+0004: $1685(0@,32i) = 0
 00D6: if 0
-09D1: pickup $3072 created
+0004: 0@ = 1
+00D6: if 0
+09D1: pickup $1685(0@,32i) created
 004D: jump_if_false @skip_destroy_3072
-0215: destroy_pickup $3072
+0215: destroy_pickup $1685(0@,32i)
 :skip_destroy_3072
+0004: $1685(0@,32i) = 0
 00D6: if 0
-09D1: pickup $3073 created
+0004: 0@ = 2
+00D6: if 0
+09D1: pickup $1685(0@,32i) created
 004D: jump_if_false @skip_destroy_3073
-0215: destroy_pickup $3073
+0215: destroy_pickup $1685(0@,32i)
 :skip_destroy_3073
+0004: $1685(0@,32i) = 0
 00D6: if 0
-09D1: pickup $3074 created
+0004: 0@ = 3
+00D6: if 0
+09D1: pickup $1685(0@,32i) created
 004D: jump_if_false @skip_destroy_3074
-0215: destroy_pickup $3074
+0215: destroy_pickup $1685(0@,32i)
 :skip_destroy_3074
+0004: $1685(0@,32i) = 0
 00D6: if 0
-09D1: pickup $3075 created
+0004: 0@ = 4
+00D6: if 0
+09D1: pickup $1685(0@,32i) created
 004D: jump_if_false @skip_destroy_3075
-0215: destroy_pickup $3075
+0215: destroy_pickup $1685(0@,32i)
 :skip_destroy_3075
+0004: $1685(0@,32i) = 0
 00D6: if 0
-09D1: pickup $3076 created
+0004: 0@ = 5
+00D6: if 0
+09D1: pickup $1685(0@,32i) created
 004D: jump_if_false @skip_destroy_3076
-0215: destroy_pickup $3076
+0215: destroy_pickup $1685(0@,32i)
 :skip_destroy_3076
+0004: $1685(0@,32i) = 0
 00D6: if 0
-09D1: pickup $3077 created
+0004: 0@ = 6
+00D6: if 0
+09D1: pickup $1685(0@,32i) created
 004D: jump_if_false @skip_destroy_3077
-0215: destroy_pickup $3077
+0215: destroy_pickup $1685(0@,32i)
 :skip_destroy_3077
+0004: $1685(0@,32i) = 0
 00D6: if 0
-09D1: pickup $3078 created
+0004: 0@ = 7
+00D6: if 0
+09D1: pickup $1685(0@,32i) created
 004D: jump_if_false @skip_destroy_3078
-0215: destroy_pickup $3078
+0215: destroy_pickup $1685(0@,32i)
 :skip_destroy_3078
+0004: $1685(0@,32i) = 0
 0001: wait 100 // Pausa: liberar un ciclo entre grupos de limpieza.
 00D6: if 0
-09D1: pickup $3079 created
+0004: 0@ = 8
+00D6: if 0
+09D1: pickup $1685(0@,32i) created
 004D: jump_if_false @skip_destroy_3079
-0215: destroy_pickup $3079
+0215: destroy_pickup $1685(0@,32i)
 :skip_destroy_3079
+0004: $1685(0@,32i) = 0
 00D6: if 0
-09D1: pickup $3080 created
+0004: 0@ = 9
+00D6: if 0
+09D1: pickup $1685(0@,32i) created
 004D: jump_if_false @skip_destroy_3080
-0215: destroy_pickup $3080
+0215: destroy_pickup $1685(0@,32i)
 :skip_destroy_3080
+0004: $1685(0@,32i) = 0
 00D6: if 0
-09D1: pickup $3081 created
+0004: 0@ = 10
+00D6: if 0
+09D1: pickup $1685(0@,32i) created
 004D: jump_if_false @skip_destroy_3081
-0215: destroy_pickup $3081
+0215: destroy_pickup $1685(0@,32i)
 :skip_destroy_3081
+0004: $1685(0@,32i) = 0
 00D6: if 0
-09D1: pickup $3082 created
+0004: 0@ = 11
+00D6: if 0
+09D1: pickup $1685(0@,32i) created
 004D: jump_if_false @skip_destroy_3082
-0215: destroy_pickup $3082
+0215: destroy_pickup $1685(0@,32i)
 :skip_destroy_3082
+0004: $1685(0@,32i) = 0
 00D6: if 0
-09D1: pickup $3083 created
+0004: 0@ = 12
+00D6: if 0
+09D1: pickup $1685(0@,32i) created
 004D: jump_if_false @skip_destroy_3083
-0215: destroy_pickup $3083
+0215: destroy_pickup $1685(0@,32i)
 :skip_destroy_3083
+0004: $1685(0@,32i) = 0
 00D6: if 0
-09D1: pickup $3084 created
+0004: 0@ = 13
+00D6: if 0
+09D1: pickup $1685(0@,32i) created
 004D: jump_if_false @skip_destroy_3084
-0215: destroy_pickup $3084
+0215: destroy_pickup $1685(0@,32i)
 :skip_destroy_3084
+0004: $1685(0@,32i) = 0
 00D6: if 0
-09D1: pickup $3085 created
+0004: 0@ = 14
+00D6: if 0
+09D1: pickup $1685(0@,32i) created
 004D: jump_if_false @skip_destroy_3085
-0215: destroy_pickup $3085
+0215: destroy_pickup $1685(0@,32i)
 :skip_destroy_3085
+0004: $1685(0@,32i) = 0
 00D6: if 0
-09D1: pickup $3086 created
+0004: 0@ = 15
+00D6: if 0
+09D1: pickup $1685(0@,32i) created
 004D: jump_if_false @skip_destroy_3086
-0215: destroy_pickup $3086
+0215: destroy_pickup $1685(0@,32i)
 :skip_destroy_3086
+0004: $1685(0@,32i) = 0
 0001: wait 100 // Pausa: liberar un ciclo entre grupos de limpieza.
 00D6: if 0
-09D1: pickup $3087 created
+0004: 0@ = 16
+00D6: if 0
+09D1: pickup $1685(0@,32i) created
 004D: jump_if_false @skip_destroy_3087
-0215: destroy_pickup $3087
+0215: destroy_pickup $1685(0@,32i)
 :skip_destroy_3087
+0004: $1685(0@,32i) = 0
 00D6: if 0
-09D1: pickup $3088 created
+0004: 0@ = 17
+00D6: if 0
+09D1: pickup $1685(0@,32i) created
 004D: jump_if_false @skip_destroy_3088
-0215: destroy_pickup $3088
+0215: destroy_pickup $1685(0@,32i)
 :skip_destroy_3088
+0004: $1685(0@,32i) = 0
 00D6: if 0
-09D1: pickup $3089 created
+0004: 0@ = 18
+00D6: if 0
+09D1: pickup $1685(0@,32i) created
 004D: jump_if_false @skip_destroy_3089
-0215: destroy_pickup $3089
+0215: destroy_pickup $1685(0@,32i)
 :skip_destroy_3089
+0004: $1685(0@,32i) = 0
 00D6: if 0
-09D1: pickup $3090 created
+0004: 0@ = 19
+00D6: if 0
+09D1: pickup $1685(0@,32i) created
 004D: jump_if_false @skip_destroy_3090
-0215: destroy_pickup $3090
+0215: destroy_pickup $1685(0@,32i)
 :skip_destroy_3090
+0004: $1685(0@,32i) = 0
 00D6: if 0
-09D1: pickup $3091 created
+0004: 0@ = 20
+00D6: if 0
+09D1: pickup $1685(0@,32i) created
 004D: jump_if_false @skip_destroy_3091
-0215: destroy_pickup $3091
+0215: destroy_pickup $1685(0@,32i)
 :skip_destroy_3091
+0004: $1685(0@,32i) = 0
 00D6: if 0
-09D1: pickup $3092 created
+0004: 0@ = 21
+00D6: if 0
+09D1: pickup $1685(0@,32i) created
 004D: jump_if_false @skip_destroy_3092
-0215: destroy_pickup $3092
+0215: destroy_pickup $1685(0@,32i)
 :skip_destroy_3092
+0004: $1685(0@,32i) = 0
 00D6: if 0
-09D1: pickup $3093 created
+0004: 0@ = 22
+00D6: if 0
+09D1: pickup $1685(0@,32i) created
 004D: jump_if_false @skip_destroy_3093
-0215: destroy_pickup $3093
+0215: destroy_pickup $1685(0@,32i)
 :skip_destroy_3093
+0004: $1685(0@,32i) = 0
 00D6: if 0
-09D1: pickup $3094 created
+0004: 0@ = 23
+00D6: if 0
+09D1: pickup $1685(0@,32i) created
 004D: jump_if_false @skip_destroy_3094
-0215: destroy_pickup $3094
+0215: destroy_pickup $1685(0@,32i)
 :skip_destroy_3094
+0004: $1685(0@,32i) = 0
 0001: wait 100 // Pausa: liberar un ciclo entre grupos de limpieza.
 00D6: if 0
-09D1: pickup $3095 created
+0004: 0@ = 24
+00D6: if 0
+09D1: pickup $1685(0@,32i) created
 004D: jump_if_false @skip_destroy_3095
-0215: destroy_pickup $3095
+0215: destroy_pickup $1685(0@,32i)
 :skip_destroy_3095
+0004: $1685(0@,32i) = 0
 00D6: if 0
-09D1: pickup $3096 created
+0004: 0@ = 25
+00D6: if 0
+09D1: pickup $1685(0@,32i) created
 004D: jump_if_false @skip_destroy_3096
-0215: destroy_pickup $3096
+0215: destroy_pickup $1685(0@,32i)
 :skip_destroy_3096
+0004: $1685(0@,32i) = 0
 00D6: if 0
-09D1: pickup $3097 created
+0004: 0@ = 26
+00D6: if 0
+09D1: pickup $1685(0@,32i) created
 004D: jump_if_false @skip_destroy_3097
-0215: destroy_pickup $3097
+0215: destroy_pickup $1685(0@,32i)
 :skip_destroy_3097
+0004: $1685(0@,32i) = 0
 00D6: if 0
-09D1: pickup $3098 created
+0004: 0@ = 27
+00D6: if 0
+09D1: pickup $1685(0@,32i) created
 004D: jump_if_false @skip_destroy_3098
-0215: destroy_pickup $3098
+0215: destroy_pickup $1685(0@,32i)
 :skip_destroy_3098
+0004: $1685(0@,32i) = 0
 00D6: if 0
-09D1: pickup $3099 created
+0004: 0@ = 28
+00D6: if 0
+09D1: pickup $1685(0@,32i) created
 004D: jump_if_false @skip_destroy_3099
-0215: destroy_pickup $3099
+0215: destroy_pickup $1685(0@,32i)
 :skip_destroy_3099
+0004: $1685(0@,32i) = 0
 00D6: if 0
-09D1: pickup $3100 created
+0004: 0@ = 29
+00D6: if 0
+09D1: pickup $1685(0@,32i) created
 004D: jump_if_false @skip_destroy_3100
-0215: destroy_pickup $3100
+0215: destroy_pickup $1685(0@,32i)
 :skip_destroy_3100
+0004: $1685(0@,32i) = 0
 00D6: if 0
-09D1: pickup $3101 created
+0004: 0@ = 30
+00D6: if 0
+09D1: pickup $1685(0@,32i) created
 004D: jump_if_false @skip_destroy_3101
-0215: destroy_pickup $3101
+0215: destroy_pickup $1685(0@,32i)
 :skip_destroy_3101
+0004: $1685(0@,32i) = 0
 00D6: if 0
-09D1: pickup $3102 created
+0004: 0@ = 31
+00D6: if 0
+09D1: pickup $1685(0@,32i) created
 004D: jump_if_false @skip_destroy_3102
-0215: destroy_pickup $3102
+0215: destroy_pickup $1685(0@,32i)
 :skip_destroy_3102
+0004: $1685(0@,32i) = 0
 0001: wait 100 // Pausa: liberar un ciclo entre grupos de limpieza.
-0164: disable_marker $65
-0164: disable_marker $526
-0164: disable_marker $54
-0164: disable_marker $3010
-0164: disable_marker $3011
-0164: disable_marker $3012
-0164: disable_marker $3013
-0164: disable_marker $3014
-0001: wait 100 // Pausa: limpieza escalonada de marcadores.
+// Limpieza de marcadores de propiedades creados por una ejecución anterior.
+// Sus handles se conservan fuera de las variables globales del juego.
+0DDD: 9@ = get_mutex_var 1145919700
+00D6: if 0
+0039: 9@ <> 0
+004D: jump_if_false @property_marker_old_1_skip
+0164: disable_marker 9@
+0DDC: set_mutex_var 1145919700 to 0
+:property_marker_old_1_skip
+0DDD: 9@ = get_mutex_var 1145919701
+00D6: if 0
+0039: 9@ <> 0
+004D: jump_if_false @property_marker_old_2_skip
+0164: disable_marker 9@
+0DDC: set_mutex_var 1145919701 to 0
+:property_marker_old_2_skip
+0DDD: 9@ = get_mutex_var 1145919702
+00D6: if 0
+0039: 9@ <> 0
+004D: jump_if_false @property_marker_old_3_skip
+0164: disable_marker 9@
+0DDC: set_mutex_var 1145919702 to 0
+:property_marker_old_3_skip
+0DDD: 9@ = get_mutex_var 1145919703
+00D6: if 0
+0039: 9@ <> 0
+004D: jump_if_false @property_marker_old_4_skip
+0164: disable_marker 9@
+0DDC: set_mutex_var 1145919703 to 0
+:property_marker_old_4_skip
+0DDD: 9@ = get_mutex_var 1145919704
+00D6: if 0
+0039: 9@ <> 0
+004D: jump_if_false @property_marker_old_5_skip
+0164: disable_marker 9@
+0DDC: set_mutex_var 1145919704 to 0
+:property_marker_old_5_skip
+0DDD: 9@ = get_mutex_var 1145919705
+00D6: if 0
+0039: 9@ <> 0
+004D: jump_if_false @property_marker_old_6_skip
+0164: disable_marker 9@
+0DDC: set_mutex_var 1145919705 to 0
+:property_marker_old_6_skip
+0DDD: 9@ = get_mutex_var 1145919706
+00D6: if 0
+0039: 9@ <> 0
+004D: jump_if_false @property_marker_old_7_skip
+0164: disable_marker 9@
+0DDC: set_mutex_var 1145919706 to 0
+:property_marker_old_7_skip
+0DDD: 9@ = get_mutex_var 1145919707
+00D6: if 0
+0039: 9@ <> 0
+004D: jump_if_false @property_marker_old_8_skip
+0164: disable_marker 9@
+0DDC: set_mutex_var 1145919707 to 0
+:property_marker_old_8_skip
+0001: wait 100 // Pausa: limpieza escalonada de marcadores de propiedades.
+0DDD: 9@ = get_mutex_var 1145919708
+00D6: if 0
+0039: 9@ <> 0
+004D: jump_if_false @property_marker_old_9_skip
+0164: disable_marker 9@
+0DDC: set_mutex_var 1145919708 to 0
+:property_marker_old_9_skip
+0DDD: 9@ = get_mutex_var 1145919709
+00D6: if 0
+0039: 9@ <> 0
+004D: jump_if_false @property_marker_old_10_skip
+0164: disable_marker 9@
+0DDC: set_mutex_var 1145919709 to 0
+:property_marker_old_10_skip
+0DDD: 9@ = get_mutex_var 1145919710
+00D6: if 0
+0039: 9@ <> 0
+004D: jump_if_false @property_marker_old_11_skip
+0164: disable_marker 9@
+0DDC: set_mutex_var 1145919710 to 0
+:property_marker_old_11_skip
+0DDD: 9@ = get_mutex_var 1145919711
+00D6: if 0
+0039: 9@ <> 0
+004D: jump_if_false @property_marker_old_12_skip
+0164: disable_marker 9@
+0DDC: set_mutex_var 1145919711 to 0
+:property_marker_old_12_skip
+0DDD: 9@ = get_mutex_var 1145919712
+00D6: if 0
+0039: 9@ <> 0
+004D: jump_if_false @property_marker_old_13_skip
+0164: disable_marker 9@
+0DDC: set_mutex_var 1145919712 to 0
+:property_marker_old_13_skip
+0DDD: 9@ = get_mutex_var 1145919713
+00D6: if 0
+0039: 9@ <> 0
+004D: jump_if_false @property_marker_old_14_skip
+0164: disable_marker 9@
+0DDC: set_mutex_var 1145919713 to 0
+:property_marker_old_14_skip
+0DDD: 9@ = get_mutex_var 1145919714
+00D6: if 0
+0039: 9@ <> 0
+004D: jump_if_false @property_marker_old_15_skip
+0164: disable_marker 9@
+0DDC: set_mutex_var 1145919714 to 0
+:property_marker_old_15_skip
+0DDD: 9@ = get_mutex_var 1145919715
+00D6: if 0
+0039: 9@ <> 0
+004D: jump_if_false @property_marker_old_16_skip
+0164: disable_marker 9@
+0DDC: set_mutex_var 1145919715 to 0
+:property_marker_old_16_skip
+0001: wait 100 // Pausa: limpieza escalonada de marcadores de propiedades.
+0DDD: 9@ = get_mutex_var 1145919716
+00D6: if 0
+0039: 9@ <> 0
+004D: jump_if_false @property_marker_old_17_skip
+0164: disable_marker 9@
+0DDC: set_mutex_var 1145919716 to 0
+:property_marker_old_17_skip
+0DDD: 9@ = get_mutex_var 1145919717
+00D6: if 0
+0039: 9@ <> 0
+004D: jump_if_false @property_marker_old_18_skip
+0164: disable_marker 9@
+0DDC: set_mutex_var 1145919717 to 0
+:property_marker_old_18_skip
+0DDD: 9@ = get_mutex_var 1145919718
+00D6: if 0
+0039: 9@ <> 0
+004D: jump_if_false @property_marker_old_19_skip
+0164: disable_marker 9@
+0DDC: set_mutex_var 1145919718 to 0
+:property_marker_old_19_skip
+0DDD: 9@ = get_mutex_var 1145919719
+00D6: if 0
+0039: 9@ <> 0
+004D: jump_if_false @property_marker_old_20_skip
+0164: disable_marker 9@
+0DDC: set_mutex_var 1145919719 to 0
+:property_marker_old_20_skip
+0DDD: 9@ = get_mutex_var 1145919720
+00D6: if 0
+0039: 9@ <> 0
+004D: jump_if_false @property_marker_old_21_skip
+0164: disable_marker 9@
+0DDC: set_mutex_var 1145919720 to 0
+:property_marker_old_21_skip
+0DDD: 9@ = get_mutex_var 1145919721
+00D6: if 0
+0039: 9@ <> 0
+004D: jump_if_false @property_marker_old_22_skip
+0164: disable_marker 9@
+0DDC: set_mutex_var 1145919721 to 0
+:property_marker_old_22_skip
+0DDD: 9@ = get_mutex_var 1145919722
+00D6: if 0
+0039: 9@ <> 0
+004D: jump_if_false @property_marker_old_23_skip
+0164: disable_marker 9@
+0DDC: set_mutex_var 1145919722 to 0
+:property_marker_old_23_skip
+0DDD: 9@ = get_mutex_var 1145919723
+00D6: if 0
+0039: 9@ <> 0
+004D: jump_if_false @property_marker_old_24_skip
+0164: disable_marker 9@
+0DDC: set_mutex_var 1145919723 to 0
+:property_marker_old_24_skip
+0001: wait 100 // Pausa: limpieza escalonada de marcadores de propiedades.
+0DDD: 9@ = get_mutex_var 1145919724
+00D6: if 0
+0039: 9@ <> 0
+004D: jump_if_false @property_marker_old_25_skip
+0164: disable_marker 9@
+0DDC: set_mutex_var 1145919724 to 0
+:property_marker_old_25_skip
+0DDD: 9@ = get_mutex_var 1145919725
+00D6: if 0
+0039: 9@ <> 0
+004D: jump_if_false @property_marker_old_26_skip
+0164: disable_marker 9@
+0DDC: set_mutex_var 1145919725 to 0
+:property_marker_old_26_skip
+0DDD: 9@ = get_mutex_var 1145919726
+00D6: if 0
+0039: 9@ <> 0
+004D: jump_if_false @property_marker_old_27_skip
+0164: disable_marker 9@
+0DDC: set_mutex_var 1145919726 to 0
+:property_marker_old_27_skip
+0DDD: 9@ = get_mutex_var 1145919727
+00D6: if 0
+0039: 9@ <> 0
+004D: jump_if_false @property_marker_old_28_skip
+0164: disable_marker 9@
+0DDC: set_mutex_var 1145919727 to 0
+:property_marker_old_28_skip
+0DDD: 9@ = get_mutex_var 1145919728
+00D6: if 0
+0039: 9@ <> 0
+004D: jump_if_false @property_marker_old_29_skip
+0164: disable_marker 9@
+0DDC: set_mutex_var 1145919728 to 0
+:property_marker_old_29_skip
+0DDD: 9@ = get_mutex_var 1145919729
+00D6: if 0
+0039: 9@ <> 0
+004D: jump_if_false @property_marker_old_30_skip
+0164: disable_marker 9@
+0DDC: set_mutex_var 1145919729 to 0
+:property_marker_old_30_skip
+0DDD: 9@ = get_mutex_var 1145919730
+00D6: if 0
+0039: 9@ <> 0
+004D: jump_if_false @property_marker_old_31_skip
+0164: disable_marker 9@
+0DDC: set_mutex_var 1145919730 to 0
+:property_marker_old_31_skip
+0DDD: 9@ = get_mutex_var 1145919731
+00D6: if 0
+0039: 9@ <> 0
+004D: jump_if_false @property_marker_old_32_skip
+0164: disable_marker 9@
+0DDC: set_mutex_var 1145919731 to 0
+:property_marker_old_32_skip
 0164: disable_marker $3015
 0164: disable_marker $3016
 0164: disable_marker $3017
@@ -368,266 +684,298 @@
 0001: wait 100 // Pausa: limpieza escalonada de marcadores.
 0004: 0@ = 0
 00D6: if 0
-0038: $727(0@,32i) == 0
+0038: $728(0@,32i) == 0
 004D: jump_if_false @prop_skip_1
-0518: $3071 = create_available_asset_pickup 'PROP_3' at $2910 $2942 $2974 price $3039
-0570: $65 = create_asset_radar_marker_with_icon 31 at $2910 $2942 $2974
-018B: set_marker $65 radar_mode 2
+0518: $1685(0@,32i) = create_available_asset_pickup 'PROP_3' at $1524(0@,32f) $1556(0@,32f) $1588(0@,32f) price $1653(0@,32i)
+0570: 8@ = create_asset_radar_marker_with_icon 31 at $1524(0@,32f) $1556(0@,32f) $1588(0@,32f)
+018B: set_marker 8@ radar_mode 2
+0DDC: set_mutex_var 1145919700 to 8@
 :prop_skip_1
 0004: 0@ = 1
 00D6: if 0
-0038: $727(0@,32i) == 0
+0038: $728(0@,32i) == 0
 004D: jump_if_false @prop_skip_2
-0518: $3072 = create_available_asset_pickup 'PROP_3' at $2911 $2943 $2975 price $3040
-0570: $526 = create_asset_radar_marker_with_icon 31 at $2911 $2943 $2975
-018B: set_marker $526 radar_mode 2
+0518: $1685(0@,32i) = create_available_asset_pickup 'PROP_3' at $1524(0@,32f) $1556(0@,32f) $1588(0@,32f) price $1653(0@,32i)
+0570: 8@ = create_asset_radar_marker_with_icon 31 at $1524(0@,32f) $1556(0@,32f) $1588(0@,32f)
+018B: set_marker 8@ radar_mode 2
+0DDC: set_mutex_var 1145919701 to 8@
 :prop_skip_2
 0004: 0@ = 2
 00D6: if 0
-0038: $727(0@,32i) == 0
+0038: $728(0@,32i) == 0
 004D: jump_if_false @prop_skip_3
-0518: $3073 = create_available_asset_pickup 'PROP_3' at $2912 $2944 $2976 price $3041
-0570: $54 = create_asset_radar_marker_with_icon 31 at $2912 $2944 $2976
-018B: set_marker $54 radar_mode 2
+0518: $1685(0@,32i) = create_available_asset_pickup 'PROP_3' at $1524(0@,32f) $1556(0@,32f) $1588(0@,32f) price $1653(0@,32i)
+0570: 8@ = create_asset_radar_marker_with_icon 31 at $1524(0@,32f) $1556(0@,32f) $1588(0@,32f)
+018B: set_marker 8@ radar_mode 2
+0DDC: set_mutex_var 1145919702 to 8@
 :prop_skip_3
 0004: 0@ = 3
 00D6: if 0
-0038: $727(0@,32i) == 0
+0038: $728(0@,32i) == 0
 004D: jump_if_false @prop_skip_4
-0518: $3074 = create_available_asset_pickup 'PROP_3' at $2913 $2945 $2977 price $3042
-0570: $3010 = create_asset_radar_marker_with_icon 31 at $2913 $2945 $2977
-018B: set_marker $3010 radar_mode 2
+0518: $1685(0@,32i) = create_available_asset_pickup 'PROP_3' at $1524(0@,32f) $1556(0@,32f) $1588(0@,32f) price $1653(0@,32i)
+0570: 8@ = create_asset_radar_marker_with_icon 31 at $1524(0@,32f) $1556(0@,32f) $1588(0@,32f)
+018B: set_marker 8@ radar_mode 2
+0DDC: set_mutex_var 1145919703 to 8@
 :prop_skip_4
 0001: wait 100 // Pausa entre grupos de propiedades.
 0004: 0@ = 4
 00D6: if 0
-0038: $727(0@,32i) == 0
+0038: $728(0@,32i) == 0
 004D: jump_if_false @prop_skip_5
-0518: $3075 = create_available_asset_pickup 'PROP_3' at $2914 $2946 $2978 price $3043
-0570: $3011 = create_asset_radar_marker_with_icon 31 at $2914 $2946 $2978
-018B: set_marker $3011 radar_mode 2
+0518: $1685(0@,32i) = create_available_asset_pickup 'PROP_3' at $1524(0@,32f) $1556(0@,32f) $1588(0@,32f) price $1653(0@,32i)
+0570: 8@ = create_asset_radar_marker_with_icon 31 at $1524(0@,32f) $1556(0@,32f) $1588(0@,32f)
+018B: set_marker 8@ radar_mode 2
+0DDC: set_mutex_var 1145919704 to 8@
 :prop_skip_5
 0004: 0@ = 5
 00D6: if 0
-0038: $727(0@,32i) == 0
+0038: $728(0@,32i) == 0
 004D: jump_if_false @prop_skip_6
-0518: $3076 = create_available_asset_pickup 'PROP_3' at $2915 $2947 $2979 price $3044
-0570: $3012 = create_asset_radar_marker_with_icon 31 at $2915 $2947 $2979
-018B: set_marker $3012 radar_mode 2
+0518: $1685(0@,32i) = create_available_asset_pickup 'PROP_3' at $1524(0@,32f) $1556(0@,32f) $1588(0@,32f) price $1653(0@,32i)
+0570: 8@ = create_asset_radar_marker_with_icon 31 at $1524(0@,32f) $1556(0@,32f) $1588(0@,32f)
+018B: set_marker 8@ radar_mode 2
+0DDC: set_mutex_var 1145919705 to 8@
 :prop_skip_6
 0004: 0@ = 6
 00D6: if 0
-0038: $727(0@,32i) == 0
+0038: $728(0@,32i) == 0
 004D: jump_if_false @prop_skip_7
-0518: $3077 = create_available_asset_pickup 'PROP_3' at $2916 $2948 $2980 price $3045
-0570: $3013 = create_asset_radar_marker_with_icon 31 at $2916 $2948 $2980
-018B: set_marker $3013 radar_mode 2
+0518: $1685(0@,32i) = create_available_asset_pickup 'PROP_3' at $1524(0@,32f) $1556(0@,32f) $1588(0@,32f) price $1653(0@,32i)
+0570: 8@ = create_asset_radar_marker_with_icon 31 at $1524(0@,32f) $1556(0@,32f) $1588(0@,32f)
+018B: set_marker 8@ radar_mode 2
+0DDC: set_mutex_var 1145919706 to 8@
 :prop_skip_7
 0004: 0@ = 7
 00D6: if 0
-0038: $727(0@,32i) == 0
+0038: $728(0@,32i) == 0
 004D: jump_if_false @prop_skip_8
-0518: $3078 = create_available_asset_pickup 'PROP_3' at $2917 $2949 $2981 price $3046
-0570: $3014 = create_asset_radar_marker_with_icon 31 at $2917 $2949 $2981
-018B: set_marker $3014 radar_mode 2
+0518: $1685(0@,32i) = create_available_asset_pickup 'PROP_3' at $1524(0@,32f) $1556(0@,32f) $1588(0@,32f) price $1653(0@,32i)
+0570: 8@ = create_asset_radar_marker_with_icon 31 at $1524(0@,32f) $1556(0@,32f) $1588(0@,32f)
+018B: set_marker 8@ radar_mode 2
+0DDC: set_mutex_var 1145919707 to 8@
 :prop_skip_8
 0001: wait 100 // Pausa entre grupos de propiedades.
 0004: 0@ = 8
 00D6: if 0
-0038: $727(0@,32i) == 0
+0038: $728(0@,32i) == 0
 004D: jump_if_false @prop_skip_9
-0518: $3079 = create_available_asset_pickup 'PROP_3' at $2918 $2950 $2982 price $3047
-0570: $3015 = create_asset_radar_marker_with_icon 31 at $2918 $2950 $2982
-018B: set_marker $3015 radar_mode 2
+0518: $1685(0@,32i) = create_available_asset_pickup 'PROP_3' at $1524(0@,32f) $1556(0@,32f) $1588(0@,32f) price $1653(0@,32i)
+0570: 8@ = create_asset_radar_marker_with_icon 31 at $1524(0@,32f) $1556(0@,32f) $1588(0@,32f)
+018B: set_marker 8@ radar_mode 2
+0DDC: set_mutex_var 1145919708 to 8@
 :prop_skip_9
 0004: 0@ = 9
 00D6: if 0
-0038: $727(0@,32i) == 0
+0038: $728(0@,32i) == 0
 004D: jump_if_false @prop_skip_10
-0518: $3080 = create_available_asset_pickup 'PROP_3' at $2919 $2951 $2983 price $3048
-0570: $3016 = create_asset_radar_marker_with_icon 31 at $2919 $2951 $2983
-018B: set_marker $3016 radar_mode 2
+0518: $1685(0@,32i) = create_available_asset_pickup 'PROP_3' at $1524(0@,32f) $1556(0@,32f) $1588(0@,32f) price $1653(0@,32i)
+0570: 8@ = create_asset_radar_marker_with_icon 31 at $1524(0@,32f) $1556(0@,32f) $1588(0@,32f)
+018B: set_marker 8@ radar_mode 2
+0DDC: set_mutex_var 1145919709 to 8@
 :prop_skip_10
 0004: 0@ = 10
 00D6: if 0
-0038: $727(0@,32i) == 0
+0038: $728(0@,32i) == 0
 004D: jump_if_false @prop_skip_11
-0518: $3081 = create_available_asset_pickup 'PROP_3' at $2920 $2952 $2984 price $3049
-0570: $3017 = create_asset_radar_marker_with_icon 31 at $2920 $2952 $2984
-018B: set_marker $3017 radar_mode 2
+0518: $1685(0@,32i) = create_available_asset_pickup 'PROP_3' at $1524(0@,32f) $1556(0@,32f) $1588(0@,32f) price $1653(0@,32i)
+0570: 8@ = create_asset_radar_marker_with_icon 31 at $1524(0@,32f) $1556(0@,32f) $1588(0@,32f)
+018B: set_marker 8@ radar_mode 2
+0DDC: set_mutex_var 1145919710 to 8@
 :prop_skip_11
 0004: 0@ = 11
 00D6: if 0
-0038: $727(0@,32i) == 0
+0038: $728(0@,32i) == 0
 004D: jump_if_false @prop_skip_12
-0518: $3082 = create_available_asset_pickup 'PROP_3' at $2921 $2953 $2985 price $3050
-0570: $3018 = create_asset_radar_marker_with_icon 31 at $2921 $2953 $2985
-018B: set_marker $3018 radar_mode 2
+0518: $1685(0@,32i) = create_available_asset_pickup 'PROP_3' at $1524(0@,32f) $1556(0@,32f) $1588(0@,32f) price $1653(0@,32i)
+0570: 8@ = create_asset_radar_marker_with_icon 31 at $1524(0@,32f) $1556(0@,32f) $1588(0@,32f)
+018B: set_marker 8@ radar_mode 2
+0DDC: set_mutex_var 1145919711 to 8@
 :prop_skip_12
 0001: wait 100 // Pausa entre grupos de propiedades.
 0004: 0@ = 12
 00D6: if 0
-0038: $727(0@,32i) == 0
+0038: $728(0@,32i) == 0
 004D: jump_if_false @prop_skip_13
-0518: $3083 = create_available_asset_pickup 'PROP_3' at $2922 $2954 $2986 price $3051
-0570: $3019 = create_asset_radar_marker_with_icon 31 at $2922 $2954 $2986
-018B: set_marker $3019 radar_mode 2
+0518: $1685(0@,32i) = create_available_asset_pickup 'PROP_3' at $1524(0@,32f) $1556(0@,32f) $1588(0@,32f) price $1653(0@,32i)
+0570: 8@ = create_asset_radar_marker_with_icon 31 at $1524(0@,32f) $1556(0@,32f) $1588(0@,32f)
+018B: set_marker 8@ radar_mode 2
+0DDC: set_mutex_var 1145919712 to 8@
 :prop_skip_13
 0004: 0@ = 13
 00D6: if 0
-0038: $727(0@,32i) == 0
+0038: $728(0@,32i) == 0
 004D: jump_if_false @prop_skip_14
-0518: $3084 = create_available_asset_pickup 'PROP_3' at $2923 $2955 $2987 price $3052
-0570: $3020 = create_asset_radar_marker_with_icon 31 at $2923 $2955 $2987
-018B: set_marker $3020 radar_mode 2
+0518: $1685(0@,32i) = create_available_asset_pickup 'PROP_3' at $1524(0@,32f) $1556(0@,32f) $1588(0@,32f) price $1653(0@,32i)
+0570: 8@ = create_asset_radar_marker_with_icon 31 at $1524(0@,32f) $1556(0@,32f) $1588(0@,32f)
+018B: set_marker 8@ radar_mode 2
+0DDC: set_mutex_var 1145919713 to 8@
 :prop_skip_14
 0004: 0@ = 14
 00D6: if 0
-0038: $727(0@,32i) == 0
+0038: $728(0@,32i) == 0
 004D: jump_if_false @prop_skip_15
-0518: $3085 = create_available_asset_pickup 'PROP_3' at $2924 $2956 $2988 price $3053
-0570: $3021 = create_asset_radar_marker_with_icon 31 at $2924 $2956 $2988
-018B: set_marker $3021 radar_mode 2
+0518: $1685(0@,32i) = create_available_asset_pickup 'PROP_3' at $1524(0@,32f) $1556(0@,32f) $1588(0@,32f) price $1653(0@,32i)
+0570: 8@ = create_asset_radar_marker_with_icon 31 at $1524(0@,32f) $1556(0@,32f) $1588(0@,32f)
+018B: set_marker 8@ radar_mode 2
+0DDC: set_mutex_var 1145919714 to 8@
 :prop_skip_15
 0004: 0@ = 15
 00D6: if 0
-0038: $727(0@,32i) == 0
+0038: $728(0@,32i) == 0
 004D: jump_if_false @prop_skip_16
-0518: $3086 = create_available_asset_pickup 'PROP_3' at $2925 $2957 $2989 price $3054
-0570: $3022 = create_asset_radar_marker_with_icon 31 at $2925 $2957 $2989
-018B: set_marker $3022 radar_mode 2
+0518: $1685(0@,32i) = create_available_asset_pickup 'PROP_3' at $1524(0@,32f) $1556(0@,32f) $1588(0@,32f) price $1653(0@,32i)
+0570: 8@ = create_asset_radar_marker_with_icon 31 at $1524(0@,32f) $1556(0@,32f) $1588(0@,32f)
+018B: set_marker 8@ radar_mode 2
+0DDC: set_mutex_var 1145919715 to 8@
 :prop_skip_16
 0001: wait 100 // Pausa entre grupos de propiedades.
 0004: 0@ = 16
 00D6: if 0
-0038: $727(0@,32i) == 0
+0038: $728(0@,32i) == 0
 004D: jump_if_false @prop_skip_17
-0518: $3087 = create_available_asset_pickup 'PROP_3' at $2926 $2958 $2990 price $3055
-0570: $3023 = create_asset_radar_marker_with_icon 31 at $2926 $2958 $2990
-018B: set_marker $3023 radar_mode 2
+0518: $1685(0@,32i) = create_available_asset_pickup 'PROP_3' at $1524(0@,32f) $1556(0@,32f) $1588(0@,32f) price $1653(0@,32i)
+0570: 8@ = create_asset_radar_marker_with_icon 31 at $1524(0@,32f) $1556(0@,32f) $1588(0@,32f)
+018B: set_marker 8@ radar_mode 2
+0DDC: set_mutex_var 1145919716 to 8@
 :prop_skip_17
 0004: 0@ = 17
 00D6: if 0
-0038: $727(0@,32i) == 0
+0038: $728(0@,32i) == 0
 004D: jump_if_false @prop_skip_18
-0518: $3088 = create_available_asset_pickup 'PROP_3' at $2927 $2959 $2991 price $3056
-0570: $3024 = create_asset_radar_marker_with_icon 31 at $2927 $2959 $2991
-018B: set_marker $3024 radar_mode 2
+0518: $1685(0@,32i) = create_available_asset_pickup 'PROP_3' at $1524(0@,32f) $1556(0@,32f) $1588(0@,32f) price $1653(0@,32i)
+0570: 8@ = create_asset_radar_marker_with_icon 31 at $1524(0@,32f) $1556(0@,32f) $1588(0@,32f)
+018B: set_marker 8@ radar_mode 2
+0DDC: set_mutex_var 1145919717 to 8@
 :prop_skip_18
 0004: 0@ = 18
 00D6: if 0
-0038: $727(0@,32i) == 0
+0038: $728(0@,32i) == 0
 004D: jump_if_false @prop_skip_19
-0518: $3089 = create_available_asset_pickup 'PROP_3' at $2928 $2960 $2992 price $3057
-0570: $3025 = create_asset_radar_marker_with_icon 31 at $2928 $2960 $2992
-018B: set_marker $3025 radar_mode 2
+0518: $1685(0@,32i) = create_available_asset_pickup 'PROP_3' at $1524(0@,32f) $1556(0@,32f) $1588(0@,32f) price $1653(0@,32i)
+0570: 8@ = create_asset_radar_marker_with_icon 31 at $1524(0@,32f) $1556(0@,32f) $1588(0@,32f)
+018B: set_marker 8@ radar_mode 2
+0DDC: set_mutex_var 1145919718 to 8@
 :prop_skip_19
 0004: 0@ = 19
 00D6: if 0
-0038: $727(0@,32i) == 0
+0038: $728(0@,32i) == 0
 004D: jump_if_false @prop_skip_20
-0518: $3090 = create_available_asset_pickup 'PROP_3' at $2929 $2961 $2993 price $3058
-0570: $3026 = create_asset_radar_marker_with_icon 31 at $2929 $2961 $2993
-018B: set_marker $3026 radar_mode 2
+0518: $1685(0@,32i) = create_available_asset_pickup 'PROP_3' at $1524(0@,32f) $1556(0@,32f) $1588(0@,32f) price $1653(0@,32i)
+0570: 8@ = create_asset_radar_marker_with_icon 31 at $1524(0@,32f) $1556(0@,32f) $1588(0@,32f)
+018B: set_marker 8@ radar_mode 2
+0DDC: set_mutex_var 1145919719 to 8@
 :prop_skip_20
 0001: wait 100 // Pausa entre grupos de propiedades.
 0004: 0@ = 20
 00D6: if 0
-0038: $727(0@,32i) == 0
+0038: $728(0@,32i) == 0
 004D: jump_if_false @prop_skip_21
-0518: $3091 = create_available_asset_pickup 'PROP_3' at $2930 $2962 $2994 price $3059
-0570: $3027 = create_asset_radar_marker_with_icon 31 at $2930 $2962 $2994
-018B: set_marker $3027 radar_mode 2
+0518: $1685(0@,32i) = create_available_asset_pickup 'PROP_3' at $1524(0@,32f) $1556(0@,32f) $1588(0@,32f) price $1653(0@,32i)
+0570: 8@ = create_asset_radar_marker_with_icon 31 at $1524(0@,32f) $1556(0@,32f) $1588(0@,32f)
+018B: set_marker 8@ radar_mode 2
+0DDC: set_mutex_var 1145919720 to 8@
 :prop_skip_21
 0004: 0@ = 21
 00D6: if 0
-0038: $727(0@,32i) == 0
+0038: $728(0@,32i) == 0
 004D: jump_if_false @prop_skip_22
-0518: $3092 = create_available_asset_pickup 'PROP_3' at $2931 $2963 $2995 price $3060
-0570: $3028 = create_asset_radar_marker_with_icon 31 at $2931 $2963 $2995
-018B: set_marker $3028 radar_mode 2
+0518: $1685(0@,32i) = create_available_asset_pickup 'PROP_3' at $1524(0@,32f) $1556(0@,32f) $1588(0@,32f) price $1653(0@,32i)
+0570: 8@ = create_asset_radar_marker_with_icon 31 at $1524(0@,32f) $1556(0@,32f) $1588(0@,32f)
+018B: set_marker 8@ radar_mode 2
+0DDC: set_mutex_var 1145919721 to 8@
 :prop_skip_22
 0004: 0@ = 22
 00D6: if 0
-0038: $727(0@,32i) == 0
+0038: $728(0@,32i) == 0
 004D: jump_if_false @prop_skip_23
-0518: $3093 = create_available_asset_pickup 'PROP_3' at $2932 $2964 $2996 price $3061
-0570: $3029 = create_asset_radar_marker_with_icon 31 at $2932 $2964 $2996
-018B: set_marker $3029 radar_mode 2
+0518: $1685(0@,32i) = create_available_asset_pickup 'PROP_3' at $1524(0@,32f) $1556(0@,32f) $1588(0@,32f) price $1653(0@,32i)
+0570: 8@ = create_asset_radar_marker_with_icon 31 at $1524(0@,32f) $1556(0@,32f) $1588(0@,32f)
+018B: set_marker 8@ radar_mode 2
+0DDC: set_mutex_var 1145919722 to 8@
 :prop_skip_23
 0004: 0@ = 23
 00D6: if 0
-0038: $727(0@,32i) == 0
+0038: $728(0@,32i) == 0
 004D: jump_if_false @prop_skip_24
-0518: $3094 = create_available_asset_pickup 'PROP_3' at $2933 $2965 $2997 price $3062
-0570: $3030 = create_asset_radar_marker_with_icon 31 at $2933 $2965 $2997
-018B: set_marker $3030 radar_mode 2
+0518: $1685(0@,32i) = create_available_asset_pickup 'PROP_3' at $1524(0@,32f) $1556(0@,32f) $1588(0@,32f) price $1653(0@,32i)
+0570: 8@ = create_asset_radar_marker_with_icon 31 at $1524(0@,32f) $1556(0@,32f) $1588(0@,32f)
+018B: set_marker 8@ radar_mode 2
+0DDC: set_mutex_var 1145919723 to 8@
 :prop_skip_24
 0001: wait 100 // Pausa entre grupos de propiedades.
 0004: 0@ = 24
 00D6: if 0
-0038: $727(0@,32i) == 0
+0038: $728(0@,32i) == 0
 004D: jump_if_false @prop_skip_25
-0518: $3095 = create_available_asset_pickup 'PROP_3' at $2934 $2966 $2998 price $3063
-0570: $3031 = create_asset_radar_marker_with_icon 31 at $2934 $2966 $2998
-018B: set_marker $3031 radar_mode 2
+0518: $1685(0@,32i) = create_available_asset_pickup 'PROP_3' at $1524(0@,32f) $1556(0@,32f) $1588(0@,32f) price $1653(0@,32i)
+0570: 8@ = create_asset_radar_marker_with_icon 31 at $1524(0@,32f) $1556(0@,32f) $1588(0@,32f)
+018B: set_marker 8@ radar_mode 2
+0DDC: set_mutex_var 1145919724 to 8@
 :prop_skip_25
 0004: 0@ = 25
 00D6: if 0
-0038: $727(0@,32i) == 0
+0038: $728(0@,32i) == 0
 004D: jump_if_false @prop_skip_26
-0518: $3096 = create_available_asset_pickup 'PROP_3' at $2935 $2967 $2999 price $3064
-0570: $3032 = create_asset_radar_marker_with_icon 31 at $2935 $2967 $2999
-018B: set_marker $3032 radar_mode 2
+0518: $1685(0@,32i) = create_available_asset_pickup 'PROP_3' at $1524(0@,32f) $1556(0@,32f) $1588(0@,32f) price $1653(0@,32i)
+0570: 8@ = create_asset_radar_marker_with_icon 31 at $1524(0@,32f) $1556(0@,32f) $1588(0@,32f)
+018B: set_marker 8@ radar_mode 2
+0DDC: set_mutex_var 1145919725 to 8@
 :prop_skip_26
 0004: 0@ = 26
 00D6: if 0
-0038: $727(0@,32i) == 0
+0038: $728(0@,32i) == 0
 004D: jump_if_false @prop_skip_27
-0518: $3097 = create_available_asset_pickup 'PROP_3' at $2936 $2968 $3000 price $3065
-0570: $3033 = create_asset_radar_marker_with_icon 31 at $2936 $2968 $3000
-018B: set_marker $3033 radar_mode 2
+0518: $1685(0@,32i) = create_available_asset_pickup 'PROP_3' at $1524(0@,32f) $1556(0@,32f) $1588(0@,32f) price $1653(0@,32i)
+0570: 8@ = create_asset_radar_marker_with_icon 31 at $1524(0@,32f) $1556(0@,32f) $1588(0@,32f)
+018B: set_marker 8@ radar_mode 2
+0DDC: set_mutex_var 1145919726 to 8@
 :prop_skip_27
 0004: 0@ = 27
 00D6: if 0
-0038: $727(0@,32i) == 0
+0038: $728(0@,32i) == 0
 004D: jump_if_false @prop_skip_28
-0518: $3098 = create_available_asset_pickup 'PROP_3' at $2937 $2969 $3001 price $3066
-0570: $3034 = create_asset_radar_marker_with_icon 31 at $2937 $2969 $3001
-018B: set_marker $3034 radar_mode 2
+0518: $1685(0@,32i) = create_available_asset_pickup 'PROP_3' at $1524(0@,32f) $1556(0@,32f) $1588(0@,32f) price $1653(0@,32i)
+0570: 8@ = create_asset_radar_marker_with_icon 31 at $1524(0@,32f) $1556(0@,32f) $1588(0@,32f)
+018B: set_marker 8@ radar_mode 2
+0DDC: set_mutex_var 1145919727 to 8@
 :prop_skip_28
 0001: wait 100 // Pausa entre grupos de propiedades.
 0004: 0@ = 28
 00D6: if 0
-0038: $727(0@,32i) == 0
+0038: $728(0@,32i) == 0
 004D: jump_if_false @prop_skip_29
-0518: $3099 = create_available_asset_pickup 'PROP_3' at $2938 $2970 $3002 price $3067
-0570: $3035 = create_asset_radar_marker_with_icon 31 at $2938 $2970 $3002
-018B: set_marker $3035 radar_mode 2
+0518: $1685(0@,32i) = create_available_asset_pickup 'PROP_3' at $1524(0@,32f) $1556(0@,32f) $1588(0@,32f) price $1653(0@,32i)
+0570: 8@ = create_asset_radar_marker_with_icon 31 at $1524(0@,32f) $1556(0@,32f) $1588(0@,32f)
+018B: set_marker 8@ radar_mode 2
+0DDC: set_mutex_var 1145919728 to 8@
 :prop_skip_29
 0004: 0@ = 29
 00D6: if 0
-0038: $727(0@,32i) == 0
+0038: $728(0@,32i) == 0
 004D: jump_if_false @prop_skip_30
-0518: $3100 = create_available_asset_pickup 'PROP_3' at $2939 $2971 $3003 price $3068
-0570: $3036 = create_asset_radar_marker_with_icon 31 at $2939 $2971 $3003
-018B: set_marker $3036 radar_mode 2
+0518: $1685(0@,32i) = create_available_asset_pickup 'PROP_3' at $1524(0@,32f) $1556(0@,32f) $1588(0@,32f) price $1653(0@,32i)
+0570: 8@ = create_asset_radar_marker_with_icon 31 at $1524(0@,32f) $1556(0@,32f) $1588(0@,32f)
+018B: set_marker 8@ radar_mode 2
+0DDC: set_mutex_var 1145919729 to 8@
 :prop_skip_30
 0004: 0@ = 30
 00D6: if 0
-0038: $727(0@,32i) == 0
+0038: $728(0@,32i) == 0
 004D: jump_if_false @prop_skip_31
-0518: $3101 = create_available_asset_pickup 'PROP_3' at $2940 $2972 $3004 price $3069
-0570: $3037 = create_asset_radar_marker_with_icon 31 at $2940 $2972 $3004
-018B: set_marker $3037 radar_mode 2
+0518: $1685(0@,32i) = create_available_asset_pickup 'PROP_3' at $1524(0@,32f) $1556(0@,32f) $1588(0@,32f) price $1653(0@,32i)
+0570: 8@ = create_asset_radar_marker_with_icon 31 at $1524(0@,32f) $1556(0@,32f) $1588(0@,32f)
+018B: set_marker 8@ radar_mode 2
+0DDC: set_mutex_var 1145919730 to 8@
 :prop_skip_31
 0004: 0@ = 31
 00D6: if 0
-0038: $727(0@,32i) == 0
+0038: $728(0@,32i) == 0
 004D: jump_if_false @prop_skip_32
-0518: $3102 = create_available_asset_pickup 'PROP_3' at $2941 $2973 $3005 price $3070
-0570: $3038 = create_asset_radar_marker_with_icon 31 at $2941 $2973 $3005
-018B: set_marker $3038 radar_mode 2
+0518: $1685(0@,32i) = create_available_asset_pickup 'PROP_3' at $1524(0@,32f) $1556(0@,32f) $1588(0@,32f) price $1653(0@,32i)
+0570: 8@ = create_asset_radar_marker_with_icon 31 at $1524(0@,32f) $1556(0@,32f) $1588(0@,32f)
+018B: set_marker 8@ radar_mode 2
+0DDC: set_mutex_var 1145919731 to 8@
 :prop_skip_32
 0001: wait 100 // Pausa entre grupos de propiedades.
 // MARCADORES DE COMERCIOS Y TALLERES: accesibles desde una partida nueva.
