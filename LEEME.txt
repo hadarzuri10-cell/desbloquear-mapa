@@ -1,22 +1,29 @@
-DESBLOQUEAR MAPA — PAQUETE DE PRUEBA v1.4.2
+DESBLOQUEAR MAPA — CANDIDATO DE DESARROLLO v1.4.3
 
-CONTENIDO
+CONTENIDO DEL PAQUETE
 - cleo/Desbloquear Mapa.csi
 - cleo/Desbloquear Mapa.fxt
 - LEEME.txt (raíz del ZIP)
 - VALIDACION_ESTATICA.txt (raíz del ZIP)
 
-INSTALACIÓN DE PRUEBA
+INSTALACIÓN (SOLO CUANDO SE AUTORICE UNA PRUEBA)
 1. Extrae el ZIP del artefacto.
-2. Copia únicamente Desbloquear Mapa.csi y Desbloquear Mapa.fxt de la carpeta cleo/ a la carpeta CLEO donde están los demás scripts de GTA San Andreas.
-3. Mantén Desbloquear Mapa.csi y Desbloquear Mapa.fxt juntos. El FXT contiene los textos de los mensajes; si falta o no se carga, el juego puede mostrar las claves MAPLOAD, MAPPROC, MAPRDY o MAPERR.
+2. Copia únicamente Desbloquear Mapa.csi y Desbloquear Mapa.fxt de la carpeta cleo/ a la carpeta CLEO de GTA San Andreas.
+3. Mantén ambos archivos juntos. El FXT contiene los textos de los mensajes; si no se carga, podrían mostrarse las claves MAPLOAD, MAPPROC, MAPRDY o MAPERR.
 4. Ejecuta el script desde el menú CLEO.
-5. Prueba únicamente en una partida nueva de prueba. No uses la partida principal.
-6. Comprueba por separado que aparezcan los iconos de barberías, comida, ropa y talleres, y que se pueda entrar a los establecimientos. Los iconos de los talleres no garantizan que sus puertas estén activadas.
+5. Si se autoriza una prueba, utiliza exclusivamente una partida nueva de prueba, nunca la partida principal.
+6. Comprueba por separado la aparición de iconos y el acceso/funcionamiento de los establecimientos.
 
-IMPORTANTE
-- Incluye 58 marcadores de comercios y talleres; sus posiciones y aparición real deben comprobarse dentro del juego.
-- Este es un candidato de prueba, no una versión declarada estable.
-- La compilación correcta no demuestra que funcione dentro del juego.
-- Si el juego se cierra, no repitas la prueba en la partida principal.
-- No se debe considerar MAP READY como éxito si después aparece MAP ERROR o el juego se cierra.
+CONTENIDO FUNCIONAL PREVISTO
+- 32 pickups y 32 marcadores de propiedades.
+- 58 marcadores comerciales: barberías, comida, ropa y talleres.
+- 3 marcadores de gimnasios: Ganton Gym, Cobra Martial Arts Gym y Below the Belt Gym.
+- Acceso habilitado por script a los interiores de los tres gimnasios y otros establecimientos.
+- Mensajes completos: MAP LOADING, MAP PROCESSING, MAP READY y MAP ERROR.
+
+ESTADO
+- Este paquete es un candidato de desarrollo, NO una versión declarada estable ni lista para instalar.
+- La compilación correcta solo confirma que el compilador generó el archivo; no demuestra estabilidad dentro del juego.
+- La aparición de los marcadores de gimnasios, la entrada a los gimnasios y el entrenamiento real todavía requieren validación dentro del juego.
+- No se debe considerar MAP READY como éxito si después aparece MAP ERROR, el juego se cierra o el teléfono se reinicia.
+- Debido a los cierres anteriores, no repetir pruebas hasta completar la auditoría y autorizar expresamente una prueba controlada.
