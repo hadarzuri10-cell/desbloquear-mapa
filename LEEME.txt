@@ -3,11 +3,12 @@ DESBLOQUEAR MAPA — PAQUETE DE PRUEBA v1.4.2
 CONTENIDO
 - cleo/Desbloquear Mapa.csi
 - cleo/Desbloquear Mapa.fxt
-- cleo/VALIDACION_ESTATICA.txt
+- LEEME.txt (raíz del ZIP)
+- VALIDACION_ESTATICA.txt (raíz del ZIP)
 
 INSTALACIÓN DE PRUEBA
 1. Extrae el ZIP del artefacto.
-2. Copia los archivos de la carpeta cleo/ a la misma carpeta CLEO donde están los demás scripts de GTA San Andreas.
+2. Copia únicamente Desbloquear Mapa.csi y Desbloquear Mapa.fxt de la carpeta cleo/ a la carpeta CLEO donde están los demás scripts de GTA San Andreas.
 3. Mantén Desbloquear Mapa.csi y Desbloquear Mapa.fxt juntos. El FXT contiene los textos de los mensajes; si falta o no se carga, el juego puede mostrar las claves MAPLOAD, MAPPROC, MAPRDY o MAPERR.
 4. Ejecuta el script desde el menú CLEO.
 5. Prueba únicamente en una partida nueva de prueba. No uses la partida principal.
