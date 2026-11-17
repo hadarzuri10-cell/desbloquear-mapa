@@ -1038,6 +1038,28 @@
 0164: disable_marker 9@
 0DDC: set_mutex_var 7557 to 0
 :business_marker_old_58_skip
+// LIMPIEZA DE ICONOS DE GIMNASIOS DE UNA EJECUCIÓN ANTERIOR.
+0DDD: 9@ = get_mutex_var 7560
+00D6: if 0
+0039: 9@ <> 0
+004D: jump_if_false @gym_marker_old_1_skip
+0164: disable_marker 9@
+0DDC: set_mutex_var 7560 to 0
+:gym_marker_old_1_skip
+0DDD: 9@ = get_mutex_var 7561
+00D6: if 0
+0039: 9@ <> 0
+004D: jump_if_false @gym_marker_old_2_skip
+0164: disable_marker 9@
+0DDC: set_mutex_var 7561 to 0
+:gym_marker_old_2_skip
+0DDD: 9@ = get_mutex_var 7562
+00D6: if 0
+0039: 9@ <> 0
+004D: jump_if_false @gym_marker_old_3_skip
+0164: disable_marker 9@
+0DDC: set_mutex_var 7562 to 0
+:gym_marker_old_3_skip
 // BARBERÍAS
 0005: 5@ = 2070.2703
 0005: 6@ = -1791.0918
@@ -1412,6 +1434,30 @@
 0570: 8@ = create_asset_radar_marker_with_icon 27 at 5@ 6@ 7@
 0DDC: set_mutex_var 7557 to 8@
 018B: set_marker 8@ radar_mode 2
+// ICONOS DE LOS TRES GIMNASIOS (RADAR_SPRITE_GYM = 54).
+// Coordenadas exteriores de las puertas; handles persistidos en 7560-7562.
+// GANTON GYM
+0005: 5@ = 2229.63
+0005: 6@ = -1721.63
+0005: 7@ = 12.65
+0570: 8@ = create_asset_radar_marker_with_icon 54 at 5@ 6@ 7@
+0DDC: set_mutex_var 7560 to 8@
+018B: set_marker 8@ radar_mode 2
+// COBRA MARITAL ARTS GYM
+0005: 5@ = -2270.46
+0005: 6@ = -155.96
+0005: 7@ = 34.36
+0570: 8@ = create_asset_radar_marker_with_icon 54 at 5@ 6@ 7@
+0DDC: set_mutex_var 7561 to 8@
+018B: set_marker 8@ radar_mode 2
+// BELOW THE BELT GYM
+0005: 5@ = 1968.70
+0005: 6@ = 2295.30
+0005: 7@ = 15.50
+0570: 8@ = create_asset_radar_marker_with_icon 54 at 5@ 6@ 7@
+0DDC: set_mutex_var 7562 to 8@
+018B: set_marker 8@ radar_mode 2
+0001: wait 100 // Pausa después de crear los tres iconos de gimnasios.
 07FB: set_interior 'BARBERS' access 1
 07FB: set_interior 'BARBER2' access 1
 07FB: set_interior 'BARBER3' access 1
