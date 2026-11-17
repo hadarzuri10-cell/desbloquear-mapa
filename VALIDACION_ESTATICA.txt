@@ -73,14 +73,14 @@ DEFENSIVE PICKUP CLEANUP
 ICONOS DE GIMNASIOS — IMPLEMENTACIÓN
 - Se usa el sprite oficial RADAR_SPRITE_GYM, ID 54.
 - Coordenadas exteriores: Ganton Gym 2229.63, -1721.63, 12.65; Cobra Marital Arts Gym -2270.46, -155.96, 34.36; Below the Belt Gym 1968.70, 2295.30, 15.50.
-- Los tres handles se guardan en mutex vars 7560–7562 y se limpian antes de recrearse.
+- Los tres handles se guardan en mutex vars 1145919860–1145919862 y se limpian antes de recrearse.
 - 07FB mantiene el acceso de interiores GYM1/GYM2/GYM3. La creación del blip no modifica ni simula el sistema de entrenamiento; la funcionalidad real debe verificarse dentro del juego.
 
 
 PROTECCIÓN CONTRA REEJECUCIÓN TRAS MAP READY
 - Se reserva mutex var 7414 como bandera de finalización de esta sesión. Si el script vuelve a iniciarse después de MAP READY, termina silenciosamente en vez de volver a entrar en la comprobación $ONMISSION y mostrar MAP ERROR.
 - Mutex var 7413 sigue siendo el bloqueo de ejecución simultánea. La ruta de misión activa libera 7413 sin marcar 7414, permitiendo un intento posterior cuando sea seguro.
-- Al completar MAP READY, se marca 7414=1 y se libera 7413. Las mutex vars se reinician al cerrar completamente el proceso del juego; si el usuario carga otra partida sin reiniciar GTA, el script no se volverá a ejecutar en esa misma sesión.
+- Al completar MAP READY, se marca 7414=1 y se libera 7413. Se espera que las mutex vars se reinicien al cerrar completamente el proceso del juego, pero este comportamiento aún no se ha validado en el dispositivo del usuario. Si se carga otra partida sin reiniciar GTA, la bandera de finalización podría impedir una nueva ejecución en esa misma sesión.
 - Esta protección busca evitar una segunda ejecución tardía; no demuestra por sí sola que el crash del juego/teléfono esté resuelto.
 
 
