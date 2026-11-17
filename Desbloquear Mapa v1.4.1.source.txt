@@ -3,6 +3,14 @@
 // Adquirir el bloqueo inmediatamente al iniciar el hilo.
 // Una segunda instancia no debe esperar hasta el final de MAP READY
 // para comprobar la misión y mostrar un MAP ERROR falso.
+// Impedir que una segunda ejecución tardía vuelva a procesar el mapa
+// después de que la primera haya terminado MAP READY.
+0DDD: 0@ = get_mutex_var 7414
+00D6: if 0
+0039: 0@ <> 0
+004D: jump_if_false @check_running_mutex
+004D: jump @already_running
+:check_running_mutex
 0DDD: 0@ = get_mutex_var 7413
 00D6: if 0
 0038: 0@ == 0
@@ -1498,6 +1506,8 @@
 00D6: if 0
 0029: 2@ >= 5000
 004D: jump_if_false @ready_draw
+// Marcar el mapa como procesado durante esta sesión del juego.
+0DDC: set_mutex_var 7414 to 1
 0DDC: set_mutex_var 7413 to 0
 :already_running
 0A93: end_custom_thread
