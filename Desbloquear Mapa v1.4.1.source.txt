@@ -166,268 +166,236 @@
 0DD9: write_mem_addr 0x0098D2B5 value 1 size 1 add_ib 1 protect 0
 0DD9: write_mem_addr 0x0098D2B8 value 100 size 4 add_ib 1 protect 0
 0629: change_integer_stat 181 to 4
-00D6: if 0
 0004: 0@ = 0
 00D6: if 0
 09D1: pickup $1685(0@,32i) created
-004D: jump_if_false @skip_destroy_3071
+004D: jump_if_false @skip_property_pickup_0
 0215: destroy_pickup $1685(0@,32i)
-:skip_destroy_3071
+:skip_property_pickup_0
 0004: $1685(0@,32i) = 0
-00D6: if 0
 0004: 0@ = 1
 00D6: if 0
 09D1: pickup $1685(0@,32i) created
-004D: jump_if_false @skip_destroy_3072
+004D: jump_if_false @skip_property_pickup_1
 0215: destroy_pickup $1685(0@,32i)
-:skip_destroy_3072
+:skip_property_pickup_1
 0004: $1685(0@,32i) = 0
-00D6: if 0
 0004: 0@ = 2
 00D6: if 0
 09D1: pickup $1685(0@,32i) created
-004D: jump_if_false @skip_destroy_3073
+004D: jump_if_false @skip_property_pickup_2
 0215: destroy_pickup $1685(0@,32i)
-:skip_destroy_3073
+:skip_property_pickup_2
 0004: $1685(0@,32i) = 0
-00D6: if 0
 0004: 0@ = 3
 00D6: if 0
 09D1: pickup $1685(0@,32i) created
-004D: jump_if_false @skip_destroy_3074
+004D: jump_if_false @skip_property_pickup_3
 0215: destroy_pickup $1685(0@,32i)
-:skip_destroy_3074
+:skip_property_pickup_3
 0004: $1685(0@,32i) = 0
-00D6: if 0
 0004: 0@ = 4
 00D6: if 0
 09D1: pickup $1685(0@,32i) created
-004D: jump_if_false @skip_destroy_3075
+004D: jump_if_false @skip_property_pickup_4
 0215: destroy_pickup $1685(0@,32i)
-:skip_destroy_3075
+:skip_property_pickup_4
 0004: $1685(0@,32i) = 0
-00D6: if 0
 0004: 0@ = 5
 00D6: if 0
 09D1: pickup $1685(0@,32i) created
-004D: jump_if_false @skip_destroy_3076
+004D: jump_if_false @skip_property_pickup_5
 0215: destroy_pickup $1685(0@,32i)
-:skip_destroy_3076
+:skip_property_pickup_5
 0004: $1685(0@,32i) = 0
-00D6: if 0
 0004: 0@ = 6
 00D6: if 0
 09D1: pickup $1685(0@,32i) created
-004D: jump_if_false @skip_destroy_3077
+004D: jump_if_false @skip_property_pickup_6
 0215: destroy_pickup $1685(0@,32i)
-:skip_destroy_3077
+:skip_property_pickup_6
 0004: $1685(0@,32i) = 0
-00D6: if 0
 0004: 0@ = 7
 00D6: if 0
 09D1: pickup $1685(0@,32i) created
-004D: jump_if_false @skip_destroy_3078
+004D: jump_if_false @skip_property_pickup_7
 0215: destroy_pickup $1685(0@,32i)
-:skip_destroy_3078
+:skip_property_pickup_7
 0004: $1685(0@,32i) = 0
-0001: wait 100 // Pausa: liberar un ciclo entre grupos de limpieza.
-00D6: if 0
+0001: wait 100 // Pausa: limpieza escalonada de pickups de propiedades.
 0004: 0@ = 8
 00D6: if 0
 09D1: pickup $1685(0@,32i) created
-004D: jump_if_false @skip_destroy_3079
+004D: jump_if_false @skip_property_pickup_8
 0215: destroy_pickup $1685(0@,32i)
-:skip_destroy_3079
+:skip_property_pickup_8
 0004: $1685(0@,32i) = 0
-00D6: if 0
 0004: 0@ = 9
 00D6: if 0
 09D1: pickup $1685(0@,32i) created
-004D: jump_if_false @skip_destroy_3080
+004D: jump_if_false @skip_property_pickup_9
 0215: destroy_pickup $1685(0@,32i)
-:skip_destroy_3080
+:skip_property_pickup_9
 0004: $1685(0@,32i) = 0
-00D6: if 0
 0004: 0@ = 10
 00D6: if 0
 09D1: pickup $1685(0@,32i) created
-004D: jump_if_false @skip_destroy_3081
+004D: jump_if_false @skip_property_pickup_10
 0215: destroy_pickup $1685(0@,32i)
-:skip_destroy_3081
+:skip_property_pickup_10
 0004: $1685(0@,32i) = 0
-00D6: if 0
 0004: 0@ = 11
 00D6: if 0
 09D1: pickup $1685(0@,32i) created
-004D: jump_if_false @skip_destroy_3082
+004D: jump_if_false @skip_property_pickup_11
 0215: destroy_pickup $1685(0@,32i)
-:skip_destroy_3082
+:skip_property_pickup_11
 0004: $1685(0@,32i) = 0
-00D6: if 0
 0004: 0@ = 12
 00D6: if 0
 09D1: pickup $1685(0@,32i) created
-004D: jump_if_false @skip_destroy_3083
+004D: jump_if_false @skip_property_pickup_12
 0215: destroy_pickup $1685(0@,32i)
-:skip_destroy_3083
+:skip_property_pickup_12
 0004: $1685(0@,32i) = 0
-00D6: if 0
 0004: 0@ = 13
 00D6: if 0
 09D1: pickup $1685(0@,32i) created
-004D: jump_if_false @skip_destroy_3084
+004D: jump_if_false @skip_property_pickup_13
 0215: destroy_pickup $1685(0@,32i)
-:skip_destroy_3084
+:skip_property_pickup_13
 0004: $1685(0@,32i) = 0
-00D6: if 0
 0004: 0@ = 14
 00D6: if 0
 09D1: pickup $1685(0@,32i) created
-004D: jump_if_false @skip_destroy_3085
+004D: jump_if_false @skip_property_pickup_14
 0215: destroy_pickup $1685(0@,32i)
-:skip_destroy_3085
+:skip_property_pickup_14
 0004: $1685(0@,32i) = 0
-00D6: if 0
 0004: 0@ = 15
 00D6: if 0
 09D1: pickup $1685(0@,32i) created
-004D: jump_if_false @skip_destroy_3086
+004D: jump_if_false @skip_property_pickup_15
 0215: destroy_pickup $1685(0@,32i)
-:skip_destroy_3086
+:skip_property_pickup_15
 0004: $1685(0@,32i) = 0
-0001: wait 100 // Pausa: liberar un ciclo entre grupos de limpieza.
-00D6: if 0
+0001: wait 100 // Pausa: limpieza escalonada de pickups de propiedades.
 0004: 0@ = 16
 00D6: if 0
 09D1: pickup $1685(0@,32i) created
-004D: jump_if_false @skip_destroy_3087
+004D: jump_if_false @skip_property_pickup_16
 0215: destroy_pickup $1685(0@,32i)
-:skip_destroy_3087
+:skip_property_pickup_16
 0004: $1685(0@,32i) = 0
-00D6: if 0
 0004: 0@ = 17
 00D6: if 0
 09D1: pickup $1685(0@,32i) created
-004D: jump_if_false @skip_destroy_3088
+004D: jump_if_false @skip_property_pickup_17
 0215: destroy_pickup $1685(0@,32i)
-:skip_destroy_3088
+:skip_property_pickup_17
 0004: $1685(0@,32i) = 0
-00D6: if 0
 0004: 0@ = 18
 00D6: if 0
 09D1: pickup $1685(0@,32i) created
-004D: jump_if_false @skip_destroy_3089
+004D: jump_if_false @skip_property_pickup_18
 0215: destroy_pickup $1685(0@,32i)
-:skip_destroy_3089
+:skip_property_pickup_18
 0004: $1685(0@,32i) = 0
-00D6: if 0
 0004: 0@ = 19
 00D6: if 0
 09D1: pickup $1685(0@,32i) created
-004D: jump_if_false @skip_destroy_3090
+004D: jump_if_false @skip_property_pickup_19
 0215: destroy_pickup $1685(0@,32i)
-:skip_destroy_3090
+:skip_property_pickup_19
 0004: $1685(0@,32i) = 0
-00D6: if 0
 0004: 0@ = 20
 00D6: if 0
 09D1: pickup $1685(0@,32i) created
-004D: jump_if_false @skip_destroy_3091
+004D: jump_if_false @skip_property_pickup_20
 0215: destroy_pickup $1685(0@,32i)
-:skip_destroy_3091
+:skip_property_pickup_20
 0004: $1685(0@,32i) = 0
-00D6: if 0
 0004: 0@ = 21
 00D6: if 0
 09D1: pickup $1685(0@,32i) created
-004D: jump_if_false @skip_destroy_3092
+004D: jump_if_false @skip_property_pickup_21
 0215: destroy_pickup $1685(0@,32i)
-:skip_destroy_3092
+:skip_property_pickup_21
 0004: $1685(0@,32i) = 0
-00D6: if 0
 0004: 0@ = 22
 00D6: if 0
 09D1: pickup $1685(0@,32i) created
-004D: jump_if_false @skip_destroy_3093
+004D: jump_if_false @skip_property_pickup_22
 0215: destroy_pickup $1685(0@,32i)
-:skip_destroy_3093
+:skip_property_pickup_22
 0004: $1685(0@,32i) = 0
-00D6: if 0
 0004: 0@ = 23
 00D6: if 0
 09D1: pickup $1685(0@,32i) created
-004D: jump_if_false @skip_destroy_3094
+004D: jump_if_false @skip_property_pickup_23
 0215: destroy_pickup $1685(0@,32i)
-:skip_destroy_3094
+:skip_property_pickup_23
 0004: $1685(0@,32i) = 0
-0001: wait 100 // Pausa: liberar un ciclo entre grupos de limpieza.
-00D6: if 0
+0001: wait 100 // Pausa: limpieza escalonada de pickups de propiedades.
 0004: 0@ = 24
 00D6: if 0
 09D1: pickup $1685(0@,32i) created
-004D: jump_if_false @skip_destroy_3095
+004D: jump_if_false @skip_property_pickup_24
 0215: destroy_pickup $1685(0@,32i)
-:skip_destroy_3095
+:skip_property_pickup_24
 0004: $1685(0@,32i) = 0
-00D6: if 0
 0004: 0@ = 25
 00D6: if 0
 09D1: pickup $1685(0@,32i) created
-004D: jump_if_false @skip_destroy_3096
+004D: jump_if_false @skip_property_pickup_25
 0215: destroy_pickup $1685(0@,32i)
-:skip_destroy_3096
+:skip_property_pickup_25
 0004: $1685(0@,32i) = 0
-00D6: if 0
 0004: 0@ = 26
 00D6: if 0
 09D1: pickup $1685(0@,32i) created
-004D: jump_if_false @skip_destroy_3097
+004D: jump_if_false @skip_property_pickup_26
 0215: destroy_pickup $1685(0@,32i)
-:skip_destroy_3097
+:skip_property_pickup_26
 0004: $1685(0@,32i) = 0
-00D6: if 0
 0004: 0@ = 27
 00D6: if 0
 09D1: pickup $1685(0@,32i) created
-004D: jump_if_false @skip_destroy_3098
+004D: jump_if_false @skip_property_pickup_27
 0215: destroy_pickup $1685(0@,32i)
-:skip_destroy_3098
+:skip_property_pickup_27
 0004: $1685(0@,32i) = 0
-00D6: if 0
 0004: 0@ = 28
 00D6: if 0
 09D1: pickup $1685(0@,32i) created
-004D: jump_if_false @skip_destroy_3099
+004D: jump_if_false @skip_property_pickup_28
 0215: destroy_pickup $1685(0@,32i)
-:skip_destroy_3099
+:skip_property_pickup_28
 0004: $1685(0@,32i) = 0
-00D6: if 0
 0004: 0@ = 29
 00D6: if 0
 09D1: pickup $1685(0@,32i) created
-004D: jump_if_false @skip_destroy_3100
+004D: jump_if_false @skip_property_pickup_29
 0215: destroy_pickup $1685(0@,32i)
-:skip_destroy_3100
+:skip_property_pickup_29
 0004: $1685(0@,32i) = 0
-00D6: if 0
 0004: 0@ = 30
 00D6: if 0
 09D1: pickup $1685(0@,32i) created
-004D: jump_if_false @skip_destroy_3101
+004D: jump_if_false @skip_property_pickup_30
 0215: destroy_pickup $1685(0@,32i)
-:skip_destroy_3101
+:skip_property_pickup_30
 0004: $1685(0@,32i) = 0
-00D6: if 0
 0004: 0@ = 31
 00D6: if 0
 09D1: pickup $1685(0@,32i) created
-004D: jump_if_false @skip_destroy_3102
+004D: jump_if_false @skip_property_pickup_31
 0215: destroy_pickup $1685(0@,32i)
-:skip_destroy_3102
+:skip_property_pickup_31
 0004: $1685(0@,32i) = 0
-0001: wait 100 // Pausa: liberar un ciclo entre grupos de limpieza.
+0001: wait 100 // Pausa: limpieza escalonada de pickups de propiedades.
 // Limpieza de marcadores de propiedades creados por una ejecución anterior.
-// Sus handles se conservan fuera de las variables globales del juego.
+// Los handles se conservan en mutex vars 1145919700-1145919731, sin ocupar globals del juego.
 0DDD: 9@ = get_mutex_var 1145919700
 00D6: if 0
 0039: 9@ <> 0
