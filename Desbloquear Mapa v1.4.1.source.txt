@@ -602,6 +602,8 @@
 0DDC: set_mutex_var 1145919731 to 0
 :property_marker_old_32_skip
 
+// Los índices 0-2 (Showroom, Zero's y Airstrip) son pickups bloqueados originales; no se modifican.
+// Solo se procesan las 29 propiedades en venta, índices 3-31.
 0004: 0@ = 3
 00D6: if 0
 0038: $728(0@,32i) == 0
