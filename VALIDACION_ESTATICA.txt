@@ -34,7 +34,7 @@ AUDITORÍA CRÍTICA DE VARIABLES GLOBALES — CORREGIDA EN LA FUENTE ACTUAL
 - La auditoría encontró que la fuente anterior usaba variables globales pertenecientes a arrays de pickups coleccionables como si fueran coordenadas, precios y handles de propiedades. En concreto, los rangos 2910–3005 y 3039–3102 se superponían con los arrays originales de herraduras, fotografías, ostras y armas; esto podía sobrescribir handles del juego y era un candidato serio a los fallos observados.
 - La fuente actual utiliza las arrays reales declaradas por el juego: `propertyX` (base 1524), `propertyY` (1556), `propertyZ` (1588), `save_houseprice` (1653), `save_housepickup` (1685) y `already_bought_house` (728), siempre con índices 0–31.
 - La limpieza de pickups ahora comprueba y destruye únicamente los handles de `save_housepickup[3..31]` y pone cada slot a cero antes de recrear las propiedades en venta. Conserva intactos los tres pickups bloqueados de `save_housepickup[0..2]`. Ya no destruye los handles de `pickup_weapon[39..70]` ni altera los arrays de coleccionables.
-- Los 32 marcadores de propiedades ya no se guardan en globals del juego como 65, 526, 54 y 3010–3038. Sus handles se guardan y limpian en mutex vars 1145919700–1145919731. Se eliminó la limpieza antigua que deshabilitaba esas variables globales.
+- Los 32 marcadores de propiedades ya no se guardan en globals del juego como 65, 526, 54 y 3010–3038. Sus handles se guardan y limpian en mutex vars 1145919700–1145919728. Se eliminó la limpieza antigua que deshabilitaba esas variables globales.
 - Esta corrección elimina colisiones estáticas identificadas en la fuente, pero no prueba que el juego sea estable ni demuestra que sea la única causa del crash. Requiere compilación, inspección del artefacto y validación controlada posterior; no instalar todavía.
 
 COMERCIOS Y TALLERES
@@ -63,7 +63,7 @@ PRUEBAS
 
 PLAN DE PROCESAMIENTO ESCALONADO (revisión de estabilidad)
 - Se añadieron pausas de 100 ms tras cada grupo de 8 limpiezas de pickups de propiedades (29 operaciones, 3 pausas).
-- Se añadieron pausas de 100 ms tras cada grupo de 8 handles de marcadores de propiedades anteriores (32 slots, 3 pausas) y de marcadores comerciales anteriores (58 handles, 7 pausas).
+- Se añadieron pausas de 100 ms tras cada grupo de 8 handles de marcadores de propiedades anteriores (29 handles, 3 pausas) y de marcadores comerciales anteriores (58 handles, 7 pausas).
 - Se añadieron pausas de 100 ms entre grupos de propiedades en venta (8 pausas para los índices 3–31).
 - Se añadieron pausas de 100 ms después de cada 3 iconos comerciales (19 pausas para 58 iconos).
 - Tiempo adicional nominal aproximado: 4.1 segundos; el tiempo real depende de la ejecución y de las condiciones del juego.
