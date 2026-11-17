@@ -5,17 +5,17 @@
 // para comprobar la misión y mostrar un MAP ERROR falso.
 // Impedir que una segunda ejecución tardía vuelva a procesar el mapa
 // después de que la primera haya terminado MAP READY.
-0DDD: 0@ = get_mutex_var 7414
+0DDD: 0@ = get_mutex_var 1145919745
 00D6: if 0
 0039: 0@ <> 0
 004D: jump_if_false @check_running_mutex
 004D: jump @already_running
 :check_running_mutex
-0DDD: 0@ = get_mutex_var 7413
+0DDD: 0@ = get_mutex_var 1145919744
 00D6: if 0
 0038: 0@ == 0
 004D: jump_if_false @already_running
-0DDC: set_mutex_var 7413 to 1
+0DDC: set_mutex_var 1145919744 to 1
 // El bloqueo ya pertenece a esta instancia; ahora se comprueba la misión.
 00D6: if 0
 0038: $ONMISSION == 0
@@ -633,478 +633,478 @@
 // MARCADORES DE COMERCIOS Y TALLERES: accesibles desde una partida nueva.
 // Limpieza de marcadores comerciales de una ejecución anterior.
 // Los handles se guardan en mutex vars 7500-7557 para conservarlos entre hilos CLEO.
-0DDD: 9@ = get_mutex_var 7500
+0DDD: 9@ = get_mutex_var 1145919800
 00D6: if 0
 0039: 9@ <> 0
 004D: jump_if_false @business_marker_old_1_skip
 0164: disable_marker 9@
-0DDC: set_mutex_var 7500 to 0
+0DDC: set_mutex_var 1145919800 to 0
 :business_marker_old_1_skip
-0DDD: 9@ = get_mutex_var 7501
+0DDD: 9@ = get_mutex_var 1145919801
 00D6: if 0
 0039: 9@ <> 0
 004D: jump_if_false @business_marker_old_2_skip
 0164: disable_marker 9@
-0DDC: set_mutex_var 7501 to 0
+0DDC: set_mutex_var 1145919801 to 0
 :business_marker_old_2_skip
-0DDD: 9@ = get_mutex_var 7502
+0DDD: 9@ = get_mutex_var 1145919802
 00D6: if 0
 0039: 9@ <> 0
 004D: jump_if_false @business_marker_old_3_skip
 0164: disable_marker 9@
-0DDC: set_mutex_var 7502 to 0
+0DDC: set_mutex_var 1145919802 to 0
 :business_marker_old_3_skip
-0DDD: 9@ = get_mutex_var 7503
+0DDD: 9@ = get_mutex_var 1145919803
 00D6: if 0
 0039: 9@ <> 0
 004D: jump_if_false @business_marker_old_4_skip
 0164: disable_marker 9@
-0DDC: set_mutex_var 7503 to 0
+0DDC: set_mutex_var 1145919803 to 0
 :business_marker_old_4_skip
-0DDD: 9@ = get_mutex_var 7504
+0DDD: 9@ = get_mutex_var 1145919804
 00D6: if 0
 0039: 9@ <> 0
 004D: jump_if_false @business_marker_old_5_skip
 0164: disable_marker 9@
-0DDC: set_mutex_var 7504 to 0
+0DDC: set_mutex_var 1145919804 to 0
 :business_marker_old_5_skip
-0DDD: 9@ = get_mutex_var 7505
+0DDD: 9@ = get_mutex_var 1145919805
 00D6: if 0
 0039: 9@ <> 0
 004D: jump_if_false @business_marker_old_6_skip
 0164: disable_marker 9@
-0DDC: set_mutex_var 7505 to 0
+0DDC: set_mutex_var 1145919805 to 0
 :business_marker_old_6_skip
-0DDD: 9@ = get_mutex_var 7506
+0DDD: 9@ = get_mutex_var 1145919806
 00D6: if 0
 0039: 9@ <> 0
 004D: jump_if_false @business_marker_old_7_skip
 0164: disable_marker 9@
-0DDC: set_mutex_var 7506 to 0
+0DDC: set_mutex_var 1145919806 to 0
 :business_marker_old_7_skip
-0DDD: 9@ = get_mutex_var 7507
+0DDD: 9@ = get_mutex_var 1145919807
 00D6: if 0
 0039: 9@ <> 0
 004D: jump_if_false @business_marker_old_8_skip
 0164: disable_marker 9@
 0001: wait 100 // Pausa: limpieza escalonada de marcadores anteriores.
-0DDC: set_mutex_var 7507 to 0
+0DDC: set_mutex_var 1145919807 to 0
 :business_marker_old_8_skip
-0DDD: 9@ = get_mutex_var 7508
+0DDD: 9@ = get_mutex_var 1145919808
 00D6: if 0
 0039: 9@ <> 0
 004D: jump_if_false @business_marker_old_9_skip
 0164: disable_marker 9@
-0DDC: set_mutex_var 7508 to 0
+0DDC: set_mutex_var 1145919808 to 0
 :business_marker_old_9_skip
-0DDD: 9@ = get_mutex_var 7509
+0DDD: 9@ = get_mutex_var 1145919809
 00D6: if 0
 0039: 9@ <> 0
 004D: jump_if_false @business_marker_old_10_skip
 0164: disable_marker 9@
-0DDC: set_mutex_var 7509 to 0
+0DDC: set_mutex_var 1145919809 to 0
 :business_marker_old_10_skip
-0DDD: 9@ = get_mutex_var 7510
+0DDD: 9@ = get_mutex_var 1145919810
 00D6: if 0
 0039: 9@ <> 0
 004D: jump_if_false @business_marker_old_11_skip
 0164: disable_marker 9@
-0DDC: set_mutex_var 7510 to 0
+0DDC: set_mutex_var 1145919810 to 0
 :business_marker_old_11_skip
-0DDD: 9@ = get_mutex_var 7511
+0DDD: 9@ = get_mutex_var 1145919811
 00D6: if 0
 0039: 9@ <> 0
 004D: jump_if_false @business_marker_old_12_skip
 0164: disable_marker 9@
-0DDC: set_mutex_var 7511 to 0
+0DDC: set_mutex_var 1145919811 to 0
 :business_marker_old_12_skip
-0DDD: 9@ = get_mutex_var 7512
+0DDD: 9@ = get_mutex_var 1145919812
 00D6: if 0
 0039: 9@ <> 0
 004D: jump_if_false @business_marker_old_13_skip
 0164: disable_marker 9@
-0DDC: set_mutex_var 7512 to 0
+0DDC: set_mutex_var 1145919812 to 0
 :business_marker_old_13_skip
-0DDD: 9@ = get_mutex_var 7513
+0DDD: 9@ = get_mutex_var 1145919813
 00D6: if 0
 0039: 9@ <> 0
 004D: jump_if_false @business_marker_old_14_skip
 0164: disable_marker 9@
-0DDC: set_mutex_var 7513 to 0
+0DDC: set_mutex_var 1145919813 to 0
 :business_marker_old_14_skip
-0DDD: 9@ = get_mutex_var 7514
+0DDD: 9@ = get_mutex_var 1145919814
 00D6: if 0
 0039: 9@ <> 0
 004D: jump_if_false @business_marker_old_15_skip
 0164: disable_marker 9@
-0DDC: set_mutex_var 7514 to 0
+0DDC: set_mutex_var 1145919814 to 0
 :business_marker_old_15_skip
-0DDD: 9@ = get_mutex_var 7515
+0DDD: 9@ = get_mutex_var 1145919815
 00D6: if 0
 0039: 9@ <> 0
 004D: jump_if_false @business_marker_old_16_skip
 0164: disable_marker 9@
 0001: wait 100 // Pausa: limpieza escalonada de marcadores anteriores.
-0DDC: set_mutex_var 7515 to 0
+0DDC: set_mutex_var 1145919815 to 0
 :business_marker_old_16_skip
-0DDD: 9@ = get_mutex_var 7516
+0DDD: 9@ = get_mutex_var 1145919816
 00D6: if 0
 0039: 9@ <> 0
 004D: jump_if_false @business_marker_old_17_skip
 0164: disable_marker 9@
-0DDC: set_mutex_var 7516 to 0
+0DDC: set_mutex_var 1145919816 to 0
 :business_marker_old_17_skip
-0DDD: 9@ = get_mutex_var 7517
+0DDD: 9@ = get_mutex_var 1145919817
 00D6: if 0
 0039: 9@ <> 0
 004D: jump_if_false @business_marker_old_18_skip
 0164: disable_marker 9@
-0DDC: set_mutex_var 7517 to 0
+0DDC: set_mutex_var 1145919817 to 0
 :business_marker_old_18_skip
-0DDD: 9@ = get_mutex_var 7518
+0DDD: 9@ = get_mutex_var 1145919818
 00D6: if 0
 0039: 9@ <> 0
 004D: jump_if_false @business_marker_old_19_skip
 0164: disable_marker 9@
-0DDC: set_mutex_var 7518 to 0
+0DDC: set_mutex_var 1145919818 to 0
 :business_marker_old_19_skip
-0DDD: 9@ = get_mutex_var 7519
+0DDD: 9@ = get_mutex_var 1145919819
 00D6: if 0
 0039: 9@ <> 0
 004D: jump_if_false @business_marker_old_20_skip
 0164: disable_marker 9@
-0DDC: set_mutex_var 7519 to 0
+0DDC: set_mutex_var 1145919819 to 0
 :business_marker_old_20_skip
-0DDD: 9@ = get_mutex_var 7520
+0DDD: 9@ = get_mutex_var 1145919820
 00D6: if 0
 0039: 9@ <> 0
 004D: jump_if_false @business_marker_old_21_skip
 0164: disable_marker 9@
-0DDC: set_mutex_var 7520 to 0
+0DDC: set_mutex_var 1145919820 to 0
 :business_marker_old_21_skip
-0DDD: 9@ = get_mutex_var 7521
+0DDD: 9@ = get_mutex_var 1145919821
 00D6: if 0
 0039: 9@ <> 0
 004D: jump_if_false @business_marker_old_22_skip
 0164: disable_marker 9@
-0DDC: set_mutex_var 7521 to 0
+0DDC: set_mutex_var 1145919821 to 0
 :business_marker_old_22_skip
-0DDD: 9@ = get_mutex_var 7522
+0DDD: 9@ = get_mutex_var 1145919822
 00D6: if 0
 0039: 9@ <> 0
 004D: jump_if_false @business_marker_old_23_skip
 0164: disable_marker 9@
-0DDC: set_mutex_var 7522 to 0
+0DDC: set_mutex_var 1145919822 to 0
 :business_marker_old_23_skip
-0DDD: 9@ = get_mutex_var 7523
+0DDD: 9@ = get_mutex_var 1145919823
 00D6: if 0
 0039: 9@ <> 0
 004D: jump_if_false @business_marker_old_24_skip
 0164: disable_marker 9@
 0001: wait 100 // Pausa: limpieza escalonada de marcadores anteriores.
-0DDC: set_mutex_var 7523 to 0
+0DDC: set_mutex_var 1145919823 to 0
 :business_marker_old_24_skip
-0DDD: 9@ = get_mutex_var 7524
+0DDD: 9@ = get_mutex_var 1145919824
 00D6: if 0
 0039: 9@ <> 0
 004D: jump_if_false @business_marker_old_25_skip
 0164: disable_marker 9@
-0DDC: set_mutex_var 7524 to 0
+0DDC: set_mutex_var 1145919824 to 0
 :business_marker_old_25_skip
-0DDD: 9@ = get_mutex_var 7525
+0DDD: 9@ = get_mutex_var 1145919825
 00D6: if 0
 0039: 9@ <> 0
 004D: jump_if_false @business_marker_old_26_skip
 0164: disable_marker 9@
-0DDC: set_mutex_var 7525 to 0
+0DDC: set_mutex_var 1145919825 to 0
 :business_marker_old_26_skip
-0DDD: 9@ = get_mutex_var 7526
+0DDD: 9@ = get_mutex_var 1145919826
 00D6: if 0
 0039: 9@ <> 0
 004D: jump_if_false @business_marker_old_27_skip
 0164: disable_marker 9@
-0DDC: set_mutex_var 7526 to 0
+0DDC: set_mutex_var 1145919826 to 0
 :business_marker_old_27_skip
-0DDD: 9@ = get_mutex_var 7527
+0DDD: 9@ = get_mutex_var 1145919827
 00D6: if 0
 0039: 9@ <> 0
 004D: jump_if_false @business_marker_old_28_skip
 0164: disable_marker 9@
-0DDC: set_mutex_var 7527 to 0
+0DDC: set_mutex_var 1145919827 to 0
 :business_marker_old_28_skip
-0DDD: 9@ = get_mutex_var 7528
+0DDD: 9@ = get_mutex_var 1145919828
 00D6: if 0
 0039: 9@ <> 0
 004D: jump_if_false @business_marker_old_29_skip
 0164: disable_marker 9@
-0DDC: set_mutex_var 7528 to 0
+0DDC: set_mutex_var 1145919828 to 0
 :business_marker_old_29_skip
-0DDD: 9@ = get_mutex_var 7529
+0DDD: 9@ = get_mutex_var 1145919829
 00D6: if 0
 0039: 9@ <> 0
 004D: jump_if_false @business_marker_old_30_skip
 0164: disable_marker 9@
-0DDC: set_mutex_var 7529 to 0
+0DDC: set_mutex_var 1145919829 to 0
 :business_marker_old_30_skip
-0DDD: 9@ = get_mutex_var 7530
+0DDD: 9@ = get_mutex_var 1145919830
 00D6: if 0
 0039: 9@ <> 0
 004D: jump_if_false @business_marker_old_31_skip
 0164: disable_marker 9@
-0DDC: set_mutex_var 7530 to 0
+0DDC: set_mutex_var 1145919830 to 0
 :business_marker_old_31_skip
-0DDD: 9@ = get_mutex_var 7531
+0DDD: 9@ = get_mutex_var 1145919831
 00D6: if 0
 0039: 9@ <> 0
 004D: jump_if_false @business_marker_old_32_skip
 0164: disable_marker 9@
 0001: wait 100 // Pausa: limpieza escalonada de marcadores anteriores.
-0DDC: set_mutex_var 7531 to 0
+0DDC: set_mutex_var 1145919831 to 0
 :business_marker_old_32_skip
-0DDD: 9@ = get_mutex_var 7532
+0DDD: 9@ = get_mutex_var 1145919832
 00D6: if 0
 0039: 9@ <> 0
 004D: jump_if_false @business_marker_old_33_skip
 0164: disable_marker 9@
-0DDC: set_mutex_var 7532 to 0
+0DDC: set_mutex_var 1145919832 to 0
 :business_marker_old_33_skip
-0DDD: 9@ = get_mutex_var 7533
+0DDD: 9@ = get_mutex_var 1145919833
 00D6: if 0
 0039: 9@ <> 0
 004D: jump_if_false @business_marker_old_34_skip
 0164: disable_marker 9@
-0DDC: set_mutex_var 7533 to 0
+0DDC: set_mutex_var 1145919833 to 0
 :business_marker_old_34_skip
-0DDD: 9@ = get_mutex_var 7534
+0DDD: 9@ = get_mutex_var 1145919834
 00D6: if 0
 0039: 9@ <> 0
 004D: jump_if_false @business_marker_old_35_skip
 0164: disable_marker 9@
-0DDC: set_mutex_var 7534 to 0
+0DDC: set_mutex_var 1145919834 to 0
 :business_marker_old_35_skip
-0DDD: 9@ = get_mutex_var 7535
+0DDD: 9@ = get_mutex_var 1145919835
 00D6: if 0
 0039: 9@ <> 0
 004D: jump_if_false @business_marker_old_36_skip
 0164: disable_marker 9@
-0DDC: set_mutex_var 7535 to 0
+0DDC: set_mutex_var 1145919835 to 0
 :business_marker_old_36_skip
-0DDD: 9@ = get_mutex_var 7536
+0DDD: 9@ = get_mutex_var 1145919836
 00D6: if 0
 0039: 9@ <> 0
 004D: jump_if_false @business_marker_old_37_skip
 0164: disable_marker 9@
-0DDC: set_mutex_var 7536 to 0
+0DDC: set_mutex_var 1145919836 to 0
 :business_marker_old_37_skip
-0DDD: 9@ = get_mutex_var 7537
+0DDD: 9@ = get_mutex_var 1145919837
 00D6: if 0
 0039: 9@ <> 0
 004D: jump_if_false @business_marker_old_38_skip
 0164: disable_marker 9@
-0DDC: set_mutex_var 7537 to 0
+0DDC: set_mutex_var 1145919837 to 0
 :business_marker_old_38_skip
-0DDD: 9@ = get_mutex_var 7538
+0DDD: 9@ = get_mutex_var 1145919838
 00D6: if 0
 0039: 9@ <> 0
 004D: jump_if_false @business_marker_old_39_skip
 0164: disable_marker 9@
-0DDC: set_mutex_var 7538 to 0
+0DDC: set_mutex_var 1145919838 to 0
 :business_marker_old_39_skip
-0DDD: 9@ = get_mutex_var 7539
+0DDD: 9@ = get_mutex_var 1145919839
 00D6: if 0
 0039: 9@ <> 0
 004D: jump_if_false @business_marker_old_40_skip
 0164: disable_marker 9@
 0001: wait 100 // Pausa: limpieza escalonada de marcadores anteriores.
-0DDC: set_mutex_var 7539 to 0
+0DDC: set_mutex_var 1145919839 to 0
 :business_marker_old_40_skip
-0DDD: 9@ = get_mutex_var 7540
+0DDD: 9@ = get_mutex_var 1145919840
 00D6: if 0
 0039: 9@ <> 0
 004D: jump_if_false @business_marker_old_41_skip
 0164: disable_marker 9@
-0DDC: set_mutex_var 7540 to 0
+0DDC: set_mutex_var 1145919840 to 0
 :business_marker_old_41_skip
-0DDD: 9@ = get_mutex_var 7541
+0DDD: 9@ = get_mutex_var 1145919841
 00D6: if 0
 0039: 9@ <> 0
 004D: jump_if_false @business_marker_old_42_skip
 0164: disable_marker 9@
-0DDC: set_mutex_var 7541 to 0
+0DDC: set_mutex_var 1145919841 to 0
 :business_marker_old_42_skip
-0DDD: 9@ = get_mutex_var 7542
+0DDD: 9@ = get_mutex_var 1145919842
 00D6: if 0
 0039: 9@ <> 0
 004D: jump_if_false @business_marker_old_43_skip
 0164: disable_marker 9@
-0DDC: set_mutex_var 7542 to 0
+0DDC: set_mutex_var 1145919842 to 0
 :business_marker_old_43_skip
-0DDD: 9@ = get_mutex_var 7543
+0DDD: 9@ = get_mutex_var 1145919843
 00D6: if 0
 0039: 9@ <> 0
 004D: jump_if_false @business_marker_old_44_skip
 0164: disable_marker 9@
-0DDC: set_mutex_var 7543 to 0
+0DDC: set_mutex_var 1145919843 to 0
 :business_marker_old_44_skip
-0DDD: 9@ = get_mutex_var 7544
+0DDD: 9@ = get_mutex_var 1145919844
 00D6: if 0
 0039: 9@ <> 0
 004D: jump_if_false @business_marker_old_45_skip
 0164: disable_marker 9@
-0DDC: set_mutex_var 7544 to 0
+0DDC: set_mutex_var 1145919844 to 0
 :business_marker_old_45_skip
-0DDD: 9@ = get_mutex_var 7545
+0DDD: 9@ = get_mutex_var 1145919845
 00D6: if 0
 0039: 9@ <> 0
 004D: jump_if_false @business_marker_old_46_skip
 0164: disable_marker 9@
-0DDC: set_mutex_var 7545 to 0
+0DDC: set_mutex_var 1145919845 to 0
 :business_marker_old_46_skip
-0DDD: 9@ = get_mutex_var 7546
+0DDD: 9@ = get_mutex_var 1145919846
 00D6: if 0
 0039: 9@ <> 0
 004D: jump_if_false @business_marker_old_47_skip
 0164: disable_marker 9@
-0DDC: set_mutex_var 7546 to 0
+0DDC: set_mutex_var 1145919846 to 0
 :business_marker_old_47_skip
-0DDD: 9@ = get_mutex_var 7547
+0DDD: 9@ = get_mutex_var 1145919847
 00D6: if 0
 0039: 9@ <> 0
 004D: jump_if_false @business_marker_old_48_skip
 0164: disable_marker 9@
 0001: wait 100 // Pausa: limpieza escalonada de marcadores anteriores.
-0DDC: set_mutex_var 7547 to 0
+0DDC: set_mutex_var 1145919847 to 0
 :business_marker_old_48_skip
-0DDD: 9@ = get_mutex_var 7548
+0DDD: 9@ = get_mutex_var 1145919848
 00D6: if 0
 0039: 9@ <> 0
 004D: jump_if_false @business_marker_old_49_skip
 0164: disable_marker 9@
-0DDC: set_mutex_var 7548 to 0
+0DDC: set_mutex_var 1145919848 to 0
 :business_marker_old_49_skip
-0DDD: 9@ = get_mutex_var 7549
+0DDD: 9@ = get_mutex_var 1145919849
 00D6: if 0
 0039: 9@ <> 0
 004D: jump_if_false @business_marker_old_50_skip
 0164: disable_marker 9@
-0DDC: set_mutex_var 7549 to 0
+0DDC: set_mutex_var 1145919849 to 0
 :business_marker_old_50_skip
-0DDD: 9@ = get_mutex_var 7550
+0DDD: 9@ = get_mutex_var 1145919850
 00D6: if 0
 0039: 9@ <> 0
 004D: jump_if_false @business_marker_old_51_skip
 0164: disable_marker 9@
-0DDC: set_mutex_var 7550 to 0
+0DDC: set_mutex_var 1145919850 to 0
 :business_marker_old_51_skip
-0DDD: 9@ = get_mutex_var 7551
+0DDD: 9@ = get_mutex_var 1145919851
 00D6: if 0
 0039: 9@ <> 0
 004D: jump_if_false @business_marker_old_52_skip
 0164: disable_marker 9@
-0DDC: set_mutex_var 7551 to 0
+0DDC: set_mutex_var 1145919851 to 0
 :business_marker_old_52_skip
-0DDD: 9@ = get_mutex_var 7552
+0DDD: 9@ = get_mutex_var 1145919852
 00D6: if 0
 0039: 9@ <> 0
 004D: jump_if_false @business_marker_old_53_skip
 0164: disable_marker 9@
-0DDC: set_mutex_var 7552 to 0
+0DDC: set_mutex_var 1145919852 to 0
 :business_marker_old_53_skip
-0DDD: 9@ = get_mutex_var 7553
+0DDD: 9@ = get_mutex_var 1145919853
 00D6: if 0
 0039: 9@ <> 0
 004D: jump_if_false @business_marker_old_54_skip
 0164: disable_marker 9@
-0DDC: set_mutex_var 7553 to 0
+0DDC: set_mutex_var 1145919853 to 0
 :business_marker_old_54_skip
-0DDD: 9@ = get_mutex_var 7554
+0DDD: 9@ = get_mutex_var 1145919854
 00D6: if 0
 0039: 9@ <> 0
 004D: jump_if_false @business_marker_old_55_skip
 0164: disable_marker 9@
-0DDC: set_mutex_var 7554 to 0
+0DDC: set_mutex_var 1145919854 to 0
 :business_marker_old_55_skip
-0DDD: 9@ = get_mutex_var 7555
+0DDD: 9@ = get_mutex_var 1145919855
 00D6: if 0
 0039: 9@ <> 0
 004D: jump_if_false @business_marker_old_56_skip
 0164: disable_marker 9@
 0001: wait 100 // Pausa: limpieza escalonada de marcadores anteriores.
-0DDC: set_mutex_var 7555 to 0
+0DDC: set_mutex_var 1145919855 to 0
 :business_marker_old_56_skip
-0DDD: 9@ = get_mutex_var 7556
+0DDD: 9@ = get_mutex_var 1145919856
 00D6: if 0
 0039: 9@ <> 0
 004D: jump_if_false @business_marker_old_57_skip
 0164: disable_marker 9@
-0DDC: set_mutex_var 7556 to 0
+0DDC: set_mutex_var 1145919856 to 0
 :business_marker_old_57_skip
-0DDD: 9@ = get_mutex_var 7557
+0DDD: 9@ = get_mutex_var 1145919857
 00D6: if 0
 0039: 9@ <> 0
 004D: jump_if_false @business_marker_old_58_skip
 0164: disable_marker 9@
-0DDC: set_mutex_var 7557 to 0
+0DDC: set_mutex_var 1145919857 to 0
 :business_marker_old_58_skip
 // LIMPIEZA DE ICONOS DE GIMNASIOS DE UNA EJECUCIÓN ANTERIOR.
-0DDD: 9@ = get_mutex_var 7560
+0DDD: 9@ = get_mutex_var 1145919860
 00D6: if 0
 0039: 9@ <> 0
 004D: jump_if_false @gym_marker_old_1_skip
 0164: disable_marker 9@
-0DDC: set_mutex_var 7560 to 0
+0DDC: set_mutex_var 1145919860 to 0
 :gym_marker_old_1_skip
-0DDD: 9@ = get_mutex_var 7561
+0DDD: 9@ = get_mutex_var 1145919861
 00D6: if 0
 0039: 9@ <> 0
 004D: jump_if_false @gym_marker_old_2_skip
 0164: disable_marker 9@
-0DDC: set_mutex_var 7561 to 0
+0DDC: set_mutex_var 1145919861 to 0
 :gym_marker_old_2_skip
-0DDD: 9@ = get_mutex_var 7562
+0DDD: 9@ = get_mutex_var 1145919862
 00D6: if 0
 0039: 9@ <> 0
 004D: jump_if_false @gym_marker_old_3_skip
 0164: disable_marker 9@
-0DDC: set_mutex_var 7562 to 0
+0DDC: set_mutex_var 1145919862 to 0
 :gym_marker_old_3_skip
 // BARBERÍAS
 0005: 5@ = 2070.2703
 0005: 6@ = -1791.0918
 0005: 7@ = 17.1484
 0570: 8@ = create_asset_radar_marker_with_icon 7 at 5@ 6@ 7@
-0DDC: set_mutex_var 7500 to 8@
+0DDC: set_mutex_var 1145919800 to 8@
 018B: set_marker 8@ radar_mode 2
 0005: 5@ = 822.6
 0005: 6@ = -1590.3
 0005: 7@ = 13.5
 0570: 8@ = create_asset_radar_marker_with_icon 7 at 5@ 6@ 7@
-0DDC: set_mutex_var 7501 to 8@
+0DDC: set_mutex_var 1145919801 to 8@
 018B: set_marker 8@ radar_mode 2
 0005: 5@ = -2570.1
 0005: 6@ = 245.4
 0005: 7@ = 10.3
 0570: 8@ = create_asset_radar_marker_with_icon 7 at 5@ 6@ 7@
-0DDC: set_mutex_var 7502 to 8@
+0DDC: set_mutex_var 1145919802 to 8@
 018B: set_marker 8@ radar_mode 2
 0001: wait 100 // Pausa entre grupos de tres iconos comerciales.
 0005: 5@ = 2726.6
 0005: 6@ = -2026.4
 0005: 7@ = 17.5
 0570: 8@ = create_asset_radar_marker_with_icon 7 at 5@ 6@ 7@
-0DDC: set_mutex_var 7503 to 8@
+0DDC: set_mutex_var 1145919803 to 8@
 018B: set_marker 8@ radar_mode 2
 0005: 5@ = 2080.3
 0005: 6@ = 2119
 0005: 7@ = 10.8
 0570: 8@ = create_asset_radar_marker_with_icon 7 at 5@ 6@ 7@
-0DDC: set_mutex_var 7504 to 8@
+0DDC: set_mutex_var 1145919804 to 8@
 018B: set_marker 8@ radar_mode 2
 0005: 5@ = 675.7
 0005: 6@ = -496.6
 0005: 7@ = 16.8
 0570: 8@ = create_asset_radar_marker_with_icon 7 at 5@ 6@ 7@
-0DDC: set_mutex_var 7505 to 8@
+0DDC: set_mutex_var 1145919805 to 8@
 018B: set_marker 8@ radar_mode 2
 0001: wait 100 // Pausa entre grupos de tres iconos comerciales.
 // BARBERÍA DE EL QUEBRADOS (no tiene icono normal en el mapa).
@@ -1112,58 +1112,58 @@
 0005: 6@ = 2591.85
 0005: 7@ = 54.84
 0570: 8@ = create_asset_radar_marker_with_icon 7 at 5@ 6@ 7@
-0DDC: set_mutex_var 7506 to 8@
+0DDC: set_mutex_var 1145919806 to 8@
 018B: set_marker 8@ radar_mode 2
 // PIZZERÍAS
 0005: 5@ = -1805.7
 0005: 6@ = 943.2
 0005: 7@ = 24.8
 0570: 8@ = create_asset_radar_marker_with_icon 29 at 5@ 6@ 7@
-0DDC: set_mutex_var 7507 to 8@
+0DDC: set_mutex_var 1145919807 to 8@
 018B: set_marker 8@ radar_mode 2
 0005: 5@ = 2750.9
 0005: 6@ = 2470.9
 0005: 7@ = 11
 0570: 8@ = create_asset_radar_marker_with_icon 29 at 5@ 6@ 7@
-0DDC: set_mutex_var 7508 to 8@
+0DDC: set_mutex_var 1145919808 to 8@
 018B: set_marker 8@ radar_mode 2
 0001: wait 100 // Pausa entre grupos de tres iconos comerciales.
 0005: 5@ = 2351.8
 0005: 6@ = 2529
 0005: 7@ = 10.8
 0570: 8@ = create_asset_radar_marker_with_icon 29 at 5@ 6@ 7@
-0DDC: set_mutex_var 7509 to 8@
+0DDC: set_mutex_var 1145919809 to 8@
 018B: set_marker 8@ radar_mode 2
 0005: 5@ = 2635.5
 0005: 6@ = 1847.4
 0005: 7@ = 11
 0570: 8@ = create_asset_radar_marker_with_icon 29 at 5@ 6@ 7@
-0DDC: set_mutex_var 7510 to 8@
+0DDC: set_mutex_var 1145919810 to 8@
 018B: set_marker 8@ radar_mode 2
 0005: 5@ = 2083.4
 0005: 6@ = 2221
 0005: 7@ = 11
 0570: 8@ = create_asset_radar_marker_with_icon 29 at 5@ 6@ 7@
-0DDC: set_mutex_var 7511 to 8@
+0DDC: set_mutex_var 1145919811 to 8@
 018B: set_marker 8@ radar_mode 2
 0001: wait 100 // Pausa entre grupos de tres iconos comerciales.
 0005: 5@ = -1719.1
 0005: 6@ = 1359.4
 0005: 7@ = 8.6
 0570: 8@ = create_asset_radar_marker_with_icon 29 at 5@ 6@ 7@
-0DDC: set_mutex_var 7512 to 8@
+0DDC: set_mutex_var 1145919812 to 8@
 018B: set_marker 8@ radar_mode 2
 0005: 5@ = 2330.2
 0005: 6@ = 75.2
 0005: 7@ = 31
 0570: 8@ = create_asset_radar_marker_with_icon 29 at 5@ 6@ 7@
-0DDC: set_mutex_var 7513 to 8@
+0DDC: set_mutex_var 1145919813 to 8@
 018B: set_marker 8@ radar_mode 2
 0005: 5@ = 203.2
 0005: 6@ = -200.4
 0005: 7@ = 6.5
 0570: 8@ = create_asset_radar_marker_with_icon 29 at 5@ 6@ 7@
-0DDC: set_mutex_var 7514 to 8@
+0DDC: set_mutex_var 1145919814 to 8@
 018B: set_marker 8@ radar_mode 2
 0001: wait 100 // Pausa entre grupos de tres iconos comerciales.
 // BURGER SHOT
@@ -1171,276 +1171,276 @@
 0005: 6@ = -1616.1
 0005: 7@ = 13.6
 0570: 8@ = create_asset_radar_marker_with_icon 10 at 5@ 6@ 7@
-0DDC: set_mutex_var 7515 to 8@
+0DDC: set_mutex_var 1145919815 to 8@
 018B: set_marker 8@ radar_mode 2
 0005: 5@ = 1199.1
 0005: 6@ = -924
 0005: 7@ = 43.3
 0570: 8@ = create_asset_radar_marker_with_icon 10 at 5@ 6@ 7@
-0DDC: set_mutex_var 7516 to 8@
+0DDC: set_mutex_var 1145919816 to 8@
 018B: set_marker 8@ radar_mode 2
 0005: 5@ = 2362.2
 0005: 6@ = 2069.9
 0005: 7@ = 10.8
 0570: 8@ = create_asset_radar_marker_with_icon 10 at 5@ 6@ 7@
-0DDC: set_mutex_var 7517 to 8@
+0DDC: set_mutex_var 1145919817 to 8@
 018B: set_marker 8@ radar_mode 2
 0001: wait 100 // Pausa entre grupos de tres iconos comerciales.
 0005: 5@ = 2469.5
 0005: 6@ = 2033.8
 0005: 7@ = 10.8
 0570: 8@ = create_asset_radar_marker_with_icon 10 at 5@ 6@ 7@
-0DDC: set_mutex_var 7518 to 8@
+0DDC: set_mutex_var 1145919818 to 8@
 018B: set_marker 8@ radar_mode 2
 0005: 5@ = 2172.9
 0005: 6@ = 2795.7
 0005: 7@ = 10.8
 0570: 8@ = create_asset_radar_marker_with_icon 10 at 5@ 6@ 7@
-0DDC: set_mutex_var 7519 to 8@
+0DDC: set_mutex_var 1145919819 to 8@
 018B: set_marker 8@ radar_mode 2
 0005: 5@ = 1875.3
 0005: 6@ = 2072
 0005: 7@ = 10.8
 0570: 8@ = create_asset_radar_marker_with_icon 10 at 5@ 6@ 7@
-0DDC: set_mutex_var 7520 to 8@
+0DDC: set_mutex_var 1145919820 to 8@
 018B: set_marker 8@ radar_mode 2
 0001: wait 100 // Pausa entre grupos de tres iconos comerciales.
 0005: 5@ = 1161.5
 0005: 6@ = 2072
 0005: 7@ = 10.8
 0570: 8@ = create_asset_radar_marker_with_icon 10 at 5@ 6@ 7@
-0DDC: set_mutex_var 7521 to 8@
+0DDC: set_mutex_var 1145919821 to 8@
 018B: set_marker 8@ radar_mode 2
 0005: 5@ = -2356
 0005: 6@ = 1009
 0005: 7@ = 49
 0570: 8@ = create_asset_radar_marker_with_icon 10 at 5@ 6@ 7@
-0DDC: set_mutex_var 7522 to 8@
+0DDC: set_mutex_var 1145919822 to 8@
 018B: set_marker 8@ radar_mode 2
 0005: 5@ = -1913.3
 0005: 6@ = 826.2
 0005: 7@ = 36.9
 0570: 8@ = create_asset_radar_marker_with_icon 10 at 5@ 6@ 7@
-0DDC: set_mutex_var 7523 to 8@
+0DDC: set_mutex_var 1145919823 to 8@
 018B: set_marker 8@ radar_mode 2
 0001: wait 100 // Pausa entre grupos de tres iconos comerciales.
 0005: 5@ = -2335.6
 0005: 6@ = -165.6
 0005: 7@ = 39.5
 0570: 8@ = create_asset_radar_marker_with_icon 10 at 5@ 6@ 7@
-0DDC: set_mutex_var 7524 to 8@
+0DDC: set_mutex_var 1145919824 to 8@
 018B: set_marker 8@ radar_mode 2
 // CLUCKIN' BELL
 0005: 5@ = 2397.8
 0005: 6@ = -1895.6
 0005: 7@ = 13.7
 0570: 8@ = create_asset_radar_marker_with_icon 14 at 5@ 6@ 7@
-0DDC: set_mutex_var 7525 to 8@
+0DDC: set_mutex_var 1145919825 to 8@
 018B: set_marker 8@ radar_mode 2
 0005: 5@ = 2421.6
 0005: 6@ = -1509.6
 0005: 7@ = 24.1
 0570: 8@ = create_asset_radar_marker_with_icon 14 at 5@ 6@ 7@
-0DDC: set_mutex_var 7526 to 8@
+0DDC: set_mutex_var 1145919826 to 8@
 018B: set_marker 8@ radar_mode 2
 0001: wait 100 // Pausa entre grupos de tres iconos comerciales.
 0005: 5@ = -2671.6
 0005: 6@ = 257.4
 0005: 7@ = 4.6
 0570: 8@ = create_asset_radar_marker_with_icon 14 at 5@ 6@ 7@
-0DDC: set_mutex_var 7527 to 8@
+0DDC: set_mutex_var 1145919827 to 8@
 018B: set_marker 8@ radar_mode 2
 0005: 5@ = 2392.4
 0005: 6@ = 2046.5
 0005: 7@ = 10.8
 0570: 8@ = create_asset_radar_marker_with_icon 14 at 5@ 6@ 7@
-0DDC: set_mutex_var 7528 to 8@
+0DDC: set_mutex_var 1145919828 to 8@
 018B: set_marker 8@ radar_mode 2
 0005: 5@ = 2844.5
 0005: 6@ = 2401.1
 0005: 7@ = 11
 0570: 8@ = create_asset_radar_marker_with_icon 14 at 5@ 6@ 7@
-0DDC: set_mutex_var 7529 to 8@
+0DDC: set_mutex_var 1145919829 to 8@
 018B: set_marker 8@ radar_mode 2
 0001: wait 100 // Pausa entre grupos de tres iconos comerciales.
 0005: 5@ = 2635.5
 0005: 6@ = 1674.3
 0005: 7@ = 11
 0570: 8@ = create_asset_radar_marker_with_icon 14 at 5@ 6@ 7@
-0DDC: set_mutex_var 7530 to 8@
+0DDC: set_mutex_var 1145919830 to 8@
 018B: set_marker 8@ radar_mode 2
 0005: 5@ = 2105.7
 0005: 6@ = 2228.7
 0005: 7@ = 11
 0570: 8@ = create_asset_radar_marker_with_icon 14 at 5@ 6@ 7@
-0DDC: set_mutex_var 7531 to 8@
+0DDC: set_mutex_var 1145919831 to 8@
 018B: set_marker 8@ radar_mode 2
 0005: 5@ = -2154
 0005: 6@ = -2461.2
 0005: 7@ = 30.8
 0570: 8@ = create_asset_radar_marker_with_icon 14 at 5@ 6@ 7@
-0DDC: set_mutex_var 7532 to 8@
+0DDC: set_mutex_var 1145919832 to 8@
 018B: set_marker 8@ radar_mode 2
 0001: wait 100 // Pausa entre grupos de tres iconos comerciales.
 0005: 5@ = -1816.2
 0005: 6@ = 620.8
 0005: 7@ = 37.5
 0570: 8@ = create_asset_radar_marker_with_icon 14 at 5@ 6@ 7@
-0DDC: set_mutex_var 7533 to 8@
+0DDC: set_mutex_var 1145919833 to 8@
 018B: set_marker 8@ radar_mode 2
 0005: 5@ = -1216
 0005: 6@ = 1831.4
 0005: 7@ = 45.3
 0570: 8@ = create_asset_radar_marker_with_icon 14 at 5@ 6@ 7@
-0DDC: set_mutex_var 7534 to 8@
+0DDC: set_mutex_var 1145919834 to 8@
 018B: set_marker 8@ radar_mode 2
 0005: 5@ = 172.73
 0005: 6@ = 1176.76
 0005: 7@ = 13.7
 0570: 8@ = create_asset_radar_marker_with_icon 14 at 5@ 6@ 7@
-0DDC: set_mutex_var 7535 to 8@
+0DDC: set_mutex_var 1145919835 to 8@
 018B: set_marker 8@ radar_mode 2
 0001: wait 100 // Pausa entre grupos de tres iconos comerciales.
 0005: 5@ = 932
 0005: 6@ = -1353
 0005: 7@ = 14
 0570: 8@ = create_asset_radar_marker_with_icon 14 at 5@ 6@ 7@
-0DDC: set_mutex_var 7536 to 8@
+0DDC: set_mutex_var 1145919836 to 8@
 018B: set_marker 8@ radar_mode 2
 // TIENDAS DE ROPA
 0005: 5@ = -2376.4
 0005: 6@ = 909.2
 0005: 7@ = 45.4
 0570: 8@ = create_asset_radar_marker_with_icon 45 at 5@ 6@ 7@
-0DDC: set_mutex_var 7537 to 8@
+0DDC: set_mutex_var 1145919837 to 8@
 018B: set_marker 8@ radar_mode 2
 0005: 5@ = 1654
 0005: 6@ = 1733.4
 0005: 7@ = 11
 0570: 8@ = create_asset_radar_marker_with_icon 45 at 5@ 6@ 7@
-0DDC: set_mutex_var 7538 to 8@
+0DDC: set_mutex_var 1145919838 to 8@
 018B: set_marker 8@ radar_mode 2
 0001: wait 100 // Pausa entre grupos de tres iconos comerciales.
 0005: 5@ = 2105.7
 0005: 6@ = 2257.4
 0005: 7@ = 11
 0570: 8@ = create_asset_radar_marker_with_icon 45 at 5@ 6@ 7@
-0DDC: set_mutex_var 7539 to 8@
+0DDC: set_mutex_var 1145919839 to 8@
 018B: set_marker 8@ radar_mode 2
 0005: 5@ = -2371.1
 0005: 6@ = 910.2
 0005: 7@ = 47.2
 0570: 8@ = create_asset_radar_marker_with_icon 45 at 5@ 6@ 7@
-0DDC: set_mutex_var 7540 to 8@
+0DDC: set_mutex_var 1145919840 to 8@
 018B: set_marker 8@ radar_mode 2
 0005: 5@ = 501.7
 0005: 6@ = -1358.5
 0005: 7@ = 16.4
 0570: 8@ = create_asset_radar_marker_with_icon 45 at 5@ 6@ 7@
-0DDC: set_mutex_var 7541 to 8@
+0DDC: set_mutex_var 1145919841 to 8@
 018B: set_marker 8@ radar_mode 2
 0001: wait 100 // Pausa entre grupos de tres iconos comerciales.
 0005: 5@ = 2818.6
 0005: 6@ = 2401.5
 0005: 7@ = 11
 0570: 8@ = create_asset_radar_marker_with_icon 45 at 5@ 6@ 7@
-0DDC: set_mutex_var 7542 to 8@
+0DDC: set_mutex_var 1145919842 to 8@
 018B: set_marker 8@ radar_mode 2
 0005: 5@ = 2112.8
 0005: 6@ = -1214.7
 0005: 7@ = 23.9
 0570: 8@ = create_asset_radar_marker_with_icon 45 at 5@ 6@ 7@
-0DDC: set_mutex_var 7543 to 8@
+0DDC: set_mutex_var 1145919843 to 8@
 018B: set_marker 8@ radar_mode 2
 0005: 5@ = 2772
 0005: 6@ = 2447.6
 0005: 7@ = 11
 0570: 8@ = create_asset_radar_marker_with_icon 45 at 5@ 6@ 7@
-0DDC: set_mutex_var 7544 to 8@
+0DDC: set_mutex_var 1145919844 to 8@
 018B: set_marker 8@ radar_mode 2
 0001: wait 100 // Pausa entre grupos de tres iconos comerciales.
 0005: 5@ = -2489
 0005: 6@ = -26.9
 0005: 7@ = 32.6
 0570: 8@ = create_asset_radar_marker_with_icon 45 at 5@ 6@ 7@
-0DDC: set_mutex_var 7545 to 8@
+0DDC: set_mutex_var 1145919845 to 8@
 018B: set_marker 8@ radar_mode 2
 0005: 5@ = 1458.7
 0005: 6@ = -1140
 0005: 7@ = 24.2
 0570: 8@ = create_asset_radar_marker_with_icon 45 at 5@ 6@ 7@
-0DDC: set_mutex_var 7546 to 8@
+0DDC: set_mutex_var 1145919846 to 8@
 018B: set_marker 8@ radar_mode 2
 0005: 5@ = -1886.1
 0005: 6@ = 862.4
 0005: 7@ = 35.2
 0570: 8@ = create_asset_radar_marker_with_icon 45 at 5@ 6@ 7@
-0DDC: set_mutex_var 7547 to 8@
+0DDC: set_mutex_var 1145919847 to 8@
 018B: set_marker 8@ radar_mode 2
 0001: wait 100 // Pausa entre grupos de tres iconos comerciales.
 0005: 5@ = 2574.3
 0005: 6@ = 1901.7
 0005: 7@ = 11
 0570: 8@ = create_asset_radar_marker_with_icon 45 at 5@ 6@ 7@
-0DDC: set_mutex_var 7548 to 8@
+0DDC: set_mutex_var 1145919848 to 8@
 018B: set_marker 8@ radar_mode 2
 0005: 5@ = 457.2
 0005: 6@ = -1500.7
 0005: 7@ = 31.3
 0570: 8@ = create_asset_radar_marker_with_icon 45 at 5@ 6@ 7@
-0DDC: set_mutex_var 7549 to 8@
+0DDC: set_mutex_var 1145919849 to 8@
 018B: set_marker 8@ radar_mode 2
 0005: 5@ = 2795.2
 0005: 6@ = 2424.6
 0005: 7@ = 11
 0570: 8@ = create_asset_radar_marker_with_icon 45 at 5@ 6@ 7@
-0DDC: set_mutex_var 7550 to 8@
+0DDC: set_mutex_var 1145919850 to 8@
 018B: set_marker 8@ radar_mode 2
 0001: wait 100 // Pausa entre grupos de tres iconos comerciales.
 0005: 5@ = -1692.9
 0005: 6@ = 952.8
 0005: 7@ = 26.3
 0570: 8@ = create_asset_radar_marker_with_icon 45 at 5@ 6@ 7@
-0DDC: set_mutex_var 7551 to 8@
+0DDC: set_mutex_var 1145919851 to 8@
 018B: set_marker 8@ radar_mode 2
 0005: 5@ = 451.9
 0005: 6@ = -1480
 0005: 7@ = 30.9
 0570: 8@ = create_asset_radar_marker_with_icon 45 at 5@ 6@ 7@
-0DDC: set_mutex_var 7552 to 8@
+0DDC: set_mutex_var 1145919852 to 8@
 018B: set_marker 8@ radar_mode 2
 // TALLERES DE MODIFICACIÓN
 0005: 5@ = 1038.24
 0005: 6@ = -1025.67
 0005: 7@ = 31.1027
 0570: 8@ = create_asset_radar_marker_with_icon 27 at 5@ 6@ 7@
-0DDC: set_mutex_var 7553 to 8@
+0DDC: set_mutex_var 1145919853 to 8@
 018B: set_marker 8@ radar_mode 2
 0001: wait 100 // Pausa entre grupos de tres iconos comerciales.
 0005: 5@ = -1941.04
 0005: 6@ = 251.714
 0005: 7@ = 33.4274
 0570: 8@ = create_asset_radar_marker_with_icon 27 at 5@ 6@ 7@
-0DDC: set_mutex_var 7554 to 8@
+0DDC: set_mutex_var 1145919854 to 8@
 018B: set_marker 8@ radar_mode 2
 0005: 5@ = 2382.28
 0005: 6@ = 1044
 0005: 7@ = 9.8337
 0570: 8@ = create_asset_radar_marker_with_icon 27 at 5@ 6@ 7@
-0DDC: set_mutex_var 7555 to 8@
+0DDC: set_mutex_var 1145919855 to 8@
 018B: set_marker 8@ radar_mode 2
 0005: 5@ = 2640.78
 0005: 6@ = -2049.99
 0005: 7@ = 12.543
 0570: 8@ = create_asset_radar_marker_with_icon 27 at 5@ 6@ 7@
-0DDC: set_mutex_var 7556 to 8@
+0DDC: set_mutex_var 1145919856 to 8@
 018B: set_marker 8@ radar_mode 2
 0001: wait 100 // Pausa entre grupos de tres iconos comerciales.
 0005: 5@ = -2728.53
 0005: 6@ = 212.295
 0005: 7@ = 3.45112
 0570: 8@ = create_asset_radar_marker_with_icon 27 at 5@ 6@ 7@
-0DDC: set_mutex_var 7557 to 8@
+0DDC: set_mutex_var 1145919857 to 8@
 018B: set_marker 8@ radar_mode 2
 // ICONOS DE LOS TRES GIMNASIOS (RADAR_SPRITE_GYM = 54).
 // Coordenadas exteriores de las puertas; handles persistidos en 7560-7562.
@@ -1449,21 +1449,21 @@
 0005: 6@ = -1721.63
 0005: 7@ = 12.65
 0570: 8@ = create_asset_radar_marker_with_icon 54 at 5@ 6@ 7@
-0DDC: set_mutex_var 7560 to 8@
+0DDC: set_mutex_var 1145919860 to 8@
 018B: set_marker 8@ radar_mode 2
 // COBRA MARITAL ARTS GYM
 0005: 5@ = -2270.46
 0005: 6@ = -155.96
 0005: 7@ = 34.36
 0570: 8@ = create_asset_radar_marker_with_icon 54 at 5@ 6@ 7@
-0DDC: set_mutex_var 7561 to 8@
+0DDC: set_mutex_var 1145919861 to 8@
 018B: set_marker 8@ radar_mode 2
 // BELOW THE BELT GYM
 0005: 5@ = 1968.70
 0005: 6@ = 2295.30
 0005: 7@ = 15.50
 0570: 8@ = create_asset_radar_marker_with_icon 54 at 5@ 6@ 7@
-0DDC: set_mutex_var 7562 to 8@
+0DDC: set_mutex_var 1145919862 to 8@
 018B: set_marker 8@ radar_mode 2
 0001: wait 100 // Pausa después de crear los tres iconos de gimnasios.
 07FB: set_interior 'BARBERS' access 1
@@ -1507,8 +1507,8 @@
 0029: 2@ >= 5000
 004D: jump_if_false @ready_draw
 // Marcar el mapa como procesado durante esta sesión del juego.
-0DDC: set_mutex_var 7414 to 1
-0DDC: set_mutex_var 7413 to 0
+0DDC: set_mutex_var 1145919745 to 1
+0DDC: set_mutex_var 1145919744 to 0
 :already_running
 0A93: end_custom_thread
 :busy
@@ -1529,5 +1529,5 @@
 00D6: if 0
 0029: 2@ >= 5000
 004D: jump_if_false @error_draw
-0DDC: set_mutex_var 7413 to 0
+0DDC: set_mutex_var 1145919744 to 0
 0A93: end_custom_thread
