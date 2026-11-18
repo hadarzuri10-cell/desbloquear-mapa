@@ -1,7 +1,8 @@
 AUDITORÍA DE POSIBLES CRASHES — DESBLOQUEAR MAPA
 Fecha: 2026-11-18
 Rama activa: main
-Fuente revisada: Desbloquear Mapa v1.4.source.txt
+Versión identificada: 1.4.5
+Fuente revisada: Desbloquear Mapa v1.4.5.source.txt
 SHA de fuente revisada: e36d36712b93716793d290863cf56cb7a56d942b
 
 RESUMEN
