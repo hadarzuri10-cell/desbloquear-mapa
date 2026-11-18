@@ -1,14 +1,16 @@
 VALIDACIÓN — DESBLOQUEAR MAPA v1.4
 
 Fuente: Desbloquear Mapa v1.4.source.txt
+SHA de fuente: 3654716fe8308fd5d39b6e71be75561c973a7329
 Compilación anterior: correcta con Sanny Builder 4.2.0, modo SA Mobile.
 Formato generado: .csi
 MAPLOAD: 1500 ms
 MAP READY: 5000 ms continuos, sin parpadeo (corrección pendiente de recompilar).
 Propiedades: 32 bloques; matriz 1..32; pickups $3071..$3102.
-Marcadores: 32 handles únicos; 32 limpiezas previas.
+Marcadores: 32 handles únicos; 32 limpiezas previas; las 32 configuraciones se protegen ante handle cero.
+Creación: espera de 50 ms al finalizar cada uno de los 32 bloques para reducir picos de carga.
 Interiores normales: 22.
-Saltos: 33; etiquetas resueltas: 33.
+Saltos y etiquetas: revisión estática posterior a la última corrección pendiente.
 Mapa: 100 bytes consecutivos + contador 100.
 
 IMPORTANTE
