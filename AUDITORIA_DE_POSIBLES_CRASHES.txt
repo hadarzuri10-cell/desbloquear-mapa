@@ -75,3 +75,11 @@ Se retiró el cambio de estadística, se añadió protección para no destruir/d
 No se cambiaron las direcciones de memoria porque no hay confirmación específica para GTA SA Android 2.10. La implementación de CLEO confirma que `protect 0` escribe directamente y que el opcode no valida la dirección. Un parche a ciegas podría introducir un crash nuevo o dañar el estado del juego.
 Siguen abiertos los riesgos críticos de offsets/versión y los riesgos de handles no nulos obsoletos. La creación escalonada ya está aplicada mediante 32 esperas de 50 ms al final de los bloques, además de 10 esperas de 50 ms anteriores. Total en la fuente: 42. Su efecto dentro del juego sigue pendiente de validación y no se ha demostrado que el pico de asignación fuera la causa de los cierres.
 No declarar la fuente libre de crashes hasta completar la prueba real en el juego.
+
+COMPROBACIÓN ADICIONAL DE ARQUITECTURA (18-11-2026)
+El código fuente público de CLEO Android en src/core.cpp declara image_base como int32_t; 0DD7 escribe la base en uint32_t y 0DD9 calcula la dirección con addr uint32_t. Esta implementación de los opcodes de memoria es de 32 bits. Referencia: https://github.com/cleolibrary/CLEO-ANDROID/blob/main/src/core.cpp
+Esto encaja con los offsets 32-bit 0x0098D252 y 0x0098D2B8 encontrados en el código Android de holy-sa. La misma referencia publica offsets separados para 64 bits, pero esos valores alternativos no se pueden usar mediante esta ruta 0DD7/0DD9 de 32 bits. Si el proceso del juego fuera 64-bit, esta fuente no sería compatible con él. Que el teléfono sea de 64 bits no implica que el proceso del juego lo sea: Android puede ejecutar una variante ARMv7 de 32 bits.
+La fuente externa contiene también una corrección comentada para un crash de GTA SA 2.10, lo que hace más pertinente la referencia, pero no prueba por sí solo que los offsets estén ligados a la misma build exacta. Resultado: offsets 32-bit fuertemente corroborados; validación binaria exacta todavía pendiente.
+
+COMPILACIÓN DE LA REVISIÓN DE HANDLES
+La revisión con 32 comprobaciones 09D1 y 32 comprobaciones 075C compiló correctamente en GitHub Actions: run 44366859260, commit 0c12413bac68162acf4ecb52e1f46bece2b562a7. Artefacto Desbloquear-Mapa-compiled-test, ID 14457995227, 8536 bytes. Esta compilación confirma sintaxis/ensamblado, no funcionamiento dentro del juego.
