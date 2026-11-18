@@ -5,6 +5,9 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'Desbloquear Mapa v1.4.5.source.txt'
+      - '.github/workflows/compile.yml'
 
 permissions:
   contents: read
