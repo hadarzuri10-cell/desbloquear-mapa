@@ -1,4 +1,4 @@
-DESBLOQUEAR MAPA — CANDIDATO DE DESARROLLO v1.4.3
+DESBLOQUEAR MAPA — CANDIDATO DE DESARROLLO v1.4.4
 
 CONTENIDO DEL PAQUETE
 - cleo/Desbloquear Mapa.csi
@@ -16,7 +16,7 @@ INSTALACIÓN (SOLO CUANDO SE AUTORICE UNA PRUEBA)
 7. Comprueba por separado la aparición de iconos y el acceso/funcionamiento de los establecimientos.
 
 CONTENIDO FUNCIONAL PREVISTO
-- 29 pickups de propiedades en venta y 29 marcadores nuevos (índices 3–31), usando las arrays originales del juego. Se preservan los 3 pickups bloqueados y los 3 blips originales de Showroom, Zero's y Airstrip (índices 0–2).
+- Se conserva íntegramente el sistema original de propiedades de GTA SA Android 2.10. El mainV1.scm contiene 32 pickups y marcadores nativos: 26 no disponibles (PROP_4) y 6 en venta (PROP_3) en el bloque de inicialización analizado. El CLEO ya no destruye ni recrea esos pickups ni duplica sus marcadores.
 - 58 marcadores comerciales: barberías, comida, ropa y talleres.
 - 3 marcadores de gimnasios: Ganton Gym, Cobra Martial Arts Gym y Below the Belt Gym.
 - Acceso habilitado por script a los interiores de los tres gimnasios y otros establecimientos.
@@ -24,8 +24,8 @@ CONTENIDO FUNCIONAL PREVISTO
 
 ESTADO
 - Este paquete es un candidato de desarrollo, NO una versión declarada estable ni lista para instalar.
-- Se corrigió una colisión grave: la fuente anterior reutilizaba variables globales que pertenecen a pickups coleccionables y handles de marcadores del juego. La fuente actual usa las arrays de propiedades originales y handles CLEO separados. La compilación y la revisión estática no prueban estabilidad.
+- Se corrigió una colisión grave de variables globales y se retiró la manipulación directa de pickups y marcadores de propiedades. El juego conserva sus condiciones originales de disponibilidad, precios y progreso. La compilación y la revisión estática no prueban estabilidad.
 - La compilación correcta solo confirma que el compilador generó el archivo; no demuestra estabilidad dentro del juego.
-- La aparición de los marcadores de gimnasios, la entrada a los gimnasios y el entrenamiento real todavía requieren validación dentro del juego.
+- Los estados rojos (no disponibles) y verdes (en venta) de las propiedades son gestionados por el juego original; no se fuerzan a estar todas en venta. La aparición de los marcadores de gimnasios, la entrada a los gimnasios y el entrenamiento real todavía requieren validación dentro del juego.
 - No se debe considerar MAP READY como éxito si después aparece MAP ERROR, el juego se cierra o el teléfono se reinicia.
 - Debido a los cierres anteriores, no repetir pruebas hasta completar la auditoría y autorizar expresamente una prueba controlada.
