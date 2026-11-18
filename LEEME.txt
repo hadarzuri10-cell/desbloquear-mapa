@@ -1,7 +1,7 @@
 DESBLOQUEAR MAPA — ESTADO DEL PROYECTO
 
 Versión activa: v1.4.5 (fuente en main).
-Script: Desbloquear Mapa.csi
+Script compilado: Desbloquear Mapa.csi
 Fuente: Desbloquear Mapa v1.4.5.source.txt
 
 FUNCIONES
@@ -19,9 +19,12 @@ MENSAJES
 - MAPLOAD: 1.5 segundos.
 - MAP READY: 5 segundos continuos, sin parpadeo.
 - MAPBUSY: aviso cuando se intenta ejecutar durante una misión.
+- MAP ERROR: se muestra y el script aborta si CLEO devuelve una base de imagen igual a cero.
 
 DESARROLLO Y VALIDACIÓN
-La compilación previa de v1.4.5 fue exitosa en GitHub Actions. La corrección actual de MAP READY requiere una nueva compilación.
-La prueba real dentro de GTA San Andreas Android 2.10 sigue pendiente; no se afirma compatibilidad funcional hasta realizarla.
+La fuente v1.4.5 compiló correctamente con Sanny Builder 4.2.0 en modo SA Mobile. Run de GitHub Actions: 44365903993.
+La compilación confirma que la fuente genera un archivo CSI, pero no demuestra funcionamiento ni estabilidad dentro del juego.
+La compatibilidad funcional con GTA San Andreas Android 2.10 sigue sin confirmarse. Los offsets de memoria utilizados por la fuente aún no están validados específicamente para esa versión.
+La prueba real dentro del juego queda pendiente para el usuario y debe realizarse en una partida nueva.
 
-Las pruebas auxiliares de marcadores son parte del proceso de desarrollo y depuración de Desbloquear Mapa. La rama v1.4.5.1-development no se utilizará como rama activa.
+Las pruebas auxiliares de marcadores están cerradas y no deben solicitarse de nuevo. La rama activa es main.
