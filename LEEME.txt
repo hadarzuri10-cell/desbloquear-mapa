@@ -22,9 +22,11 @@ MENSAJES
 - MAP ERROR: se muestra y el script aborta si CLEO devuelve una base de imagen igual a cero.
 
 DESARROLLO Y VALIDACIÓN
-La fuente v1.4.5 compiló correctamente con Sanny Builder 4.2.0 en modo SA Mobile. Run de GitHub Actions: 44365903993.
+La fuente v1.4.5 compiló correctamente con Sanny Builder 4.2.0 en modo SA Mobile. Run de GitHub Actions: 44366859260.
 La compilación confirma que la fuente genera un archivo CSI, pero no demuestra funcionamiento ni estabilidad dentro del juego.
 Se encontró una referencia independiente de código Android que coincide con los offsets de 32 bits usados para el mapa y publica alternativas para 64 bits. Falta identificar la arquitectura real de la biblioteca instalada y confirmar que esa referencia corresponde a la compilación exacta del usuario. La compatibilidad funcional con GTA San Andreas Android 2.10 sigue sin confirmarse.
 La prueba real dentro del juego queda pendiente para el usuario y debe realizarse en una partida nueva.
+
+Antes de limpiar los pickups, el script consulta 09D1 para verificar que existan; antes de desactivar marcadores, consulta 075C para verificar que estén habilitados. La compilación de esta revisión fue exitosa, pero no demuestra estabilidad dentro del juego.
 
 Las pruebas auxiliares de marcadores están cerradas y no deben solicitarse de nuevo. La rama activa es main.
