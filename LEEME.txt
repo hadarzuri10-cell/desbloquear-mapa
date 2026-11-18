@@ -1,32 +1,27 @@
-DESBLOQUEAR MAPA v1.3 — PAQUETE COMPILADO Y REVISADO
+DESBLOQUEAR MAPA — ESTADO DEL PROYECTO
 
-Contenido:
-- Desbloquear Mapa v1.3.csi
-- Desbloquear Mapa.fxt
-- Desbloquear Mapa v1.3.source.txt
-- VALIDACION_ESTATICA.txt
+Versión activa: v1.4 (fuente en main).
+Script: Desbloquear Mapa.csi
+Fuente: Desbloquear Mapa v1.4.source.txt
 
-Funciones incluidas:
-- Revela los 100 sectores del mapa y actualiza el contador de sectores.
-- Establece STAT_CITIES_PASSED (181) en 4 para habilitar el acceso a las cuatro ciudades sin el bloqueo de acceso por historia.
-- Reconstruye los 32 marcadores de propiedades que todavía no estén compradas, usando las coordenadas, precios, variables y manejadores originales del juego.
-- Comprueba la matriz original de propiedades compradas: no crea marcadores para propiedades ya adquiridas.
-- Mantiene el proceso de compra original; no compra propiedades automáticamente ni cambia el dinero.
-- Habilita interiores de peluquerías, tiendas de ropa, restaurantes, gimnasios, tatuajes y RC Play.
-- Los talleres, garajes y servicios de vehículos conservan sus sistemas originales; el desbloqueo de ciudades permite llegar a sus ubicaciones.
-- Incluye un control para impedir la ejecución mientras una misión está activa.
+FUNCIONES
+- Revela los 100 sectores del mapa.
+- Actualiza el contador de sectores.
+- Reconstruye los 32 marcadores de propiedades que todavía no estén compradas, respetando la matriz original.
+- Habilita 22 interiores normales de comercios, gimnasios y actividades permitidas.
+- No compra propiedades automáticamente ni cambia el dinero.
+- No modifica banderas de misiones, vehículos, inventario ni propiedades adquiridas.
+- No altera el daño por caída ni Camera Teletransporte.
+- No incluye interiores de contenido adulto, casinos/apuestas ni funciones de armas.
+- Impide la ejecución mientras una misión está activa.
 
-Integridad y compatibilidad con el progreso:
-- No modifica banderas de misiones, dinero, vehículos, inventario ni propiedad adquirida.
-- No altera el daño por caída ni el script Camera Teletransporte.
-- Las rutinas originales BUY1/BUY2/BUY3 y OPENUP limpian los mismos manejadores antes de regenerar sus marcadores, por lo que los marcadores creados por este script pueden ser refrescados por el juego cuando se alcance el progreso correspondiente.
-- No incorpora funciones de tiendas de armas ni actividades de casino/apuestas.
+MENSAJES
+- MAPLOAD: 1.5 segundos.
+- MAP READY: 5 segundos continuos, sin parpadeo.
+- MAPBUSY: aviso cuando se intenta ejecutar durante una misión.
 
-Instalación prevista: coloca el .csi y el .fxt juntos en la carpeta CLEO y ejecútalo manualmente desde el menú CLEO, fuera de misiones y cinemáticas. Haz una copia de seguridad de la partida antes de probarlo.
+DESARROLLO Y VALIDACIÓN
+La compilación previa de v1.4 fue exitosa en GitHub Actions. La corrección actual de MAP READY requiere una nueva compilación.
+La prueba real dentro de GTA San Andreas Android 2.10 sigue pendiente; no se afirma compatibilidad funcional hasta realizarla.
 
-Validación:
-- Bytecode ensamblado y revisado estáticamente.
-- Las 32 coordenadas, precios, pickups y manejadores de marcadores se cotejaron con mainV1.scm.
-- Las rutinas de limpieza de OPENUP se cotejaron con los 23 marcadores/pickups que reemplazan.
-- Las direcciones de mapa se cotejaron con libGTASA.so de la APK recuperada.
-- No se ha ejecutado dentro del juego; por tanto, la prueba real de funcionamiento en GTA SA Android 2.10 sigue pendiente.
+Las pruebas auxiliares de marcadores son parte del proceso de desarrollo y depuración de Desbloquear Mapa. La rama v1.4.1-development no se utilizará como rama activa.
