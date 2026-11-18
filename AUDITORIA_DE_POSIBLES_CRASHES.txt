@@ -1,0 +1,53 @@
+AUDITORÍA DE POSIBLES CRASHES — DESBLOQUEAR MAPA
+Fecha: 2026-11-18
+Rama activa: main
+Fuente revisada: Desbloquear Mapa v1.4.source.txt
+SHA de fuente revisada: d9608b9cf2604d780880af3dd3705864807f846c
+
+RESUMEN
+La fuente compila con Sanny Builder 4.2.0 en modo SA Mobile. La compilación correcta no demuestra que el script sea seguro ni compatible dentro de GTA SA Android 2.10. Esta auditoría separa comprobaciones estáticas de riesgos que necesitan confirmación.
+
+COMPROBACIONES ESTÁTICAS
+- 472 líneas contando la línea final vacía.
+- 101 escrituras de memoria: 100 bytes consecutivos desde 0x0098D252 hasta 0x0098D2B5, y una escritura de 4 bytes en 0x0098D2B8.
+- 32 instrucciones de creación de pickups y 32 variables distintas ($3071 a $3102).
+- 32 instrucciones de creación de marcadores y 32 variables distintas ($65, $526, $54 y $3010 a $3038).
+- Hay 32 instrucciones de limpieza de pickups que coinciden con las 32 variables de creación.
+- Hay 32 instrucciones de desactivación de marcadores que coinciden con las 32 variables de creación.
+- 22 interiores habilitados.
+- 33 saltos; todos tienen etiqueta de destino y no hay etiquetas duplicadas.
+- MAP READY permanece visible durante 5000 ms, sin parpadeo.
+- MAPLOAD permanece en 1500 ms.
+- No se detectaron nombres de etiquetas sin destino ni duplicados.
+
+RIESGOS QUE SIGUEN ABIERTOS
+
+1. DIRECCIONES DE MEMORIA Y VERSIÓN
+La fuente escribe usando 0DD9 con add_ib 1. En CLEO Android, add_ib suma la base de la biblioteca principal al desplazamiento indicado. Eso ayuda con la reubicación de la biblioteca, pero no prueba que el desplazamiento 0x0098D252 sea el correcto para GTA SA 2.10.
+La documentación pública localizada para direcciones de memoria de SA Android corresponde a v2.00, está marcada como incompleta y no documenta el bloque 0x0098D252. No se debe cambiar ni dar por válida esta dirección para v2.10 sin una referencia específica de esa versión.
+Prioridad: CRÍTICA. No se modificaron las escrituras a ciegas.
+
+2. LIMPIEZA DE HANDLES
+La fuente ejecuta 32 destroy_pickup y 32 disable_marker antes de crear los nuevos objetos, sin comprobar antes que cada handle sea distinto de cero y siga siendo válido.
+En una primera ejecución o después de cargar/recuperar estado, los valores podrían no representar handles válidos. En una repetición, algún objeto podría haber sido recogido o invalidado.
+Prioridad: ALTA. Requiere una estrategia de validación de handles antes de modificar este bloque; no se hizo un parche improvisado.
+
+3. ESTADÍSTICA DEL JUEGO
+La instrucción 0629 cambia el estadístico 181 a 4. Es una modificación adicional al desbloqueo del mapa y puede alterar estadísticas guardadas.
+Prioridad: MEDIA. Confirmar si es indispensable para revelar/acceder a las ciudades; si no lo es, retirarla para respetar el alcance mínimo del proyecto.
+
+4. CREACIÓN CONSECUTIVA DE OBJETOS
+Se crean hasta 32 pickups y 32 marcadores dentro de una sola ejecución, sin pausas entre cada par.
+Prioridad: MEDIA. Evaluar creación escalonada y límites de objetos tras verificar primero que los handles y las direcciones son correctos.
+
+5. IDENTIFICACIÓN DE LA VERSIÓN DEL JUEGO
+La fuente no comprueba la versión del juego antes de realizar las escrituras de memoria. Una comprobación genérica de CLEO para SA 2.00 o superior no basta por sí sola para certificar que un desplazamiento concreto es correcto en 2.10.
+Prioridad: ALTA. Se necesita identificar la variante exacta de GTA SA 2.10 y su base/offsets antes de permitir las escrituras.
+
+6. RESULTADOS DE LAS PRUEBAS AUXILIARES
+En las pruebas anteriores, el usuario informó que tanto la prueba con un marcador como la prueba de control sin marcadores provocaron crash. Por tanto, esos resultados no aíslan 0570 ni demuestran que los marcadores sean la causa. La rama v1.4.1-development queda fuera de uso según la decisión del usuario.
+
+DECISIÓN DE ESTA REVISIÓN
+No se cambió la lógica de memoria ni la limpieza de objetos porque no hay confirmación suficiente para hacer un cambio seguro. Un parche a ciegas podría introducir un crash nuevo o dañar el estado de la partida.
+La siguiente revisión debe resolver primero la compatibilidad de los offsets con GTA SA 2.10 y después corregir la limpieza de handles, revisar el estadístico 181 y escalonar la creación de objetos.
+No declarar la fuente libre de crashes hasta completar la prueba real en el juego.
