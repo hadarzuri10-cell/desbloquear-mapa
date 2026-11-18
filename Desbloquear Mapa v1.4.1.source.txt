@@ -19,7 +19,7 @@
 // El bloqueo ya pertenece a esta instancia; ahora se comprueba la misión.
 00D6: if 0
 0038: $ONMISSION == 0
-004D: jump_if_false @busy
+004D: jump_if_false @mission_busy
 01BD: 1@ = get_game_timer
 :loading_draw
 0001: wait 0
@@ -166,6 +166,20 @@
 0DD9: write_mem_addr 0x0098D2B5 value 1 size 1 add_ib 1 protect 0
 0DD9: write_mem_addr 0x0098D2B8 value 100 size 4 add_ib 1 protect 0
 0629: change_integer_stat 181 to 4
+// Verificar la escritura de los indicadores del mapa antes de mostrar MAP READY.
+// Si una comprobación falla, MAP ERROR representa un fallo real de lectura/escritura.
+0DD8: 0@ = read_mem_addr 0x0098D252 size 1 add_ib 1
+00D6: if 0
+0038: 0@ == 1
+004D: jump_if_false @busy
+0DD8: 0@ = read_mem_addr 0x0098D2B5 size 1 add_ib 1
+00D6: if 0
+0038: 0@ == 1
+004D: jump_if_false @busy
+0DD8: 0@ = read_mem_addr 0x0098D2B8 size 4 add_ib 1
+00D6: if 0
+0038: 0@ == 100
+004D: jump_if_false @busy
 // PROPIEDADES: conservar íntegramente la gestión original de GTA SA Android 2.10.
 // mainV1.scm crea 32 pickups y marcadores de propiedades: 26 no disponibles (PROP_4)
 // y 6 en venta (PROP_3) en el bloque original de inicialización.
@@ -1051,6 +1065,10 @@
 0DDC: set_mutex_var 1145919745 to 1
 0DDC: set_mutex_var 1145919744 to 0
 :already_running
+0A93: end_custom_thread
+:mission_busy
+// No mostrar MAP ERROR si el hilo se inicia durante una misión; liberar el bloqueo y salir.
+0DDC: set_mutex_var 1145919744 to 0
 0A93: end_custom_thread
 :busy
 01BD: 1@ = get_game_timer
