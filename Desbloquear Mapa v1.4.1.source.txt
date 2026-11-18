@@ -166,16 +166,20 @@
 0DD9: write_mem_addr 0x0098D2B5 value 1 size 1 add_ib 1 protect 0
 0DD9: write_mem_addr 0x0098D2B8 value 100 size 4 add_ib 1 protect 0
 0629: change_integer_stat 181 to 4
-// Verificar la escritura de los indicadores del mapa antes de mostrar MAP READY.
-// Si una comprobación falla, MAP ERROR representa un fallo real de lectura/escritura.
-0DD8: 0@ = read_mem_addr 0x0098D252 size 1 add_ib 1
+// Verificar los 100 bytes del mapa antes de mostrar MAP READY.
+// MAP ERROR solo se muestra si falla una lectura de verificación.
+0004: 0@ = 0
+0004: 1@ = 0x0098D252
+:verify_map_byte
+0DD8: 2@ = read_mem_addr 1@ size 1 add_ib 1
 00D6: if 0
-0038: 0@ == 1
+0038: 2@ == 1
 004D: jump_if_false @busy
-0DD8: 0@ = read_mem_addr 0x0098D2B5 size 1 add_ib 1
+0008: 1@ += 1
+0008: 0@ += 1
 00D6: if 0
-0038: 0@ == 1
-004D: jump_if_false @busy
+0029: 0@ >= 100
+004D: jump_if_false @verify_map_byte
 0DD8: 0@ = read_mem_addr 0x0098D2B8 size 4 add_ib 1
 00D6: if 0
 0038: 0@ == 100
