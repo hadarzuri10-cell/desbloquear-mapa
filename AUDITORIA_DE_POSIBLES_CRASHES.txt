@@ -2,13 +2,13 @@ AUDITORÍA DE POSIBLES CRASHES — DESBLOQUEAR MAPA
 Fecha: 2026-11-18
 Rama activa: main
 Fuente revisada: Desbloquear Mapa v1.4.source.txt
-SHA de fuente revisada: d020038a079d1d92b8705fdb562c1640951a5b55
+SHA de fuente revisada: 5007a7831eba685ccae4c38a05c56b1df3468d3a
 
 RESUMEN
 La fuente compila con Sanny Builder 4.2.0 en modo SA Mobile. La compilación correcta no demuestra que el script sea seguro ni compatible dentro de GTA SA Android 2.10. Esta auditoría separa comprobaciones estáticas de riesgos que necesitan confirmación.
 
 COMPROBACIONES ESTÁTICAS
-- 472 líneas contando la línea final vacía.
+- 919 líneas contando la línea final vacía.
 - 101 escrituras de memoria: 100 bytes consecutivos desde 0x0098D252 hasta 0x0098D2B5, y una escritura de 4 bytes en 0x0098D2B8.
 - 32 instrucciones de creación de pickups y 32 variables distintas ($3071 a $3102).
 - 32 instrucciones de creación de marcadores y 32 variables distintas ($65, $526, $54 y $3010 a $3038).
@@ -16,7 +16,8 @@ COMPROBACIONES ESTÁTICAS
 - La limpieza ahora comprueba que cada variable sea distinta de cero antes de llamar a destroy_pickup/disable_marker y pone la variable a cero después.
 - Se eliminó la instrucción que cambiaba el estadístico 181 a 4.
 - 22 interiores habilitados.
-- 33 saltos; todos tienen etiqueta de destino y no hay etiquetas duplicadas.
+- 65 saltos; todos tienen etiqueta de destino y no hay etiquetas duplicadas.
+- Las 32 llamadas `018B: set_marker ... radar_mode 2` ahora se ejecutan solo si la creación del marcador devolvió un handle distinto de cero.
 - MAP READY permanece visible durante 5000 ms, sin parpadeo.
 - MAPLOAD permanece en 1500 ms.
 - No se detectaron nombres de etiquetas sin destino ni duplicados.
@@ -27,6 +28,7 @@ RIESGOS QUE SIGUEN ABIERTOS
 La fuente escribe usando 0DD9 con add_ib 1. En CLEO Android, add_ib suma la base de la biblioteca principal al desplazamiento indicado. Eso ayuda con la reubicación de la biblioteca, pero no prueba que el desplazamiento 0x0098D252 sea el correcto para GTA SA 2.10.
 La documentación pública localizada para direcciones de memoria de SA Android corresponde a v2.00, está marcada como incompleta y no documenta el bloque 0x0098D252. No se debe cambiar ni dar por válida esta dirección para v2.10 sin una referencia específica de esa versión.
 Prioridad: CRÍTICA. No se modificaron las escrituras a ciegas.
+Además, la implementación pública de CLEO Android muestra que `protect 0` omite la llamada a `mprotect` y escribe directamente en la dirección calculada. Esto no provoca un crash por sí solo si la zona es memoria de datos válida y escribible, pero tampoco protege frente a una dirección incorrecta, no mapeada o de solo lectura. No se debe cambiar `protect` a 1 como supuesto arreglo: esa ruta también ignora el resultado de `mprotect` y no valida la dirección.
 
 2. LIMPIEZA DE HANDLES
 Se corrigió el caso de variables sin inicializar: destroy_pickup y disable_marker solo se llaman si el handle almacenado es distinto de cero; después se pone la variable a cero.
@@ -44,10 +46,16 @@ Prioridad: MEDIA. Evaluar creación escalonada y límites de objetos tras verifi
 La fuente no comprueba la versión del juego antes de realizar las escrituras de memoria. Una comprobación genérica de CLEO para SA 2.00 o superior no basta por sí sola para certificar que un desplazamiento concreto es correcto en 2.10.
 Prioridad: ALTA. Se necesita identificar la variante exacta de GTA SA 2.10 y su base/offsets antes de permitir las escrituras.
 
-6. RESULTADOS DE LAS PRUEBAS AUXILIARES
+6. VALIDACIÓN DEL HANDLE DEL MARCADOR
+RESUELTO PARCIALMENTE EN FUENTE: las 32 llamadas a `set_marker` ahora están protegidas por una comprobación de handle distinto de cero. Si la creación falla y devuelve cero, se omite la configuración del marcador.
+Esto no demuestra que todos los handles no nulos sean válidos ni confirma qué valor exacto devuelve cada opcode al fallar. La limpieza de handles obsoletos sigue abierta.
+
+7. RESULTADOS DE LAS PRUEBAS AUXILIARES
 En las pruebas anteriores, el usuario informó que tanto la prueba con un marcador como la prueba de control sin marcadores provocaron crash. Por tanto, esos resultados no aíslan 0570 ni demuestran que los marcadores sean la causa. La rama v1.4.1-development queda fuera de uso según la decisión del usuario.
 
 DECISIÓN DE ESTA REVISIÓN
-Se retiró el cambio de estadística y se añadió protección para no destruir/desactivar handles con valor cero. No se cambiaron las direcciones de memoria porque no hay confirmación específica para GTA SA Android 2.10. Un parche a ciegas podría introducir un crash nuevo o dañar el estado de la partida.
-La siguiente revisión debe resolver primero la compatibilidad de los offsets con GTA SA 2.10 y confirmar la validez de handles no nulos. La creación escalonada sigue siendo una mejora posible, no una causa demostrada.
+Se retiró el cambio de estadística, se añadió protección para no destruir/desactivar handles con valor cero y se protegieron las 32 configuraciones de marcadores ante handles cero. La auditoría estática confirmó 65 saltos con destino y sin etiquetas duplicadas.
+No se cambiaron las direcciones de memoria porque no hay confirmación específica para GTA SA Android 2.10. La implementación de CLEO confirma que `protect 0` escribe directamente y que el opcode no valida la dirección. Un parche a ciegas podría introducir un crash nuevo o dañar el estado del juego.
+Siguen abiertos los riesgos críticos de offsets/versión y los riesgos de handles no nulos obsoletos. La creación escalonada sigue siendo una mejora posible, no una causa demostrada.
+No declarar la fuente libre de crashes hasta completar la prueba real en el juego.
 No declarar la fuente libre de crashes hasta completar la prueba real en el juego.
