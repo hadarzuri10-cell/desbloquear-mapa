@@ -1,4 +1,4 @@
-DESBLOQUEAR MAPA v1.4 — FUENTE CORREGIDA
+DESBLOQUEAR MAPA v1.4.5 — FUENTE CORREGIDA
 
 ESTADO
 - Fuente actualizada en main.
@@ -6,7 +6,7 @@ ESTADO
 - Antes de escribir memoria, se comprueba que CLEO detecte una base de imagen distinta de cero; si no, muestra MAP ERROR y aborta.
 - MAPLOAD se muestra durante 1.5 segundos.
 - MAP READY se muestra de forma continua durante 5 segundos; no parpadea.
-- La compilación previa de v1.4 fue exitosa en GitHub Actions.
+- La compilación previa de v1.4.5 fue exitosa en GitHub Actions.
 - La prueba dentro de GTA San Andreas Android 2.10 sigue pendiente.
 
 AUDITORÍA ESTÁTICA
@@ -24,4 +24,4 @@ PENDIENTE
 - Probar en GTA San Andreas Android 2.10 antes de afirmar compatibilidad funcional.
 - Se eliminó el cambio de estadística 181 para evitar modificar datos de la partida sin necesidad.
 
-Las pruebas auxiliares de marcadores forman parte del proceso de desarrollo y depuración de Desbloquear Mapa. La rama v1.4.1-development queda fuera de uso; la versión activa se mantiene en main.
+Las pruebas auxiliares de marcadores forman parte del proceso de desarrollo y depuración de Desbloquear Mapa. La rama v1.4.5.1-development queda fuera de uso; la versión activa se mantiene en main.
