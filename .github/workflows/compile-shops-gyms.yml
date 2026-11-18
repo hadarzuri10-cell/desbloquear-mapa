@@ -38,8 +38,21 @@ jobs:
           New-Item -ItemType Directory -Force -Path $outputDir | Out-Null
           if (-not (Test-Path $source)) { throw "Source file missing: $source" }
 
+          $stdout = Join-Path $PWD 'build\compiler-stdout.log'
+          $stderr = Join-Path $PWD 'build\compiler-stderr.log'
           $arguments = @('--no-splash', '--game', 'sa_mobile', '--compile', "`"$source`"", "`"$output`"")
-          $process = Start-Process -FilePath $env:SANNY_EXE -ArgumentList $arguments -WorkingDirectory $PWD -PassThru -NoNewWindow -Wait
+          "Compiler: $env:SANNY_EXE" | Set-Content (Join-Path $PWD 'build\compile.log')
+          "Arguments: $($arguments -join ' ')" | Add-Content (Join-Path $PWD 'build\compile.log')
+
+          $process = Start-Process -FilePath $env:SANNY_EXE -ArgumentList $arguments -WorkingDirectory $PWD -PassThru -NoNewWindow -RedirectStandardOutput $stdout -RedirectStandardError $stderr
+          if (-not $process.WaitForExit(120000)) {
+            $process.Kill()
+            $process.WaitForExit()
+            throw 'Sanny Builder timed out after 120 seconds.'
+          }
+          "Exit code: $($process.ExitCode)" | Add-Content (Join-Path $PWD 'build\compile.log')
+          if (Test-Path $stdout) { Get-Content $stdout | Add-Content (Join-Path $PWD 'build\compile.log') }
+          if (Test-Path $stderr) { Get-Content $stderr | Add-Content (Join-Path $PWD 'build\compile.log') }
           if ($process.ExitCode -ne 0) { throw "Compilation failed with exit code $($process.ExitCode)." }
           if (-not (Test-Path $output)) { throw 'Compiler exited without producing the .csi file.' }
 
