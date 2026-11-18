@@ -3,6 +3,7 @@ DESBLOQUEAR MAPA v1.4 — FUENTE CORREGIDA
 ESTADO
 - Fuente actualizada en main.
 - La creación de los 32 bloques de propiedades está espaciada con esperas de 50 ms.
+- Antes de escribir memoria, se comprueba que CLEO detecte una base de imagen distinta de cero; si no, muestra MAP ERROR y aborta.
 - MAPLOAD se muestra durante 1.5 segundos.
 - MAP READY se muestra de forma continua durante 5 segundos; no parpadea.
 - La compilación previa de v1.4 fue exitosa en GitHub Actions.
