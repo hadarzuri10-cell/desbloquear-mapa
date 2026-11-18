@@ -27,5 +27,7 @@ ESTADO
 - Se corrigió una colisión grave de variables globales y se retiró la manipulación directa de pickups y marcadores de propiedades. El juego conserva sus condiciones originales de disponibilidad, precios y progreso. La compilación y la revisión estática no prueban estabilidad.
 - La compilación correcta solo confirma que el compilador generó el archivo; no demuestra estabilidad dentro del juego.
 - Los estados rojos (no disponibles) y verdes (en venta) de las propiedades son gestionados por el juego original; no se fuerzan a estar todas en venta. La aparición de los marcadores de gimnasios, la entrada a los gimnasios y el entrenamiento real todavía requieren validación dentro del juego.
-- No se debe considerar MAP READY como éxito si después aparece MAP ERROR, el juego se cierra o el teléfono se reinicia.
+- Si el script se inicia durante una misión, libera su bloqueo y termina sin mostrar MAP ERROR. MAP ERROR queda reservado para un fallo de verificación de memoria después de escribir los indicadores del mapa.
+- MAP READY solo se muestra después de comprobar los 100 bytes de la zona de mapa y el valor de control esperado. Aun así, la compilación no sustituye una prueba real dentro del juego.
+- No se debe considerar MAP READY como éxito si después el juego se cierra o el teléfono se reinicia.
 - Debido a los cierres anteriores, no repetir pruebas hasta completar la auditoría y autorizar expresamente una prueba controlada.
