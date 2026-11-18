@@ -1,0 +1,66 @@
+name: Compile marker test CLEO
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - v1.4.1-development
+    paths:
+      - 'Prueba de testeo de los marcadores.csi.source.txt'
+      - '.github/workflows/compile-shops-gyms.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  compile:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Download Sanny Builder 4.2.0
+        shell: pwsh
+        run: |
+          $url = 'https://github.com/sannybuilder/dev/releases/download/v4.2.0/SannyBuilder-v4.2.0.zip'
+          Invoke-WebRequest -Uri $url -OutFile "$env:RUNNER_TEMP\sanny.zip"
+          Expand-Archive -Path "$env:RUNNER_TEMP\sanny.zip" -DestinationPath "$env:RUNNER_TEMP\sanny" -Force
+          $exe = Get-ChildItem "$env:RUNNER_TEMP\sanny" -Filter sanny.exe -Recurse | Select-Object -First 1
+          if (-not $exe) { throw 'sanny.exe was not found.' }
+          "SANNY_EXE=$($exe.FullName)" | Out-File -FilePath $env:GITHUB_ENV -Append
+
+      - name: Compile independent source
+        shell: pwsh
+        run: |
+          $source = Join-Path $PWD 'Prueba de testeo de los marcadores.csi.source.txt'
+          $outputDir = Join-Path $PWD 'build\cleo'
+          $output = Join-Path $outputDir 'Prueba de testeo de los marcadores.csi'
+          New-Item -ItemType Directory -Force -Path $outputDir | Out-Null
+          if (-not (Test-Path $source)) { throw "Source file missing: $source" }
+
+          $stdout = Join-Path $PWD 'build\compiler-stdout.log'
+          $stderr = Join-Path $PWD 'build\compiler-stderr.log'
+          $arguments = @('--no-splash', '--game', 'sa_mobile', '--compile', "`"$source`"", "`"$output`"")
+          "Compiler: $env:SANNY_EXE" | Set-Content (Join-Path $PWD 'build\compile.log')
+          "Arguments: $($arguments -join ' ')" | Add-Content (Join-Path $PWD 'build\compile.log')
+
+          $process = Start-Process -FilePath $env:SANNY_EXE -ArgumentList $arguments -WorkingDirectory $PWD -PassThru -NoNewWindow -RedirectStandardOutput $stdout -RedirectStandardError $stderr
+          if (-not $process.WaitForExit(120000)) {
+            $process.Kill()
+            $process.WaitForExit()
+            throw 'Sanny Builder timed out after 120 seconds.'
+          }
+          "Exit code: $($process.ExitCode)" | Add-Content (Join-Path $PWD 'build\compile.log')
+          if (Test-Path $stdout) { Get-Content $stdout | Add-Content (Join-Path $PWD 'build\compile.log') }
+          if (Test-Path $stderr) { Get-Content $stderr | Add-Content (Join-Path $PWD 'build\compile.log') }
+          if ($process.ExitCode -ne 0) { throw "Compilation failed with exit code $($process.ExitCode)." }
+          if (-not (Test-Path $output)) { throw 'Compiler exited without producing the .csi file.' }
+
+          "Compiled marker test script." | Set-Content (Join-Path $PWD 'build\compile-result.txt')
+
+      - name: Upload independent script
+        uses: actions/upload-artifact@v4
+        with:
+          name: Prueba-de-testeo-de-los-marcadores-compiled
+          path: build/*
+          if-no-files-found: error
