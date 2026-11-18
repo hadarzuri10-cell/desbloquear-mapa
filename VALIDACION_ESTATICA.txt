@@ -2,23 +2,26 @@ VALIDACIÓN — DESBLOQUEAR MAPA v1.4.5
 
 Fuente: Desbloquear Mapa v1.4.5.source.txt
 SHA de fuente: e36d36712b93716793d290863cf56cb7a56d942b
-Compilación: correcta con Sanny Builder 4.2.0, modo SA Mobile.
-Compilación previa de la misma fuente: run 44364245807 (SHA e36d36712b93716793d290863cf56cb7a56d942b). La copia con nombre 1.4.5 requiere su propia compilación verificada.
-Run posterior de documentación: 44364286292 (conclusión success).
+Compilador: Sanny Builder 4.2.0, modo SA Mobile.
+Resultado de compilación de la fuente 1.4.5: correcto.
+Run verificado: 44365903993 (commit del repositorio: 9d1923606fa499f140942e7b882326c5edfe3824).
+Artefacto: Desbloquear-Mapa-compiled-test, ID 14457205395, 8071 bytes.
 Formato generado: .csi
-MAPLOAD: 1500 ms
-MAP READY: 5000 ms continuos, sin parpadeo.
-Propiedades: 32 bloques; matriz 1..32; pickups $3071..$3102.
-Marcadores: 32 handles únicos; 32 limpiezas previas; las 32 configuraciones se protegen ante handle cero.
-Creación: espera de 50 ms al finalizar cada uno de los 32 bloques (41 esperas de 50 ms en total en la fuente). para reducir picos de carga.
-Interiores normales: 22.
-Saltos condicionales: 131 saltos condicionales; 130 destinos distintos existentes; 130 etiquetas únicas; sin etiquetas duplicadas.
-Mapa: 100 bytes consecutivos + contador 100; escrituras condicionadas a que `get_image_base` no devuelva cero.
+
+COMPROBACIONES ESTÁTICAS
+- 958 líneas.
+- 101 escrituras de memoria: 100 bytes consecutivos desde 0x0098D252 hasta 0x0098D2B5 y una escritura de 4 bytes en 0x0098D2B8.
+- 32 bloques de propiedades, matriz 1..32, pickups $3071..$3102.
+- 32 marcadores; 32 limpiezas previas; las 32 configuraciones de marcador comprueban handle distinto de cero.
+- 41 esperas de 50 ms: 32 al terminar los bloques y 9 anteriores.
+- 22 interiores normales.
+- 131 saltos condicionales; 130 destinos distintos existentes; 130 etiquetas únicas; sin etiquetas duplicadas.
+- MAPLOAD: 1500 ms.
+- MAP READY: 5000 ms continuos, sin parpadeo.
+- Escrituras condicionadas a que get_image_base no devuelva cero.
 
 IMPORTANTE
-La fuente base de esta versión ya fue compilada correctamente en el run 44364245807; la copia renombrada 1.4.5 aún debe compilarse.
-El run 44364286292 también terminó con conclusión success después de los cambios de documentación.
-La compilación confirma aceptación por el compilador; no demuestra funcionamiento ni estabilidad dentro del juego.
-No probado dentro del juego.
-MAP ERROR: añadido control para abortar si no se detecta la base de imagen.
-Compatibilidad funcional con GTA San Andreas Android 2.10 pendiente de prueba.
+La compilación confirma que Sanny Builder acepta la fuente y genera el CSI. No demuestra funcionamiento ni estabilidad dentro del juego.
+No probado dentro de GTA San Andreas Android 2.10.
+La compatibilidad funcional y la validez de los offsets 0x0098D252 y 0x0098D2B8 siguen pendientes de verificación.
+MAP ERROR: el script aborta si no se detecta la base de imagen.
