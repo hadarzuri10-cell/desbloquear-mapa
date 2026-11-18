@@ -1,7 +1,7 @@
 VALIDACIÓN — DESBLOQUEAR MAPA v1.4
 
 Fuente: Desbloquear Mapa v1.4.source.txt
-SHA de fuente: 3654716fe8308fd5d39b6e71be75561c973a7329
+SHA de fuente: e36d36712b93716793d290863cf56cb7a56d942b
 Compilación anterior: correcta con Sanny Builder 4.2.0, modo SA Mobile.
 Formato generado: .csi
 MAPLOAD: 1500 ms
@@ -11,10 +11,11 @@ Marcadores: 32 handles únicos; 32 limpiezas previas; las 32 configuraciones se 
 Creación: espera de 50 ms al finalizar cada uno de los 32 bloques para reducir picos de carga.
 Interiores normales: 22.
 Saltos condicionales: 130 destinos existentes; 129 etiquetas únicas; sin etiquetas duplicadas.
-Mapa: 100 bytes consecutivos + contador 100.
+Mapa: 100 bytes consecutivos + contador 100; escrituras condicionadas a que `get_image_base` no devuelva cero.
 
 IMPORTANTE
 La compilación anterior corresponde a la fuente previa a esta corrección de MAP READY.
 La fuente corregida debe compilarse nuevamente.
 No probado dentro del juego.
+MAP ERROR: añadido control para abortar si no se detecta la base de imagen.
 Compatibilidad funcional con GTA San Andreas Android 2.10 pendiente de prueba.
