@@ -1,21 +1,21 @@
 VALIDACIÓN — DESBLOQUEAR MAPA v1.4.5
 
 Fuente: Desbloquear Mapa v1.4.5.source.txt
-SHA de fuente: ca7a17752a6535478b9579567f01c4a54b6a61b6
+SHA de fuente: daca0d43270358dac3dbd84bbed840c3ade3ab69
 Compilador: Sanny Builder 4.2.0, modo SA Mobile.
 Resultado de compilación de la fuente 1.4.5: correcto.
-Run verificado: 44366859260 (commit del repositorio: 0c12413bac68162acf4ecb52e1f46bece2b562a7).
-Artefacto: Desbloquear-Mapa-compiled-test, ID 14457995227, 8536 bytes.
+Última compilación exitosa de la fuente anterior: run 44366859260. La compilación de la fuente actual (SHA daca0d43270358dac3dbd84bbed840c3ade3ab69) está en curso.
+Artefacto de la fuente anterior: ID 14457995227, 8536 bytes. El artefacto de esta revisión aún no está disponible.
 Formato generado: .csi
 
 COMPROBACIONES ESTÁTICAS
-- 1022 líneas.
+- 1086 líneas.
 - 101 escrituras de memoria: 100 bytes consecutivos desde 0x0098D252 hasta 0x0098D2B5 y una escritura de 4 bytes en 0x0098D2B8.
 - 32 bloques de propiedades, matriz 1..32, pickups $3071..$3102.
 - 32 marcadores; 32 limpiezas de pickups protegidas por 09D1 y 32 limpiezas de marcadores protegidas por 075C; las 32 configuraciones de marcador comprueban handle distinto de cero.
 - 42 esperas de 50 ms: 32 al terminar los bloques y 10 anteriores.
 - 22 interiores normales.
-- 131 saltos condicionales; 130 destinos distintos existentes; 130 etiquetas únicas; sin etiquetas duplicadas.
+- 131 saltos condicionales; 130 destinos distintos existentes; 194 etiquetas únicas; sin etiquetas duplicadas.
 - MAPLOAD: 1500 ms.
 - MAP READY: 5000 ms continuos, sin parpadeo.
 - Escrituras condicionadas a que get_image_base no devuelva cero.
