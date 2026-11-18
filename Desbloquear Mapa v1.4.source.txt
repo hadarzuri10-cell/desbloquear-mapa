@@ -516,6 +516,7 @@
 018B: set_marker $65 radar_mode 2
 :skip_radar_mode_65
 :prop_skip_1
+0001: wait 50
 0004: 0@ = 2
 00D6: if 0
 0038: $727(0@,32i) == 0
@@ -528,6 +529,7 @@
 018B: set_marker $526 radar_mode 2
 :skip_radar_mode_526
 :prop_skip_2
+0001: wait 50
 0004: 0@ = 3
 00D6: if 0
 0038: $727(0@,32i) == 0
@@ -540,6 +542,7 @@
 018B: set_marker $54 radar_mode 2
 :skip_radar_mode_54
 :prop_skip_3
+0001: wait 50
 0004: 0@ = 4
 00D6: if 0
 0038: $727(0@,32i) == 0
@@ -552,6 +555,7 @@
 018B: set_marker $3010 radar_mode 2
 :skip_radar_mode_3010
 :prop_skip_4
+0001: wait 50
 0004: 0@ = 5
 00D6: if 0
 0038: $727(0@,32i) == 0
@@ -564,6 +568,7 @@
 018B: set_marker $3011 radar_mode 2
 :skip_radar_mode_3011
 :prop_skip_5
+0001: wait 50
 0004: 0@ = 6
 00D6: if 0
 0038: $727(0@,32i) == 0
@@ -576,6 +581,7 @@
 018B: set_marker $3012 radar_mode 2
 :skip_radar_mode_3012
 :prop_skip_6
+0001: wait 50
 0004: 0@ = 7
 00D6: if 0
 0038: $727(0@,32i) == 0
@@ -588,6 +594,7 @@
 018B: set_marker $3013 radar_mode 2
 :skip_radar_mode_3013
 :prop_skip_7
+0001: wait 50
 0004: 0@ = 8
 00D6: if 0
 0038: $727(0@,32i) == 0
@@ -600,6 +607,7 @@
 018B: set_marker $3014 radar_mode 2
 :skip_radar_mode_3014
 :prop_skip_8
+0001: wait 50
 0004: 0@ = 9
 00D6: if 0
 0038: $727(0@,32i) == 0
@@ -612,6 +620,7 @@
 018B: set_marker $3015 radar_mode 2
 :skip_radar_mode_3015
 :prop_skip_9
+0001: wait 50
 0004: 0@ = 10
 00D6: if 0
 0038: $727(0@,32i) == 0
@@ -624,6 +633,7 @@
 018B: set_marker $3016 radar_mode 2
 :skip_radar_mode_3016
 :prop_skip_10
+0001: wait 50
 0004: 0@ = 11
 00D6: if 0
 0038: $727(0@,32i) == 0
@@ -636,6 +646,7 @@
 018B: set_marker $3017 radar_mode 2
 :skip_radar_mode_3017
 :prop_skip_11
+0001: wait 50
 0004: 0@ = 12
 00D6: if 0
 0038: $727(0@,32i) == 0
@@ -648,6 +659,7 @@
 018B: set_marker $3018 radar_mode 2
 :skip_radar_mode_3018
 :prop_skip_12
+0001: wait 50
 0004: 0@ = 13
 00D6: if 0
 0038: $727(0@,32i) == 0
@@ -660,6 +672,7 @@
 018B: set_marker $3019 radar_mode 2
 :skip_radar_mode_3019
 :prop_skip_13
+0001: wait 50
 0004: 0@ = 14
 00D6: if 0
 0038: $727(0@,32i) == 0
@@ -672,6 +685,7 @@
 018B: set_marker $3020 radar_mode 2
 :skip_radar_mode_3020
 :prop_skip_14
+0001: wait 50
 0004: 0@ = 15
 00D6: if 0
 0038: $727(0@,32i) == 0
@@ -684,6 +698,7 @@
 018B: set_marker $3021 radar_mode 2
 :skip_radar_mode_3021
 :prop_skip_15
+0001: wait 50
 0004: 0@ = 16
 00D6: if 0
 0038: $727(0@,32i) == 0
@@ -696,6 +711,7 @@
 018B: set_marker $3022 radar_mode 2
 :skip_radar_mode_3022
 :prop_skip_16
+0001: wait 50
 0004: 0@ = 17
 00D6: if 0
 0038: $727(0@,32i) == 0
@@ -708,6 +724,7 @@
 018B: set_marker $3023 radar_mode 2
 :skip_radar_mode_3023
 :prop_skip_17
+0001: wait 50
 0004: 0@ = 18
 00D6: if 0
 0038: $727(0@,32i) == 0
@@ -720,6 +737,7 @@
 018B: set_marker $3024 radar_mode 2
 :skip_radar_mode_3024
 :prop_skip_18
+0001: wait 50
 0004: 0@ = 19
 00D6: if 0
 0038: $727(0@,32i) == 0
@@ -732,6 +750,7 @@
 018B: set_marker $3025 radar_mode 2
 :skip_radar_mode_3025
 :prop_skip_19
+0001: wait 50
 0004: 0@ = 20
 00D6: if 0
 0038: $727(0@,32i) == 0
@@ -744,6 +763,7 @@
 018B: set_marker $3026 radar_mode 2
 :skip_radar_mode_3026
 :prop_skip_20
+0001: wait 50
 0004: 0@ = 21
 00D6: if 0
 0038: $727(0@,32i) == 0
@@ -756,6 +776,7 @@
 018B: set_marker $3027 radar_mode 2
 :skip_radar_mode_3027
 :prop_skip_21
+0001: wait 50
 0004: 0@ = 22
 00D6: if 0
 0038: $727(0@,32i) == 0
@@ -768,6 +789,7 @@
 018B: set_marker $3028 radar_mode 2
 :skip_radar_mode_3028
 :prop_skip_22
+0001: wait 50
 0004: 0@ = 23
 00D6: if 0
 0038: $727(0@,32i) == 0
@@ -780,6 +802,7 @@
 018B: set_marker $3029 radar_mode 2
 :skip_radar_mode_3029
 :prop_skip_23
+0001: wait 50
 0004: 0@ = 24
 00D6: if 0
 0038: $727(0@,32i) == 0
@@ -792,6 +815,7 @@
 018B: set_marker $3030 radar_mode 2
 :skip_radar_mode_3030
 :prop_skip_24
+0001: wait 50
 0004: 0@ = 25
 00D6: if 0
 0038: $727(0@,32i) == 0
@@ -804,6 +828,7 @@
 018B: set_marker $3031 radar_mode 2
 :skip_radar_mode_3031
 :prop_skip_25
+0001: wait 50
 0004: 0@ = 26
 00D6: if 0
 0038: $727(0@,32i) == 0
@@ -816,6 +841,7 @@
 018B: set_marker $3032 radar_mode 2
 :skip_radar_mode_3032
 :prop_skip_26
+0001: wait 50
 0004: 0@ = 27
 00D6: if 0
 0038: $727(0@,32i) == 0
@@ -828,6 +854,7 @@
 018B: set_marker $3033 radar_mode 2
 :skip_radar_mode_3033
 :prop_skip_27
+0001: wait 50
 0004: 0@ = 28
 00D6: if 0
 0038: $727(0@,32i) == 0
@@ -840,6 +867,7 @@
 018B: set_marker $3034 radar_mode 2
 :skip_radar_mode_3034
 :prop_skip_28
+0001: wait 50
 0004: 0@ = 29
 00D6: if 0
 0038: $727(0@,32i) == 0
@@ -852,6 +880,7 @@
 018B: set_marker $3035 radar_mode 2
 :skip_radar_mode_3035
 :prop_skip_29
+0001: wait 50
 0004: 0@ = 30
 00D6: if 0
 0038: $727(0@,32i) == 0
@@ -864,6 +893,7 @@
 018B: set_marker $3036 radar_mode 2
 :skip_radar_mode_3036
 :prop_skip_30
+0001: wait 50
 0004: 0@ = 31
 00D6: if 0
 0038: $727(0@,32i) == 0
@@ -876,6 +906,7 @@
 018B: set_marker $3037 radar_mode 2
 :skip_radar_mode_3037
 :prop_skip_31
+0001: wait 50
 0004: 0@ = 32
 00D6: if 0
 0038: $727(0@,32i) == 0
@@ -888,6 +919,7 @@
 018B: set_marker $3038 radar_mode 2
 :skip_radar_mode_3038
 :prop_skip_32
+0001: wait 50
 07FB: set_interior 'BARBERS' access 1
 07FB: set_interior 'BARBER2' access 1
 07FB: set_interior 'BARBER3' access 1
