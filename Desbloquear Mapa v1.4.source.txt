@@ -120,71 +120,390 @@
 0DD9: write_mem_addr 0x0098D2B4 value 1 size 1 add_ib 1 protect 0
 0DD9: write_mem_addr 0x0098D2B5 value 1 size 1 add_ib 1 protect 0
 0DD9: write_mem_addr 0x0098D2B8 value 100 size 4 add_ib 1 protect 0
-0629: change_integer_stat 181 to 4
+00D6: if 0
+0039: $3071 <> 0
+004D: jump_if_false @skip_cleanup_pickup_3071
 0215: destroy_pickup $3071
+0004: $3071 = 0
+:skip_cleanup_pickup_3071
+00D6: if 0
+0039: $3072 <> 0
+004D: jump_if_false @skip_cleanup_pickup_3072
 0215: destroy_pickup $3072
+0004: $3072 = 0
+:skip_cleanup_pickup_3072
+00D6: if 0
+0039: $3073 <> 0
+004D: jump_if_false @skip_cleanup_pickup_3073
 0215: destroy_pickup $3073
+0004: $3073 = 0
+:skip_cleanup_pickup_3073
+00D6: if 0
+0039: $3074 <> 0
+004D: jump_if_false @skip_cleanup_pickup_3074
 0215: destroy_pickup $3074
+0004: $3074 = 0
+:skip_cleanup_pickup_3074
+00D6: if 0
+0039: $3075 <> 0
+004D: jump_if_false @skip_cleanup_pickup_3075
 0215: destroy_pickup $3075
+0004: $3075 = 0
+:skip_cleanup_pickup_3075
+00D6: if 0
+0039: $3076 <> 0
+004D: jump_if_false @skip_cleanup_pickup_3076
 0215: destroy_pickup $3076
+0004: $3076 = 0
+:skip_cleanup_pickup_3076
+00D6: if 0
+0039: $3077 <> 0
+004D: jump_if_false @skip_cleanup_pickup_3077
 0215: destroy_pickup $3077
+0004: $3077 = 0
+:skip_cleanup_pickup_3077
+00D6: if 0
+0039: $3078 <> 0
+004D: jump_if_false @skip_cleanup_pickup_3078
 0215: destroy_pickup $3078
+0004: $3078 = 0
+:skip_cleanup_pickup_3078
+00D6: if 0
+0039: $3079 <> 0
+004D: jump_if_false @skip_cleanup_pickup_3079
 0215: destroy_pickup $3079
+0004: $3079 = 0
+:skip_cleanup_pickup_3079
+00D6: if 0
+0039: $3080 <> 0
+004D: jump_if_false @skip_cleanup_pickup_3080
 0215: destroy_pickup $3080
+0004: $3080 = 0
+:skip_cleanup_pickup_3080
+00D6: if 0
+0039: $3081 <> 0
+004D: jump_if_false @skip_cleanup_pickup_3081
 0215: destroy_pickup $3081
+0004: $3081 = 0
+:skip_cleanup_pickup_3081
+00D6: if 0
+0039: $3082 <> 0
+004D: jump_if_false @skip_cleanup_pickup_3082
 0215: destroy_pickup $3082
+0004: $3082 = 0
+:skip_cleanup_pickup_3082
+00D6: if 0
+0039: $3083 <> 0
+004D: jump_if_false @skip_cleanup_pickup_3083
 0215: destroy_pickup $3083
+0004: $3083 = 0
+:skip_cleanup_pickup_3083
+00D6: if 0
+0039: $3084 <> 0
+004D: jump_if_false @skip_cleanup_pickup_3084
 0215: destroy_pickup $3084
+0004: $3084 = 0
+:skip_cleanup_pickup_3084
+00D6: if 0
+0039: $3085 <> 0
+004D: jump_if_false @skip_cleanup_pickup_3085
 0215: destroy_pickup $3085
+0004: $3085 = 0
+:skip_cleanup_pickup_3085
+00D6: if 0
+0039: $3086 <> 0
+004D: jump_if_false @skip_cleanup_pickup_3086
 0215: destroy_pickup $3086
+0004: $3086 = 0
+:skip_cleanup_pickup_3086
+00D6: if 0
+0039: $3087 <> 0
+004D: jump_if_false @skip_cleanup_pickup_3087
 0215: destroy_pickup $3087
+0004: $3087 = 0
+:skip_cleanup_pickup_3087
+00D6: if 0
+0039: $3088 <> 0
+004D: jump_if_false @skip_cleanup_pickup_3088
 0215: destroy_pickup $3088
+0004: $3088 = 0
+:skip_cleanup_pickup_3088
+00D6: if 0
+0039: $3089 <> 0
+004D: jump_if_false @skip_cleanup_pickup_3089
 0215: destroy_pickup $3089
+0004: $3089 = 0
+:skip_cleanup_pickup_3089
+00D6: if 0
+0039: $3090 <> 0
+004D: jump_if_false @skip_cleanup_pickup_3090
 0215: destroy_pickup $3090
+0004: $3090 = 0
+:skip_cleanup_pickup_3090
+00D6: if 0
+0039: $3091 <> 0
+004D: jump_if_false @skip_cleanup_pickup_3091
 0215: destroy_pickup $3091
+0004: $3091 = 0
+:skip_cleanup_pickup_3091
+00D6: if 0
+0039: $3092 <> 0
+004D: jump_if_false @skip_cleanup_pickup_3092
 0215: destroy_pickup $3092
+0004: $3092 = 0
+:skip_cleanup_pickup_3092
+00D6: if 0
+0039: $3093 <> 0
+004D: jump_if_false @skip_cleanup_pickup_3093
 0215: destroy_pickup $3093
+0004: $3093 = 0
+:skip_cleanup_pickup_3093
+00D6: if 0
+0039: $3094 <> 0
+004D: jump_if_false @skip_cleanup_pickup_3094
 0215: destroy_pickup $3094
+0004: $3094 = 0
+:skip_cleanup_pickup_3094
+00D6: if 0
+0039: $3095 <> 0
+004D: jump_if_false @skip_cleanup_pickup_3095
 0215: destroy_pickup $3095
+0004: $3095 = 0
+:skip_cleanup_pickup_3095
+00D6: if 0
+0039: $3096 <> 0
+004D: jump_if_false @skip_cleanup_pickup_3096
 0215: destroy_pickup $3096
+0004: $3096 = 0
+:skip_cleanup_pickup_3096
+00D6: if 0
+0039: $3097 <> 0
+004D: jump_if_false @skip_cleanup_pickup_3097
 0215: destroy_pickup $3097
+0004: $3097 = 0
+:skip_cleanup_pickup_3097
+00D6: if 0
+0039: $3098 <> 0
+004D: jump_if_false @skip_cleanup_pickup_3098
 0215: destroy_pickup $3098
+0004: $3098 = 0
+:skip_cleanup_pickup_3098
+00D6: if 0
+0039: $3099 <> 0
+004D: jump_if_false @skip_cleanup_pickup_3099
 0215: destroy_pickup $3099
+0004: $3099 = 0
+:skip_cleanup_pickup_3099
+00D6: if 0
+0039: $3100 <> 0
+004D: jump_if_false @skip_cleanup_pickup_3100
 0215: destroy_pickup $3100
+0004: $3100 = 0
+:skip_cleanup_pickup_3100
+00D6: if 0
+0039: $3101 <> 0
+004D: jump_if_false @skip_cleanup_pickup_3101
 0215: destroy_pickup $3101
+0004: $3101 = 0
+:skip_cleanup_pickup_3101
+00D6: if 0
+0039: $3102 <> 0
+004D: jump_if_false @skip_cleanup_pickup_3102
 0215: destroy_pickup $3102
+0004: $3102 = 0
+:skip_cleanup_pickup_3102
+00D6: if 0
+0039: $65 <> 0
+004D: jump_if_false @skip_cleanup_marker_65
 0164: disable_marker $65
+0004: $65 = 0
+:skip_cleanup_marker_65
+00D6: if 0
+0039: $526 <> 0
+004D: jump_if_false @skip_cleanup_marker_526
 0164: disable_marker $526
+0004: $526 = 0
+:skip_cleanup_marker_526
+00D6: if 0
+0039: $54 <> 0
+004D: jump_if_false @skip_cleanup_marker_54
 0164: disable_marker $54
+0004: $54 = 0
+:skip_cleanup_marker_54
+00D6: if 0
+0039: $3010 <> 0
+004D: jump_if_false @skip_cleanup_marker_3010
 0164: disable_marker $3010
+0004: $3010 = 0
+:skip_cleanup_marker_3010
+00D6: if 0
+0039: $3011 <> 0
+004D: jump_if_false @skip_cleanup_marker_3011
 0164: disable_marker $3011
+0004: $3011 = 0
+:skip_cleanup_marker_3011
+00D6: if 0
+0039: $3012 <> 0
+004D: jump_if_false @skip_cleanup_marker_3012
 0164: disable_marker $3012
+0004: $3012 = 0
+:skip_cleanup_marker_3012
+00D6: if 0
+0039: $3013 <> 0
+004D: jump_if_false @skip_cleanup_marker_3013
 0164: disable_marker $3013
+0004: $3013 = 0
+:skip_cleanup_marker_3013
+00D6: if 0
+0039: $3014 <> 0
+004D: jump_if_false @skip_cleanup_marker_3014
 0164: disable_marker $3014
+0004: $3014 = 0
+:skip_cleanup_marker_3014
+00D6: if 0
+0039: $3015 <> 0
+004D: jump_if_false @skip_cleanup_marker_3015
 0164: disable_marker $3015
+0004: $3015 = 0
+:skip_cleanup_marker_3015
+00D6: if 0
+0039: $3016 <> 0
+004D: jump_if_false @skip_cleanup_marker_3016
 0164: disable_marker $3016
+0004: $3016 = 0
+:skip_cleanup_marker_3016
+00D6: if 0
+0039: $3017 <> 0
+004D: jump_if_false @skip_cleanup_marker_3017
 0164: disable_marker $3017
+0004: $3017 = 0
+:skip_cleanup_marker_3017
+00D6: if 0
+0039: $3018 <> 0
+004D: jump_if_false @skip_cleanup_marker_3018
 0164: disable_marker $3018
+0004: $3018 = 0
+:skip_cleanup_marker_3018
+00D6: if 0
+0039: $3019 <> 0
+004D: jump_if_false @skip_cleanup_marker_3019
 0164: disable_marker $3019
+0004: $3019 = 0
+:skip_cleanup_marker_3019
+00D6: if 0
+0039: $3020 <> 0
+004D: jump_if_false @skip_cleanup_marker_3020
 0164: disable_marker $3020
+0004: $3020 = 0
+:skip_cleanup_marker_3020
+00D6: if 0
+0039: $3021 <> 0
+004D: jump_if_false @skip_cleanup_marker_3021
 0164: disable_marker $3021
+0004: $3021 = 0
+:skip_cleanup_marker_3021
+00D6: if 0
+0039: $3022 <> 0
+004D: jump_if_false @skip_cleanup_marker_3022
 0164: disable_marker $3022
+0004: $3022 = 0
+:skip_cleanup_marker_3022
+00D6: if 0
+0039: $3023 <> 0
+004D: jump_if_false @skip_cleanup_marker_3023
 0164: disable_marker $3023
+0004: $3023 = 0
+:skip_cleanup_marker_3023
+00D6: if 0
+0039: $3024 <> 0
+004D: jump_if_false @skip_cleanup_marker_3024
 0164: disable_marker $3024
+0004: $3024 = 0
+:skip_cleanup_marker_3024
+00D6: if 0
+0039: $3025 <> 0
+004D: jump_if_false @skip_cleanup_marker_3025
 0164: disable_marker $3025
+0004: $3025 = 0
+:skip_cleanup_marker_3025
+00D6: if 0
+0039: $3026 <> 0
+004D: jump_if_false @skip_cleanup_marker_3026
 0164: disable_marker $3026
+0004: $3026 = 0
+:skip_cleanup_marker_3026
+00D6: if 0
+0039: $3027 <> 0
+004D: jump_if_false @skip_cleanup_marker_3027
 0164: disable_marker $3027
+0004: $3027 = 0
+:skip_cleanup_marker_3027
+00D6: if 0
+0039: $3028 <> 0
+004D: jump_if_false @skip_cleanup_marker_3028
 0164: disable_marker $3028
+0004: $3028 = 0
+:skip_cleanup_marker_3028
+00D6: if 0
+0039: $3029 <> 0
+004D: jump_if_false @skip_cleanup_marker_3029
 0164: disable_marker $3029
+0004: $3029 = 0
+:skip_cleanup_marker_3029
+00D6: if 0
+0039: $3030 <> 0
+004D: jump_if_false @skip_cleanup_marker_3030
 0164: disable_marker $3030
+0004: $3030 = 0
+:skip_cleanup_marker_3030
+00D6: if 0
+0039: $3031 <> 0
+004D: jump_if_false @skip_cleanup_marker_3031
 0164: disable_marker $3031
+0004: $3031 = 0
+:skip_cleanup_marker_3031
+00D6: if 0
+0039: $3032 <> 0
+004D: jump_if_false @skip_cleanup_marker_3032
 0164: disable_marker $3032
+0004: $3032 = 0
+:skip_cleanup_marker_3032
+00D6: if 0
+0039: $3033 <> 0
+004D: jump_if_false @skip_cleanup_marker_3033
 0164: disable_marker $3033
+0004: $3033 = 0
+:skip_cleanup_marker_3033
+00D6: if 0
+0039: $3034 <> 0
+004D: jump_if_false @skip_cleanup_marker_3034
 0164: disable_marker $3034
+0004: $3034 = 0
+:skip_cleanup_marker_3034
+00D6: if 0
+0039: $3035 <> 0
+004D: jump_if_false @skip_cleanup_marker_3035
 0164: disable_marker $3035
+0004: $3035 = 0
+:skip_cleanup_marker_3035
+00D6: if 0
+0039: $3036 <> 0
+004D: jump_if_false @skip_cleanup_marker_3036
 0164: disable_marker $3036
+0004: $3036 = 0
+:skip_cleanup_marker_3036
+00D6: if 0
+0039: $3037 <> 0
+004D: jump_if_false @skip_cleanup_marker_3037
 0164: disable_marker $3037
+0004: $3037 = 0
+:skip_cleanup_marker_3037
+00D6: if 0
+0039: $3038 <> 0
+004D: jump_if_false @skip_cleanup_marker_3038
 0164: disable_marker $3038
+0004: $3038 = 0
+:skip_cleanup_marker_3038
 0004: 0@ = 1
 00D6: if 0
 0038: $727(0@,32i) == 0
