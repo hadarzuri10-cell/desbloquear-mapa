@@ -16,7 +16,7 @@ COMPROBACIONES ESTÁTICAS
 - La limpieza ahora comprueba que cada variable sea distinta de cero antes de llamar a destroy_pickup/disable_marker y pone la variable a cero después.
 - Se eliminó la instrucción que cambiaba el estadístico 181 a 4.
 - 22 interiores habilitados.
-- 65 saltos; todos tienen etiqueta de destino y no hay etiquetas duplicadas.
+- 130 saltos condicionales comprobados; todos tienen etiqueta de destino y no hay etiquetas duplicadas. Se detectaron 129 etiquetas únicas.
 - Las 32 llamadas `018B: set_marker ... radar_mode 2` ahora se ejecutan solo si la creación del marcador devolvió un handle distinto de cero.
 - Se añadieron esperas de 50 ms al terminar cada uno de los 32 bloques de creación, para espaciar la carga y evitar ráfagas consecutivas de asignación de pickups y marcadores. Esto reduce un riesgo potencial, pero no prueba por sí solo que ese fuera el origen de los cierres.
 - MAP READY permanece visible durante 5000 ms, sin parpadeo.
@@ -55,7 +55,7 @@ Esto no demuestra que todos los handles no nulos sean válidos ni confirma qué 
 En las pruebas anteriores, el usuario informó que tanto la prueba con un marcador como la prueba de control sin marcadores provocaron crash. Por tanto, esos resultados no aíslan 0570 ni demuestran que los marcadores sean la causa. La rama v1.4.1-development queda fuera de uso según la decisión del usuario.
 
 DECISIÓN DE ESTA REVISIÓN
-Se retiró el cambio de estadística, se añadió protección para no destruir/desactivar handles con valor cero, se protegieron las 32 configuraciones de marcadores ante handles cero y se espaciaron los 32 bloques de creación con esperas de 50 ms. La auditoría estática de esta revisión debe confirmar nuevamente todos los saltos y etiquetas.
+Se retiró el cambio de estadística, se añadió protección para no destruir/desactivar handles con valor cero, se protegieron las 32 configuraciones de marcadores ante handles cero y se espaciaron los 32 bloques de creación con esperas de 50 ms. La auditoría estática confirmó 130 destinos de salto existentes y 129 etiquetas únicas, sin etiquetas duplicadas.
 No se cambiaron las direcciones de memoria porque no hay confirmación específica para GTA SA Android 2.10. La implementación de CLEO confirma que `protect 0` escribe directamente y que el opcode no valida la dirección. Un parche a ciegas podría introducir un crash nuevo o dañar el estado del juego.
 Siguen abiertos los riesgos críticos de offsets/versión y los riesgos de handles no nulos obsoletos. La creación escalonada sigue siendo una mejora posible, no una causa demostrada.
 No declarar la fuente libre de crashes hasta completar la prueba real en el juego.
