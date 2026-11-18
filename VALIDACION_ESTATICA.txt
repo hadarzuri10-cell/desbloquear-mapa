@@ -68,7 +68,7 @@ PLAN DE PROCESAMIENTO ESCALONADO (revisión de estabilidad)
 - Se mantienen pausas de 100 ms en la limpieza escalonada de los 58 marcadores comerciales y en su creación por grupos.
 - Se retiraron las pausas y operaciones de limpieza/recreación de propiedades junto con los 29 pickups y 29 blips duplicados.
 - Se añadieron pausas de 100 ms después de cada 3 iconos comerciales (19 pausas para 58 iconos).
-- Tiempo adicional nominal aproximado: 4.1 segundos; el tiempo real depende de la ejecución y de las condiciones del juego.
+- La fuente actual contiene 27 pausas de 100 ms (2.7 segundos nominales) para distribuir la limpieza/creación de marcadores comerciales y de gimnasios. El tiempo real depende del juego.
 - Las pausas distribuyen la carga en varios ciclos; no reducen la cantidad de entidades que el juego debe mantener en memoria ni demuestran que el bloqueo esté resuelto.
 - No se modificaron comandos de dibujo, escala, coordenadas, fuente, colores ni posiciones de los textos o marcadores.
 - No se alteraron los 32 pickups ni marcadores originales de propiedades; se retiraron únicamente las recreaciones duplicadas del CLEO.
