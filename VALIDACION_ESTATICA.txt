@@ -9,7 +9,7 @@ CAMBIOS PREPARADOS PARA LA SIGUIENTE COMPILACIÓN
 - Se conservan los colores apagados estilo GTA SA: gris azulado, ocre, verde oliva y rojo.
 - MAP READY permanece visible de forma continua durante 5000 ms; ya no parpadea.
 - Si otra instancia encuentra el mutex ocupado, termina sin mostrar un MAP ERROR falso.
-- MAP ERROR queda reservado para el bloqueo por misión activa.
+- MAP ERROR queda reservado para fallos en la verificación de lectura de los indicadores del mapa; una misión activa al iniciar provoca salida silenciosa.
 - Se restauró el acceso al interior CSEXL (Didier Sachs), además de las tiendas ya enumeradas.
 - Se retiró la limpieza y recreación de los 29 pickups y 29 marcadores de propiedades. El sistema nativo del juego ya contiene 32 pares de pickup/marcador: 26 no disponibles (0517/PROP_4) y 6 en venta (0518/PROP_3) en el bloque de inicialización analizado. Se preservan sus handles y condiciones originales.
 
@@ -23,7 +23,8 @@ MENSAJES FXT
 AUDITORÍA DE FLUJO
 - La bandera compartida 1145919744 se consulta y se establece al comienzo del hilo, antes de mostrar MAP LOADING y antes de cualquier espera. CLEO Android expone estas variables como almacenamiento global compartido; la implementación revisada no garantiza una adquisición atómica.
 - Una segunda instancia que encuentre la bandera establecida termina sin mostrar MAP ERROR, sin cambiar el valor de la primera y sin ejecutar operaciones del mapa. Esta coordinación depende del orden de ejecución de los hilos y no equivale a un lock atómico.
-- La instancia propietaria comprueba $ONMISSION después de adquirir el mutex. Si hay una misión activa, muestra MAP ERROR y libera el mutex antes de terminar.
+- La instancia propietaria comprueba $ONMISSION después de adquirir el mutex. Si hay una misión activa, libera el mutex y termina sin mostrar MAP ERROR.
+- Después de escribir el mapa, 0DD8 verifica uno por uno los 100 bytes desde 0x0098D252 hasta 0x0098D2B5, y también comprueba que el valor de control de 0x0098D2B8 sea 100. Cualquier discrepancia lleva a MAP ERROR; MAP READY no se dibuja antes de superar esas comprobaciones.
 - En la ruta correcta, el mutex se libera al terminar los 5 segundos de MAP READY y el hilo termina inmediatamente.
 - Este cambio busca cerrar la ventana en la que una instancia iniciada tarde podía alcanzar la comprobación de misión justo después de que la primera liberara el mutex.
 - El cambio no demuestra por sí solo que el crash esté resuelto. Tampoco descarta que las operaciones de memoria, pickups o marcadores sean responsables del bloqueo del juego/teléfono.
