@@ -2,7 +2,7 @@ AUDITORÍA DE POSIBLES CRASHES — DESBLOQUEAR MAPA
 Fecha: 2026-11-18
 Rama activa: main
 Fuente revisada: Desbloquear Mapa v1.4.source.txt
-SHA de fuente revisada: pendiente de verificación posterior al commit 7275eb6c5110c8a780c2698e11ea4ed7066166ed
+SHA de fuente revisada: d020038a079d1d92b8705fdb562c1640951a5b55
 
 RESUMEN
 La fuente compila con Sanny Builder 4.2.0 en modo SA Mobile. La compilación correcta no demuestra que el script sea seguro ni compatible dentro de GTA SA Android 2.10. Esta auditoría separa comprobaciones estáticas de riesgos que necesitan confirmación.
