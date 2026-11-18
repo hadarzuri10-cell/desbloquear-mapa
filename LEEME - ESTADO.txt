@@ -27,3 +27,11 @@ RIESGOS ABIERTOS
 - La compilación correcta no demuestra estabilidad dentro del juego.
 
 La rama activa es main. Las pruebas auxiliares de marcadores están cerradas; no se solicitarán nuevas pruebas auxiliares. Todas las pruebas reales del script se harán en partidas nuevas, cuando el usuario decida probarlo.
+
+COMPILACIÓN DE ESTA REVISIÓN
+NaN
+NaN
+
+ARQUITECTURA Y OFFSETS
+NaN
+NaN
