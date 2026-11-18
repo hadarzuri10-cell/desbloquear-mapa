@@ -6,7 +6,7 @@ ESTADO
 - Antes de escribir memoria, se comprueba que CLEO detecte una base de imagen distinta de cero; si no, muestra MAP ERROR y aborta.
 - MAPLOAD se muestra durante 1.5 segundos.
 - MAP READY se muestra de forma continua durante 5 segundos; no parpadea.
-- La fuente anterior compiló correctamente en el run 44366859260; la compilación de la revisión actual está en curso.
+- La revisión actual compiló correctamente en GitHub Actions (run 44367239879).
 - La prueba dentro de GTA San Andreas Android 2.10 sigue pendiente y corresponde al usuario cuando finalice la revisión técnica.
 
 AUDITORÍA ESTÁTICA DE LA FUENTE
