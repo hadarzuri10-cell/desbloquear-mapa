@@ -58,4 +58,3 @@ Se retiró el cambio de estadística, se añadió protección para no destruir/d
 No se cambiaron las direcciones de memoria porque no hay confirmación específica para GTA SA Android 2.10. La implementación de CLEO confirma que `protect 0` escribe directamente y que el opcode no valida la dirección. Un parche a ciegas podría introducir un crash nuevo o dañar el estado del juego.
 Siguen abiertos los riesgos críticos de offsets/versión y los riesgos de handles no nulos obsoletos. La creación escalonada sigue siendo una mejora posible, no una causa demostrada.
 No declarar la fuente libre de crashes hasta completar la prueba real en el juego.
-No declarar la fuente libre de crashes hasta completar la prueba real en el juego.
