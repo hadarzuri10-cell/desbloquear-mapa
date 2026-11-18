@@ -1,27 +1,29 @@
 DESBLOQUEAR MAPA v1.4.5 — FUENTE COMPILADA
 
 ESTADO
-- Fuente actualizada en main.
+- Fuente activa en main: Desbloquear Mapa v1.4.5.source.txt.
 - La creación de los 32 bloques de propiedades está espaciada con esperas de 50 ms.
 - Antes de escribir memoria, se comprueba que CLEO detecte una base de imagen distinta de cero; si no, muestra MAP ERROR y aborta.
 - MAPLOAD se muestra durante 1.5 segundos.
 - MAP READY se muestra de forma continua durante 5 segundos; no parpadea.
-- La compilación previa de v1.4.5 fue exitosa en GitHub Actions.
-- La prueba dentro de GTA San Andreas Android 2.10 sigue pendiente.
+- La fuente v1.4.5 compiló correctamente en GitHub Actions (run 44365903993).
+- La prueba dentro de GTA San Andreas Android 2.10 sigue pendiente y corresponde al usuario cuando finalice la revisión técnica.
 
-AUDITORÍA ESTÁTICA
-- 100 bytes consecutivos de mapa: 0x0098D252 a 0x0098D2B5.
-- Contador de sectores: escritura de 4 bytes en 0x0098D2B8 con valor 100.
+AUDITORÍA ESTÁTICA DE LA FUENTE
+- 958 líneas.
+- 101 escrituras de memoria: 100 bytes consecutivos desde 0x0098D252 hasta 0x0098D2B5 y una escritura de 4 bytes en 0x0098D2B8.
 - 32 bloques de propiedades, índices de matriz 1 a 32.
 - 32 pickups y 32 marcadores; limpieza protegida contra handles con valor cero; configuración de marcadores protegida ante handle cero.
-- Espera de 50 ms tras cada bloque de creación.
+- 41 esperas de 50 ms: 32 al terminar los bloques y 9 anteriores.
 - 22 interiores normales.
-- 130 saltos condicionales con destino; 129 etiquetas únicas; sin duplicados.
-- No incluye interiores de contenido adulto, casinos/apuestas ni funciones de armas.
+- 131 saltos condicionales; 130 destinos distintos existentes; 130 etiquetas únicas; sin etiquetas duplicadas.
+- Las escrituras de memoria solo se ejecutan después de comprobar que la base de imagen no sea cero.
 
-PENDIENTE
-- Volver a compilar esta fuente corregida y revisar el artefacto.
-- Probar en GTA San Andreas Android 2.10 antes de afirmar compatibilidad funcional.
-- Se eliminó el cambio de estadística 181 para evitar modificar datos de la partida sin necesidad.
+RIESGOS ABIERTOS
+- No se ha validado que los offsets 0x0098D252 y 0x0098D2B8 correspondan a GTA SA Android 2.10.
+- La comprobación de base de imagen no valida los offsets ni que las páginas de memoria sean escribibles.
+- No existe todavía una comprobación confirmada para handles no nulos que hayan quedado obsoletos.
+- La documentación pública de CLEO 2.0.1 enumera soporte hasta GTA SA 2.00 y Android 11; no certifica GTA SA 2.10 ni Android 13.
+- La compilación correcta no demuestra estabilidad dentro del juego.
 
-Las pruebas auxiliares de marcadores forman parte del proceso de desarrollo y depuración de Desbloquear Mapa. La rama v1.4.5.1-development queda fuera de uso; la versión activa se mantiene en main.
+La rama activa es main. Las pruebas auxiliares de marcadores están cerradas; no se solicitarán nuevas pruebas auxiliares. Todas las pruebas reales del script se harán en partidas nuevas, cuando el usuario decida probarlo.
