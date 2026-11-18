@@ -1,9 +1,9 @@
-VALIDACIÓN — DESBLOQUEAR MAPA v1.4
+VALIDACIÓN — DESBLOQUEAR MAPA v1.4.5
 
-Fuente: Desbloquear Mapa v1.4.source.txt
+Fuente: Desbloquear Mapa v1.4.5.source.txt
 SHA de fuente: e36d36712b93716793d290863cf56cb7a56d942b
 Compilación: correcta con Sanny Builder 4.2.0, modo SA Mobile.
-Run de compilación verificado: 44364245807 (fuente SHA e36d36712b93716793d290863cf56cb7a56d942b).
+Compilación previa de la misma fuente: run 44364245807 (SHA e36d36712b93716793d290863cf56cb7a56d942b). La copia con nombre 1.4.5 requiere su propia compilación verificada.
 Run posterior de documentación: 44364286292 (conclusión success).
 Formato generado: .csi
 MAPLOAD: 1500 ms
@@ -16,7 +16,7 @@ Saltos condicionales: 130 destinos existentes; 129 etiquetas únicas; sin etique
 Mapa: 100 bytes consecutivos + contador 100; escrituras condicionadas a que `get_image_base` no devuelva cero.
 
 IMPORTANTE
-La fuente identificada por el SHA indicado sí fue compilada correctamente en el run 44364245807.
+La fuente base de esta versión ya fue compilada correctamente en el run 44364245807; la copia renombrada 1.4.5 aún debe compilarse.
 El run 44364286292 también terminó con conclusión success después de los cambios de documentación.
 La compilación confirma aceptación por el compilador; no demuestra funcionamiento ni estabilidad dentro del juego.
 No probado dentro del juego.
