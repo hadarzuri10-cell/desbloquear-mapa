@@ -15,7 +15,7 @@ AUDITORÍA ESTÁTICA
 - 32 pickups y 32 marcadores; limpieza protegida contra handles con valor cero; configuración de marcadores protegida ante handle cero.
 - Espera de 50 ms tras cada bloque de creación.
 - 22 interiores normales.
-- 33 saltos y 33 destinos de etiqueta resueltos.
+- 130 saltos condicionales con destino; 129 etiquetas únicas; sin duplicados.
 - No incluye interiores de contenido adulto, casinos/apuestas ni funciones de armas.
 
 PENDIENTE
