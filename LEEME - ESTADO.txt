@@ -1,24 +1,24 @@
-DESBLOQUEAR MAPA v1.4 — CANDIDATO DE FUENTE (NO COMPILADO)
+DESBLOQUEAR MAPA v1.4 — FUENTE CORREGIDA
 
-CAMBIOS APLICADOS
-- MAPLOAD se reduce de 30 segundos a 1.5 segundos. La rutina del script tiene 0.95 s de esperas explícitas.
-- MAPDONE se sustituye por MAP READY.
-- MAP READY parpadea durante 5 segundos: 10 ciclos de 250 ms visible + 250 ms sin texto.
-- Se excluyen tres interiores de contenido adulto. El resto de la lógica v1.3 se conserva sin cambios en este paso.
+ESTADO
+- Fuente actualizada en main.
+- MAPLOAD se muestra durante 1.5 segundos.
+- MAP READY se muestra de forma continua durante 5 segundos; no parpadea.
+- La compilación previa de v1.4 fue exitosa en GitHub Actions.
+- La prueba dentro de GTA San Andreas Android 2.10 sigue pendiente.
 
-AUDITORÍA ESTÁTICA DE LA FUENTE BASE
+AUDITORÍA ESTÁTICA
 - 100 bytes consecutivos de mapa: 0x0098D252 a 0x0098D2B5.
 - Contador de sectores: escritura de 4 bytes en 0x0098D2B8 con valor 100.
 - 32 bloques de propiedades, índices de matriz 1 a 32.
-- 32 pickups únicos y 32 manejadores de marcadores únicos; limpieza previa de ambos grupos.
+- 32 pickups únicos y 32 manejadores de marcadores únicos; limpieza previa.
 - 22 interiores normales.
 - 33 saltos y 33 destinos de etiqueta resueltos.
-- ZIP original: integridad CRC correcta.
+- No incluye interiores de contenido adulto, casinos/apuestas ni funciones de armas.
 
-PENDIENTE / LIMITACIONES
-- Este paquete contiene fuente y flujo de compilación, NO un .csi nuevo.
-- No se afirma que la compilación haya sido ejecutada.
-- No se ha probado en el juego; la prueba real en GTA SA Android 2.10 sigue pendiente.
-- El cambio de STAT_CITIES_PASSED (181) a 4 se conserva de v1.3 y todavía necesita prueba in-game.
-- No incluye interiores de contenido adulto, apuestas/casinos ni funciones de armas.
-- No se modifica la partida ni el archivo original del usuario.
+PENDIENTE
+- Volver a compilar esta fuente corregida y revisar el artefacto.
+- Probar en GTA San Andreas Android 2.10 antes de afirmar compatibilidad funcional.
+- El cambio de STAT_CITIES_PASSED (181) a 4 se conserva y necesita validación dentro del juego.
+
+Las pruebas auxiliares de marcadores forman parte del proceso de desarrollo y depuración de Desbloquear Mapa. La rama v1.4.1-development queda fuera de uso; la versión activa se mantiene en main.
