@@ -10,7 +10,7 @@ Propiedades: 32 bloques; matriz 1..32; pickups $3071..$3102.
 Marcadores: 32 handles únicos; 32 limpiezas previas; las 32 configuraciones se protegen ante handle cero.
 Creación: espera de 50 ms al finalizar cada uno de los 32 bloques para reducir picos de carga.
 Interiores normales: 22.
-Saltos y etiquetas: revisión estática posterior a la última corrección pendiente.
+Saltos condicionales: 130 destinos existentes; 129 etiquetas únicas; sin etiquetas duplicadas.
 Mapa: 100 bytes consecutivos + contador 100.
 
 IMPORTANTE
