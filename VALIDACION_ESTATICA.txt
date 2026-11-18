@@ -4,8 +4,8 @@ Fuente: Desbloquear Mapa v1.4.5.source.txt
 SHA de fuente: daca0d43270358dac3dbd84bbed840c3ade3ab69
 Compilador: Sanny Builder 4.2.0, modo SA Mobile.
 Resultado de compilación de la fuente 1.4.5: correcto.
-Última compilación exitosa de la fuente anterior: run 44366859260. La compilación de la fuente actual (SHA daca0d43270358dac3dbd84bbed840c3ade3ab69) está en curso.
-Artefacto de la fuente anterior: ID 14457995227, 8536 bytes. El artefacto de esta revisión aún no está disponible.
+Run verificado: 44367239879 (commit: b213285005f29f9bd66eb1eee7712e245b5b1a61).
+Artefacto: Desbloquear-Mapa-compiled-test, ID 14458890340, 9328 bytes.
 Formato generado: .csi
 
 COMPROBACIONES ESTÁTICAS
