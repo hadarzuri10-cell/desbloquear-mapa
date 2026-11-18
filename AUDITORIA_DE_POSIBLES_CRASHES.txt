@@ -2,7 +2,7 @@ AUDITORÍA DE POSIBLES CRASHES — DESBLOQUEAR MAPA
 Fecha: 2026-11-18
 Rama activa: main
 Fuente revisada: Desbloquear Mapa v1.4.source.txt
-SHA de fuente revisada: d9608b9cf2604d780880af3dd3705864807f846c
+SHA de fuente revisada: pendiente de verificación posterior al commit 7275eb6c5110c8a780c2698e11ea4ed7066166ed
 
 RESUMEN
 La fuente compila con Sanny Builder 4.2.0 en modo SA Mobile. La compilación correcta no demuestra que el script sea seguro ni compatible dentro de GTA SA Android 2.10. Esta auditoría separa comprobaciones estáticas de riesgos que necesitan confirmación.
@@ -12,8 +12,9 @@ COMPROBACIONES ESTÁTICAS
 - 101 escrituras de memoria: 100 bytes consecutivos desde 0x0098D252 hasta 0x0098D2B5, y una escritura de 4 bytes en 0x0098D2B8.
 - 32 instrucciones de creación de pickups y 32 variables distintas ($3071 a $3102).
 - 32 instrucciones de creación de marcadores y 32 variables distintas ($65, $526, $54 y $3010 a $3038).
-- Hay 32 instrucciones de limpieza de pickups que coinciden con las 32 variables de creación.
-- Hay 32 instrucciones de desactivación de marcadores que coinciden con las 32 variables de creación.
+- Hay 32 instrucciones de limpieza de pickups y 32 de desactivación de marcadores.
+- La limpieza ahora comprueba que cada variable sea distinta de cero antes de llamar a destroy_pickup/disable_marker y pone la variable a cero después.
+- Se eliminó la instrucción que cambiaba el estadístico 181 a 4.
 - 22 interiores habilitados.
 - 33 saltos; todos tienen etiqueta de destino y no hay etiquetas duplicadas.
 - MAP READY permanece visible durante 5000 ms, sin parpadeo.
@@ -28,13 +29,12 @@ La documentación pública localizada para direcciones de memoria de SA Android 
 Prioridad: CRÍTICA. No se modificaron las escrituras a ciegas.
 
 2. LIMPIEZA DE HANDLES
-La fuente ejecuta 32 destroy_pickup y 32 disable_marker antes de crear los nuevos objetos, sin comprobar antes que cada handle sea distinto de cero y siga siendo válido.
-En una primera ejecución o después de cargar/recuperar estado, los valores podrían no representar handles válidos. En una repetición, algún objeto podría haber sido recogido o invalidado.
-Prioridad: ALTA. Requiere una estrategia de validación de handles antes de modificar este bloque; no se hizo un parche improvisado.
+Se corrigió el caso de variables sin inicializar: destroy_pickup y disable_marker solo se llaman si el handle almacenado es distinto de cero; después se pone la variable a cero.
+Riesgo restante: una variable distinta de cero todavía podría contener un handle obsoleto si el objeto fue recogido o invalidado. La fuente no dispone todavía de una comprobación de validez confirmada para esos handles.
+Prioridad: MEDIA-ALTA. La protección contra cero está implementada; la validez de handles obsoletos sigue sin confirmarse.
 
 3. ESTADÍSTICA DEL JUEGO
-La instrucción 0629 cambia el estadístico 181 a 4. Es una modificación adicional al desbloqueo del mapa y puede alterar estadísticas guardadas.
-Prioridad: MEDIA. Confirmar si es indispensable para revelar/acceder a las ciudades; si no lo es, retirarla para respetar el alcance mínimo del proyecto.
+RESUELTO EN FUENTE: se retiró la instrucción 0629 que cambiaba el estadístico 181 a 4. No era necesaria para el alcance mínimo demostrado y podía alterar estadísticas guardadas.
 
 4. CREACIÓN CONSECUTIVA DE OBJETOS
 Se crean hasta 32 pickups y 32 marcadores dentro de una sola ejecución, sin pausas entre cada par.
@@ -48,6 +48,6 @@ Prioridad: ALTA. Se necesita identificar la variante exacta de GTA SA 2.10 y su 
 En las pruebas anteriores, el usuario informó que tanto la prueba con un marcador como la prueba de control sin marcadores provocaron crash. Por tanto, esos resultados no aíslan 0570 ni demuestran que los marcadores sean la causa. La rama v1.4.1-development queda fuera de uso según la decisión del usuario.
 
 DECISIÓN DE ESTA REVISIÓN
-No se cambió la lógica de memoria ni la limpieza de objetos porque no hay confirmación suficiente para hacer un cambio seguro. Un parche a ciegas podría introducir un crash nuevo o dañar el estado de la partida.
-La siguiente revisión debe resolver primero la compatibilidad de los offsets con GTA SA 2.10 y después corregir la limpieza de handles, revisar el estadístico 181 y escalonar la creación de objetos.
+Se retiró el cambio de estadística y se añadió protección para no destruir/desactivar handles con valor cero. No se cambiaron las direcciones de memoria porque no hay confirmación específica para GTA SA Android 2.10. Un parche a ciegas podría introducir un crash nuevo o dañar el estado de la partida.
+La siguiente revisión debe resolver primero la compatibilidad de los offsets con GTA SA 2.10 y confirmar la validez de handles no nulos. La creación escalonada sigue siendo una mejora posible, no una causa demostrada.
 No declarar la fuente libre de crashes hasta completar la prueba real en el juego.
