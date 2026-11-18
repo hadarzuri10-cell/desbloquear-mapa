@@ -29,7 +29,7 @@ jobs:
       - name: Compile CLEO source (120-second limit)
         shell: pwsh
         run: |
-          $source = Join-Path $PWD 'Desbloquear Mapa v1.4.source.txt'
+          $source = Join-Path $PWD 'Desbloquear Mapa v1.4.5.source.txt'
           $output = Join-Path $PWD 'build\Desbloquear Mapa.csi'
           $stdout = Join-Path $PWD 'build\compiler-stdout.log'
           $stderr = Join-Path $PWD 'build\compiler-stderr.log'
