@@ -1,5 +1,0 @@
-{$CLEO .csi}
-// PRUEBA DE CONTROL: hilo CLEO sin creación de marcadores.
-// Sirve para comprobar si el crash ocurre incluso sin ejecutar 0570.
-0001: wait 3000
-0A93: end_custom_thread
