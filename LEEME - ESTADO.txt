@@ -2,6 +2,7 @@ DESBLOQUEAR MAPA v1.4 — FUENTE CORREGIDA
 
 ESTADO
 - Fuente actualizada en main.
+- La creación de los 32 bloques de propiedades está espaciada con esperas de 50 ms.
 - MAPLOAD se muestra durante 1.5 segundos.
 - MAP READY se muestra de forma continua durante 5 segundos; no parpadea.
 - La compilación previa de v1.4 fue exitosa en GitHub Actions.
@@ -11,7 +12,8 @@ AUDITORÍA ESTÁTICA
 - 100 bytes consecutivos de mapa: 0x0098D252 a 0x0098D2B5.
 - Contador de sectores: escritura de 4 bytes en 0x0098D2B8 con valor 100.
 - 32 bloques de propiedades, índices de matriz 1 a 32.
-- 32 pickups y 32 marcadores; limpieza protegida contra handles con valor cero.
+- 32 pickups y 32 marcadores; limpieza protegida contra handles con valor cero; configuración de marcadores protegida ante handle cero.
+- Espera de 50 ms tras cada bloque de creación.
 - 22 interiores normales.
 - 33 saltos y 33 destinos de etiqueta resueltos.
 - No incluye interiores de contenido adulto, casinos/apuestas ni funciones de armas.
