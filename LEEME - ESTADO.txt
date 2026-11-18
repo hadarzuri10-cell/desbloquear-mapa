@@ -11,7 +11,7 @@ AUDITORÍA ESTÁTICA
 - 100 bytes consecutivos de mapa: 0x0098D252 a 0x0098D2B5.
 - Contador de sectores: escritura de 4 bytes en 0x0098D2B8 con valor 100.
 - 32 bloques de propiedades, índices de matriz 1 a 32.
-- 32 pickups únicos y 32 manejadores de marcadores únicos; limpieza previa.
+- 32 pickups y 32 marcadores; limpieza protegida contra handles con valor cero.
 - 22 interiores normales.
 - 33 saltos y 33 destinos de etiqueta resueltos.
 - No incluye interiores de contenido adulto, casinos/apuestas ni funciones de armas.
@@ -19,6 +19,6 @@ AUDITORÍA ESTÁTICA
 PENDIENTE
 - Volver a compilar esta fuente corregida y revisar el artefacto.
 - Probar en GTA San Andreas Android 2.10 antes de afirmar compatibilidad funcional.
-- El cambio de STAT_CITIES_PASSED (181) a 4 se conserva y necesita validación dentro del juego.
+- Se eliminó el cambio de estadística 181 para evitar modificar datos de la partida sin necesidad.
 
 Las pruebas auxiliares de marcadores forman parte del proceso de desarrollo y depuración de Desbloquear Mapa. La rama v1.4.1-development queda fuera de uso; la versión activa se mantiene en main.
