@@ -6,17 +6,17 @@ ESTADO
 - Antes de escribir memoria, se comprueba que CLEO detecte una base de imagen distinta de cero; si no, muestra MAP ERROR y aborta.
 - MAPLOAD se muestra durante 1.5 segundos.
 - MAP READY se muestra de forma continua durante 5 segundos; no parpadea.
-- La fuente v1.4.5 compiló correctamente en GitHub Actions (run 44366859260).
+- La fuente anterior compiló correctamente en el run 44366859260; la compilación de la revisión actual está en curso.
 - La prueba dentro de GTA San Andreas Android 2.10 sigue pendiente y corresponde al usuario cuando finalice la revisión técnica.
 
 AUDITORÍA ESTÁTICA DE LA FUENTE
-- 1022 líneas.
+- 1086 líneas.
 - 101 escrituras de memoria: 100 bytes consecutivos desde 0x0098D252 hasta 0x0098D2B5 y una escritura de 4 bytes en 0x0098D2B8.
 - 32 bloques de propiedades, índices de matriz 1 a 32.
 - 32 pickups y 32 marcadores; 32 comprobaciones 09D1 para pickups y 32 comprobaciones 075C para marcadores antes de limpiarlos.
 - 42 esperas de 50 ms: 32 al terminar los bloques y 10 anteriores.
 - 22 interiores normales.
-- 131 saltos condicionales; 130 destinos distintos existentes; 130 etiquetas únicas; sin etiquetas duplicadas.
+- 131 saltos condicionales; 130 destinos distintos existentes; 194 etiquetas únicas; sin etiquetas duplicadas.
 - Las escrituras de memoria solo se ejecutan después de comprobar que la base de imagen no sea cero.
 
 RIESGOS ABIERTOS
