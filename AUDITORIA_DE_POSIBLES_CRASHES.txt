@@ -9,7 +9,7 @@ RESUMEN
 La fuente compila con Sanny Builder 4.2.0 en modo SA Mobile. La compilación correcta no demuestra que el script sea seguro ni compatible dentro de GTA SA Android 2.10. Esta auditoría separa comprobaciones estáticas de riesgos que necesitan confirmación.
 
 COMPROBACIONES ESTÁTICAS
-- 951 líneas contando la línea final vacía.
+- 958 líneas en la fuente 1.4.5.
 - 101 escrituras de memoria: 100 bytes consecutivos desde 0x0098D252 hasta 0x0098D2B5, y una escritura de 4 bytes en 0x0098D2B8.
 - 32 instrucciones de creación de pickups y 32 variables distintas ($3071 a $3102).
 - 32 instrucciones de creación de marcadores y 32 variables distintas ($65, $526, $54 y $3010 a $3038).
@@ -17,7 +17,7 @@ COMPROBACIONES ESTÁTICAS
 - La limpieza ahora comprueba que cada variable sea distinta de cero antes de llamar a destroy_pickup/disable_marker y pone la variable a cero después.
 - Se eliminó la instrucción que cambiaba el estadístico 181 a 4.
 - 22 interiores habilitados.
-- 130 saltos condicionales comprobados; todos tienen etiqueta de destino y no hay etiquetas duplicadas. Se detectaron 129 etiquetas únicas.
+- 131 saltos condicionales; 130 destinos distintos, todos existentes; 130 etiquetas únicas y sin duplicados.
 - Las 32 llamadas `018B: set_marker ... radar_mode 2` ahora se ejecutan solo si la creación del marcador devolvió un handle distinto de cero.
 - Se añadieron esperas de 50 ms al terminar cada uno de los 32 bloques de creación, para espaciar la carga y evitar ráfagas consecutivas de asignación de pickups y marcadores. Esto reduce un riesgo potencial, pero no prueba por sí solo que ese fuera el origen de los cierres.
 - Antes de cualquier escritura de memoria, `0DD7` obtiene la base de imagen y el script aborta con `MAP ERROR` si el resultado es cero. Esta comprobación evita escribir con base ausente, pero no valida que los offsets sean correctos ni que las páginas sean escribibles.
@@ -72,5 +72,5 @@ En las pruebas anteriores, el usuario informó que tanto la prueba con un marcad
 DECISIÓN DE ESTA REVISIÓN
 Se retiró el cambio de estadística, se añadió protección para no destruir/desactivar handles con valor cero, se protegieron las 32 configuraciones de marcadores ante handles cero, se espaciaron los 32 bloques de creación con esperas de 50 ms y se añadió una comprobación de base de imagen antes de las escrituras. La auditoría estática confirmó 130 destinos de salto existentes y 129 etiquetas únicas, sin etiquetas duplicadas.
 No se cambiaron las direcciones de memoria porque no hay confirmación específica para GTA SA Android 2.10. La implementación de CLEO confirma que `protect 0` escribe directamente y que el opcode no valida la dirección. Un parche a ciegas podría introducir un crash nuevo o dañar el estado del juego.
-Siguen abiertos los riesgos críticos de offsets/versión y los riesgos de handles no nulos obsoletos. La creación escalonada ya está aplicada mediante esperas de 50 ms al final de los 32 bloques. Su efecto dentro del juego sigue pendiente de validación y no se ha demostrado que el pico de asignación fuera la causa de los cierres.
+Siguen abiertos los riesgos críticos de offsets/versión y los riesgos de handles no nulos obsoletos. La creación escalonada ya está aplicada mediante 32 esperas de 50 ms al final de los bloques, además de 9 esperas de 50 ms anteriores. Total en la fuente: 41. Su efecto dentro del juego sigue pendiente de validación y no se ha demostrado que el pico de asignación fuera la causa de los cierres.
 No declarar la fuente libre de crashes hasta completar la prueba real en el juego.
