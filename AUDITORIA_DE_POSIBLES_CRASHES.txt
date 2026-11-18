@@ -47,19 +47,20 @@ CORRECCIÓN APLICADA: se añadió una espera de 50 ms al final de cada uno de lo
 Prioridad residual: MEDIA-BAJA. No se ha demostrado que el pico de asignación causara los cierres ni se ha probado el efecto dentro del juego.
 
 5. IDENTIFICACIÓN DE LA VERSIÓN DEL JUEGO
-La fuente no comprueba la versión del juego antes de realizar las escrituras de memoria. Una comprobación genérica de CLEO para SA 2.00 o superior no basta por sí sola para certificar que un desplazamiento concreto es correcto en 2.10.
-Prioridad: ALTA. Se necesita identificar la variante exacta de GTA SA 2.10 y su base/offsets antes de permitir las escrituras.
+La fuente no comprueba la versión del juego antes de realizar las escrituras de memoria. Una comprobación genérica de CLEO para SA 2.00 o superior no basta por sí sola para certificar que un desplazamiento concreto sea correcto en 2.10.
+Prioridad: ALTA. Se necesita identificar la variante exacta de GTA SA 2.10 y validar por separado los offsets antes de permitir las escrituras.
 
-INVESTIGACIÓN DE CLEO (18-11-2026)
-- El código público de CLEO Android confirma que 0DD6 devuelve una versión interna amplia. Para GTA SA moderno, la categoría disponible es "GTASA 2.00 OR HIGHER"; no diferencia por sí sola 2.10.
-- 0DDB devuelve tres datos de metadatos de la aplicación: hash del nombre del paquete, hash de la cadena de versión y código de versión.
-- El código fuente de CLEO calcula esos hashes con su función str_hash (Jenkins one-at-a-time).
-- Para el identificador de paquete com.rockstargames.gtasa, el hash calculado es 0x53DF4287. Para la cadena "2.10", el hash calculado es 0xB14DD2BC.
-- Algunas fichas públicas de APK muestran versionCode 34 para GTA SA 2.10, pero no constituyen prueba del valor instalado en este dispositivo. Ese tercer valor debe permanecer sin confirmar hasta obtenerlo de la instalación exacta.
-- Esta investigación identifica una vía más específica para una futura comprobación, pero no valida los offsets 0x0098D252 ni 0x0098D2B8. No se añadió 0DDB al script ni se alteraron las escrituras.
-
-La fuente no comprueba la versión del juego antes de realizar las escrituras de memoria. Una comprobación genérica de CLEO para SA 2.00 o superior no basta por sí sola para certificar que un desplazamiento concreto es correcto en 2.10.
-Prioridad: ALTA. Se necesita identificar la variante exacta de GTA SA 2.10 y su base/offsets antes de permitir las escrituras.
+INVESTIGACIÓN DE CLEO Y METADATOS (18-11-2026)
+- El código público de CLEO Android establece VER_GTASA_2_00_OR_HIGHER como categoría genérica cuando no reconoce una versión antigua concreta. Por tanto, 0DD6 no distingue GTA SA 2.00 de 2.10.
+- El opcode 0DDB devuelve tres metadatos: hash Jenkins del nombre del paquete, hash Jenkins de la cadena de versión y versionCode de Android.
+- Los hashes se calcularon siguiendo la función str_hash del código de CLEO:
+  - com.rockstargames.gtasa = 0x53DF4287.
+  - 2.10 = 0xB14DD2BC.
+- Dos fichas secundarias de APK para GTA SA 2.10 reportan versionCode 34. Es una pista coincidente, pero no confirma el valor de la copia instalada en este teléfono.
+- La documentación pública de CLEO 2.0.1 enumera soporte de GTA SA hasta v2.00 y Android hasta 11. El código actual contiene una categoría genérica 2.00 o superior, pero eso no constituye una certificación de compatibilidad de CLEO con GTA SA 2.10 ni con Android 13.
+- El script actual no usa 0DDB. No se añadió esa instrucción porque primero debe confirmarse qué versión de CLEO está instalada y comprobarse que el opcode está disponible en ese entorno.
+- Aunque se identificaran correctamente los metadatos, eso solo confirmaría la identidad declarada por Android; no demostraría que 0x0098D252 ni 0x0098D2B8 sean offsets válidos para esa compilación.
+- No se localizó documentación pública fiable que vincule esos offsets concretos con GTA SA Android 2.10. No cambiar ni ejecutar escrituras basándose únicamente en los hashes o en versionCode 34.
 
 6. VALIDACIÓN DEL HANDLE DEL MARCADOR
 RESUELTO PARCIALMENTE EN FUENTE: las 32 llamadas a `set_marker` ahora están protegidas por una comprobación de handle distinto de cero. Si la creación falla y devuelve cero, se omite la configuración del marcador.
