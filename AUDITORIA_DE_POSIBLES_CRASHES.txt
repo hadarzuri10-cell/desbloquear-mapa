@@ -3,18 +3,19 @@ Fecha: 2026-11-18
 Rama activa: main
 Versión identificada: 1.4.5
 Fuente revisada: Desbloquear Mapa v1.4.5.source.txt
-SHA de fuente revisada: e36d36712b93716793d290863cf56cb7a56d942b
+SHA de fuente revisada: ca7a17752a6535478b9579567f01c4a54b6a61b6
 
 RESUMEN
 La fuente compila con Sanny Builder 4.2.0 en modo SA Mobile. La compilación correcta no demuestra que el script sea seguro ni compatible dentro de GTA SA Android 2.10. Esta auditoría separa comprobaciones estáticas de riesgos que necesitan confirmación.
 
 COMPROBACIONES ESTÁTICAS
-- 958 líneas en la fuente 1.4.5.
+- 1022 líneas en la fuente 1.4.5.
 - 101 escrituras de memoria: 100 bytes consecutivos desde 0x0098D252 hasta 0x0098D2B5, y una escritura de 4 bytes en 0x0098D2B8.
 - 32 instrucciones de creación de pickups y 32 variables distintas ($3071 a $3102).
 - 32 instrucciones de creación de marcadores y 32 variables distintas ($65, $526, $54 y $3010 a $3038).
 - Hay 32 instrucciones de limpieza de pickups y 32 de desactivación de marcadores.
-- La limpieza ahora comprueba que cada variable sea distinta de cero antes de llamar a destroy_pickup/disable_marker y pone la variable a cero después.
+- La limpieza comprueba que cada variable sea distinta de cero y consulta 09D1 (pickup existente) o 075C (marcador habilitado) antes de llamar a destroy_pickup/disable_marker; después pone la variable a cero.
+- Hay 32 comprobaciones 09D1 y 32 comprobaciones 075C.
 - Se eliminó la instrucción que cambiaba el estadístico 181 a 4.
 - 22 interiores habilitados.
 - 131 saltos condicionales; 130 destinos distintos, todos existentes; 130 etiquetas únicas y sin duplicados.
@@ -30,14 +31,14 @@ RIESGOS QUE SIGUEN ABIERTOS
 1. DIRECCIONES DE MEMORIA Y VERSIÓN
 La fuente ahora consulta `0DD7: get_image_base` antes de escribir. Si devuelve cero, termina sin ejecutar las escrituras y muestra `MAP ERROR`.
 La fuente escribe usando 0DD9 con add_ib 1. En CLEO Android, add_ib suma la base de la biblioteca principal al desplazamiento indicado. Eso ayuda con la reubicación de la biblioteca, pero no prueba que el desplazamiento 0x0098D252 sea el correcto para GTA SA 2.10.
-La documentación pública localizada para direcciones de memoria de SA Android corresponde a v2.00, está marcada como incompleta y no documenta el bloque 0x0098D252. No se debe cambiar ni dar por válida esta dirección para v2.10 sin una referencia específica de esa versión.
+Se encontró una referencia independiente de código Android que usa 0x0098D252 para CTheZones::ZonesVisited[100] y 0x0098D2B8 para CTheZones::ZonesRevealed en 32 bits; publica 0xC1BF92 y 0xC1BFF8 como equivalentes de 64 bits. Fuente: https://github.com/Eeykal46/holy-sa/blob/0f76d40ef5eefb05a31b820492e73b19f8aac879/app/src/main/cpp/multiplayer/game/patches.cpp. El repositorio incluye también una referencia a un arreglo para un crash de GTA SA 2.10, pero el fragmento no identifica de forma inequívoca la versión/build a la que pertenecen esos offsets. Es una corroboración importante, no una confirmación de la instalación concreta.
 Prioridad: CRÍTICA. No se modificaron las escrituras a ciegas. El control de base es una mitigación parcial, no una validación de offsets.
 Además, la implementación pública de CLEO Android muestra que `protect 0` omite la llamada a `mprotect` y escribe directamente en la dirección calculada. Esto no provoca un crash por sí solo si la zona es memoria de datos válida y escribible, pero tampoco protege frente a una dirección incorrecta, no mapeada o de solo lectura. No se debe cambiar `protect` a 1 como supuesto arreglo: esa ruta también ignora el resultado de `mprotect` y no valida la dirección.
 
 2. LIMPIEZA DE HANDLES
-Se corrigió el caso de variables sin inicializar: destroy_pickup y disable_marker solo se llaman si el handle almacenado es distinto de cero; después se pone la variable a cero.
-Riesgo restante: una variable distinta de cero todavía podría contener un handle obsoleto si el objeto fue recogido o invalidado. La fuente no dispone todavía de una comprobación de validez confirmada para esos handles.
-Prioridad: MEDIA-ALTA. La protección contra cero está implementada; la validez de handles obsoletos sigue sin confirmarse.
+CORRECCIÓN APLICADA: antes de destruir un pickup se consulta 09D1: does_pickup_exist; antes de desactivar un marcador se consulta 075C: marker ... enabled. Ambas comprobaciones van después de comprobar que el handle no sea cero.
+Límite residual: una comprobación por handle no puede distinguir el objeto original si el juego reutilizó ese identificador para otro pickup/marcador activo. Las nuevas condiciones evitan limpiar handles inexistentes o inactivos, pero no garantizan identidad histórica.
+Prioridad residual: MEDIA.
 
 3. ESTADÍSTICA DEL JUEGO
 RESUELTO EN FUENTE: se retiró la instrucción 0629 que cambiaba el estadístico 181 a 4. No era necesaria para el alcance mínimo demostrado y podía alterar estadísticas guardadas.
@@ -72,5 +73,5 @@ En las pruebas anteriores, el usuario informó que tanto la prueba con un marcad
 DECISIÓN DE ESTA REVISIÓN
 Se retiró el cambio de estadística, se añadió protección para no destruir/desactivar handles con valor cero, se protegieron las 32 configuraciones de marcadores ante handles cero, se espaciaron los 32 bloques de creación con esperas de 50 ms y se añadió una comprobación de base de imagen antes de las escrituras. La auditoría estática de la fuente 1.4.5 confirmó 131 saltos condicionales, 130 destinos distintos existentes y 130 etiquetas únicas, sin etiquetas duplicadas.
 No se cambiaron las direcciones de memoria porque no hay confirmación específica para GTA SA Android 2.10. La implementación de CLEO confirma que `protect 0` escribe directamente y que el opcode no valida la dirección. Un parche a ciegas podría introducir un crash nuevo o dañar el estado del juego.
-Siguen abiertos los riesgos críticos de offsets/versión y los riesgos de handles no nulos obsoletos. La creación escalonada ya está aplicada mediante 32 esperas de 50 ms al final de los bloques, además de 9 esperas de 50 ms anteriores. Total en la fuente: 41. Su efecto dentro del juego sigue pendiente de validación y no se ha demostrado que el pico de asignación fuera la causa de los cierres.
+Siguen abiertos los riesgos críticos de offsets/versión y los riesgos de handles no nulos obsoletos. La creación escalonada ya está aplicada mediante 32 esperas de 50 ms al final de los bloques, además de 10 esperas de 50 ms anteriores. Total en la fuente: 42. Su efecto dentro del juego sigue pendiente de validación y no se ha demostrado que el pico de asignación fuera la causa de los cierres.
 No declarar la fuente libre de crashes hasta completar la prueba real en el juego.
