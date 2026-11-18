@@ -1,12 +1,5 @@
 {$CLEO .csi}
-// PRUEBA DIAGNOSTICA: un solo marcador comercial.
-// Aisla la creación del marcador sin limpieza previa, mutex vars,
-// gimnasios ni cambios de acceso a interiores.
-0001: wait 1000
-0005: 5@ = 812.9
-0005: 6@ = -1616.1
-0005: 7@ = 13.6
-0570: 8@ = create_asset_radar_marker_with_icon 10 at 5@ 6@ 7@
-018B: set_marker 8@ radar_mode 2
-0001: wait 1000
+// PRUEBA DE CONTROL: hilo CLEO sin creación de marcadores.
+// Sirve para comprobar si el crash ocurre incluso sin ejecutar 0570.
+0001: wait 3000
 0A93: end_custom_thread
