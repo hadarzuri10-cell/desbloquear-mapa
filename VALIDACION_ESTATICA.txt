@@ -1,7 +1,7 @@
 VALIDACIÓN — DESBLOQUEAR MAPA v1.4.5
 
 Fuente: Desbloquear Mapa v1.4.5.source.txt
-SHA de fuente: e36d36712b93716793d290863cf56cb7a56d942b
+SHA de fuente: ca7a17752a6535478b9579567f01c4a54b6a61b6
 Compilador: Sanny Builder 4.2.0, modo SA Mobile.
 Resultado de compilación de la fuente 1.4.5: correcto.
 Run verificado: 44365903993 (commit del repositorio: 9d1923606fa499f140942e7b882326c5edfe3824).
@@ -9,11 +9,11 @@ Artefacto: Desbloquear-Mapa-compiled-test, ID 14457205395, 8071 bytes.
 Formato generado: .csi
 
 COMPROBACIONES ESTÁTICAS
-- 958 líneas.
+- 1022 líneas.
 - 101 escrituras de memoria: 100 bytes consecutivos desde 0x0098D252 hasta 0x0098D2B5 y una escritura de 4 bytes en 0x0098D2B8.
 - 32 bloques de propiedades, matriz 1..32, pickups $3071..$3102.
-- 32 marcadores; 32 limpiezas previas; las 32 configuraciones de marcador comprueban handle distinto de cero.
-- 41 esperas de 50 ms: 32 al terminar los bloques y 9 anteriores.
+- 32 marcadores; 32 limpiezas de pickups protegidas por 09D1 y 32 limpiezas de marcadores protegidas por 075C; las 32 configuraciones de marcador comprueban handle distinto de cero.
+- 42 esperas de 50 ms: 32 al terminar los bloques y 10 anteriores.
 - 22 interiores normales.
 - 131 saltos condicionales; 130 destinos distintos existentes; 130 etiquetas únicas; sin etiquetas duplicadas.
 - MAPLOAD: 1500 ms.
@@ -23,5 +23,5 @@ COMPROBACIONES ESTÁTICAS
 IMPORTANTE
 La compilación confirma que Sanny Builder acepta la fuente y genera el CSI. No demuestra funcionamiento ni estabilidad dentro del juego.
 No probado dentro de GTA San Andreas Android 2.10.
-La compatibilidad funcional y la validez de los offsets 0x0098D252 y 0x0098D2B8 siguen pendientes de verificación.
+Se encontró una referencia independiente de código Android que coincide con los offsets 32-bit y publica alternativas 64-bit (0xC1BF92 y 0xC1BFF8). Falta identificar la arquitectura real de la biblioteca instalada y confirmar que la referencia corresponde a esa compilación.
 MAP ERROR: el script aborta si no se detecta la base de imagen.
