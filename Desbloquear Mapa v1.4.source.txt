@@ -5,6 +5,13 @@
 00D6: if 0
 0038: $ONMISSION == 0
 004D: jump_if_false @busy
+0DD7: 0@ = get_image_base
+00D6: if 0
+0038: 0@ == 0
+004D: jump_if_false @image_base_valid
+00BC: show_text_highpriority GXT 'MAPERR' time 5000 flag 1
+0A93: end_custom_thread
+:image_base_valid
 0DDD: 0@ = get_mutex_var 7413
 00D6: if 0
 0038: 0@ == 0
