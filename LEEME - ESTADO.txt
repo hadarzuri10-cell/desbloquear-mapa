@@ -10,19 +10,19 @@ ESTADO
 - La prueba dentro de GTA San Andreas Android 2.10 sigue pendiente y corresponde al usuario cuando finalice la revisión técnica.
 
 AUDITORÍA ESTÁTICA DE LA FUENTE
-- 958 líneas.
+- 1022 líneas.
 - 101 escrituras de memoria: 100 bytes consecutivos desde 0x0098D252 hasta 0x0098D2B5 y una escritura de 4 bytes en 0x0098D2B8.
 - 32 bloques de propiedades, índices de matriz 1 a 32.
-- 32 pickups y 32 marcadores; limpieza protegida contra handles con valor cero; configuración de marcadores protegida ante handle cero.
+- 32 pickups y 32 marcadores; 32 comprobaciones 09D1 para pickups y 32 comprobaciones 075C para marcadores antes de limpiarlos.
 - 41 esperas de 50 ms: 32 al terminar los bloques y 9 anteriores.
 - 22 interiores normales.
 - 131 saltos condicionales; 130 destinos distintos existentes; 130 etiquetas únicas; sin etiquetas duplicadas.
 - Las escrituras de memoria solo se ejecutan después de comprobar que la base de imagen no sea cero.
 
 RIESGOS ABIERTOS
-- No se ha validado que los offsets 0x0098D252 y 0x0098D2B8 correspondan a GTA SA Android 2.10.
+- Hay una referencia independiente de código Android que coincide con los offsets 32-bit y ofrece alternativas 64-bit; falta identificar la ABI real de la biblioteca del juego instalada.
 - La comprobación de base de imagen no valida los offsets ni que las páginas de memoria sean escribibles.
-- No existe todavía una comprobación confirmada para handles no nulos que hayan quedado obsoletos.
+- Las limpiezas ahora comprueban existencia/estado con 09D1 y 075C; un identificador reciclado aún podría referirse a otro objeto activo.
 - La documentación pública de CLEO 2.0.1 enumera soporte hasta GTA SA 2.00 y Android 11; no certifica GTA SA 2.10 ni Android 13.
 - La compilación correcta no demuestra estabilidad dentro del juego.
 
