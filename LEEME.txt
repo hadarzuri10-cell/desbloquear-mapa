@@ -1,8 +1,8 @@
 DESBLOQUEAR MAPA — ESTADO DEL PROYECTO
 
-Versión activa: v1.4 (fuente en main).
+Versión activa: v1.4.5 (fuente en main).
 Script: Desbloquear Mapa.csi
-Fuente: Desbloquear Mapa v1.4.source.txt
+Fuente: Desbloquear Mapa v1.4.5.source.txt
 
 FUNCIONES
 - Revela los 100 sectores del mapa.
@@ -21,7 +21,7 @@ MENSAJES
 - MAPBUSY: aviso cuando se intenta ejecutar durante una misión.
 
 DESARROLLO Y VALIDACIÓN
-La compilación previa de v1.4 fue exitosa en GitHub Actions. La corrección actual de MAP READY requiere una nueva compilación.
+La compilación previa de v1.4.5 fue exitosa en GitHub Actions. La corrección actual de MAP READY requiere una nueva compilación.
 La prueba real dentro de GTA San Andreas Android 2.10 sigue pendiente; no se afirma compatibilidad funcional hasta realizarla.
 
-Las pruebas auxiliares de marcadores son parte del proceso de desarrollo y depuración de Desbloquear Mapa. La rama v1.4.1-development no se utilizará como rama activa.
+Las pruebas auxiliares de marcadores son parte del proceso de desarrollo y depuración de Desbloquear Mapa. La rama v1.4.5.1-development no se utilizará como rama activa.
