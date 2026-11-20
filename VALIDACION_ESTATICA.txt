@@ -109,3 +109,16 @@ Se revisó Eeykal46/holy-sa, archivo app/src/main/cpp/multiplayer/game/patches.c
 Esto coincide exactamente con el rango y la escritura de 4 bytes de la fuente 1.4.5. Es corroboración independiente de la selección de offsets ARM32, aunque no reemplaza una prueba contra el binario exacto del APK del usuario.
 Fuente: https://github.com/Eeykal46/holy-sa/blob/0f76d40ef5eefb05a31b820492e73b19f8aac879/app/src/main/cpp/multiplayer/game/patches.cpp
 No se modificó la fuente ni se realizó prueba dentro del juego.
+
+
+HALLAZGO DE VARIABLES GLOBALES (20-11-2026)
+La tabla pública CustomVariables.ini de FSSRepo/cleo-script-java nombra $54 como Help_INTRO_Shown y $65 como Help_Groove_Shown. La fuente v1.4.5 reutiliza ambos globales como destinos de handles de marcadores y los pone a cero durante la limpieza. Esto constituye una colisión potencial con variables propias del juego y debe resolverse antes de declarar la fuente finalizada.
+$526 no aparece con nombre en esa tabla; no se puede afirmar que esté libre. Se generó una variante experimental aislada que traslada esos tres handles a $3103–$3105, pero no se ha probado que estos índices estén libres en el main.scm exacto del APK. No se integró en main. La versión activa continúa siendo v1.4.5 y su fuente no cambió.
+Fuente: https://github.com/FSSRepo/cleo-script-java/blob/main/res/CustomVariables.ini
+
+ACLARACIÓN DE CLEO EXTENDER
+La ficha pública de CLEOAndroid Extender 1.0 describe un plugin para ampliar opciones del menú CLEO y personalizar los textos base. Indica soporte SA 2.00/1.08 y requiere CLEO Android + FLA 5.0+. No documenta la implementación de los opcodes de memoria 0DD7/0DD9 ni de los mutex 0DDC/0DDD. Por tanto, ver libpluginCleoExtender.so en el APK no confirma que esos opcodes existan en la build integrada.
+Fuente: https://www.mobilegta.net/en/download.php?cat=580&do=detail&id=143993
+
+EVIDENCIA DE ARQUITECTURA
+El usuario mostró libGTASA.so, libcleo.so y libpluginCleoExtender.so dentro de lib/armeabi-v7a. Esto confirma que el paquete contiene esas bibliotecas como ARM32. No identifica por sí solo la versión/hash de libcleo.so ni la biblioteca efectivamente cargada en ejecución.
