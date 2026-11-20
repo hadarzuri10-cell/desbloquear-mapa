@@ -221,3 +221,15 @@ Esto coincide con la estructura de datos que usa la fuente 1.4.5: consulta la ma
 Límite: la tabla móvil es de 2015, no un dump verificado del main.scm exacto del paquete GTA SA 2.10 del usuario. No basta para afirmar que todos los handles y slots sean compatibles con esa build. $526 y $3010–$3038 no quedan completamente resueltos por esa tabla.
 La variante experimental que cambiaba $54/$65 a nuevos índices no está validada y no debe tratarse como corrección ni versión oficial. La fuente activa en main sigue siendo v1.4.5 y permanece sin cambios.
 Referencia: https://gist.github.com/OrionSR/dea483bd2f86842c8725
+
+
+COMPILACIÓN DE v1.4.5 VERIFICADA (20-11-2026)
+Se compiló la fuente activa de main con Sanny Builder 4.2.0, modo SA Mobile:
+- GitHub Actions run: 44838055204.
+- Commit del run: efca77bc2a9cf0affd66579923d0bb3ec01a46a3.
+- Resultado del job compile: success.
+- Artefacto: Desbloquear-Mapa-v1.4.5-compiled-test, ID 14678394298, tamaño 13058 bytes.
+- SHA-256 del ZIP del artefacto: 8cfff32ff098c3899089d6f60077af2e10466db6f8d439212305492c7af84ca3.
+- El workflow registra en el artefacto un archivo con el SHA-256 de la fuente compilada.
+- Blob SHA de la fuente usado para la compilación: daca0d43270358dac3dbd84bbed840c3ade3ab69.
+Esto confirma la compilación del CSI, pero no funcionamiento o estabilidad dentro del juego.
