@@ -11,7 +11,7 @@ Formato generado: .csi
 COMPROBACIONES ESTÁTICAS
 - 1086 líneas.
 - 101 escrituras de memoria: 100 bytes consecutivos desde 0x0098D252 hasta 0x0098D2B5 y una escritura de 4 bytes en 0x0098D2B8.
-- 32 bloques de propiedades, matriz 1..32, pickups $3071..$3102.
+- 32 bloques de propiedades, matriz 0..31, pickups $3071..$3102.
 - 32 marcadores; 32 limpiezas de pickups protegidas por 09D1 y 32 limpiezas de marcadores protegidas por 075C; las 32 configuraciones de marcador comprueban handle distinto de cero.
 - 42 esperas de 50 ms: 32 al terminar los bloques y 10 anteriores.
 - 22 interiores normales.
@@ -208,3 +208,23 @@ Fuentes:
 https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/Scripts/TheScripts.cpp
 https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/Pickups.cpp
 https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/Radar.cpp
+
+
+CORRECCIÓN DE ÍNDICES DE PROPERTY_BOUGHT_FLAGS — v1.4.5 (20-11-2026)
+La revisión detectó que los 32 bloques asignaban 0@ = 1..32 antes de consultar $727(0@,32i). La tabla móvil identifica $727 como Property_Bought_Flags, un array de 32 posiciones. La inicialización original pública documenta Property_Bought_Flags[0]..[31] y las coordenadas de propiedades X/Y/Z también usan índices 0..31.
+Se corrigió en main el índice usado por cada bloque: 0..31. Esto alinea la comprobación de propiedad adquirida con la coordenada, el precio y los handles de la misma propiedad. Evita consultar el índice 32 fuera del array y evita el desfase que podía recrear el pickup/marcador de una propiedad ya comprada.
+Verificación estática de la fuente corregida:
+- 32 bloques y 32 condiciones $727(0@,32i).
+- Valores de 0@: 0,1,2,...,31, sin saltos ni duplicados.
+- Coordenadas de propiedad: arrays de 32 posiciones 0..31.
+- Precios: $3039..$3070.
+- Pickups: $3071..$3102.
+- Marcadores: 32; sin cambios en sus variables.
+- Escrituras de memoria: 101, exactamente las mismas direcciones y valores que en la fuente anterior.
+- Total: 1086 líneas.
+La versión sigue siendo 1.4.5; no se ha creado ni publicado una versión 1.4.6.
+Compilación previa aislada de la misma corrección: run 44839310883, success; artefacto Desbloquear-Mapa-v1.4.5-indexfix-compiled-test, ID 14680635075; tamaño 15952 bytes; SHA-256 ZIP 87b40812ede5dc121215e58ba0225a18bc68178597d1e1be6fdd34991537626a. La copia corregida de main requiere su propia compilación después de incorporarse.
+Pendiente: prueba real en GTA SA Android 2.10 con partida nueva. La compilación no demuestra ejecución ni estabilidad.
+Referencias:
+https://gist.github.com/OrionSR/dea483bd2f86842c8725
+https://github.com/Laremi/GTASA-SEM/blob/421a2de3c29197f384c045a89885c4c90fd11f40/_source/missions/initial.txt
