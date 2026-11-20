@@ -239,3 +239,12 @@ COMPILACIÓN DE MAIN TRAS LA CORRECCIÓN DE ÍNDICES (20-11-2026)
 - SHA-256 ZIP: d5d0edfd8381848368d4e1e6abaeff2fd1cc9f68768bee9662a14848235eb1f5.
 - Enlace del run: https://github.com/hadarzuri10-cell/desbloquear-mapa/actions/runs/44839583320
 La compilación se realizó desde main después de incorporar el arreglo 0..31. Esto confirma la generación del CSI, no su funcionamiento dentro del juego.
+
+
+ACLARACIÓN OFICIAL DE COMPATIBILIDAD CLEO (20-11-2026)
+La página oficial de CLEO Android del desarrollador indica como compatibilidad SA v2.00 y Android 4.1 a 11. El anuncio de la actualización del 4 de abril de 2021 identifica SA v2.00 como la versión más reciente soportada en esa distribución. Esto no certifica GTA SA 2.10 ni Android 13.
+El usuario ha confirmado que su APK contiene libcleo.so y libGTASA.so empaquetadas en armeabi-v7a, por lo que los binarios mostrados son ARM32. Sin embargo, la ABI compatible no equivale a soporte oficial de la versión del juego/Android ni identifica el código exacto de libcleo.so.
+Conclusión: la versión 1.4.5 corregida compila y sus offsets coinciden con ARM32, pero la ejecución con la build CLEO integrada de ese paquete sigue sin estar verificada.
+Fuentes oficiales:
+https://www.dev-c.com/misc/cleo-android/
+https://www.dev-c.com/post/major-update-for-cleo-android
