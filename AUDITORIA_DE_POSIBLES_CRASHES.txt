@@ -238,7 +238,7 @@ Esto confirma la compilación del CSI, pero no funcionamiento o estabilidad dent
 CORRELACIÓN DETALLADA ENTRE LOS 32 MARCADORES Y LA TABLA MÓVIL (20-11-2026)
 El bloque de creación de propiedades de la fuente activa se alineó contra la tabla CustomVariables GTA SA Mobile:
 - Usa la matriz $727(0@,32i) para comprobar si cada propiedad ya está comprada.
-- Usa coordenadas X/Y/Z desde las bases $2910/$2942/$2974, con índices 1..32.
+- Usa coordenadas X/Y/Z desde las bases $2910/$2942/$2974, con índices 0..31.
 - Usa los precios desde $3039..$3070.
 - Guarda los pickups creados en $3071..$3102.
 - Guarda los 32 handles de marcadores así: primera propiedad en $65, segunda en $526, tercera en $54, y las propiedades 4..32 en $3010..$3038.
@@ -300,3 +300,23 @@ Referencias:
 https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/Scripts/TheScripts.cpp
 https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/Pickups.cpp
 https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/Radar.cpp
+
+
+CORRECCIÓN DE DESFASE EN PROPERTY_BOUGHT_FLAGS — v1.4.5 (20-11-2026)
+Hallazgo: los 32 bloques de propiedades originales asignaban 0@ = 1..32 inmediatamente antes de consultar $727(0@,32i). La variable móvil $727 es Property_Bought_Flags, y la referencia de inicialización móvil documenta 32 elementos con índices 0..31. La reconstrucción original de GTA SA también inicializa Property_Bought_Flags[0]..[31], y recorre en paralelo X/Y/Z_Property_To_Buy[0]..[31].
+Esto hacía que la condición de compra estuviera desplazada una posición respecto a coordenadas, precios y handles:
+- El bloque de coordenadas/índice 0 comprobaba el flag 1.
+- El bloque 30 comprobaba el flag 31.
+- El bloque 31 intentaba consultar el índice 32, fuera del array de 32 elementos.
+Riesgo: una propiedad ya comprada podía volver a recibir pickup/marcador mientras otra quedaba omitida; la lectura del índice 32 no correspondía al array.
+Corrección aplicada en main manteniendo la versión 1.4.5: las 32 asignaciones de 0@ de esos bloques ahora recorren 0..31. No se cambian coordenadas, precios, pickups, marcadores, memoria, mutex, interiores, mensajes ni tiempos.
+Verificación estática tras el cambio:
+- 32 comprobaciones $727(0@,32i), índices exactamente 0..31 en orden.
+- Correspondencia 1:1 con coordenadas X/Y/Z índices 0..31, precios $3039..$3070 y pickups $3071..$3102.
+- Las 101 escrituras de memoria permanecen idénticas.
+- La fuente conserva 1086 líneas.
+Compilación de la corrección primero se validó en una rama aislada: GitHub Actions run 44839310883, success, artefacto Desbloquear-Mapa-v1.4.5-indexfix-compiled-test (ID 14680635075, 15952 bytes, SHA-256 ZIP 87b40812ede5dc121215e58ba0225a18bc68178597d1e1be6fdd34991537626a). La misma corrección se incorporó después a main y debe validarse con su compilación de main.
+La corrección compila, pero todavía no se ha probado dentro de GTA SA Android 2.10. Cuando se haga, solo usar partida nueva.
+Referencias:
+https://gist.github.com/OrionSR/dea483bd2f86842c8725
+https://github.com/Laremi/GTASA-SEM/blob/421a2de3c29197f384c045a89885c4c90fd11f40/_source/missions/initial.txt
