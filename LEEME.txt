@@ -21,24 +21,33 @@ MENSAJES
 - MAP ERROR: se muestra y el script aborta si CLEO devuelve una base de imagen igual a cero.
 
 DESARROLLO Y VALIDACIÓN
-La fuente v1.4.5 compiló correctamente con Sanny Builder 4.2.0 en modo SA Mobile. Última compilación de referencia en main: GitHub Actions run 44367239879 (success), commit b213285005f29f9bd66eb1eee7712e245b5b1a61, artefacto Desbloquear-Mapa-compiled-test, ID 14458890340. Las revisiones documentales posteriores no cambiaron la fuente activa ni generaron una nueva compilación de main.
-La compilación demuestra que Sanny Builder produce un CSI, pero no prueba funcionamiento ni estabilidad dentro del juego.
+La fuente v1.4.5 se compiló con Sanny Builder 4.2.0 en modo SA Mobile. Compilación verificada más reciente: GitHub Actions run 44838055204 (success), commit efca77bc2a9cf0affd66579923d0bb3ec01a46a3, artefacto Desbloquear-Mapa-v1.4.5-compiled-test, ID 14678394298, 13058 bytes. El flujo incluye un archivo de hash de la fuente en el artefacto.
+Esta compilación demuestra que Sanny Builder genera un CSI; no demuestra estabilidad ni funcionamiento dentro del juego.
 
 ARQUITECTURA
-El usuario mostró directamente que libGTASA.so, libcleo.so y libpluginCleoExtender.so están dentro de lib/armeabi-v7a. Esto confirma que esas bibliotecas empaquetadas son ARM32, aunque el teléfono sea de 64 bits.
-Dos proyectos públicos corroboran los offsets ARM32 utilizados por v1.4.5 para CTheZones::ZonesVisited[100] (0x0098D252) y CTheZones::ZonesRevealed (0x0098D2B8). Los mismos proyectos documentan offsets distintos para ARM64.
+El usuario mostró directamente libGTASA.so, libcleo.so y libpluginCleoExtender.so dentro de lib/armeabi-v7a. Esto confirma que esas bibliotecas incluidas en el APK son ARM32, aunque el teléfono sea de 64 bits. Dos proyectos públicos independientes corroboran los offsets ARM32 que usa v1.4.5:
+- ZonesVisited[100]: 0x0098D252.
+- ZonesRevealed: 0x0098D2B8.
 La captura no identifica la compilación exacta de libcleo.so ni prueba por sí sola qué biblioteca carga el proceso en ejecución.
-El CLEO-ANDROID público revisado implementa 0DD7, 0DD9, 0DDC y 0DDD con parámetros/direcciones de 32 bits y se compila ARMv7/Thumb. Sin embargo, la presencia de libpluginCleoExtender.so no demuestra soporte de esos opcodes: la ficha pública de CLEOAndroid Extender 1.0 describe funciones de menú/texto/cámara, y lista SA 2.00/1.08.
-La ficha del paquete ModsGamer que coincide por título y tamaño con el indicado por el usuario tiene un campo de versión compatible que dice 2.00, pese al título 2.10. No publica la versión o hash de CLEO integrada. La compatibilidad funcional exacta con ese paquete continúa sin confirmarse.
+El CLEO-ANDROID público revisado implementa 0DD7, 0DD9, 0DDC y 0DDD con direcciones/parámetros de 32 bits. La presencia de libpluginCleoExtender.so no demuestra soporte de esos opcodes: la ficha pública de CLEOAndroid Extender 1.0 describe funciones de menú, cámara y textos FXT, y lista SA 2.00/1.08.
+La ficha del paquete ModsGamer que coincide por título y tamaño con el indicado por el usuario tiene el campo Suitable game version: 2.00, pese al título 2.10. No publica el hash ni versión de CLEO integrada. La compatibilidad funcional exacta con ese APK sigue sin confirmarse.
 
-RIESGO NUEVO DETECTADO
-La fuente activa usa $54 y $65 como variables de handles de marcadores. Una tabla pública de variables del juego identifica esos índices como Help_INTRO_Shown y Help_Groove_Shown; por tanto, existe una colisión potencial que podría alterar estados de ayudas/tutoriales. Esta situación debe resolverse antes de dar v1.4.5 por terminada.
-Se creó una variante de investigación separada para examinar un posible traslado de handles, pero no se integró en main y sus nuevos índices tampoco están demostrados como libres. La versión activa sigue siendo 1.4.5.
+MAPEO DE VARIABLES MÓVILES
+Se localizó una tabla específica de GTA SA Mobile (Android/iOS, 2015). Entre sus nombres coincidentes:
+- $727 = Property_Bought_Flags.
+- $2910 / $2942 / $2974 = coordenadas X / Y / Z de propiedades.
+- $3039 = Property_Prices.
+- $3071 = Buy_Asset_Pickups.
+- $54 = Marker_Asset created.
+- $65 = Marker_Wang_Cars.
+La estructura de datos usada por v1.4.5 concuerda con esa tabla móvil. La conclusión anterior que interpretaba $54/$65 como flags de ayuda provenía de una tabla de PC v1.0 y se retira. Su uso como handles de marcadores puede ser intencional. La tabla móvil es de 2015 y aún no se cotejó con el main.scm exacto del APK 2.10; $526 y los slots adicionales tampoco están identificados completamente.
 
-PRUEBAS
-No se ha realizado una prueba real dentro del juego. No declarar la fuente compatible ni libre de crashes todavía. Cuando corresponda probar, utilizar únicamente una partida nueva. No pedir pruebas en partidas antiguas.
+PRUEBAS Y RIESGOS
+No se ha realizado una prueba real dentro del juego. No declarar la fuente compatible ni libre de crashes todavía. Cuando corresponda probar, utilizar únicamente una partida nueva.
 Antes de limpiar pickups se consulta 09D1; antes de desactivar marcadores se consulta 075C. Aun así, un identificador reciclado podría referirse a otro objeto activo.
+La comprobación get_image_base != 0 no valida offsets ni permisos de memoria.
 Las pruebas auxiliares de marcadores están cerradas y no deben solicitarse de nuevo.
 
-RAMA ACTIVA
+RAMA Y VERSIÓN ACTIVAS
 main — Desbloquear Mapa v1.4.5.source.txt
+No hay una versión 1.4.6 publicada ni sustituye a la 1.4.5.
