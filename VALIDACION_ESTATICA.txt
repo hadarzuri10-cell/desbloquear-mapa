@@ -198,3 +198,13 @@ La referencia pública no equivale al main.scm exacto del APK 2.10 del usuario.
 Fuentes:
 https://github.com/Laremi/GTASA-SEM/blob/421a2de3c29197f384c045a89885c4c90fd11f40/_source/missions/initial.txt
 https://gist.github.com/OrionSR/dea483bd2f86842c8725
+
+
+PERSISTENCIA DE HANDLES SCM TRAS GUARDAR/CARGAR (20-11-2026)
+CTheScripts::Save() serializa el chunk de variables globales del SCM copiando el rango de ScriptSpace hasta m_NextChunkOffset; CTheScripts::Load() restaura ese mismo rango. La fuente v1.4.5 usa globals SCM para guardar los IDs de 32 pickups y 32 marcadores, de modo que en el modelo clásico esos números también se guardan/restauran junto con los registros de CPickups y CRadar.
+Además, CPickups::RemovePickupObjects() antes del guardado elimina los objetos visuales del mundo y oculta el flag visible, pero no elimina los registros lógicos activos. CPickups::Save/Load serializa y restaura esos registros. CRadar::Save/Load serializa y restaura los trazos/blips.
+Esta coherencia de serialización respalda que la limpieza de handles al volver a ejecutar el CSI pueda operar con IDs conservados después de cargar una partida. No obstante, toda la evidencia es de gta-reversed (juego clásico/PC), no del binario Android 2.10 exacto. No es prueba final del APK.
+Fuentes:
+https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/Scripts/TheScripts.cpp
+https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/Pickups.cpp
+https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/Radar.cpp
