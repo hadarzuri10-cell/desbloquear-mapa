@@ -3,6 +3,7 @@ DESBLOQUEAR MAPA — ESTADO DEL PROYECTO
 Versión activa: v1.4.5 (rama main).
 Script compilado: Desbloquear Mapa.csi
 Fuente: Desbloquear Mapa v1.4.5.source.txt
+Blob SHA de fuente actual: 729176eadcb2b329def5da14d49276f78022345b
 
 FUNCIONES
 - Revela los 100 sectores del mapa y actualiza el contador.
@@ -21,11 +22,16 @@ MENSAJES
 - MAP ERROR: se muestra y el script aborta si CLEO devuelve una base de imagen igual a cero.
 
 CORRECCIÓN DE PROPIEDADES
-Se corrigió el índice de consulta de $727 (Property_Bought_Flags): cada una de las 32 propiedades consulta ahora su índice 0..31, alineado con sus coordenadas, precios y handles. La comprobación anterior usaba 1..32, dejando el índice 32 fuera del array. La corrección mantiene la versión 1.4.5 y no cambia las escrituras de memoria ni las funciones permitidas.
+Se corrigió el índice de lectura de $727 (Property_Bought_Flags): los 32 bloques consultan índices 0..31, alineados con los 32 juegos de coordenadas, precios y handles. La versión anterior consultaba 1..32, desfasando las banderas y leyendo el índice 32 fuera del array. Esta corrección forma parte de v1.4.5; no es una versión nueva.
 
-DESARROLLO Y VALIDACIÓN
-La corrección compiló con Sanny Builder 4.2.0 en modo SA Mobile en una rama de prueba: GitHub Actions run 44839310883 (success). Artefacto de prueba: Desbloquear-Mapa-v1.4.5-indexfix-compiled-test, ID 14680635075.
-La incorporación a main requiere completar la compilación de esa rama principal. Compilar demuestra que Sanny Builder genera un CSI; no demuestra funcionamiento ni estabilidad dentro del juego.
+COMPILACIÓN
+La fuente corregida de main se compiló con Sanny Builder 4.2.0 en modo SA Mobile.
+- GitHub Actions run 44839583320: success.
+- Commit: 4213d7fa2e4f7e6ca9fab1ca3d69f97b75d4496d.
+- Artefacto: Desbloquear-Mapa-v1.4.5-compiled-test, ID 14679653646, 16579 bytes.
+- SHA-256 ZIP: d5d0edfd8381848368d4e1e6abaeff2fd1cc9f68768bee9662a14848235eb1f5.
+- Run: https://github.com/hadarzuri10-cell/desbloquear-mapa/actions/runs/44839583320
+La compilación confirma que Sanny Builder genera un CSI; no demuestra funcionamiento ni estabilidad dentro del juego.
 
 ARQUITECTURA
 El usuario mostró libGTASA.so, libcleo.so y libpluginCleoExtender.so dentro de lib/armeabi-v7a. Esto confirma que esas bibliotecas incluidas en el APK son ARM32, aunque el teléfono sea de 64 bits.
