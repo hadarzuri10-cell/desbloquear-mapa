@@ -100,3 +100,12 @@ Se inspeccionó src/core.cpp del commit público CLEO-ANDROID 4c20d9a89688a8526f
 En memutils.cpp, protect=1 intenta mprotect pero no valida el resultado antes de escribir; protect=0 escribe directamente.
 Esto confirma la semántica de los cuatro opcodes en esa implementación pública ARM32, pero no identifica la build del libcleo.so (81.28 KB) que aparece en el APK del usuario. La captura confirma la ABI ARM32, no el hash ni la versión interna de esa biblioteca.
 No se modificó la fuente 1.4.5. No se cambió la lógica del mutex porque un timeout no demostrado podría permitir instancias simultáneas. El comportamiento en el juego sigue sin probarse.
+
+
+SEGUNDA CORROBORACIÓN INDEPENDIENTE DE OFFSETS (20-11-2026)
+Se revisó Eeykal46/holy-sa, archivo app/src/main/cpp/multiplayer/game/patches.cpp, commit 0f76d40ef5eefb05a31b820492e73b19f8aac879. En ApplyInGamePatches() utiliza la misma correspondencia:
+- ZonesVisited[100]: 0x0098D252 en x32 y 0xC1BF92 en ARM64, escribiendo 100 bytes con valor 1.
+- ZonesRevealed: 0x0098D2B8 en x32 y 0xC1BFF8 en ARM64, escribiendo el entero 100.
+Esto coincide exactamente con el rango y la escritura de 4 bytes de la fuente 1.4.5. Es corroboración independiente de la selección de offsets ARM32, aunque no reemplaza una prueba contra el binario exacto del APK del usuario.
+Fuente: https://github.com/Eeykal46/holy-sa/blob/0f76d40ef5eefb05a31b820492e73b19f8aac879/app/src/main/cpp/multiplayer/game/patches.cpp
+No se modificó la fuente ni se realizó prueba dentro del juego.
