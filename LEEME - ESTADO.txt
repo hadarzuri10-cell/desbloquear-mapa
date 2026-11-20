@@ -42,6 +42,7 @@ ARQUITECTURA Y OFFSETS
 - La captura no identifica el hash/versión de libcleo.so.
 - CLEO-ANDROID público revisado implementa 0DD7/0DD9 con uint32_t y se compila ARMv7/Thumb; implementa 0DDC/0DDD mediante mutex.
 - El plugin Extender de la captura no documenta los opcodes de memoria; la versión exacta de CLEO en el APK sigue sin confirmarse.
+- La página oficial CLEO Android enumera compatibilidad SA v2.00 y Android 4.1–11; no certifica SA 2.10 ni Android 13.
 
 PERSISTENCIA
 El código público GTA SA clásico serializa/restaura ZONES, PICKUPS, RADAR, ENTRY_EXITS y el chunk de variables globales SCM. Esto es evidencia de diseño de persistencia, no prueba directa del APK Android 2.10.
