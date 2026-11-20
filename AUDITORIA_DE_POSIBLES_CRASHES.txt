@@ -233,3 +233,14 @@ Se compiló la fuente activa de main con Sanny Builder 4.2.0, modo SA Mobile:
 - El workflow registra en el artefacto un archivo con el SHA-256 de la fuente compilada.
 - Blob SHA de la fuente usado para la compilación: daca0d43270358dac3dbd84bbed840c3ade3ab69.
 Esto confirma la compilación del CSI, pero no funcionamiento o estabilidad dentro del juego.
+
+
+CORRELACIÓN DETALLADA ENTRE LOS 32 MARCADORES Y LA TABLA MÓVIL (20-11-2026)
+El bloque de creación de propiedades de la fuente activa se alineó contra la tabla CustomVariables GTA SA Mobile:
+- Usa la matriz $727(0@,32i) para comprobar si cada propiedad ya está comprada.
+- Usa coordenadas X/Y/Z desde las bases $2910/$2942/$2974, con índices 1..32.
+- Usa los precios desde $3039..$3070.
+- Guarda los pickups creados en $3071..$3102.
+- Guarda los 32 handles de marcadores así: primera propiedad en $65, segunda en $526, tercera en $54, y las propiedades 4..32 en $3010..$3038.
+La secuencia de bloques de la fuente demuestra esta correspondencia directamente. La tabla móvil identifica $65 como Marker_Wang_Cars y $54 como Marker_Asset created; por tanto, esos dos slots sí tienen nombres relacionados con marcadores en el contexto móvil. La tabla no identifica $526 y no enumera individualmente los slots $3010..$3038, aunque están dentro del hueco entre Zero_RCShop_Bought ($3006) y Property_Prices ($3039).
+Conclusión: la hipótesis anterior de que $54/$65 chocaban con flags de ayuda era producto de usar por error la tabla PC, y se retira. El diseño de v1.4.5 parece apoyarse en globals móviles ya asociados con marcadores más un bloque de handles adicional. Aún no hay dump verificable del main.scm exacto del APK 2.10, así que el nombre/reserva de $526 y el estado de todos los slots 3010..3038 no se certifica. La fuente activa permanece v1.4.5 sin cambios.
