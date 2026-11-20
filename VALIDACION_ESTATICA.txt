@@ -147,3 +147,15 @@ Se compiló la fuente activa de main con Sanny Builder 4.2.0, modo SA Mobile:
 - El workflow registra en el artefacto un archivo con el SHA-256 de la fuente compilada.
 - Blob SHA de la fuente usado para la compilación: daca0d43270358dac3dbd84bbed840c3ade3ab69.
 Esto confirma la compilación del CSI, pero no funcionamiento o estabilidad dentro del juego.
+
+
+CORRELACIÓN DEL BLOQUE DE PROPIEDADES CON VARIABLES GTA SA MOBILE (20-11-2026)
+Revisión de la fuente activa:
+- Matriz de propiedad comprada: $727(0@,32i).
+- Coordenadas de 32 propiedades: X desde $2910, Y desde $2942, Z desde $2974.
+- Precios de propiedad: $3039..$3070.
+- Handles de pickups: $3071..$3102.
+- Handles de marcadores: propiedad 1 $65, propiedad 2 $526, propiedad 3 $54, propiedades 4..32 $3010..$3038.
+La tabla móvil de OrionSR confirma $727, las tres bases de coordenadas, $3039 y $3071. También llama $65 Marker_Wang_Cars y $54 Marker_Asset created. Por tanto, el uso de $54/$65 como marcadores tiene correlación con la estructura móvil y no se debe calificar como colisión basándose en la tabla PC.
+Limitaciones: el nombre exacto de $526 y la ocupación de $3010..$3038 no están confirmados por la tabla; la tabla data de 2015 y no es un volcado verificado del APK 2.10. No se modificó la fuente 1.4.5.
+Fuente: https://gist.github.com/OrionSR/dea483bd2f86842c8725
