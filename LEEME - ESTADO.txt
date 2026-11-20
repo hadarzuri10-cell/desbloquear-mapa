@@ -1,13 +1,14 @@
-DESBLOQUEAR MAPA v1.4.5 — FUENTE COMPILADA
+DESBLOQUEAR MAPA v1.4.5 — ESTADO TÉCNICO
 
 ESTADO
 - Fuente activa en main: Desbloquear Mapa v1.4.5.source.txt.
+- La fuente no ha sido modificada en la revisión técnica actual.
 - La creación de los 32 bloques de propiedades está espaciada con esperas de 50 ms.
-- Antes de escribir memoria, se comprueba que CLEO detecte una base de imagen distinta de cero; si no, muestra MAP ERROR y aborta.
-- MAPLOAD se muestra durante 1.5 segundos.
-- MAP READY se muestra de forma continua durante 5 segundos; no parpadea.
-- La revisión actual compiló correctamente en GitHub Actions (run 44367239879).
-- La prueba dentro de GTA San Andreas Android 2.10 sigue pendiente y corresponde al usuario cuando finalice la revisión técnica.
+- Antes de escribir memoria, el script comprueba que CLEO devuelva una base de imagen distinta de cero. Esa comprobación no valida la ABI, los offsets ni los permisos de memoria.
+- MAPLOAD: 1.5 segundos.
+- MAP READY: 5 segundos continuos, sin parpadeo.
+- MAPBUSY: se muestra si se intenta ejecutar durante una misión.
+- MAP ERROR: se muestra y aborta si la base de imagen devuelta es cero.
 
 AUDITORÍA ESTÁTICA DE LA FUENTE
 - 1086 líneas.
@@ -17,21 +18,44 @@ AUDITORÍA ESTÁTICA DE LA FUENTE
 - 42 esperas de 50 ms: 32 al terminar los bloques y 10 anteriores.
 - 22 interiores normales.
 - 131 saltos condicionales; 130 destinos distintos existentes; 194 etiquetas únicas; sin etiquetas duplicadas.
-- Las escrituras de memoria solo se ejecutan después de comprobar que la base de imagen no sea cero.
+- Las 101 escrituras usan protect 0.
 
-RIESGOS ABIERTOS
-- Hay una referencia independiente de código Android que coincide con los offsets 32-bit y ofrece alternativas 64-bit; falta identificar la ABI real de la biblioteca del juego instalada.
-- La comprobación de base de imagen no valida los offsets ni que las páginas de memoria sean escribibles.
-- Las limpiezas ahora comprueban existencia/estado con 09D1 y 075C; un identificador reciclado aún podría referirse a otro objeto activo.
-- La documentación pública de CLEO 2.0.1 enumera soporte hasta GTA SA 2.00 y Android 11; no certifica GTA SA 2.10 ni Android 13.
-- La compilación correcta no demuestra estabilidad dentro del juego.
-
-La rama activa es main. Las pruebas auxiliares de marcadores están cerradas; no se solicitarán nuevas pruebas auxiliares. Todas las pruebas reales del script se harán en partidas nuevas, cuando el usuario decida probarlo.
-
-COMPILACIÓN DE ESTA REVISIÓN
-NaN
-NaN
+COMPILACIÓN DE REFERENCIA
+- Última compilación verificada de la fuente 1.4.5: GitHub Actions run 44367239879.
+- Estado del run: success.
+- Commit compilado: b213285005f29f9bd66eb1eee7712e245b5b1a61.
+- Artefacto: Desbloquear-Mapa-compiled-test, ID 14458890340, 9328 bytes.
+- Esta revisión reciente modificó documentación solamente; no disparó una compilación nueva.
+- Compilar correctamente no demuestra estabilidad ni funcionamiento dentro del juego.
 
 ARQUITECTURA Y OFFSETS
-NaN
-NaN
+- Un proyecto público identificado como GTA SA 2.10 (FINAL) define VER_x32=true para armeabi-v7a y VER_x32=false para arm64-v8a.
+- En ese proyecto, CTheZones::ZonesVisited[100] usa 0x0098D252 en ARM32 y 0xC1BF92 en ARM64.
+- CTheZones::ZonesRevealed usa 0x0098D2B8 en ARM32 y 0xC1BFF8 en ARM64.
+- El mismo par de offsets y selector por ABI aparece en otro proyecto público.
+- La fuente actual usa exclusivamente el par ARM32.
+- CLEO-ANDROID público revisado implementa 0DD7/0DD9 con enteros de 32 bits y se compila ARMv7/Thumb. El proyecto AndroidModLoader/GTA_CLEOMod consultado también declara APP_ABI := armeabi-v7a.
+- LuJimCLEO64 se compila para arm64-v8a, pero su v0.2.0-alpha no ejecuta scripts ni interpreta opcodes.
+- Existe una publicación de terceros que anuncia GTA SA 2.10 ARM64 con AML/CLEO/FLA, pero la ficha no explica su runtime de opcodes ni prueba 0DD7/0DD9 en 64 bits. No demuestra que el paquete ModsGamer del usuario incluya esa implementación.
+- La ficha de ModsGamer que coincide con el título y tamaño del paquete del usuario muestra Suitable game version: 2.00 y no detalla ABI ni versión interna de CLEO.
+
+RIESGOS ABIERTOS
+- No se ha identificado la ABI real de libGTASA dentro del paquete instalado ni la compilación exacta de CLEO integrada.
+- Si el proceso de GTA es ARM64, la fuente actual no debe ejecutarse: sus opcodes de memoria revisados manejan direcciones de 32 bits y los offsets que usa son los de ARM32.
+- La comprobación de base de imagen no valida los offsets ni que las páginas de memoria sean escribibles.
+- Las limpiezas comprueban existencia/estado con 09D1 y 075C; un identificador reciclado aún podría referirse a otro objeto activo.
+- La documentación pública de CLEO 2.0.1 enumera soporte hasta GTA SA 2.00 y Android 11; no certifica GTA SA 2.10 ni Android 13.
+- No se ha realizado prueba real dentro del juego. No declarar la fuente compatible ni libre de crashes todavía.
+
+REFERENCIAS TÉCNICAS
+https://github.com/JohnPeriaX/KotlinJava-DSL-SampMobile-2.10/blob/552cbfbe64a478bf689c950af447233edaf7818b/app/src/main/cpp/samp/CMakeLists.txt
+https://github.com/JohnPeriaX/KotlinJava-DSL-SampMobile-2.10/blob/552cbfbe64a478bf689c950af447233edaf7818b/app/src/main/cpp/samp/game/patches.cpp
+https://github.com/Eeykal46/holy-sa/blob/0f76d40ef5eefb05a31b820492e73b19f8aac879/app/src/main/cpp/multiplayer/game/patches.cpp
+https://github.com/cleolibrary/CLEO-ANDROID/blob/main/src/Android.mk
+https://github.com/cleolibrary/CLEO-ANDROID/blob/main/src/core.cpp
+https://github.com/AndroidModLoader/GTA_CLEOMod/blob/RUSJJ_CLEO_MOD/Application.mk
+https://github.com/LuJimMods/LuJimCLEO64/blob/main/README.md
+
+FUENTE ACTUAL
+SHA-256 de la fuente: daca0d43270358dac3dbd84bbed840c3ade3ab69.
+La fuente no ha cambiado en esta revisión. Todas las pruebas reales deberán hacerse en partidas nuevas cuando ABI y CLEO estén identificados.
