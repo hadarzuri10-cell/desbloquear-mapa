@@ -257,3 +257,19 @@ Referencias:
 https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/TheZones.cpp
 https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/GenericGameStorage.cpp
 https://thegta.wiki/wiki/saves-gta-sa/
+
+
+PERSISTENCIA AMPLIADA: PICKUPS, MARCADORES E INTERIORES (20-11-2026)
+Se siguió la ruta de guardado/carga en gta-reversed:
+1. Bloque PICKUPS: GenericGameStorage dispatcha CPickups::Save() y CPickups::Load(). CPickups::Save serializa el array completo aPickUps y los índices de recogidos; CPickups::Load reconstruye ese estado. Antes de guardar, DoGameSpecificStuffBeforeSave() llama CPickups::RemovePickupObjects(), que quita los objetos RenderWare del mundo, pero no sustituye la serialización del estado lógico de los pickups. Esto es una señal sólida de que pickups lógicos creados antes del guardado pueden quedar persistidos.
+2. Bloque RADAR: GenericGameStorage dispatcha CRadar::Save()/Load(). Las rutinas serializan y restauran ms_RadarTrace; por tanto, los trazos/blips del radar forman parte del save.
+3. Bloque ENTRY_EXITS: GenericGameStorage dispatcha CEntryExitManager::Save()/Load(). Save escribe el índice y m_nFlags de cada ENEX válida; Load restaura m_nFlags. CEntryExit::ENABLE_ACCESS es el bit 1<<14 (0x4000), usado por CEntryExitManager para decidir si se dibuja el marcador amarillo y si se permite entrar/salir. La orden CLEO 07FB se describe como `set_interior '<nombre>' access <0/1>`; el nombre/semántica general coincide con cambiar accesibilidad, aunque el handler exacto de 07FB no quedó reverseado en esta búsqueda. Por tanto, que los 22 accesos se serialicen es evidencia técnica fuerte, pero su bit exacto y compatibilidad Android 2.10 deben seguir marcados como pendientes de prueba.
+4. Bloque ZONES: CTheZones::Save()/Load() serializan/restauran ZonesVisited (100 bytes) y ZonesRevealed (contador).
+Conclusión: el motor clásico guarda las estructuras que utiliza la fuente para sectores del mapa, pickups, trazos de radar y flags de acceso a interiores. Esto respalda el diseño de persistencia de v1.4.5 tras un guardado/carga. Límite: fuentes de reverse-engineering GTA SA clásica/PC; no se han comparado las funciones de serialización del libGTASA.so Android 2.10 exacto del usuario. No equivale a prueba real del APK.
+Referencias:
+https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/GenericGameStorage.cpp
+https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/Pickups.cpp
+https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/Radar.cpp
+https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/EntryExitManager.cpp
+https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/EntryExit.h
+https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/TheZones.cpp
