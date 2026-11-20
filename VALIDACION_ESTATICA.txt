@@ -228,3 +228,14 @@ Pendiente: prueba real en GTA SA Android 2.10 con partida nueva. La compilación
 Referencias:
 https://gist.github.com/OrionSR/dea483bd2f86842c8725
 https://github.com/Laremi/GTASA-SEM/blob/421a2de3c29197f384c045a89885c4c90fd11f40/_source/missions/initial.txt
+
+
+COMPILACIÓN DE MAIN TRAS LA CORRECCIÓN DE ÍNDICES (20-11-2026)
+- Fuente activa 1.4.5 blob SHA: 729176eadcb2b329def5da14d49276f78022345b.
+- Commit de main: 4213d7fa2e4f7e6ca9fab1ca3d69f97b75d4496d.
+- GitHub Actions run: 44839583320.
+- Estado: success.
+- Artefacto: Desbloquear-Mapa-v1.4.5-compiled-test, ID 14679653646, 16579 bytes.
+- SHA-256 ZIP: d5d0edfd8381848368d4e1e6abaeff2fd1cc9f68768bee9662a14848235eb1f5.
+- Enlace del run: https://github.com/hadarzuri10-cell/desbloquear-mapa/actions/runs/44839583320
+La compilación se realizó desde main después de incorporar el arreglo 0..31. Esto confirma la generación del CSI, no su funcionamiento dentro del juego.
