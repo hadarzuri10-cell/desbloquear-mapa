@@ -178,3 +178,12 @@ Conclusiones:
 Referencias de código:
 https://github.com/cleolibrary/CLEO-ANDROID/blob/4c20d9a0a89688a8526fc2a802631ac178449d9d/src/core.cpp
 https://github.com/cleolibrary/CLEO-ANDROID/blob/4c20d9a0a89688a8526fc2a802631ac178449d9d/src/memutils.cpp
+
+
+CORROBORACIÓN INDEPENDIENTE DE LOS OFFSETS (20-11-2026)
+Se inspeccionó el archivo patches.cpp del proyecto público Eeykal46/holy-sa, commit 0f76d40ef5eefb05a31b820492e73b19f8aac879. En ApplyInGamePatches() el proyecto realiza:
+- memset(g_libGTASA + (VER_x32 ? 0x0098D252 : 0xC1BF92), 1, 100) para CTheZones::ZonesVisited[100].
+- *(uint32_t*)(g_libGTASA + (VER_x32 ? 0x0098D2B8 : 0xC1BFF8)) = 100 para CTheZones::ZonesRevealed.
+Es una segunda corroboración independiente que coincide exactamente con los 101 writes de la fuente 1.4.5 para ARM32. La misma fuente distingue explícitamente ARM32/ARM64 con VER_x32.
+Límite: el proyecto externo no demuestra por sí solo que la build exacta del APK del usuario sea idéntica en versión/offsets; sí refuerza de forma independiente la correspondencia de los campos y direcciones. La fuente 1.4.5 permanece intacta.
+Referencia: https://github.com/Eeykal46/holy-sa/blob/0f76d40ef5eefb05a31b820492e73b19f8aac879/app/src/main/cpp/multiplayer/game/patches.cpp
