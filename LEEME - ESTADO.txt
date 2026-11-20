@@ -3,7 +3,7 @@ DESBLOQUEAR MAPA v1.4.5 — ESTADO TÉCNICO
 ESTADO
 - Versión activa: 1.4.5 en main.
 - Fuente activa: Desbloquear Mapa v1.4.5.source.txt.
-- SHA-256/blob SHA de la fuente activa: daca0d43270358dac3dbd84bbed840c3ade3ab69.
+- Git blob SHA de la fuente: daca0d43270358dac3dbd84bbed840c3ade3ab69.
 - La fuente activa no ha sido modificada en las revisiones documentales.
 - La creación de los 32 bloques de propiedades está espaciada con esperas de 50 ms.
 - Antes de escribir memoria, comprueba que get_image_base no devuelva cero. Esto no valida ABI, offsets ni permisos de memoria.
@@ -20,38 +20,41 @@ AUDITORÍA ESTÁTICA DE LA FUENTE ACTIVA
 - 131 saltos condicionales; 130 destinos distintos existentes; 194 etiquetas únicas; sin etiquetas duplicadas.
 - Las 101 escrituras usan protect 0.
 
-COMPILACIÓN DE REFERENCIA
-- Última compilación de main verificada: run 44367239879.
+COMPILACIÓN MÁS RECIENTE DE MAIN
+- GitHub Actions run 44838055204.
 - Estado: success.
-- Commit compilado: b213285005f29f9bd66eb1eee7712e245b5b1a61.
-- Artefacto: Desbloquear-Mapa-compiled-test, ID 14458890340, 9328 bytes.
-- Revisiones documentales posteriores no generaron nueva compilación de main.
-- La compilación no demuestra estabilidad ni funcionamiento dentro del juego.
+- Commit compilado: efca77bc2a9cf0affd66579923d0bb3ec01a46a3.
+- Artefacto: Desbloquear-Mapa-v1.4.5-compiled-test, ID 14678394298, 13058 bytes.
+- SHA-256 del ZIP del artefacto: 8cfff32ff098c3899089d6f60077af2e10466db6f8d439212305492c7af84ca3.
+- El workflow registra el SHA-256 de la fuente dentro del artefacto.
+- La compilación demuestra generación del CSI, no prueba estabilidad ni funcionamiento dentro del juego.
 
 ARQUITECTURA Y OFFSETS
 - El usuario mostró libGTASA.so, libcleo.so y libpluginCleoExtender.so dentro de lib/armeabi-v7a. Esto confirma que esas bibliotecas incluidas en el APK son ARM32.
-- El par de offsets utilizado por v1.4.5 está corroborado por dos proyectos públicos independientes:
+- Dos fuentes públicas independientes corroboran la correspondencia usada:
   - ZonesVisited[100]: ARM32 0x0098D252; ARM64 0xC1BF92.
   - ZonesRevealed: ARM32 0x0098D2B8; ARM64 0xC1BFF8.
-- Por tanto, el par ARM32 corresponde a los binarios empaquetados que aparecen en la captura.
-- La captura no proporciona hash/versión de libcleo.so ni demuestra qué se carga efectivamente al ejecutar el juego.
+- El par ARM32 utilizado por v1.4.5 corresponde a la ABI de las bibliotecas mostradas en la captura.
+- La captura no proporciona hash/versión de libcleo.so ni demuestra qué biblioteca se carga efectivamente en ejecución.
 - CLEO-ANDROID público revisado implementa 0DD7/0DD9 con uint32_t y se compila ARMv7/Thumb; también implementa 0DDC/0DDD mediante una tabla de mutex.
-- CLEOAndroid Extender 1.0, al que corresponde el nombre público libpluginCleoExtender.so, se describe como plugin para menú, textos FXT y comportamiento de cámara; su ficha lista SA 2.00/1.08 y CLEO Android + FLA 5.0+. No documenta 0DD7/0DD9.
-- En consecuencia, la ABI ARM32 está confirmada para las bibliotecas mostradas, pero la implementación exacta de los opcodes en la build instalada sigue sin confirmarse.
-- El número 2.10 por sí solo no determina ABI; en este caso la captura concreta aporta evidencia de ARM32.
+- CLEOAndroid Extender 1.0 se describe como plugin para menú, cámara y textos FXT; su ficha lista SA 2.00/1.08 y CLEO Android + FLA 5.0+. No documenta 0DD7/0DD9.
+- Por tanto, la ABI ARM32 de los archivos incluidos está confirmada, pero la implementación exacta de esos opcodes en la build integrada sigue sin confirmarse.
 
-HALLAZGO DE VARIABLES GLOBALES — PRIORIDAD ALTA
-- La tabla pública CustomVariables.ini de FSSRepo/cleo-script-java identifica $54 = Help_INTRO_Shown y $65 = Help_Groove_Shown.
-- La fuente 1.4.5 usa $54 y $65 como almacenamiento de handles de marcadores y los pone a cero al limpiar. Eso puede sobrescribir estados de ayuda/tutorial del juego.
-- $526 no aparece nombrada en la tabla; no se puede asegurar que esté libre.
-- Se creó una variante aislada que cambia los tres handles a $3103–$3105, pero no se ha demostrado que dichos índices estén libres en el main.scm exacto del APK. No se integró a main ni se considera solución final.
-- No se deben promover esos índices ni alterar la fuente oficial hasta comprobar un almacenamiento seguro que respete los estados del juego.
+MAPEO DE VARIABLES MÓVILES
+Una tabla de variables de GTA SA Mobile para Android/iOS (2015) documenta:
+- $727 = Property_Bought_Flags.
+- $2910 / $2942 / $2974 = coordenadas X / Y / Z de las propiedades.
+- $3039 = Property_Prices.
+- $3071 = Buy_Asset_Pickups.
+- $54 = Marker_Asset created.
+- $65 = Marker_Wang_Cars.
+Las estructuras de propiedad que usa v1.4.5 coinciden con las definiciones móviles. La revisión anterior de $54/$65 como variables de ayuda usó una tabla de PC v1.0 y queda retirada. En la tabla móvil son variables relacionadas con marcadores, por lo que su reutilización para handles puede ser intencional.
+Límite: tabla de 2015, no verificada contra el main.scm exacto del APK 2.10. $526 y algunos slots adicionales no quedan identificados completamente. No integrar cambios experimentales de slots sin demostrar su disponibilidad en esa build.
 
 RIESGOS ABIERTOS
 - Identidad/hash exacto de libcleo.so y registro efectivo de 0DD7, 0DD9, 0DDC y 0DDD en el paquete.
-- Resolver el uso de variables globales $54/$65 en la fuente 1.4.5.
 - get_image_base != 0 no valida la dirección final ni los permisos de la página.
-- Un handle reciclado todavía podría apuntar a otro objeto antes de las comprobaciones de limpieza.
+- Un handle reciclado aún podría apuntar a otro objeto antes de las comprobaciones de limpieza.
 - No se ha realizado prueba real dentro del juego. No declarar compatibilidad ni ausencia de crashes todavía.
 
 REFERENCIAS
@@ -59,9 +62,9 @@ https://github.com/Eeykal46/holy-sa/blob/0f76d40ef5eefb05a31b820492e73b19f8aac87
 https://github.com/cleolibrary/CLEO-ANDROID/blob/4c20d9a0a89688a8526fc2a802631ac178449d9d/src/core.cpp
 https://github.com/cleolibrary/CLEO-ANDROID/blob/4c20d9a0a89688a8526fc2a802631ac178449d9d/src/memutils.cpp
 https://www.mobilegta.net/en/download.php?cat=580&do=detail&id=143993
-https://github.com/FSSRepo/cleo-script-java/blob/main/res/CustomVariables.ini
+https://gist.github.com/OrionSR/dea483bd2f86842c8725
 
 FUENTE ACTIVA
 main / Desbloquear Mapa v1.4.5.source.txt
-Blob SHA: daca0d43270358dac3dbd84bbed840c3ade3ab69
-La fuente activa no se le hicieron cambios. Las pruebas reales que se autoricen deberán hacerse en partidas nuevas.
+Git blob SHA: daca0d43270358dac3dbd84bbed840c3ade3ab69
+La fuente activa no se cambió. Las pruebas reales que se autoricen deberán hacerse en partidas nuevas.
