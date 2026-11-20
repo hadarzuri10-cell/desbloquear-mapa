@@ -1,0 +1,1085 @@
+{$CLEO .csi}
+03A4: 'MAPOPEN'
+00BC: show_text_highpriority GXT 'MAPLOAD' time 1500 flag 1
+0001: wait 500
+00D6: if 0
+0038: $ONMISSION == 0
+004D: jump_if_false @busy
+0DD7: 0@ = get_image_base
+00D6: if 0
+0038: 0@ == 0
+004D: jump_if_false @image_base_valid
+00BC: show_text_highpriority GXT 'MAPERR' time 5000 flag 1
+0A93: end_custom_thread
+:image_base_valid
+0DDD: 0@ = get_mutex_var 7413
+00D6: if 0
+0038: 0@ == 0
+004D: jump_if_false @busy
+0DDC: set_mutex_var 7413 to 1
+0DD9: write_mem_addr 0x0098D252 value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D253 value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D254 value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D255 value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D256 value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D257 value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D258 value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D259 value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D25A value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D25B value 1 size 1 add_ib 1 protect 0
+0001: wait 50
+0DD9: write_mem_addr 0x0098D25C value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D25D value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D25E value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D25F value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D260 value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D261 value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D262 value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D263 value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D264 value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D265 value 1 size 1 add_ib 1 protect 0
+0001: wait 50
+0DD9: write_mem_addr 0x0098D266 value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D267 value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D268 value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D269 value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D26A value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D26B value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D26C value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D26D value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D26E value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D26F value 1 size 1 add_ib 1 protect 0
+0001: wait 50
+0DD9: write_mem_addr 0x0098D270 value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D271 value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D272 value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D273 value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D274 value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D275 value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D276 value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D277 value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D278 value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D279 value 1 size 1 add_ib 1 protect 0
+0001: wait 50
+0DD9: write_mem_addr 0x0098D27A value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D27B value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D27C value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D27D value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D27E value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D27F value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D280 value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D281 value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D282 value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D283 value 1 size 1 add_ib 1 protect 0
+0001: wait 50
+0DD9: write_mem_addr 0x0098D284 value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D285 value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D286 value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D287 value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D288 value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D289 value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D28A value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D28B value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D28C value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D28D value 1 size 1 add_ib 1 protect 0
+0001: wait 50
+0DD9: write_mem_addr 0x0098D28E value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D28F value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D290 value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D291 value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D292 value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D293 value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D294 value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D295 value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D296 value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D297 value 1 size 1 add_ib 1 protect 0
+0001: wait 50
+0DD9: write_mem_addr 0x0098D298 value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D299 value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D29A value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D29B value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D29C value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D29D value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D29E value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D29F value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D2A0 value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D2A1 value 1 size 1 add_ib 1 protect 0
+0001: wait 50
+0DD9: write_mem_addr 0x0098D2A2 value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D2A3 value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D2A4 value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D2A5 value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D2A6 value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D2A7 value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D2A8 value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D2A9 value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D2AA value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D2AB value 1 size 1 add_ib 1 protect 0
+0001: wait 50
+0DD9: write_mem_addr 0x0098D2AC value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D2AD value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D2AE value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D2AF value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D2B0 value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D2B1 value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D2B2 value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D2B3 value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D2B4 value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D2B5 value 1 size 1 add_ib 1 protect 0
+0DD9: write_mem_addr 0x0098D2B8 value 100 size 4 add_ib 1 protect 0
+00D6: if 0
+0039: $3071 <> 0
+09D1: does_pickup_exist $3071
+004D: jump_if_false @cleanup_done_pickup_3071
+0215: destroy_pickup $3071
+:cleanup_done_pickup_3071
+0004: $3071 = 0
+:skip_cleanup_pickup_3071
+00D6: if 0
+0039: $3072 <> 0
+09D1: does_pickup_exist $3072
+004D: jump_if_false @cleanup_done_pickup_3072
+0215: destroy_pickup $3072
+:cleanup_done_pickup_3072
+0004: $3072 = 0
+:skip_cleanup_pickup_3072
+00D6: if 0
+0039: $3073 <> 0
+09D1: does_pickup_exist $3073
+004D: jump_if_false @cleanup_done_pickup_3073
+0215: destroy_pickup $3073
+:cleanup_done_pickup_3073
+0004: $3073 = 0
+:skip_cleanup_pickup_3073
+00D6: if 0
+0039: $3074 <> 0
+09D1: does_pickup_exist $3074
+004D: jump_if_false @cleanup_done_pickup_3074
+0215: destroy_pickup $3074
+:cleanup_done_pickup_3074
+0004: $3074 = 0
+:skip_cleanup_pickup_3074
+00D6: if 0
+0039: $3075 <> 0
+09D1: does_pickup_exist $3075
+004D: jump_if_false @cleanup_done_pickup_3075
+0215: destroy_pickup $3075
+:cleanup_done_pickup_3075
+0004: $3075 = 0
+:skip_cleanup_pickup_3075
+00D6: if 0
+0039: $3076 <> 0
+09D1: does_pickup_exist $3076
+004D: jump_if_false @cleanup_done_pickup_3076
+0215: destroy_pickup $3076
+:cleanup_done_pickup_3076
+0004: $3076 = 0
+:skip_cleanup_pickup_3076
+00D6: if 0
+0039: $3077 <> 0
+09D1: does_pickup_exist $3077
+004D: jump_if_false @cleanup_done_pickup_3077
+0215: destroy_pickup $3077
+:cleanup_done_pickup_3077
+0004: $3077 = 0
+:skip_cleanup_pickup_3077
+00D6: if 0
+0039: $3078 <> 0
+09D1: does_pickup_exist $3078
+004D: jump_if_false @cleanup_done_pickup_3078
+0215: destroy_pickup $3078
+:cleanup_done_pickup_3078
+0004: $3078 = 0
+:skip_cleanup_pickup_3078
+00D6: if 0
+0039: $3079 <> 0
+09D1: does_pickup_exist $3079
+004D: jump_if_false @cleanup_done_pickup_3079
+0215: destroy_pickup $3079
+:cleanup_done_pickup_3079
+0004: $3079 = 0
+:skip_cleanup_pickup_3079
+00D6: if 0
+0039: $3080 <> 0
+09D1: does_pickup_exist $3080
+004D: jump_if_false @cleanup_done_pickup_3080
+0215: destroy_pickup $3080
+:cleanup_done_pickup_3080
+0004: $3080 = 0
+:skip_cleanup_pickup_3080
+00D6: if 0
+0039: $3081 <> 0
+09D1: does_pickup_exist $3081
+004D: jump_if_false @cleanup_done_pickup_3081
+0215: destroy_pickup $3081
+:cleanup_done_pickup_3081
+0004: $3081 = 0
+:skip_cleanup_pickup_3081
+00D6: if 0
+0039: $3082 <> 0
+09D1: does_pickup_exist $3082
+004D: jump_if_false @cleanup_done_pickup_3082
+0215: destroy_pickup $3082
+:cleanup_done_pickup_3082
+0004: $3082 = 0
+:skip_cleanup_pickup_3082
+00D6: if 0
+0039: $3083 <> 0
+09D1: does_pickup_exist $3083
+004D: jump_if_false @cleanup_done_pickup_3083
+0215: destroy_pickup $3083
+:cleanup_done_pickup_3083
+0004: $3083 = 0
+:skip_cleanup_pickup_3083
+00D6: if 0
+0039: $3084 <> 0
+09D1: does_pickup_exist $3084
+004D: jump_if_false @cleanup_done_pickup_3084
+0215: destroy_pickup $3084
+:cleanup_done_pickup_3084
+0004: $3084 = 0
+:skip_cleanup_pickup_3084
+00D6: if 0
+0039: $3085 <> 0
+09D1: does_pickup_exist $3085
+004D: jump_if_false @cleanup_done_pickup_3085
+0215: destroy_pickup $3085
+:cleanup_done_pickup_3085
+0004: $3085 = 0
+:skip_cleanup_pickup_3085
+00D6: if 0
+0039: $3086 <> 0
+09D1: does_pickup_exist $3086
+004D: jump_if_false @cleanup_done_pickup_3086
+0215: destroy_pickup $3086
+:cleanup_done_pickup_3086
+0004: $3086 = 0
+:skip_cleanup_pickup_3086
+00D6: if 0
+0039: $3087 <> 0
+09D1: does_pickup_exist $3087
+004D: jump_if_false @cleanup_done_pickup_3087
+0215: destroy_pickup $3087
+:cleanup_done_pickup_3087
+0004: $3087 = 0
+:skip_cleanup_pickup_3087
+00D6: if 0
+0039: $3088 <> 0
+09D1: does_pickup_exist $3088
+004D: jump_if_false @cleanup_done_pickup_3088
+0215: destroy_pickup $3088
+:cleanup_done_pickup_3088
+0004: $3088 = 0
+:skip_cleanup_pickup_3088
+00D6: if 0
+0039: $3089 <> 0
+09D1: does_pickup_exist $3089
+004D: jump_if_false @cleanup_done_pickup_3089
+0215: destroy_pickup $3089
+:cleanup_done_pickup_3089
+0004: $3089 = 0
+:skip_cleanup_pickup_3089
+00D6: if 0
+0039: $3090 <> 0
+09D1: does_pickup_exist $3090
+004D: jump_if_false @cleanup_done_pickup_3090
+0215: destroy_pickup $3090
+:cleanup_done_pickup_3090
+0004: $3090 = 0
+:skip_cleanup_pickup_3090
+00D6: if 0
+0039: $3091 <> 0
+09D1: does_pickup_exist $3091
+004D: jump_if_false @cleanup_done_pickup_3091
+0215: destroy_pickup $3091
+:cleanup_done_pickup_3091
+0004: $3091 = 0
+:skip_cleanup_pickup_3091
+00D6: if 0
+0039: $3092 <> 0
+09D1: does_pickup_exist $3092
+004D: jump_if_false @cleanup_done_pickup_3092
+0215: destroy_pickup $3092
+:cleanup_done_pickup_3092
+0004: $3092 = 0
+:skip_cleanup_pickup_3092
+00D6: if 0
+0039: $3093 <> 0
+09D1: does_pickup_exist $3093
+004D: jump_if_false @cleanup_done_pickup_3093
+0215: destroy_pickup $3093
+:cleanup_done_pickup_3093
+0004: $3093 = 0
+:skip_cleanup_pickup_3093
+00D6: if 0
+0039: $3094 <> 0
+09D1: does_pickup_exist $3094
+004D: jump_if_false @cleanup_done_pickup_3094
+0215: destroy_pickup $3094
+:cleanup_done_pickup_3094
+0004: $3094 = 0
+:skip_cleanup_pickup_3094
+00D6: if 0
+0039: $3095 <> 0
+09D1: does_pickup_exist $3095
+004D: jump_if_false @cleanup_done_pickup_3095
+0215: destroy_pickup $3095
+:cleanup_done_pickup_3095
+0004: $3095 = 0
+:skip_cleanup_pickup_3095
+00D6: if 0
+0039: $3096 <> 0
+09D1: does_pickup_exist $3096
+004D: jump_if_false @cleanup_done_pickup_3096
+0215: destroy_pickup $3096
+:cleanup_done_pickup_3096
+0004: $3096 = 0
+:skip_cleanup_pickup_3096
+00D6: if 0
+0039: $3097 <> 0
+09D1: does_pickup_exist $3097
+004D: jump_if_false @cleanup_done_pickup_3097
+0215: destroy_pickup $3097
+:cleanup_done_pickup_3097
+0004: $3097 = 0
+:skip_cleanup_pickup_3097
+00D6: if 0
+0039: $3098 <> 0
+09D1: does_pickup_exist $3098
+004D: jump_if_false @cleanup_done_pickup_3098
+0215: destroy_pickup $3098
+:cleanup_done_pickup_3098
+0004: $3098 = 0
+:skip_cleanup_pickup_3098
+00D6: if 0
+0039: $3099 <> 0
+09D1: does_pickup_exist $3099
+004D: jump_if_false @cleanup_done_pickup_3099
+0215: destroy_pickup $3099
+:cleanup_done_pickup_3099
+0004: $3099 = 0
+:skip_cleanup_pickup_3099
+00D6: if 0
+0039: $3100 <> 0
+09D1: does_pickup_exist $3100
+004D: jump_if_false @cleanup_done_pickup_3100
+0215: destroy_pickup $3100
+:cleanup_done_pickup_3100
+0004: $3100 = 0
+:skip_cleanup_pickup_3100
+00D6: if 0
+0039: $3101 <> 0
+09D1: does_pickup_exist $3101
+004D: jump_if_false @cleanup_done_pickup_3101
+0215: destroy_pickup $3101
+:cleanup_done_pickup_3101
+0004: $3101 = 0
+:skip_cleanup_pickup_3101
+00D6: if 0
+0039: $3102 <> 0
+09D1: does_pickup_exist $3102
+004D: jump_if_false @cleanup_done_pickup_3102
+0215: destroy_pickup $3102
+:cleanup_done_pickup_3102
+0004: $3102 = 0
+:skip_cleanup_pickup_3102
+00D6: if 0
+0039: $3103 <> 0
+075C: marker $3103 enabled
+004D: jump_if_false @cleanup_done_marker_65
+0164: disable_marker $3103
+:cleanup_done_marker_65
+0004: $3103 = 0
+:skip_cleanup_marker_65
+00D6: if 0
+0039: $3104 <> 0
+075C: marker $3104 enabled
+004D: jump_if_false @cleanup_done_marker_526
+0164: disable_marker $3104
+:cleanup_done_marker_526
+0004: $3104 = 0
+:skip_cleanup_marker_526
+00D6: if 0
+0039: $3105 <> 0
+075C: marker $3105 enabled
+004D: jump_if_false @cleanup_done_marker_54
+0164: disable_marker $3105
+:cleanup_done_marker_54
+0004: $3105 = 0
+:skip_cleanup_marker_54
+00D6: if 0
+0039: $3010 <> 0
+075C: marker $3010 enabled
+004D: jump_if_false @cleanup_done_marker_3010
+0164: disable_marker $3010
+:cleanup_done_marker_3010
+0004: $3010 = 0
+:skip_cleanup_marker_3010
+00D6: if 0
+0039: $3011 <> 0
+075C: marker $3011 enabled
+004D: jump_if_false @cleanup_done_marker_3011
+0164: disable_marker $3011
+:cleanup_done_marker_3011
+0004: $3011 = 0
+:skip_cleanup_marker_3011
+00D6: if 0
+0039: $3012 <> 0
+075C: marker $3012 enabled
+004D: jump_if_false @cleanup_done_marker_3012
+0164: disable_marker $3012
+:cleanup_done_marker_3012
+0004: $3012 = 0
+:skip_cleanup_marker_3012
+00D6: if 0
+0039: $3013 <> 0
+075C: marker $3013 enabled
+004D: jump_if_false @cleanup_done_marker_3013
+0164: disable_marker $3013
+:cleanup_done_marker_3013
+0004: $3013 = 0
+:skip_cleanup_marker_3013
+00D6: if 0
+0039: $3014 <> 0
+075C: marker $3014 enabled
+004D: jump_if_false @cleanup_done_marker_3014
+0164: disable_marker $3014
+:cleanup_done_marker_3014
+0004: $3014 = 0
+:skip_cleanup_marker_3014
+00D6: if 0
+0039: $3015 <> 0
+075C: marker $3015 enabled
+004D: jump_if_false @cleanup_done_marker_3015
+0164: disable_marker $3015
+:cleanup_done_marker_3015
+0004: $3015 = 0
+:skip_cleanup_marker_3015
+00D6: if 0
+0039: $3016 <> 0
+075C: marker $3016 enabled
+004D: jump_if_false @cleanup_done_marker_3016
+0164: disable_marker $3016
+:cleanup_done_marker_3016
+0004: $3016 = 0
+:skip_cleanup_marker_3016
+00D6: if 0
+0039: $3017 <> 0
+075C: marker $3017 enabled
+004D: jump_if_false @cleanup_done_marker_3017
+0164: disable_marker $3017
+:cleanup_done_marker_3017
+0004: $3017 = 0
+:skip_cleanup_marker_3017
+00D6: if 0
+0039: $3018 <> 0
+075C: marker $3018 enabled
+004D: jump_if_false @cleanup_done_marker_3018
+0164: disable_marker $3018
+:cleanup_done_marker_3018
+0004: $3018 = 0
+:skip_cleanup_marker_3018
+00D6: if 0
+0039: $3019 <> 0
+075C: marker $3019 enabled
+004D: jump_if_false @cleanup_done_marker_3019
+0164: disable_marker $3019
+:cleanup_done_marker_3019
+0004: $3019 = 0
+:skip_cleanup_marker_3019
+00D6: if 0
+0039: $3020 <> 0
+075C: marker $3020 enabled
+004D: jump_if_false @cleanup_done_marker_3020
+0164: disable_marker $3020
+:cleanup_done_marker_3020
+0004: $3020 = 0
+:skip_cleanup_marker_3020
+00D6: if 0
+0039: $3021 <> 0
+075C: marker $3021 enabled
+004D: jump_if_false @cleanup_done_marker_3021
+0164: disable_marker $3021
+:cleanup_done_marker_3021
+0004: $3021 = 0
+:skip_cleanup_marker_3021
+00D6: if 0
+0039: $3022 <> 0
+075C: marker $3022 enabled
+004D: jump_if_false @cleanup_done_marker_3022
+0164: disable_marker $3022
+:cleanup_done_marker_3022
+0004: $3022 = 0
+:skip_cleanup_marker_3022
+00D6: if 0
+0039: $3023 <> 0
+075C: marker $3023 enabled
+004D: jump_if_false @cleanup_done_marker_3023
+0164: disable_marker $3023
+:cleanup_done_marker_3023
+0004: $3023 = 0
+:skip_cleanup_marker_3023
+00D6: if 0
+0039: $3024 <> 0
+075C: marker $3024 enabled
+004D: jump_if_false @cleanup_done_marker_3024
+0164: disable_marker $3024
+:cleanup_done_marker_3024
+0004: $3024 = 0
+:skip_cleanup_marker_3024
+00D6: if 0
+0039: $3025 <> 0
+075C: marker $3025 enabled
+004D: jump_if_false @cleanup_done_marker_3025
+0164: disable_marker $3025
+:cleanup_done_marker_3025
+0004: $3025 = 0
+:skip_cleanup_marker_3025
+00D6: if 0
+0039: $3026 <> 0
+075C: marker $3026 enabled
+004D: jump_if_false @cleanup_done_marker_3026
+0164: disable_marker $3026
+:cleanup_done_marker_3026
+0004: $3026 = 0
+:skip_cleanup_marker_3026
+00D6: if 0
+0039: $3027 <> 0
+075C: marker $3027 enabled
+004D: jump_if_false @cleanup_done_marker_3027
+0164: disable_marker $3027
+:cleanup_done_marker_3027
+0004: $3027 = 0
+:skip_cleanup_marker_3027
+00D6: if 0
+0039: $3028 <> 0
+075C: marker $3028 enabled
+004D: jump_if_false @cleanup_done_marker_3028
+0164: disable_marker $3028
+:cleanup_done_marker_3028
+0004: $3028 = 0
+:skip_cleanup_marker_3028
+00D6: if 0
+0039: $3029 <> 0
+075C: marker $3029 enabled
+004D: jump_if_false @cleanup_done_marker_3029
+0164: disable_marker $3029
+:cleanup_done_marker_3029
+0004: $3029 = 0
+:skip_cleanup_marker_3029
+00D6: if 0
+0039: $3030 <> 0
+075C: marker $3030 enabled
+004D: jump_if_false @cleanup_done_marker_3030
+0164: disable_marker $3030
+:cleanup_done_marker_3030
+0004: $3030 = 0
+:skip_cleanup_marker_3030
+00D6: if 0
+0039: $3031 <> 0
+075C: marker $3031 enabled
+004D: jump_if_false @cleanup_done_marker_3031
+0164: disable_marker $3031
+:cleanup_done_marker_3031
+0004: $3031 = 0
+:skip_cleanup_marker_3031
+00D6: if 0
+0039: $3032 <> 0
+075C: marker $3032 enabled
+004D: jump_if_false @cleanup_done_marker_3032
+0164: disable_marker $3032
+:cleanup_done_marker_3032
+0004: $3032 = 0
+:skip_cleanup_marker_3032
+00D6: if 0
+0039: $3033 <> 0
+075C: marker $3033 enabled
+004D: jump_if_false @cleanup_done_marker_3033
+0164: disable_marker $3033
+:cleanup_done_marker_3033
+0004: $3033 = 0
+:skip_cleanup_marker_3033
+00D6: if 0
+0039: $3034 <> 0
+075C: marker $3034 enabled
+004D: jump_if_false @cleanup_done_marker_3034
+0164: disable_marker $3034
+:cleanup_done_marker_3034
+0004: $3034 = 0
+:skip_cleanup_marker_3034
+00D6: if 0
+0039: $3035 <> 0
+075C: marker $3035 enabled
+004D: jump_if_false @cleanup_done_marker_3035
+0164: disable_marker $3035
+:cleanup_done_marker_3035
+0004: $3035 = 0
+:skip_cleanup_marker_3035
+00D6: if 0
+0039: $3036 <> 0
+075C: marker $3036 enabled
+004D: jump_if_false @cleanup_done_marker_3036
+0164: disable_marker $3036
+:cleanup_done_marker_3036
+0004: $3036 = 0
+:skip_cleanup_marker_3036
+00D6: if 0
+0039: $3037 <> 0
+075C: marker $3037 enabled
+004D: jump_if_false @cleanup_done_marker_3037
+0164: disable_marker $3037
+:cleanup_done_marker_3037
+0004: $3037 = 0
+:skip_cleanup_marker_3037
+00D6: if 0
+0039: $3038 <> 0
+075C: marker $3038 enabled
+004D: jump_if_false @cleanup_done_marker_3038
+0164: disable_marker $3038
+:cleanup_done_marker_3038
+0004: $3038 = 0
+:skip_cleanup_marker_3038
+0004: 0@ = 1
+00D6: if 0
+0038: $727(0@,32i) == 0
+004D: jump_if_false @prop_skip_1
+0518: $3071 = create_available_asset_pickup 'PROP_3' at $2910 $2942 $2974 price $3039
+0570: $3103 = create_asset_radar_marker_with_icon 31 at $2910 $2942 $2974
+00D6: if 0
+0038: $3103 <> 0
+004D: jump_if_false @skip_radar_mode_65
+018B: set_marker $3103 radar_mode 2
+:skip_radar_mode_65
+:prop_skip_1
+0001: wait 50
+0004: 0@ = 2
+00D6: if 0
+0038: $727(0@,32i) == 0
+004D: jump_if_false @prop_skip_2
+0518: $3072 = create_available_asset_pickup 'PROP_3' at $2911 $2943 $2975 price $3040
+0570: $3104 = create_asset_radar_marker_with_icon 31 at $2911 $2943 $2975
+00D6: if 0
+0038: $3104 <> 0
+004D: jump_if_false @skip_radar_mode_526
+018B: set_marker $3104 radar_mode 2
+:skip_radar_mode_526
+:prop_skip_2
+0001: wait 50
+0004: 0@ = 3
+00D6: if 0
+0038: $727(0@,32i) == 0
+004D: jump_if_false @prop_skip_3
+0518: $3073 = create_available_asset_pickup 'PROP_3' at $2912 $2944 $2976 price $3041
+0570: $3105 = create_asset_radar_marker_with_icon 31 at $2912 $2944 $2976
+00D6: if 0
+0038: $3105 <> 0
+004D: jump_if_false @skip_radar_mode_54
+018B: set_marker $3105 radar_mode 2
+:skip_radar_mode_54
+:prop_skip_3
+0001: wait 50
+0004: 0@ = 4
+00D6: if 0
+0038: $727(0@,32i) == 0
+004D: jump_if_false @prop_skip_4
+0518: $3074 = create_available_asset_pickup 'PROP_3' at $2913 $2945 $2977 price $3042
+0570: $3010 = create_asset_radar_marker_with_icon 31 at $2913 $2945 $2977
+00D6: if 0
+0038: $3010 <> 0
+004D: jump_if_false @skip_radar_mode_3010
+018B: set_marker $3010 radar_mode 2
+:skip_radar_mode_3010
+:prop_skip_4
+0001: wait 50
+0004: 0@ = 5
+00D6: if 0
+0038: $727(0@,32i) == 0
+004D: jump_if_false @prop_skip_5
+0518: $3075 = create_available_asset_pickup 'PROP_3' at $2914 $2946 $2978 price $3043
+0570: $3011 = create_asset_radar_marker_with_icon 31 at $2914 $2946 $2978
+00D6: if 0
+0038: $3011 <> 0
+004D: jump_if_false @skip_radar_mode_3011
+018B: set_marker $3011 radar_mode 2
+:skip_radar_mode_3011
+:prop_skip_5
+0001: wait 50
+0004: 0@ = 6
+00D6: if 0
+0038: $727(0@,32i) == 0
+004D: jump_if_false @prop_skip_6
+0518: $3076 = create_available_asset_pickup 'PROP_3' at $2915 $2947 $2979 price $3044
+0570: $3012 = create_asset_radar_marker_with_icon 31 at $2915 $2947 $2979
+00D6: if 0
+0038: $3012 <> 0
+004D: jump_if_false @skip_radar_mode_3012
+018B: set_marker $3012 radar_mode 2
+:skip_radar_mode_3012
+:prop_skip_6
+0001: wait 50
+0004: 0@ = 7
+00D6: if 0
+0038: $727(0@,32i) == 0
+004D: jump_if_false @prop_skip_7
+0518: $3077 = create_available_asset_pickup 'PROP_3' at $2916 $2948 $2980 price $3045
+0570: $3013 = create_asset_radar_marker_with_icon 31 at $2916 $2948 $2980
+00D6: if 0
+0038: $3013 <> 0
+004D: jump_if_false @skip_radar_mode_3013
+018B: set_marker $3013 radar_mode 2
+:skip_radar_mode_3013
+:prop_skip_7
+0001: wait 50
+0004: 0@ = 8
+00D6: if 0
+0038: $727(0@,32i) == 0
+004D: jump_if_false @prop_skip_8
+0518: $3078 = create_available_asset_pickup 'PROP_3' at $2917 $2949 $2981 price $3046
+0570: $3014 = create_asset_radar_marker_with_icon 31 at $2917 $2949 $2981
+00D6: if 0
+0038: $3014 <> 0
+004D: jump_if_false @skip_radar_mode_3014
+018B: set_marker $3014 radar_mode 2
+:skip_radar_mode_3014
+:prop_skip_8
+0001: wait 50
+0004: 0@ = 9
+00D6: if 0
+0038: $727(0@,32i) == 0
+004D: jump_if_false @prop_skip_9
+0518: $3079 = create_available_asset_pickup 'PROP_3' at $2918 $2950 $2982 price $3047
+0570: $3015 = create_asset_radar_marker_with_icon 31 at $2918 $2950 $2982
+00D6: if 0
+0038: $3015 <> 0
+004D: jump_if_false @skip_radar_mode_3015
+018B: set_marker $3015 radar_mode 2
+:skip_radar_mode_3015
+:prop_skip_9
+0001: wait 50
+0004: 0@ = 10
+00D6: if 0
+0038: $727(0@,32i) == 0
+004D: jump_if_false @prop_skip_10
+0518: $3080 = create_available_asset_pickup 'PROP_3' at $2919 $2951 $2983 price $3048
+0570: $3016 = create_asset_radar_marker_with_icon 31 at $2919 $2951 $2983
+00D6: if 0
+0038: $3016 <> 0
+004D: jump_if_false @skip_radar_mode_3016
+018B: set_marker $3016 radar_mode 2
+:skip_radar_mode_3016
+:prop_skip_10
+0001: wait 50
+0004: 0@ = 11
+00D6: if 0
+0038: $727(0@,32i) == 0
+004D: jump_if_false @prop_skip_11
+0518: $3081 = create_available_asset_pickup 'PROP_3' at $2920 $2952 $2984 price $3049
+0570: $3017 = create_asset_radar_marker_with_icon 31 at $2920 $2952 $2984
+00D6: if 0
+0038: $3017 <> 0
+004D: jump_if_false @skip_radar_mode_3017
+018B: set_marker $3017 radar_mode 2
+:skip_radar_mode_3017
+:prop_skip_11
+0001: wait 50
+0004: 0@ = 12
+00D6: if 0
+0038: $727(0@,32i) == 0
+004D: jump_if_false @prop_skip_12
+0518: $3082 = create_available_asset_pickup 'PROP_3' at $2921 $2953 $2985 price $3050
+0570: $3018 = create_asset_radar_marker_with_icon 31 at $2921 $2953 $2985
+00D6: if 0
+0038: $3018 <> 0
+004D: jump_if_false @skip_radar_mode_3018
+018B: set_marker $3018 radar_mode 2
+:skip_radar_mode_3018
+:prop_skip_12
+0001: wait 50
+0004: 0@ = 13
+00D6: if 0
+0038: $727(0@,32i) == 0
+004D: jump_if_false @prop_skip_13
+0518: $3083 = create_available_asset_pickup 'PROP_3' at $2922 $2954 $2986 price $3051
+0570: $3019 = create_asset_radar_marker_with_icon 31 at $2922 $2954 $2986
+00D6: if 0
+0038: $3019 <> 0
+004D: jump_if_false @skip_radar_mode_3019
+018B: set_marker $3019 radar_mode 2
+:skip_radar_mode_3019
+:prop_skip_13
+0001: wait 50
+0004: 0@ = 14
+00D6: if 0
+0038: $727(0@,32i) == 0
+004D: jump_if_false @prop_skip_14
+0518: $3084 = create_available_asset_pickup 'PROP_3' at $2923 $2955 $2987 price $3052
+0570: $3020 = create_asset_radar_marker_with_icon 31 at $2923 $2955 $2987
+00D6: if 0
+0038: $3020 <> 0
+004D: jump_if_false @skip_radar_mode_3020
+018B: set_marker $3020 radar_mode 2
+:skip_radar_mode_3020
+:prop_skip_14
+0001: wait 50
+0004: 0@ = 15
+00D6: if 0
+0038: $727(0@,32i) == 0
+004D: jump_if_false @prop_skip_15
+0518: $3085 = create_available_asset_pickup 'PROP_3' at $2924 $2956 $2988 price $3053
+0570: $3021 = create_asset_radar_marker_with_icon 31 at $2924 $2956 $2988
+00D6: if 0
+0038: $3021 <> 0
+004D: jump_if_false @skip_radar_mode_3021
+018B: set_marker $3021 radar_mode 2
+:skip_radar_mode_3021
+:prop_skip_15
+0001: wait 50
+0004: 0@ = 16
+00D6: if 0
+0038: $727(0@,32i) == 0
+004D: jump_if_false @prop_skip_16
+0518: $3086 = create_available_asset_pickup 'PROP_3' at $2925 $2957 $2989 price $3054
+0570: $3022 = create_asset_radar_marker_with_icon 31 at $2925 $2957 $2989
+00D6: if 0
+0038: $3022 <> 0
+004D: jump_if_false @skip_radar_mode_3022
+018B: set_marker $3022 radar_mode 2
+:skip_radar_mode_3022
+:prop_skip_16
+0001: wait 50
+0004: 0@ = 17
+00D6: if 0
+0038: $727(0@,32i) == 0
+004D: jump_if_false @prop_skip_17
+0518: $3087 = create_available_asset_pickup 'PROP_3' at $2926 $2958 $2990 price $3055
+0570: $3023 = create_asset_radar_marker_with_icon 31 at $2926 $2958 $2990
+00D6: if 0
+0038: $3023 <> 0
+004D: jump_if_false @skip_radar_mode_3023
+018B: set_marker $3023 radar_mode 2
+:skip_radar_mode_3023
+:prop_skip_17
+0001: wait 50
+0004: 0@ = 18
+00D6: if 0
+0038: $727(0@,32i) == 0
+004D: jump_if_false @prop_skip_18
+0518: $3088 = create_available_asset_pickup 'PROP_3' at $2927 $2959 $2991 price $3056
+0570: $3024 = create_asset_radar_marker_with_icon 31 at $2927 $2959 $2991
+00D6: if 0
+0038: $3024 <> 0
+004D: jump_if_false @skip_radar_mode_3024
+018B: set_marker $3024 radar_mode 2
+:skip_radar_mode_3024
+:prop_skip_18
+0001: wait 50
+0004: 0@ = 19
+00D6: if 0
+0038: $727(0@,32i) == 0
+004D: jump_if_false @prop_skip_19
+0518: $3089 = create_available_asset_pickup 'PROP_3' at $2928 $2960 $2992 price $3057
+0570: $3025 = create_asset_radar_marker_with_icon 31 at $2928 $2960 $2992
+00D6: if 0
+0038: $3025 <> 0
+004D: jump_if_false @skip_radar_mode_3025
+018B: set_marker $3025 radar_mode 2
+:skip_radar_mode_3025
+:prop_skip_19
+0001: wait 50
+0004: 0@ = 20
+00D6: if 0
+0038: $727(0@,32i) == 0
+004D: jump_if_false @prop_skip_20
+0518: $3090 = create_available_asset_pickup 'PROP_3' at $2929 $2961 $2993 price $3058
+0570: $3026 = create_asset_radar_marker_with_icon 31 at $2929 $2961 $2993
+00D6: if 0
+0038: $3026 <> 0
+004D: jump_if_false @skip_radar_mode_3026
+018B: set_marker $3026 radar_mode 2
+:skip_radar_mode_3026
+:prop_skip_20
+0001: wait 50
+0004: 0@ = 21
+00D6: if 0
+0038: $727(0@,32i) == 0
+004D: jump_if_false @prop_skip_21
+0518: $3091 = create_available_asset_pickup 'PROP_3' at $2930 $2962 $2994 price $3059
+0570: $3027 = create_asset_radar_marker_with_icon 31 at $2930 $2962 $2994
+00D6: if 0
+0038: $3027 <> 0
+004D: jump_if_false @skip_radar_mode_3027
+018B: set_marker $3027 radar_mode 2
+:skip_radar_mode_3027
+:prop_skip_21
+0001: wait 50
+0004: 0@ = 22
+00D6: if 0
+0038: $727(0@,32i) == 0
+004D: jump_if_false @prop_skip_22
+0518: $3092 = create_available_asset_pickup 'PROP_3' at $2931 $2963 $2995 price $3060
+0570: $3028 = create_asset_radar_marker_with_icon 31 at $2931 $2963 $2995
+00D6: if 0
+0038: $3028 <> 0
+004D: jump_if_false @skip_radar_mode_3028
+018B: set_marker $3028 radar_mode 2
+:skip_radar_mode_3028
+:prop_skip_22
+0001: wait 50
+0004: 0@ = 23
+00D6: if 0
+0038: $727(0@,32i) == 0
+004D: jump_if_false @prop_skip_23
+0518: $3093 = create_available_asset_pickup 'PROP_3' at $2932 $2964 $2996 price $3061
+0570: $3029 = create_asset_radar_marker_with_icon 31 at $2932 $2964 $2996
+00D6: if 0
+0038: $3029 <> 0
+004D: jump_if_false @skip_radar_mode_3029
+018B: set_marker $3029 radar_mode 2
+:skip_radar_mode_3029
+:prop_skip_23
+0001: wait 50
+0004: 0@ = 24
+00D6: if 0
+0038: $727(0@,32i) == 0
+004D: jump_if_false @prop_skip_24
+0518: $3094 = create_available_asset_pickup 'PROP_3' at $2933 $2965 $2997 price $3062
+0570: $3030 = create_asset_radar_marker_with_icon 31 at $2933 $2965 $2997
+00D6: if 0
+0038: $3030 <> 0
+004D: jump_if_false @skip_radar_mode_3030
+018B: set_marker $3030 radar_mode 2
+:skip_radar_mode_3030
+:prop_skip_24
+0001: wait 50
+0004: 0@ = 25
+00D6: if 0
+0038: $727(0@,32i) == 0
+004D: jump_if_false @prop_skip_25
+0518: $3095 = create_available_asset_pickup 'PROP_3' at $2934 $2966 $2998 price $3063
+0570: $3031 = create_asset_radar_marker_with_icon 31 at $2934 $2966 $2998
+00D6: if 0
+0038: $3031 <> 0
+004D: jump_if_false @skip_radar_mode_3031
+018B: set_marker $3031 radar_mode 2
+:skip_radar_mode_3031
+:prop_skip_25
+0001: wait 50
+0004: 0@ = 26
+00D6: if 0
+0038: $727(0@,32i) == 0
+004D: jump_if_false @prop_skip_26
+0518: $3096 = create_available_asset_pickup 'PROP_3' at $2935 $2967 $2999 price $3064
+0570: $3032 = create_asset_radar_marker_with_icon 31 at $2935 $2967 $2999
+00D6: if 0
+0038: $3032 <> 0
+004D: jump_if_false @skip_radar_mode_3032
+018B: set_marker $3032 radar_mode 2
+:skip_radar_mode_3032
+:prop_skip_26
+0001: wait 50
+0004: 0@ = 27
+00D6: if 0
+0038: $727(0@,32i) == 0
+004D: jump_if_false @prop_skip_27
+0518: $3097 = create_available_asset_pickup 'PROP_3' at $2936 $2968 $3000 price $3065
+0570: $3033 = create_asset_radar_marker_with_icon 31 at $2936 $2968 $3000
+00D6: if 0
+0038: $3033 <> 0
+004D: jump_if_false @skip_radar_mode_3033
+018B: set_marker $3033 radar_mode 2
+:skip_radar_mode_3033
+:prop_skip_27
+0001: wait 50
+0004: 0@ = 28
+00D6: if 0
+0038: $727(0@,32i) == 0
+004D: jump_if_false @prop_skip_28
+0518: $3098 = create_available_asset_pickup 'PROP_3' at $2937 $2969 $3001 price $3066
+0570: $3034 = create_asset_radar_marker_with_icon 31 at $2937 $2969 $3001
+00D6: if 0
+0038: $3034 <> 0
+004D: jump_if_false @skip_radar_mode_3034
+018B: set_marker $3034 radar_mode 2
+:skip_radar_mode_3034
+:prop_skip_28
+0001: wait 50
+0004: 0@ = 29
+00D6: if 0
+0038: $727(0@,32i) == 0
+004D: jump_if_false @prop_skip_29
+0518: $3099 = create_available_asset_pickup 'PROP_3' at $2938 $2970 $3002 price $3067
+0570: $3035 = create_asset_radar_marker_with_icon 31 at $2938 $2970 $3002
+00D6: if 0
+0038: $3035 <> 0
+004D: jump_if_false @skip_radar_mode_3035
+018B: set_marker $3035 radar_mode 2
+:skip_radar_mode_3035
+:prop_skip_29
+0001: wait 50
+0004: 0@ = 30
+00D6: if 0
+0038: $727(0@,32i) == 0
+004D: jump_if_false @prop_skip_30
+0518: $3100 = create_available_asset_pickup 'PROP_3' at $2939 $2971 $3003 price $3068
+0570: $3036 = create_asset_radar_marker_with_icon 31 at $2939 $2971 $3003
+00D6: if 0
+0038: $3036 <> 0
+004D: jump_if_false @skip_radar_mode_3036
+018B: set_marker $3036 radar_mode 2
+:skip_radar_mode_3036
+:prop_skip_30
+0001: wait 50
+0004: 0@ = 31
+00D6: if 0
+0038: $727(0@,32i) == 0
+004D: jump_if_false @prop_skip_31
+0518: $3101 = create_available_asset_pickup 'PROP_3' at $2940 $2972 $3004 price $3069
+0570: $3037 = create_asset_radar_marker_with_icon 31 at $2940 $2972 $3004
+00D6: if 0
+0038: $3037 <> 0
+004D: jump_if_false @skip_radar_mode_3037
+018B: set_marker $3037 radar_mode 2
+:skip_radar_mode_3037
+:prop_skip_31
+0001: wait 50
+0004: 0@ = 32
+00D6: if 0
+0038: $727(0@,32i) == 0
+004D: jump_if_false @prop_skip_32
+0518: $3102 = create_available_asset_pickup 'PROP_3' at $2941 $2973 $3005 price $3070
+0570: $3038 = create_asset_radar_marker_with_icon 31 at $2941 $2973 $3005
+00D6: if 0
+0038: $3038 <> 0
+004D: jump_if_false @skip_radar_mode_3038
+018B: set_marker $3038 radar_mode 2
+:skip_radar_mode_3038
+:prop_skip_32
+0001: wait 50
+07FB: set_interior 'BARBERS' access 1
+07FB: set_interior 'BARBER2' access 1
+07FB: set_interior 'BARBER3' access 1
+07FB: set_interior 'FDPIZA' access 1
+07FB: set_interior 'FDCHICK' access 1
+07FB: set_interior 'FDBURG' access 1
+07FB: set_interior 'TATTOO' access 1
+07FB: set_interior 'CSCHP' access 1
+07FB: set_interior 'CSSPRT' access 1
+07FB: set_interior 'LACS1' access 1
+07FB: set_interior 'CLOTHGP' access 1
+07FB: set_interior 'CSDESGN' access 1
+07FB: set_interior 'GYM1' access 1
+07FB: set_interior 'GYM2' access 1
+07FB: set_interior 'GYM3' access 1
+07FB: set_interior 'FDREST1' access 1
+07FB: set_interior 'REST2' access 1
+07FB: set_interior 'DINER1' access 1
+07FB: set_interior 'DINER2' access 1
+07FB: set_interior 'TSDINER' access 1
+07FB: set_interior 'CARLS' access 1
+07FB: set_interior 'RCPLAY' access 1
+00BC: show_text_highpriority GXT 'MAPRDY' time 5000 flag 1
+0DDC: set_mutex_var 7413 to 0
+0A93: end_custom_thread
+:busy
+00BC: show_text_highpriority GXT 'MAPBUSY' time 5000 flag 1
+0A93: end_custom_thread
