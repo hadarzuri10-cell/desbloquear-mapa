@@ -135,3 +135,15 @@ La conclusión anterior basada en FSSRepo/cleo-script-java CustomVariables.ini (
 El uso que hace v1.4.5 de $727, los rangos de coordenadas y precios y $3071–$3102 concuerda con esa disposición de variables móviles. El uso de $54/$65 como handles de marcadores también es compatible con sus nombres de marcador, por lo que no hay evidencia suficiente para calificarlo como colisión con banderas de ayuda. Se retira aquella conclusión basada en la tabla de PC.
 La tabla móvil es de 2015 y no se ha cotejado contra el main.scm exacto del APK 2.10. $526 y $3010–$3038 no quedan completamente identificados por la fuente. La variante experimental que trasladaba $54/$65 a $3103–$3105 no está validada, no se debe usar ni se integró en main.
 Referencia: https://gist.github.com/OrionSR/dea483bd2f86842c8725
+
+
+COMPILACIÓN DE v1.4.5 VERIFICADA (20-11-2026)
+Se compiló la fuente activa de main con Sanny Builder 4.2.0, modo SA Mobile:
+- GitHub Actions run: 44838055204.
+- Commit del run: efca77bc2a9cf0affd66579923d0bb3ec01a46a3.
+- Resultado del job compile: success.
+- Artefacto: Desbloquear-Mapa-v1.4.5-compiled-test, ID 14678394298, tamaño 13058 bytes.
+- SHA-256 del ZIP del artefacto: 8cfff32ff098c3899089d6f60077af2e10466db6f8d439212305492c7af84ca3.
+- El workflow registra en el artefacto un archivo con el SHA-256 de la fuente compilada.
+- Blob SHA de la fuente usado para la compilación: daca0d43270358dac3dbd84bbed840c3ade3ab69.
+Esto confirma la compilación del CSI, pero no funcionamiento o estabilidad dentro del juego.
