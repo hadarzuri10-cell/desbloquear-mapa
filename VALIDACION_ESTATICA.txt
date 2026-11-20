@@ -34,3 +34,7 @@ SHA-256 del ZIP del artefacto: d2695d3715b2590e1d163f2943840746c3efc47a332b47dd1
 
 ARQUITECTURA
 El código público de CLEO Android guarda image_base y calcula las direcciones de 0DD9 usando enteros uint32_t/int32_t. Esta ruta de memoria es de 32 bits. La referencia Android externa de los offsets muestra alternativas distintas para 64 bits; no se deben intercambiar sin una ruta de CLEO capaz de manejar direcciones de 64 bits. Los offsets de 32 bits están fuertemente corroborados, pero no se ha verificado el binario exacto del usuario.
+
+
+NOTA DE ARQUITECTURA (20-11-2026)
+La revisión del commit público de CLEO-ANDROID 4c20d9a0a89688a8526fc2a802631ac178449d9d encontró `-march=armv7` y `LOCAL_ARM_MODE := thumb` en `src/Android.mk`, además de estructuras ELF32 en `src/libres.cpp`. Esto confirma que esa compilación de referencia de CLEO es ARMv7/32-bit. No confirma que el paquete integrado ModsGamer del usuario contenga exactamente esa compilación. La fuente del script permanece sin cambios y no se ha probado dentro del juego.
