@@ -93,3 +93,12 @@ Se revisó el código fuente de CLEO-ANDROID en el commit 4c20d9a0a89688a8526fc2
 - `src/memutils.cpp` confirma que `protect 0` escribe directamente; `protect 1` intenta cambiar permisos con `mprotect(PROT_READ | PROT_WRITE | PROT_EXEC)`, pero no comprueba el resultado de `mprotect` antes de escribir. Por tanto, cambiar `protect 0` a `protect 1` no es una solución de seguridad demostrada y no se aplicó.
 Conclusión limitada: este commit de CLEO es claramente una implementación ARMv7/32-bit. Si el CLEO integrado en el paquete del usuario deriva de esta misma compilación, el proceso compatible también debe ser de 32 bits para poder cargar ese módulo. No se ha demostrado que el paquete ModsGamer incluya exactamente este commit o esta compilación; por eso la arquitectura del GTA instalado sigue sin quedar verificada de forma directa.
 No se modificó la fuente del script ni se alteraron los offsets. La confirmación de build/offsets exactos de GTA SA Android 2.10 sigue pendiente.
+
+
+ADDENDUM SOBRE LAS VARIANTES ABI DE GTA SA 2.10 (20-11-2026)
+La investigación adicional confirma que el número de versión 2.10 por sí solo no identifica una única arquitectura:
+- Hay referencias públicas de GTA SA 2.10 ARM64 y también referencias a variantes 2.10 ARM32 y ARM64.
+- Por tanto, no es válido inferir la arquitectura de `libGTASA.so` únicamente a partir de que el usuario tenga GTA 2.10 o un teléfono Android de 64 bits.
+- La versión pública de CLEO-ANDROID revisada en este informe compila como ARMv7/32-bit. Esa compilación no puede tomarse como prueba de compatibilidad con una instalación 2.10 ARM64.
+- La publicación concreta de ModsGamer que coincide por título y tamaño con el paquete del usuario marca `Suitable game version: 2.00`, aunque el título diga 2.10. Su ficha no informa ABI ni versión interna de CLEO. La metadata es contradictoria y no permite identificar el binario instalado.
+Conclusión: siguen abiertas dos incógnitas independientes: ABI real del `libGTASA.so` instalado y generación/build de CLEO integrada. No se cambió la fuente 1.4.5 ni se sustituyeron offsets. Para confirmar compatibilidad hace falta evidencia del APK instalado o de la biblioteca cargada; no basta el nombre del paquete, el modelo del teléfono ni el título de la descarga.
