@@ -57,3 +57,28 @@ https://github.com/LuJimMods/LuJimCLEO64/blob/main/README.md
 https://github.com/LuJimMods/LuJimCLEO64/blob/main/Application.mk
 https://github.com/LuJimMods/LuJimCLEO64/blob/main/core/src/OpcodeEngine/OpcodeRegistry.cpp
 https://github.com/LuJimMods/LuJimCLEO64/blob/main/core/src/Memory/MemoryStub.cpp
+
+
+VALIDACIÓN DE OFFSETS POR ABI EN GTA SA 2.10 (20-11-2026)
+Se inspeccionó un proyecto público identificado como GTA SA 2.10 (FINAL): JohnPeriaX/KotlinJava-DSL-SampMobile-2.10.
+- Su CMakeLists selecciona VER_x32=true para armeabi-v7a y VER_x32=false para arm64-v8a.
+- Su patches.cpp usa para CTheZones::ZonesVisited[100]: 0x0098D252 en x32 y 0xC1BF92 en ARM64.
+- Para CTheZones::ZonesRevealed usa: 0x0098D2B8 en x32 y 0xC1BFF8 en ARM64.
+- La misma pareja condicional aparece en Eeykal46/holy-sa.
+Esto confirma de forma concreta que la fuente 1.4.5 usa el par ARM32 de GTA SA 2.10. No certifica la ABI de la instalación ModsGamer del usuario.
+Referencias:
+https://github.com/JohnPeriaX/KotlinJava-DSL-SampMobile-2.10/blob/552cbfbe64a478bf689c950af447233edaf7818b/README.md
+https://github.com/JohnPeriaX/KotlinJava-DSL-SampMobile-2.10/blob/552cbfbe64a478bf689c950af447233edaf7818b/app/src/main/cpp/samp/CMakeLists.txt
+https://github.com/JohnPeriaX/KotlinJava-DSL-SampMobile-2.10/blob/552cbfbe64a478bf689c950af447233edaf7818b/app/src/main/cpp/samp/game/patches.cpp
+https://github.com/Eeykal46/holy-sa/blob/0f76d40ef5eefb05a31b820492e73b19f8aac879/app/src/main/cpp/multiplayer/game/patches.cpp
+
+ALCANCE REAL DEL CLEO ARM64 (20-11-2026)
+- AndroidModLoader/GTA_CLEOMod declara APP_ABI := armeabi-v7a en su Application.mk; esa versión AML de CLEO está compilada para ARM32.
+- El CLEO-ANDROID público revisado también es ARMv7/Thumb y usa tipos de 32 bits en la ruta 0DD7/0DD9.
+- LuJimCLEO64 se compila para arm64-v8a, pero v0.2.0-alpha aún no ejecuta scripts ni interpreta opcodes.
+- Hay una publicación de terceros que anuncia GTA SA 2.10 ARM64 con AML/CLEO/FLA, pero la ficha no revela el runtime ni prueba compatibilidad con los opcodes 0DD7/0DD9; no es la misma publicación que el paquete ModsGamer del usuario.
+- La ficha coincidente de ModsGamer (título y tamaño indicados por el usuario) lista Suitable game version 2.00 y no detalla ABI ni versión interna de CLEO.
+Conclusión de compatibilidad: la fuente 1.4.5 está alineada con offsets ARM32 de GTA SA 2.10. Si el proceso instalado fuera ARM64, la fuente actual no debe ejecutarse porque su ruta CLEO revisada maneja direcciones de 32 bits. Falta identificar ABI real de libGTASA y build exacta de CLEO. No modificar la fuente ni probar en una partida hasta cerrar esa identificación.
+
+ESTADO FINAL DE ESTA REVISIÓN
+La fuente v1.4.5 sigue sin cambios (SHA daca0d43270358dac3dbd84bbed840c3ade3ab69). El run 44367239879 continúa siendo la última compilación verificada; esta revisión documental no disparó una compilación nueva. No se ha realizado prueba real dentro del juego.
