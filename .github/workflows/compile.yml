@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - main
+      - fix/1.4.5-property-flags-index
     paths:
       - 'Desbloquear Mapa v1.4.5.source.txt'
       - '.github/workflows/compile.yml'
@@ -114,6 +114,6 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: Desbloquear-Mapa-v1.4.5-compiled-test
+          name: Desbloquear-Mapa-v1.4.5-indexfix-compiled-test
           path: build/*
           if-no-files-found: warn
