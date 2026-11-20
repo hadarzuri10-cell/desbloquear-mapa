@@ -22,10 +22,12 @@ MENSAJES
 - MAP ERROR: se muestra y el script aborta si CLEO devuelve una base de imagen igual a cero.
 
 DESARROLLO Y VALIDACIÓN
-La fuente v1.4.5 compiló correctamente con Sanny Builder 4.2.0 en modo SA Mobile. Run de GitHub Actions: 44367239879.
+La fuente v1.4.5 compiló correctamente con Sanny Builder 4.2.0 en modo SA Mobile. Última compilación verificada: GitHub Actions run 44367239879 (success), commit b213285005f29f9bd66eb1eee7712e245b5b1a61, artefacto Desbloquear-Mapa-compiled-test, ID 14458890340. Esta revisión fue documental y no generó una compilación nueva.
 La compilación confirma que la fuente genera un archivo CSI, pero no demuestra funcionamiento ni estabilidad dentro del juego.
-Se encontró una referencia independiente de código Android que coincide con los offsets de 32 bits usados para el mapa y publica alternativas para 64 bits. Falta identificar la arquitectura real de la biblioteca instalada y confirmar que esa referencia corresponde a la compilación exacta del usuario. La compatibilidad funcional con GTA San Andreas Android 2.10 sigue sin confirmarse.
-La prueba real dentro del juego queda pendiente para el usuario y debe realizarse en una partida nueva.
+Una fuente pública de GTA SA 2.10 confirma offsets diferentes por ABI: ARM32 usa 0x0098D252 y 0x0098D2B8; ARM64 usa 0xC1BF92 y 0xC1BFF8 para los mismos campos de mapa. La fuente 1.4.5 usa el par ARM32. Falta identificar la arquitectura real de libGTASA y la implementación exacta de CLEO integrada en el paquete ModsGamer del usuario.
+El CLEO-ANDROID público revisado y la versión CLEOMod AML consultada son ARM32. Se encontró un proyecto ARM64 en desarrollo que todavía no ejecuta scripts; hay además una publicación de terceros de GTA SA 2.10 ARM64 con CLEO, pero no expone qué opcodes soporta ni prueba 0DD7/0DD9 para 64 bits.
+La ficha del paquete ModsGamer que coincide por título y tamaño con el indicado por el usuario lista Suitable game version: 2.00 y no declara ABI. Por tanto, la compatibilidad funcional con su instalación 2.10 sigue sin confirmarse.
+No ejecutar el CSI si el proceso GTA es ARM64: la fuente actual usa offsets ARM32 y la ruta 0DD7/0DD9 revisada trabaja con direcciones de 32 bits. La prueba real dentro del juego continúa pendiente y, cuando proceda, debe realizarse en una partida nueva.
 
 Antes de limpiar los pickups, el script consulta 09D1 para verificar que existan; antes de desactivar marcadores, consulta 075C para verificar que estén habilitados. La compilación de esta revisión fue exitosa, pero no demuestra estabilidad dentro del juego.
 
