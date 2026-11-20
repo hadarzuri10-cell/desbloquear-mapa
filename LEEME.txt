@@ -1,18 +1,17 @@
 DESBLOQUEAR MAPA — ESTADO DEL PROYECTO
 
-Versión activa: v1.4.5 (fuente en main).
-Script compilado: Desbloquear Mapa.csi
-Fuente: Desbloquear Mapa v1.4.5.source.txt
+Versión activa: v1.4.5 (rama main).
+Script compilado de referencia: Desbloquear Mapa.csi
+Fuente activa: Desbloquear Mapa v1.4.5.source.txt
 
-FUNCIONES
-- Revela los 100 sectores del mapa.
-- Actualiza el contador de sectores.
-- Reconstruye los 32 marcadores de propiedades que todavía no estén compradas, respetando la matriz original.
+FUNCIONES PREVISTAS
+- Revela los 100 sectores del mapa y actualiza su contador.
+- Reconstruye los 32 marcadores de propiedades que no estén compradas, respetando la matriz original.
 - Habilita 22 interiores normales de comercios, gimnasios y actividades permitidas.
 - No compra propiedades automáticamente ni cambia el dinero.
-- No modifica banderas de misiones, vehículos, inventario ni propiedades adquiridas.
+- No modifica banderas de finalización de misiones, vehículos, inventario ni propiedades adquiridas.
 - No altera el daño por caída ni Camera Teletransporte.
-- No incluye interiores de contenido adulto, casinos/apuestas ni funciones de armas.
+- Excluye interiores de contenido adulto, casinos/apuestas y funciones de armas.
 - Impide la ejecución mientras una misión está activa.
 
 MENSAJES
@@ -22,13 +21,24 @@ MENSAJES
 - MAP ERROR: se muestra y el script aborta si CLEO devuelve una base de imagen igual a cero.
 
 DESARROLLO Y VALIDACIÓN
-La fuente v1.4.5 compiló correctamente con Sanny Builder 4.2.0 en modo SA Mobile. Última compilación verificada: GitHub Actions run 44367239879 (success), commit b213285005f29f9bd66eb1eee7712e245b5b1a61, artefacto Desbloquear-Mapa-compiled-test, ID 14458890340. Esta revisión fue documental y no generó una compilación nueva.
-La compilación confirma que la fuente genera un archivo CSI, pero no demuestra funcionamiento ni estabilidad dentro del juego.
-Una fuente pública de GTA SA 2.10 confirma offsets diferentes por ABI: ARM32 usa 0x0098D252 y 0x0098D2B8; ARM64 usa 0xC1BF92 y 0xC1BFF8 para los mismos campos de mapa. La fuente 1.4.5 usa el par ARM32. Falta identificar la arquitectura real de libGTASA y la implementación exacta de CLEO integrada en el paquete ModsGamer del usuario.
-El CLEO-ANDROID público revisado y la versión CLEOMod AML consultada son ARM32. Se encontró un proyecto ARM64 en desarrollo que todavía no ejecuta scripts; hay además una publicación de terceros de GTA SA 2.10 ARM64 con CLEO, pero no expone qué opcodes soporta ni prueba 0DD7/0DD9 para 64 bits.
-La ficha del paquete ModsGamer que coincide por título y tamaño con el indicado por el usuario lista Suitable game version: 2.00 y no declara ABI. Por tanto, la compatibilidad funcional con su instalación 2.10 sigue sin confirmarse.
-No ejecutar el CSI si el proceso GTA es ARM64: la fuente actual usa offsets ARM32 y la ruta 0DD7/0DD9 revisada trabaja con direcciones de 32 bits. La prueba real dentro del juego continúa pendiente y, cuando proceda, debe realizarse en una partida nueva.
+La fuente v1.4.5 compiló correctamente con Sanny Builder 4.2.0 en modo SA Mobile. Última compilación de referencia en main: GitHub Actions run 44367239879 (success), commit b213285005f29f9bd66eb1eee7712e245b5b1a61, artefacto Desbloquear-Mapa-compiled-test, ID 14458890340. Las revisiones documentales posteriores no cambiaron la fuente activa ni generaron una nueva compilación de main.
+La compilación demuestra que Sanny Builder produce un CSI, pero no prueba funcionamiento ni estabilidad dentro del juego.
 
-Antes de limpiar los pickups, el script consulta 09D1 para verificar que existan; antes de desactivar marcadores, consulta 075C para verificar que estén habilitados. La compilación de esta revisión fue exitosa, pero no demuestra estabilidad dentro del juego.
+ARQUITECTURA
+El usuario mostró directamente que libGTASA.so, libcleo.so y libpluginCleoExtender.so están dentro de lib/armeabi-v7a. Esto confirma que esas bibliotecas empaquetadas son ARM32, aunque el teléfono sea de 64 bits.
+Dos proyectos públicos corroboran los offsets ARM32 utilizados por v1.4.5 para CTheZones::ZonesVisited[100] (0x0098D252) y CTheZones::ZonesRevealed (0x0098D2B8). Los mismos proyectos documentan offsets distintos para ARM64.
+La captura no identifica la compilación exacta de libcleo.so ni prueba por sí sola qué biblioteca carga el proceso en ejecución.
+El CLEO-ANDROID público revisado implementa 0DD7, 0DD9, 0DDC y 0DDD con parámetros/direcciones de 32 bits y se compila ARMv7/Thumb. Sin embargo, la presencia de libpluginCleoExtender.so no demuestra soporte de esos opcodes: la ficha pública de CLEOAndroid Extender 1.0 describe funciones de menú/texto/cámara, y lista SA 2.00/1.08.
+La ficha del paquete ModsGamer que coincide por título y tamaño con el indicado por el usuario tiene un campo de versión compatible que dice 2.00, pese al título 2.10. No publica la versión o hash de CLEO integrada. La compatibilidad funcional exacta con ese paquete continúa sin confirmarse.
 
-Las pruebas auxiliares de marcadores están cerradas y no deben solicitarse de nuevo. La rama activa es main.
+RIESGO NUEVO DETECTADO
+La fuente activa usa $54 y $65 como variables de handles de marcadores. Una tabla pública de variables del juego identifica esos índices como Help_INTRO_Shown y Help_Groove_Shown; por tanto, existe una colisión potencial que podría alterar estados de ayudas/tutoriales. Esta situación debe resolverse antes de dar v1.4.5 por terminada.
+Se creó una variante de investigación separada para examinar un posible traslado de handles, pero no se integró en main y sus nuevos índices tampoco están demostrados como libres. La versión activa sigue siendo 1.4.5.
+
+PRUEBAS
+No se ha realizado una prueba real dentro del juego. No declarar la fuente compatible ni libre de crashes todavía. Cuando corresponda probar, utilizar únicamente una partida nueva. No pedir pruebas en partidas antiguas.
+Antes de limpiar pickups se consulta 09D1; antes de desactivar marcadores se consulta 075C. Aun así, un identificador reciclado podría referirse a otro objeto activo.
+Las pruebas auxiliares de marcadores están cerradas y no deben solicitarse de nuevo.
+
+RAMA ACTIVA
+main — Desbloquear Mapa v1.4.5.source.txt
