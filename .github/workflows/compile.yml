@@ -40,6 +40,8 @@ jobs:
           Remove-Item $output -ErrorAction SilentlyContinue
 
           if (-not (Test-Path $source)) { throw "Source file missing: $source" }
+          $sourceHash = (Get-FileHash -Path $source -Algorithm SHA256).Hash.ToLowerInvariant()
+          "Source SHA256: $sourceHash" | Set-Content build\source-sha256.txt
 
           $arguments = @(
             '--no-splash',
@@ -51,6 +53,7 @@ jobs:
 
           "Compiler: $env:SANNY_EXE" | Set-Content build\compile.log
           "Arguments: $($arguments -join ' ')" | Add-Content build\compile.log
+          "Source SHA256: $sourceHash" | Add-Content build\compile.log
 
           $process = Start-Process -FilePath $env:SANNY_EXE -ArgumentList $arguments -WorkingDirectory $PWD -PassThru -NoNewWindow -RedirectStandardOutput $stdout -RedirectStandardError $stderr
           if (-not $process.WaitForExit(120000)) {
@@ -111,6 +114,6 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: Desbloquear-Mapa-compiled-test
+          name: Desbloquear-Mapa-v1.4.5-compiled-test
           path: build/*
           if-no-files-found: warn
