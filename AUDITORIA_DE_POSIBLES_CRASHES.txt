@@ -287,3 +287,16 @@ La fuente Laremi es una reconstrucción pública, no el main.scm exacto del APK 
 Referencias:
 https://github.com/Laremi/GTASA-SEM/blob/421a2de3c29197f384c045a89885c4c90fd11f40/_source/missions/initial.txt
 https://gist.github.com/OrionSR/dea483bd2f86842c8725
+
+
+PERSISTENCIA DE LAS VARIABLES DE HANDLE ENTRE SAVE/LOAD (20-11-2026)
+Se revisó también gta-reversed/source/game_sa/Scripts/TheScripts.cpp:
+- CTheScripts::Save() obtiene el tamaño del chunk de variables globales del SCM y serializa ese rango de ScriptSpace completo en el bloque SCRIPTS.
+- CTheScripts::Load() lee de vuelta ese rango completo a ScriptSpace.
+Esto significa que, en el modelo clásico de guardado, los globals del SCM usados por la fuente v1.4.5 para conservar los IDs de pickup ($3071–$3102) y marcador ($65, $526, $54 y $3010–$3038) no se pierden simplemente al guardar/cargar: están dentro del bloque global del script, siempre que el índice exista en el main.scm cargado.
+La revisión de CPickups::RemovePickupObjects() muestra que antes de guardar el juego elimina los objetos de mundo asociados a los pickups y pone su flag visible a falso, pero no los elimina de la tabla lógica de pickups. CPickups::Save() serializa la tabla de pickups; CPickups::Load() la restaura. CRadar Save/Load también serializa los trazos del radar. Por tanto, tanto los handles globales como los registros que identifican pueden conservar correspondencia en el save clásico.
+Límite: las funciones consultadas son de gta-reversed (GTA SA clásica/PC). No se ha validado el layout de los bloques ni los pools contra el libGTASA.so Android 2.10 exacto del usuario. La persistencia real en ese APK sigue pendiente de prueba en partida nueva.
+Referencias:
+https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/Scripts/TheScripts.cpp
+https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/Pickups.cpp
+https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/Radar.cpp
