@@ -208,3 +208,26 @@ Fuentes:
 https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/Scripts/TheScripts.cpp
 https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/Pickups.cpp
 https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/Radar.cpp
+
+
+CANDIDATO DE CORRECCIÓN DE ÍNDICES DE PROPIEDADES — 1.4.5 (RAMA DE PRUEBA)
+Fecha: 20-11-2026
+Rama: fix/1.4.5-property-flags-index
+Cambio aislado en la fuente:
+- Antes: los 32 bloques asignaban 0@ = 1..32 antes de consultar $727(0@,32i).
+- Ahora: los bloques asignan 0@ = 0..31.
+- Las coordenadas, precios, pickups y marcadores siguen recorriendo los 32 elementos correspondientes en orden 0..31: coordenadas desde $2910/$2942/$2974, precios $3039..$3070, pickups $3071..$3102 y marcadores según la fuente activa.
+Justificación:
+- La referencia móvil de OrionSR identifica $727 como base de Property_Bought_Flags y documenta las coordenadas de compra como arrays de 32 elementos.
+- La reconstrucción pública Laremi/GTASA-SEM inicializa Property_Bought_Flags[0]..[31], Property_Indexes[0]..[31], coordenadas X/Y/Z de propiedades [0]..[31], y crea los pickups siguiendo esos mismos índices.
+- En la fuente previa, el bloque que usa las coordenadas del elemento 0 comprobaba el flag 1; el bloque que usa las coordenadas del elemento 31 comprobaba el índice 32, fuera del rango 0..31 y adyacente a Property_Indexes. Esto desalineaba la comprobación de propiedad comprada un elemento.
+- El candidato corrige esa correspondencia 1:1 sin cambiar las escrituras de memoria, precios, coords, identificadores, iconos, objetos, interiores, textos, tiempos o mutex.
+Verificaciones estáticas previas a compilación:
+- 32 bloques de creación; índices de condición 0..31.
+- 32 coordenadas y precios en orden 0..31.
+- Pickup handles continúan siendo $3071..$3102.
+- Marker handles continúan siendo $65, $526, $54 y $3010..$3038.
+- 101 escrituras de memoria siguen sin cambios.
+- No hay cambios en las funciones permitidas ni en las restricciones del proyecto.
+Limitación: la referencia de variables móviles data de 2015 y la reconstrucción pública del MAIN.SCM no es el main.scm exacto del APK 2.10 instalado. El arreglo tiene una base fuerte, pero no se considera validación final del binario Android hasta revisar la compilación y probar en partida nueva.
+Importante: este candidato está en una rama separada y no ha sustituido el archivo de main. No se debe distribuir como compilación oficial hasta completar la revisión.
