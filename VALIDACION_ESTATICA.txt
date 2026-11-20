@@ -82,3 +82,10 @@ Conclusión de compatibilidad: la fuente 1.4.5 está alineada con offsets ARM32 
 
 ESTADO FINAL DE ESTA REVISIÓN
 La fuente v1.4.5 sigue sin cambios (SHA daca0d43270358dac3dbd84bbed840c3ade3ab69). El run 44367239879 continúa siendo la última compilación verificada; esta revisión documental no disparó una compilación nueva. No se ha realizado prueba real dentro del juego.
+
+
+EVIDENCIA DIRECTA DE ABI DEL APK (20-11-2026)
+El usuario mostró el contenido de `lib/armeabi-v7a` dentro del APK. En esa carpeta aparecen `libGTASA.so`, `libcleo.so` y `libpluginCleoExtender.so`, además de `libAML.so` y otros plugins ARM32.
+Esto confirma que el APK contiene las bibliotecas nativas del juego y CLEO en ABI ARM32. Por tanto, el par de offsets ARM32 utilizado por v1.4.5 es el que corresponde a esos componentes empaquetados; no se debe cambiar al par ARM64 por el mero hecho de que el teléfono sea de 64 bits.
+Límite de la evidencia: la captura de la carpeta no identifica la versión exacta del código de `libcleo.so` ni demuestra qué bibliotecas se cargan en ejecución. Sigue pendiente comprobar que la implementación integrada soporta los opcodes 0DD7, 0DD9, 0DDC y 0DDD con el comportamiento esperado. No se ha probado dentro del juego.
+Fuente 1.4.5 y offsets permanecen sin cambios.
