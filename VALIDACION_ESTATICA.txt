@@ -89,3 +89,14 @@ El usuario mostró el contenido de `lib/armeabi-v7a` dentro del APK. En esa carp
 Esto confirma que el APK contiene las bibliotecas nativas del juego y CLEO en ABI ARM32. Por tanto, el par de offsets ARM32 utilizado por v1.4.5 es el que corresponde a esos componentes empaquetados; no se debe cambiar al par ARM64 por el mero hecho de que el teléfono sea de 64 bits.
 Límite de la evidencia: la captura de la carpeta no identifica la versión exacta del código de `libcleo.so` ni demuestra qué bibliotecas se cargan en ejecución. Sigue pendiente comprobar que la implementación integrada soporta los opcodes 0DD7, 0DD9, 0DDC y 0DDD con el comportamiento esperado. No se ha probado dentro del juego.
 Fuente 1.4.5 y offsets permanecen sin cambios.
+
+
+REVISIÓN DE IMPLEMENTACIÓN DE OPCODES (20-11-2026)
+Se inspeccionó src/core.cpp del commit público CLEO-ANDROID 4c20d9a89688a8526fc2a802631ac178449d9d:
+- 0DD7 (OP_GET_IMAGE_BASE) devuelve image_base mediante uint32_t.
+- 0DD9 (OP_WRITE_MEM) recoge dirección, valor, tamaño, add_ib y protect como uint32_t; suma image_base si add_ib está activo y llama a mem_write_arr.
+- 0DDC actualiza o crea una entrada en mutex_vars; 0DDD devuelve cero si no encuentra el identificador.
+- mutex_vars.clear() se ejecuta en launch_scripts(), no al finalizar un hilo individual. Si el script muere inesperadamente después de activar el mutex, este puede permanecer activo hasta la siguiente inicialización de scripts de CLEO.
+En memutils.cpp, protect=1 intenta mprotect pero no valida el resultado antes de escribir; protect=0 escribe directamente.
+Esto confirma la semántica de los cuatro opcodes en esa implementación pública ARM32, pero no identifica la build del libcleo.so (81.28 KB) que aparece en el APK del usuario. La captura confirma la ABI ARM32, no el hash ni la versión interna de esa biblioteca.
+No se modificó la fuente 1.4.5. No se cambió la lógica del mutex porque un timeout no demostrado podría permitir instancias simultáneas. El comportamiento en el juego sigue sin probarse.
