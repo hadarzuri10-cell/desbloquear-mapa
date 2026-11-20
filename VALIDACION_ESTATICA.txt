@@ -38,3 +38,7 @@ El código público de CLEO Android guarda image_base y calcula las direcciones 
 
 NOTA DE ARQUITECTURA (20-11-2026)
 La revisión del commit público de CLEO-ANDROID 4c20d9a0a89688a8526fc2a802631ac178449d9d encontró `-march=armv7` y `LOCAL_ARM_MODE := thumb` en `src/Android.mk`, además de estructuras ELF32 en `src/libres.cpp`. Esto confirma que esa compilación de referencia de CLEO es ARMv7/32-bit. No confirma que el paquete integrado ModsGamer del usuario contenga exactamente esa compilación. La fuente del script permanece sin cambios y no se ha probado dentro del juego.
+
+
+ACLARACIÓN SOBRE GTA SA 2.10
+El número de versión 2.10 no determina por sí solo la arquitectura: existen variantes ARM32 y ARM64. La ficha de ModsGamer del paquete referido tiene además un campo de versión compatible que indica 2.00, pese al título 2.10, y no publica el ABI. No está confirmado si el CLEO incluido corresponde a la implementación ARMv7/32-bit revisada. Por tanto, esta validación estática no certifica compatibilidad con el binario instalado.
