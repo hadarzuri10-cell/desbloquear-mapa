@@ -187,3 +187,22 @@ Se inspeccionó el archivo patches.cpp del proyecto público Eeykal46/holy-sa, c
 Es una segunda corroboración independiente que coincide exactamente con los 101 writes de la fuente 1.4.5 para ARM32. La misma fuente distingue explícitamente ARM32/ARM64 con VER_x32.
 Límite: el proyecto externo no demuestra por sí solo que la build exacta del APK del usuario sea idéntica en versión/offsets; sí refuerza de forma independiente la correspondencia de los campos y direcciones. La fuente 1.4.5 permanece intacta.
 Referencia: https://github.com/Eeykal46/holy-sa/blob/0f76d40ef5eefb05a31b820492e73b19f8aac879/app/src/main/cpp/multiplayer/game/patches.cpp
+
+
+HALLAZGO NUEVO: COLISIÓN CON VARIABLES GLOBALES DEL JUEGO (20-11-2026)
+Se comparó la fuente activa v1.4.5 con la tabla pública CustomVariables.ini de FSSRepo/cleo-script-java:
+- $54 está nombrada Help_INTRO_Shown.
+- $65 está nombrada Help_Groove_Shown.
+En la fuente activa, ambos índices se usan como destinos de handles devueltos por create_asset_radar_marker_with_icon. La rutina inicial de limpieza también los pone a cero. Por tanto, la fuente puede sobrescribir dos variables globales que pertenecen al juego (estados de ayudas/tutoriales); no son slots neutrales demostrados.
+Este hallazgo contradice la suposición anterior de que todos los slots de handles eran auxiliares. Es un riesgo concreto y debe resolverse antes de considerar terminada la versión 1.4.5.
+$526 no aparece con nombre en la tabla consultada; eso no demuestra que esté libre.
+Se construyó una variante experimental separada que mueve los tres handles a $3103, $3104 y $3105. No se integró en main ni se considera solución final: aunque esos índices no están nombrados en la tabla consultada, todavía no se ha demostrado que estén libres en el main.scm exacto del APK. La fuente oficial de main permanece sin cambios.
+Referencia de tabla: https://github.com/FSSRepo/cleo-script-java/blob/main/res/CustomVariables.ini
+Referencia de la fuente activa: https://github.com/hadarzuri10-cell/desbloquear-mapa/blob/main/Desbloquear%20Mapa%20v1.4.5.source.txt
+
+ACLARACIÓN SOBRE libpluginCleoExtender.so
+La documentación pública de CLEOAndroid Extender 1.0 describe ese plugin como una extensión de funciones del menú CLEO, del reinicio de cámara al abrir el menú y de los textos FXT. La ficha declara soporte para SA 2.00/1.08 y requisito de CLEO Android + FLA 5.0+. No indica que registre 0DD7, 0DD9, 0DDC o 0DDD.
+Por ello, la presencia de libpluginCleoExtender.so en la captura no demuestra que los opcodes de memoria usados por v1.4.5 estén implementados en el libcleo.so exacto del APK, ni que el conjunto completo esté certificado para SA 2.10/Android 13.
+Referencias:
+https://www.mobilegta.net/en/download.php?cat=580&do=detail&id=143993
+https://www.dev-c.com/ (entrada "CLEO Android, major update", 4 de abril de 2021)
