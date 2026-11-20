@@ -159,3 +159,12 @@ Revisión de la fuente activa:
 La tabla móvil de OrionSR confirma $727, las tres bases de coordenadas, $3039 y $3071. También llama $65 Marker_Wang_Cars y $54 Marker_Asset created. Por tanto, el uso de $54/$65 como marcadores tiene correlación con la estructura móvil y no se debe calificar como colisión basándose en la tabla PC.
 Limitaciones: el nombre exacto de $526 y la ocupación de $3010..$3038 no están confirmados por la tabla; la tabla data de 2015 y no es un volcado verificado del APK 2.10. No se modificó la fuente 1.4.5.
 Fuente: https://gist.github.com/OrionSR/dea483bd2f86842c8725
+
+
+PERSISTENCIA DE MAPA EN SAVE/LOAD — EVIDENCIA DE CÓDIGO (20-11-2026)
+La revisión de gta-reversed/source/game_sa/TheZones.cpp muestra que CTheZones::Save() serializa ZonesVisited y ZonesRevealed dentro del bloque ZONES, y CTheZones::Load() restaura ambos. GenericGameStorage.cpp llama a esas rutinas durante guardado y carga. La documentación técnica del formato de guardado identifica también un array de 100 bytes de exploración del mapa más el contador de sectores abiertos.
+Por tanto, la elección de campos de memoria de v1.4.5 tiene una base técnica sólida para persistir el revelado tras guardar/cargar. Límite: el código consultado corresponde a la versión clásica/PC de GTA SA, no al binario Android 2.10 concreto del usuario. No se considera prueba final hasta probarlo con partida nueva en el APK objetivo.
+Fuentes:
+https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/TheZones.cpp
+https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/GenericGameStorage.cpp
+https://thegta.wiki/wiki/saves-gta-sa/
