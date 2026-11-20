@@ -1,0 +1,35 @@
+VALIDACIÓN ESTÁTICA — CANDIDATO DESBLOQUEAR MAPA v1.4.6-dev
+
+Rama: dev/1.4.6-handle-slots
+Fuente: Desbloquear Mapa v1.4.6-dev.source.txt
+Base: Desbloquear Mapa v1.4.5.source.txt
+Blob SHA de la fuente base: daca0d43270358dac3dbd84bbed840c3ade3ab69
+Blob SHA de la fuente candidata: 648371b02d78052a48d57b0239412153ac2190bc
+
+CAMBIO AISLADO
+Se modificaron únicamente tres variables globales usadas para guardar handles de marcadores:
+- El handle que estaba en $65 ahora se guarda en $3103.
+- El handle que estaba en $526 ahora se guarda en $3104.
+- El handle que estaba en $54 ahora se guarda en $3105.
+
+MOTIVO
+La tabla de nombres globales CustomVariables.ini del proyecto público FSSRepo/cleo-script-java identifica:
+- 54 = Help_INTRO_Shown.
+- 65 = Help_Groove_Shown.
+En la fuente 1.4.5 esos dos índices se asignan a handles de marcadores y luego se ponen a cero durante la limpieza. Eso puede sobrescribir el estado de esas ayudas del juego.
+El índice 526 no aparece nombrado en esa tabla; también se trasladó para evitar conservar una variable global baja no identificada.
+Los índices 3103, 3104 y 3105 no aparecen como variables con nombre en esa misma tabla y son contiguos al bloque de handles de pickups $3071–$3102 ya usado por la fuente. La tabla consultada corresponde a una referencia pública de GTA SA, no al main.scm exacto del APK del usuario; la ausencia de nombre no demuestra por sí sola que los índices estén libres en esa build Android. Este cambio elimina dos colisiones conocidas en la referencia, pero no certifica todos los slots globales de la instalación exacta.
+
+VERIFICACIONES DEL CANDIDATO
+- 1086 líneas.
+- 101 escrituras de memoria, sin cambios.
+- 32 variables para handles de pickups: $3071–$3102.
+- 32 variables para handles de marcadores: $3010–$3038 y $3103–$3105.
+- No quedan referencias a $54, $65 ni $526 en la fuente candidata.
+- Los offsets ARM32 y el orden de las escrituras permanecen iguales a v1.4.5.
+- Mensajes, tiempos, interiores, precios, matriz de propiedades, mutex y esperas no se modificaron.
+
+ESTADO
+Este archivo documenta un candidato de desarrollo separado; no sustituye v1.4.5 en main.
+Pendiente: resultado de compilación automatizada del candidato, revisión del diff completo y posterior prueba real en una partida nueva.
+No declarar compatibilidad ni estabilidad dentro de GTA SA 2.10 hasta completar las pruebas.
