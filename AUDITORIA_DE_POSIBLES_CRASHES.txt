@@ -83,3 +83,13 @@ La fuente externa contiene también una corrección comentada para un crash de G
 
 COMPILACIÓN DE LA REVISIÓN DE HANDLES
 La revisión con 32 comprobaciones 09D1 y 32 comprobaciones 075C compiló correctamente en GitHub Actions: run 44367239879, commit b213285005f29f9bd66eb1eee7712e245b5b1a61. Artefacto Desbloquear-Mapa-compiled-test, ID 14458890340, 9328 bytes. Esta compilación confirma sintaxis/ensamblado, no funcionamiento dentro del juego.
+
+
+ADDENDUM DE ARQUITECTURA Y ESCRITURA DE MEMORIA (20-11-2026)
+Se revisó el código fuente de CLEO-ANDROID en el commit 4c20d9a0a89688a8526fc2a802631ac178449d9d:
+- `src/Android.mk` compila el módulo con `-march=armv7` y `LOCAL_ARM_MODE := thumb`.
+- `src/libres.cpp` usa estructuras ELF32 y direcciones de 32 bits para resolver `libGTASA.so`.
+- `src/core.cpp` implementa 0DD7 y 0DD9 con `uint32_t`; `0DD9` suma `image_base` cuando `add_ib` está activado y delega la escritura a `memutils::mem_write_arr`.
+- `src/memutils.cpp` confirma que `protect 0` escribe directamente; `protect 1` intenta cambiar permisos con `mprotect(PROT_READ | PROT_WRITE | PROT_EXEC)`, pero no comprueba el resultado de `mprotect` antes de escribir. Por tanto, cambiar `protect 0` a `protect 1` no es una solución de seguridad demostrada y no se aplicó.
+Conclusión limitada: este commit de CLEO es claramente una implementación ARMv7/32-bit. Si el CLEO integrado en el paquete del usuario deriva de esta misma compilación, el proceso compatible también debe ser de 32 bits para poder cargar ese módulo. No se ha demostrado que el paquete ModsGamer incluya exactamente este commit o esta compilación; por eso la arquitectura del GTA instalado sigue sin quedar verificada de forma directa.
+No se modificó la fuente del script ni se alteraron los offsets. La confirmación de build/offsets exactos de GTA SA Android 2.10 sigue pendiente.
