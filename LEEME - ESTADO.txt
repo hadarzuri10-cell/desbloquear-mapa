@@ -3,19 +3,20 @@ DESBLOQUEAR MAPA v1.4.5 — ESTADO TÉCNICO
 ESTADO
 - Versión activa: 1.4.5 en main.
 - Fuente activa: Desbloquear Mapa v1.4.5.source.txt.
-- La fuente contiene el arreglo del índice Property_Bought_Flags; los 32 bloques ahora consultan índices 0..31.
-- Las 32 propiedades mantienen sus coordenadas, precios, pickups y marcadores correspondientes.
-- La creación de los 32 bloques está espaciada con esperas de 50 ms.
+- Git blob SHA de la fuente: 729176eadcb2b329def5da14d49276f78022345b.
+- La fuente incluye la corrección de índices Property_Bought_Flags: 0..31.
+- Los 32 bloques de propiedades están espaciados con esperas de 50 ms.
 - Antes de escribir memoria, comprueba que get_image_base no devuelva cero. Esto no valida ABI, offsets ni permisos de memoria.
 - MAPLOAD: 1.5 s; MAP READY: 5 s continuos sin parpadeo; MAPBUSY y MAP ERROR según condiciones.
 
 AUDITORÍA ESTÁTICA
 - 1086 líneas.
 - 101 escrituras: 100 bytes consecutivos desde 0x0098D252 hasta 0x0098D2B5 y una escritura de 4 bytes en 0x0098D2B8.
-- 32 condiciones $727(0@,32i), con índices 0..31.
-- Coordenadas X/Y/Z de propiedades con índices 0..31.
-- 32 pickups: $3071..$3102.
-- 32 marcadores: $65, $526, $54 y $3010..$3038.
+- 32 condiciones $727(0@,32i), índices exactamente 0..31.
+- Coordenadas de propiedades recorren 32 elementos, índices 0..31.
+- Precios: $3039..$3070.
+- Pickups: $3071..$3102.
+- 32 marcadores, sin cambios en sus variables.
 - 32 comprobaciones 09D1 antes de limpiar pickups y 32 comprobaciones 075C antes de limpiar marcadores.
 - 42 esperas de 50 ms.
 - 22 interiores normales.
@@ -23,9 +24,17 @@ AUDITORÍA ESTÁTICA
 - Las 101 escrituras usan protect 0.
 
 CORRECCIÓN DE ÍNDICES
-La fuente anterior consultaba Property_Bought_Flags con índices 1..32, aunque la estructura tiene 32 posiciones indexadas 0..31. Esto desalineaba la marca de propiedad comprada de la propiedad real y consultaba el índice 32 fuera del array. La corrección actual consulta 0..31.
-La corrección se compiló de forma aislada con Sanny Builder 4.2.0: run 44839310883, success; artefacto de prueba ID 14680635075. Main todavía requiere verificar su propia ejecución de compilación tras el commit del arreglo.
-La versión permanece 1.4.5; no se ha creado una versión 1.4.6.
+La fuente anterior consultaba Property_Bought_Flags con índices 1..32, aunque la estructura tiene 32 posiciones indexadas 0..31. Esto desalineaba la marca de propiedad comprada de la propiedad real y consultaba el índice 32 fuera del array. La fuente activa ahora consulta 0..31.
+La corrección se incorporó a main manteniendo la versión 1.4.5. La fuente tiene 1086 líneas, 32 bloques y 101 escrituras sin cambios.
+
+COMPILACIÓN MÁS RECIENTE DE MAIN
+- GitHub Actions run 44839583320.
+- Estado: success.
+- Commit compilado: 4213d7fa2e4f7e6ca9fab1ca3d69f97b75d4496d.
+- Artefacto: Desbloquear-Mapa-v1.4.5-compiled-test, ID 14679653646, 16579 bytes.
+- SHA-256 del ZIP del artefacto: d5d0edfd8381848368d4e1e6abaeff2fd1cc9f68768bee9662a14848235eb1f5.
+- Enlace: https://github.com/hadarzuri10-cell/desbloquear-mapa/actions/runs/44839583320
+- La compilación confirma generación del CSI, no prueba estabilidad ni funcionamiento dentro del juego.
 
 ARQUITECTURA Y OFFSETS
 - El usuario mostró libGTASA.so, libcleo.so y libpluginCleoExtender.so dentro de lib/armeabi-v7a; esos archivos empaquetados son ARM32.
@@ -42,7 +51,6 @@ RIESGOS ABIERTOS
 - get_image_base != 0 no valida la dirección final ni los permisos de la página.
 - Un handle reciclado podría apuntar a otro objeto activo antes de las comprobaciones de limpieza.
 - No se ha realizado prueba real dentro del juego. No declarar compatibilidad ni ausencia de crashes todavía.
-- La comprobación de propiedades se corrigió estáticamente y compiló en la rama de prueba; no se ha probado dentro del juego.
 
 REFERENCIAS
 https://github.com/Eeykal46/holy-sa/blob/0f76d40ef5eefb05a31b820492e73b19f8aac879/app/src/main/cpp/multiplayer/game/patches.cpp
@@ -53,4 +61,5 @@ https://gist.github.com/OrionSR/dea483bd2f86842c8725
 
 FUENTE ACTIVA
 main / Desbloquear Mapa v1.4.5.source.txt
+Git blob SHA: 729176eadcb2b329def5da14d49276f78022345b
 La prueba final del APK sigue pendiente y debe realizarse solo en partida nueva.
