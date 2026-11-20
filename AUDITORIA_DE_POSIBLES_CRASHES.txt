@@ -147,3 +147,15 @@ ADDENDUM: ALCANCE DE CLEO EN ARM64 (20-11-2026)
 - La ficha del paquete ModsGamer que coincide con el título y tamaño indicado por el usuario lista Suitable game version: 2.00 pese al título 2.10, y no informa ABI ni versión interna de CLEO.
 Conclusión: los offsets usados por v1.4.5 están ahora corroborados para la variante ARM32 de GTA SA 2.10, pero no se ha identificado la ABI del binario instalado ni la implementación exacta del CLEO integrado. Si el proceso de GTA es ARM64, el script actual no debe ejecutarse: sus opcodes 0DD7/0DD9 revisados manejan direcciones de 32 bits. No cambiar la fuente ni los offsets sin confirmar primero ABI y runtime.
 No se modificó Desbloquear Mapa v1.4.5.source.txt. No se realizó una prueba real dentro del juego.
+
+
+ADDENDUM: EVIDENCIA DIRECTA DEL APK DEL USUARIO (20-11-2026)
+El usuario compartió una captura del contenido de la ruta `lib/armeabi-v7a` dentro de su APK. La captura muestra explícitamente:
+- `libGTASA.so` (7.97 MB).
+- `libcleo.so` (81.28 KB).
+- `libpluginCleoExtender.so` (9.36 KB).
+- También aparecen `libAML.so` y bibliotecas de plugins identificadas como ARM32.
+Conclusión: el APK inspeccionado incluye la biblioteca del juego y las bibliotecas CLEO/Extender dentro de la ABI `armeabi-v7a`. Esto confirma que el paquete contiene componentes nativos ARM32; el hecho de que el teléfono admita 64 bits no cambia la ABI de esas bibliotecas.
+La evidencia concuerda con la arquitectura de 32 bits que requiere la ruta `uint32_t` de los opcodes 0DD7/0DD9 del CLEO-ANDROID público y con los offsets ARM32 de GTA SA 2.10 corroborados anteriormente.
+Límite: la captura demuestra qué archivos están empaquetados bajo `armeabi-v7a`, pero no permite comprobar por sí sola qué biblioteca se carga en ejecución, si el APK incluye además otra carpeta ABI fuera del área mostrada, ni si `libcleo.so`/`libpluginCleoExtender.so` implementan exactamente todos los opcodes y comportamientos del commit público revisado. Por ello, la arquitectura ARM32 del paquete queda confirmada; la identidad exacta de la build de CLEO y la ejecución real del script siguen pendientes.
+No se modificó la fuente 1.4.5, los offsets ni las instrucciones. No se realizó prueba dentro del juego.
