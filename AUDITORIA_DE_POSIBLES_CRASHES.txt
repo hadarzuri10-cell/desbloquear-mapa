@@ -123,3 +123,27 @@ CONCLUSIÓN:
 - No se debe portar el script a 64 bits cambiando solamente las direcciones: haría falta confirmar un runtime que interprete los opcodes y maneje punteros de 64 bits, además de offsets validados para la build exacta de GTA.
 - No se ha identificado la ABI de la copia instalada del usuario. El hecho de que su teléfono sea de 64 bits no identifica la ABI del proceso GTA ni la del CLEO integrado.
 - No se modificó Desbloquear Mapa v1.4.5.source.txt, sus offsets ni sus instrucciones. No se ha realizado prueba real dentro del juego.
+
+
+ADDENDUM: VALIDACIÓN DE OFFSETS POR ABI EN GTA SA 2.10 (20-11-2026)
+Se revisó el proyecto público JohnPeriaX/KotlinJava-DSL-SampMobile-2.10, cuya README identifica la versión como 2.10 (FINAL).
+- En app/src/main/cpp/samp/CMakeLists.txt, armeabi-v7a define VER_x32=true y arm64-v8a define VER_x32=false.
+- En app/src/main/cpp/samp/game/patches.cpp, el mismo ajuste de mapa utiliza CTheZones::ZonesVisited[100] en offset 0x0098D252 para x32 y 0xC1BF92 para ARM64.
+- El campo CTheZones::ZonesRevealed utiliza offset 0x0098D2B8 para x32 y 0xC1BFF8 para ARM64.
+- Se encontró el mismo par condicional de offsets en Eeykal46/holy-sa, también con VER_x32 asociado a armeabi-v7a y arm64-v8a.
+Esto aporta una corroboración específica para GTA SA Android 2.10 de que existen dos pares de offsets y de que los offsets actualmente usados por Desbloquear Mapa v1.4.5 son los de 32 bits. Los offsets 64-bit no deben copiarse a la fuente actual sin un runtime CLEO que soporte punteros y escrituras de 64 bits.
+Referencias de código:
+https://github.com/JohnPeriaX/KotlinJava-DSL-SampMobile-2.10/blob/552cbfbe64a478bf689c950af447233edaf7818b/README.md
+https://github.com/JohnPeriaX/KotlinJava-DSL-SampMobile-2.10/blob/552cbfbe64a478bf689c950af447233edaf7818b/app/src/main/cpp/samp/CMakeLists.txt
+https://github.com/JohnPeriaX/KotlinJava-DSL-SampMobile-2.10/blob/552cbfbe64a478bf689c950af447233edaf7818b/app/src/main/cpp/samp/game/patches.cpp
+https://github.com/Eeykal46/holy-sa/blob/0f76d40ef5eefb05a31b820492e73b19f8aac879/app/src/main/cpp/multiplayer/CMakeLists.txt
+https://github.com/Eeykal46/holy-sa/blob/0f76d40ef5eefb05a31b820492e73b19f8aac879/app/src/main/cpp/multiplayer/game/patches.cpp
+
+ADDENDUM: ALCANCE DE CLEO EN ARM64 (20-11-2026)
+- El proyecto público AndroidModLoader/GTA_CLEOMod, en la rama RUSJJ_CLEO_MOD, declara APP_ABI := armeabi-v7a. Esa compilación de CLEOMod AML es ARM32, no ARM64.
+- La implementación pública de CLEO-ANDROID revisada también compila como ARMv7/Thumb y usa uint32_t/int32_t en la ruta de lectura/escritura de memoria.
+- Se encontró un proyecto CLEO64 compilable para arm64-v8a, pero su versión v0.2.0-alpha no interpreta ni ejecuta scripts CLEO y deja los módulos de memoria/opcodes como placeholders.
+- Existe una publicación de terceros que anuncia un paquete GTA SA 2.10 ARM64 con AML/CLEO/FLA, pero la ficha no publica el código ni especifica si sus opcodes de memoria implementan punteros de 64 bits. No demuestra que ejecute este CSI ni identifica el paquete ModsGamer del usuario.
+- La ficha del paquete ModsGamer que coincide con el título y tamaño indicado por el usuario lista Suitable game version: 2.00 pese al título 2.10, y no informa ABI ni versión interna de CLEO.
+Conclusión: los offsets usados por v1.4.5 están ahora corroborados para la variante ARM32 de GTA SA 2.10, pero no se ha identificado la ABI del binario instalado ni la implementación exacta del CLEO integrado. Si el proceso de GTA es ARM64, el script actual no debe ejecutarse: sus opcodes 0DD7/0DD9 revisados manejan direcciones de 32 bits. No cambiar la fuente ni los offsets sin confirmar primero ABI y runtime.
+No se modificó Desbloquear Mapa v1.4.5.source.txt. No se realizó una prueba real dentro del juego.
