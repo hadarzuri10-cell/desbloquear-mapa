@@ -41,6 +41,7 @@ Dos proyectos públicos independientes corroboran los offsets ARM32 de GTA SA 2.
 La captura no identifica la compilación exacta de libcleo.so ni prueba por sí sola qué biblioteca carga el proceso en ejecución.
 CLEO-ANDROID público revisado implementa 0DD7, 0DD9, 0DDC y 0DDD con direcciones/parámetros de 32 bits. La presencia de libpluginCleoExtender.so no demuestra soporte de esos opcodes; la ficha pública del plugin describe funciones de menú, cámara y textos FXT, y lista SA 2.00/1.08.
 La ficha de ModsGamer que coincide por título y tamaño con el indicado por el usuario tiene el campo Suitable game version: 2.00, pese al título 2.10. No publica el hash ni versión de CLEO integrada. La compatibilidad funcional exacta con ese APK sigue sin confirmarse.
+La documentación oficial de CLEO Android enumera soporte de GTA SA v2.00 y Android 4.1–11; no certifica GTA SA 2.10 ni Android 13. Aunque las bibliotecas del APK mostrado son ARM32, la implementación exacta de CLEO integrada sigue sin identificarse.
 
 PERSISTENCIA
 La revisión de código público GTA SA clásico muestra que el guardado/carga serializa los sectores del mapa, pickups, radar, interiores y las variables globales SCM. Esto respalda el diseño de persistencia de la fuente; todavía no hay prueba directa dentro del APK Android 2.10.
