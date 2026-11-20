@@ -206,3 +206,18 @@ Por ello, la presencia de libpluginCleoExtender.so en la captura no demuestra qu
 Referencias:
 https://www.mobilegta.net/en/download.php?cat=580&do=detail&id=143993
 https://www.dev-c.com/ (entrada "CLEO Android, major update", 4 de abril de 2021)
+
+
+CORRECCIÓN DE LA INTERPRETACIÓN DE $54 Y $65 (20-11-2026)
+La revisión anterior que identificó $54 como Help_INTRO_Shown y $65 como Help_Groove_Shown utilizó una tabla de GTA SA v1.0 para PC; no era la referencia adecuada para el paquete Android del usuario.
+Se localizó una tabla de variables específica de GTA SA Mobile (Android/iOS), creada en 2015:
+- $54 = Marker_Asset created.
+- $65 = Marker_Wang_Cars.
+- $727 = Property_Bought_Flags.
+- $2910, $2942 y $2974 = bases de las coordenadas X, Y y Z de propiedades.
+- $3039 = Property_Prices.
+- $3071 = Buy_Asset_Pickups.
+Esto coincide con la estructura de datos que usa la fuente 1.4.5: consulta la matriz $727, usa los rangos de coordenadas y precios, almacena los pickups en $3071–$3102 y utiliza $54/$65 entre los handles de marcadores. Por tanto, el supuesto de colisión con las variables de ayuda basado en la tabla PC queda RETIRADO. La referencia móvil sugiere que $54 y $65 son slots relacionados con marcadores y que su uso podría ser intencional.
+Límite: la tabla móvil es de 2015, no un dump verificado del main.scm exacto del paquete GTA SA 2.10 del usuario. No basta para afirmar que todos los handles y slots sean compatibles con esa build. $526 y $3010–$3038 no quedan completamente resueltos por esa tabla.
+La variante experimental que cambiaba $54/$65 a nuevos índices no está validada y no debe tratarse como corrección ni versión oficial. La fuente activa en main sigue siendo v1.4.5 y permanece sin cambios.
+Referencia: https://gist.github.com/OrionSR/dea483bd2f86842c8725
