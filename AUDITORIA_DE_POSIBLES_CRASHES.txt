@@ -102,3 +102,24 @@ La investigación adicional confirma que el número de versión 2.10 por sí sol
 - La versión pública de CLEO-ANDROID revisada en este informe compila como ARMv7/32-bit. Esa compilación no puede tomarse como prueba de compatibilidad con una instalación 2.10 ARM64.
 - La publicación concreta de ModsGamer que coincide por título y tamaño con el paquete del usuario marca `Suitable game version: 2.00`, aunque el título diga 2.10. Su ficha no informa ABI ni versión interna de CLEO. La metadata es contradictoria y no permite identificar el binario instalado.
 Conclusión: siguen abiertas dos incógnitas independientes: ABI real del `libGTASA.so` instalado y generación/build de CLEO integrada. No se cambió la fuente 1.4.5 ni se sustituyeron offsets. Para confirmar compatibilidad hace falta evidencia del APK instalado o de la biblioteca cargada; no basta el nombre del paquete, el modelo del teléfono ni el título de la descarga.
+
+
+ADDENDUM: INVESTIGACIÓN DE CLEO ARM64 (20-11-2026)
+Se investigaron dos proyectos públicos para distinguir soporte ARM64 de ejecución real de scripts:
+1. CLEO-ANDROID (cleolibrary/CLEO-ANDROID):
+   - src/Android.mk declara -march=armv7 y LOCAL_ARM_MODE := thumb.
+   - src/core.cpp y src/plugins.cpp implementan los opcodes 0DD7, 0DD9, 0DDC y 0DDD con tipos de 32 bits (uint32_t/int32_t).
+   - El repositorio público no muestra publicaciones de Releases en la consulta revisada.
+   - Esto documenta esa implementación como ARMv7/32-bit, no como un runtime ARM64.
+   Referencias: https://github.com/cleolibrary/CLEO-ANDROID/blob/main/src/Android.mk ; https://github.com/cleolibrary/CLEO-ANDROID/blob/main/src/core.cpp ; https://github.com/cleolibrary/CLEO-ANDROID/blob/main/src/plugins.cpp
+2. LuJimCLEO64 (LuJimMods/LuJimCLEO64):
+   - Application.mk declara APP_ABI := arm64-v8a, así que el proyecto sí está configurado para compilar bibliotecas ARM64.
+   - Sin embargo, su README v0.2.0-alpha declara explícitamente que todavía no ejecuta scripts CLEO ni interpreta opcodes.
+   - OpcodeRegistry.cpp registra entradas placeholder; MemoryStub.cpp es solo un placeholder. Core.cpp inicializa módulos y escanea archivos, pero no proporciona un intérprete CLEO funcional.
+   - Por ello no es una alternativa actualmente utilizable para ejecutar este .csi, ni demuestra compatibilidad de 0DD7/0DD9 con ARM64.
+   Referencias: https://github.com/LuJimMods/LuJimCLEO64/blob/main/README.md ; https://github.com/LuJimMods/LuJimCLEO64/blob/main/Application.mk ; https://github.com/LuJimMods/LuJimCLEO64/blob/main/core/src/OpcodeEngine/OpcodeRegistry.cpp ; https://github.com/LuJimMods/LuJimCLEO64/blob/main/core/src/Memory/MemoryStub.cpp
+CONCLUSIÓN:
+- Se encontró un proyecto ARM64 en desarrollo, pero no un runtime ARM64 público verificado que ejecute los opcodes de memoria necesarios para este script.
+- No se debe portar el script a 64 bits cambiando solamente las direcciones: haría falta confirmar un runtime que interprete los opcodes y maneje punteros de 64 bits, además de offsets validados para la build exacta de GTA.
+- No se ha identificado la ABI de la copia instalada del usuario. El hecho de que su teléfono sea de 64 bits no identifica la ABI del proceso GTA ni la del CLEO integrado.
+- No se modificó Desbloquear Mapa v1.4.5.source.txt, sus offsets ni sus instrucciones. No se ha realizado prueba real dentro del juego.
