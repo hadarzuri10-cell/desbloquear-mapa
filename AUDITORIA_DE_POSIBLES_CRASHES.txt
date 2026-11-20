@@ -244,3 +244,16 @@ El bloque de creación de propiedades de la fuente activa se alineó contra la t
 - Guarda los 32 handles de marcadores así: primera propiedad en $65, segunda en $526, tercera en $54, y las propiedades 4..32 en $3010..$3038.
 La secuencia de bloques de la fuente demuestra esta correspondencia directamente. La tabla móvil identifica $65 como Marker_Wang_Cars y $54 como Marker_Asset created; por tanto, esos dos slots sí tienen nombres relacionados con marcadores en el contexto móvil. La tabla no identifica $526 y no enumera individualmente los slots $3010..$3038, aunque están dentro del hueco entre Zero_RCShop_Bought ($3006) y Property_Prices ($3039).
 Conclusión: la hipótesis anterior de que $54/$65 chocaban con flags de ayuda era producto de usar por error la tabla PC, y se retira. El diseño de v1.4.5 parece apoyarse en globals móviles ya asociados con marcadores más un bloque de handles adicional. Aún no hay dump verificable del main.scm exacto del APK 2.10, así que el nombre/reserva de $526 y el estado de todos los slots 3010..3038 no se certifica. La fuente activa permanece v1.4.5 sin cambios.
+
+
+PERSISTENCIA DE LOS SECTORES REVELADOS AL GUARDAR/CARGAR (20-11-2026)
+Se inspeccionó el código público de gta-reversed, archivo source/game_sa/TheZones.cpp:
+- CTheZones::Save() escribe ZonesVisited y ZonesRevealed en el bloque de datos de ZONES.
+- CTheZones::Load() vuelve a leer esos dos campos desde el bloque ZONES.
+También se inspeccionó GenericGameStorage.cpp: tanto el flujo de guardado como el de carga invoca CTheZones::Save()/CTheZones::Load() para el bloque ZONES.
+Una documentación independiente del formato de guardado describe en ese bloque un array de 100 bytes de niebla del mapa y un contador de sectores abiertos.
+Esto respalda técnicamente que los dos campos que modifica v1.4.5 están diseñados para persistir tras guardar y cargar, sin tener que completar misiones. La evidencia concreta consultada corresponde a la implementación de GTA SA clásica/PC; dado que el APK del usuario es Android 2.10, aún no se afirma como verificación directa de su binario. La prueba definitiva sigue siendo en partida nueva en la instalación objetivo.
+Referencias:
+https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/TheZones.cpp
+https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/GenericGameStorage.cpp
+https://thegta.wiki/wiki/saves-gta-sa/
