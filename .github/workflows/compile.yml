@@ -4,9 +4,9 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - main
+      - dev/1.4.6-handle-slots
     paths:
-      - 'Desbloquear Mapa v1.4.5.source.txt'
+      - 'Desbloquear Mapa v1.4.6-dev.source.txt'
       - '.github/workflows/compile.yml'
 
 permissions:
@@ -32,7 +32,7 @@ jobs:
       - name: Compile CLEO source (120-second limit)
         shell: pwsh
         run: |
-          $source = Join-Path $PWD 'Desbloquear Mapa v1.4.5.source.txt'
+          $source = Join-Path $PWD 'Desbloquear Mapa v1.4.6-dev.source.txt'
           $output = Join-Path $PWD 'build\Desbloquear Mapa.csi'
           $stdout = Join-Path $PWD 'build\compiler-stdout.log'
           $stderr = Join-Path $PWD 'build\compiler-stderr.log'
@@ -105,12 +105,12 @@ jobs:
           if (-not (Test-Path $output)) { throw 'Compiler exited without producing the .csi file.' }
 
           Copy-Item 'Desbloquear Mapa.fxt' build\
-          Copy-Item 'VALIDACION_ESTATICA.txt' build\
+          Copy-Item 'VALIDACION_ESTATICA_1.4.6_DEV.txt' build\
 
       - name: Upload build diagnostics and artifact
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: Desbloquear-Mapa-compiled-test
+          name: Desbloquear-Mapa-1.4.6-dev-compiled-test
           path: build/*
           if-no-files-found: warn
