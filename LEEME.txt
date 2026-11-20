@@ -1,12 +1,12 @@
 DESBLOQUEAR MAPA — ESTADO DEL PROYECTO
 
 Versión activa: v1.4.5 (rama main).
-Script compilado de referencia: Desbloquear Mapa.csi
-Fuente activa: Desbloquear Mapa v1.4.5.source.txt
+Script compilado: Desbloquear Mapa.csi
+Fuente: Desbloquear Mapa v1.4.5.source.txt
 
-FUNCIONES PREVISTAS
-- Revela los 100 sectores del mapa y actualiza su contador.
-- Reconstruye los 32 marcadores de propiedades que no estén compradas, respetando la matriz original.
+FUNCIONES
+- Revela los 100 sectores del mapa y actualiza el contador.
+- Reconstruye los 32 marcadores de propiedades que todavía no estén compradas, respetando la matriz original.
 - Habilita 22 interiores normales de comercios, gimnasios y actividades permitidas.
 - No compra propiedades automáticamente ni cambia el dinero.
 - No modifica banderas de finalización de misiones, vehículos, inventario ni propiedades adquiridas.
@@ -20,34 +20,30 @@ MENSAJES
 - MAPBUSY: aviso cuando se intenta ejecutar durante una misión.
 - MAP ERROR: se muestra y el script aborta si CLEO devuelve una base de imagen igual a cero.
 
+CORRECCIÓN DE PROPIEDADES
+Se corrigió el índice de consulta de $727 (Property_Bought_Flags): cada una de las 32 propiedades consulta ahora su índice 0..31, alineado con sus coordenadas, precios y handles. La comprobación anterior usaba 1..32, dejando el índice 32 fuera del array. La corrección mantiene la versión 1.4.5 y no cambia las escrituras de memoria ni las funciones permitidas.
+
 DESARROLLO Y VALIDACIÓN
-La fuente v1.4.5 se compiló con Sanny Builder 4.2.0 en modo SA Mobile. Compilación verificada más reciente: GitHub Actions run 44838055204 (success), commit efca77bc2a9cf0affd66579923d0bb3ec01a46a3, artefacto Desbloquear-Mapa-v1.4.5-compiled-test, ID 14678394298, 13058 bytes. El flujo incluye un archivo de hash de la fuente en el artefacto.
-Esta compilación demuestra que Sanny Builder genera un CSI; no demuestra estabilidad ni funcionamiento dentro del juego.
+La corrección compiló con Sanny Builder 4.2.0 en modo SA Mobile en una rama de prueba: GitHub Actions run 44839310883 (success). Artefacto de prueba: Desbloquear-Mapa-v1.4.5-indexfix-compiled-test, ID 14680635075.
+La incorporación a main requiere completar la compilación de esa rama principal. Compilar demuestra que Sanny Builder genera un CSI; no demuestra funcionamiento ni estabilidad dentro del juego.
 
 ARQUITECTURA
-El usuario mostró directamente libGTASA.so, libcleo.so y libpluginCleoExtender.so dentro de lib/armeabi-v7a. Esto confirma que esas bibliotecas incluidas en el APK son ARM32, aunque el teléfono sea de 64 bits. Dos proyectos públicos independientes corroboran los offsets ARM32 que usa v1.4.5:
+El usuario mostró libGTASA.so, libcleo.so y libpluginCleoExtender.so dentro de lib/armeabi-v7a. Esto confirma que esas bibliotecas incluidas en el APK son ARM32, aunque el teléfono sea de 64 bits.
+Dos proyectos públicos independientes corroboran los offsets ARM32 de GTA SA 2.10 utilizados por la fuente:
 - ZonesVisited[100]: 0x0098D252.
 - ZonesRevealed: 0x0098D2B8.
 La captura no identifica la compilación exacta de libcleo.so ni prueba por sí sola qué biblioteca carga el proceso en ejecución.
-El CLEO-ANDROID público revisado implementa 0DD7, 0DD9, 0DDC y 0DDD con direcciones/parámetros de 32 bits. La presencia de libpluginCleoExtender.so no demuestra soporte de esos opcodes: la ficha pública de CLEOAndroid Extender 1.0 describe funciones de menú, cámara y textos FXT, y lista SA 2.00/1.08.
-La ficha del paquete ModsGamer que coincide por título y tamaño con el indicado por el usuario tiene el campo Suitable game version: 2.00, pese al título 2.10. No publica el hash ni versión de CLEO integrada. La compatibilidad funcional exacta con ese APK sigue sin confirmarse.
+CLEO-ANDROID público revisado implementa 0DD7, 0DD9, 0DDC y 0DDD con direcciones/parámetros de 32 bits. La presencia de libpluginCleoExtender.so no demuestra soporte de esos opcodes; la ficha pública del plugin describe funciones de menú, cámara y textos FXT, y lista SA 2.00/1.08.
+La ficha de ModsGamer que coincide por título y tamaño con el indicado por el usuario tiene el campo Suitable game version: 2.00, pese al título 2.10. No publica el hash ni versión de CLEO integrada. La compatibilidad funcional exacta con ese APK sigue sin confirmarse.
 
-MAPEO DE VARIABLES MÓVILES
-Se localizó una tabla específica de GTA SA Mobile (Android/iOS, 2015). Entre sus nombres coincidentes:
-- $727 = Property_Bought_Flags.
-- $2910 / $2942 / $2974 = coordenadas X / Y / Z de propiedades.
-- $3039 = Property_Prices.
-- $3071 = Buy_Asset_Pickups.
-- $54 = Marker_Asset created.
-- $65 = Marker_Wang_Cars.
-La estructura de datos usada por v1.4.5 concuerda con esa tabla móvil. La conclusión anterior que interpretaba $54/$65 como flags de ayuda provenía de una tabla de PC v1.0 y se retira. Su uso como handles de marcadores puede ser intencional. La tabla móvil es de 2015 y aún no se cotejó con el main.scm exacto del APK 2.10; $526 y los slots adicionales tampoco están identificados completamente.
+PERSISTENCIA
+La revisión de código público GTA SA clásico muestra que el guardado/carga serializa los sectores del mapa, pickups, radar, interiores y las variables globales SCM. Esto respalda el diseño de persistencia de la fuente; todavía no hay prueba directa dentro del APK Android 2.10.
 
-PRUEBAS Y RIESGOS
+PRUEBAS
 No se ha realizado una prueba real dentro del juego. No declarar la fuente compatible ni libre de crashes todavía. Cuando corresponda probar, utilizar únicamente una partida nueva.
-Antes de limpiar pickups se consulta 09D1; antes de desactivar marcadores se consulta 075C. Aun así, un identificador reciclado podría referirse a otro objeto activo.
+Las comprobaciones 09D1 y 075C protegen la limpieza de pickups y marcadores; un handle reciclado aún podría apuntar a otro objeto activo.
 La comprobación get_image_base != 0 no valida offsets ni permisos de memoria.
 Las pruebas auxiliares de marcadores están cerradas y no deben solicitarse de nuevo.
 
 RAMA Y VERSIÓN ACTIVAS
 main — Desbloquear Mapa v1.4.5.source.txt
-No hay una versión 1.4.6 publicada ni sustituye a la 1.4.5.
