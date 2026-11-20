@@ -159,3 +159,22 @@ Conclusión: el APK inspeccionado incluye la biblioteca del juego y las bibliote
 La evidencia concuerda con la arquitectura de 32 bits que requiere la ruta `uint32_t` de los opcodes 0DD7/0DD9 del CLEO-ANDROID público y con los offsets ARM32 de GTA SA 2.10 corroborados anteriormente.
 Límite: la captura demuestra qué archivos están empaquetados bajo `armeabi-v7a`, pero no permite comprobar por sí sola qué biblioteca se carga en ejecución, si el APK incluye además otra carpeta ABI fuera del área mostrada, ni si `libcleo.so`/`libpluginCleoExtender.so` implementan exactamente todos los opcodes y comportamientos del commit público revisado. Por ello, la arquitectura ARM32 del paquete queda confirmada; la identidad exacta de la build de CLEO y la ejecución real del script siguen pendientes.
 No se modificó la fuente 1.4.5, los offsets ni las instrucciones. No se realizó prueba dentro del juego.
+
+
+ADDENDUM: REVISIÓN DE IMPLEMENTACIÓN DE LOS OPCODES USADOS (20-11-2026)
+Se inspeccionó directamente el código del commit público CLEO-ANDROID 4c20d9a0a89688a8526fc2a802631ac178449d9d, en lugar de basarse únicamente en la tabla de nombres del README.
+Hallazgos en src/core.cpp:
+- OP_GET_IMAGE_BASE (0DD7) escribe image_base en una variable uint32_t.
+- OP_WRITE_MEM (0DD9) recoge cinco parámetros como uint32_t: dirección, valor, tamaño, correct_ib y protect. Si correct_ib no es cero, suma image_base; después llama a memutils::mem_write_arr.
+- OP_SET_MUTEX_VAR (0DDC) crea o actualiza una entrada identificada por id en el vector mutex_vars.
+- OP_GET_MUTEX_VAR (0DDD) inicializa el resultado a cero y devuelve el valor guardado si encuentra el id.
+- El vector mutex_vars se limpia explícitamente en launch_scripts() (línea 938 del mismo commit), no en la operación OP_GET_MUTEX_VAR ni automáticamente al terminar un script individual. Por tanto, si el hilo termina de forma inesperada después de activar el mutex 7413, el bloqueo podría persistir hasta que CLEO vuelva a ejecutar launch_scripts() y limpie la tabla.
+En src/memutils.cpp, protect=true calcula las páginas y llama mprotect(PROT_READ | PROT_WRITE | PROT_EXEC), pero no comprueba el resultado de mprotect antes de memcpy. protect=false omite ese cambio de permisos y hace memcpy directamente.
+Conclusiones:
+1. La semántica de los cuatro opcodes que usa la fuente está implementada en el CLEO-ANDROID público revisado.
+2. Esta evidencia NO demuestra que el archivo libcleo.so de 81.28 KB mostrado en la captura sea exactamente esa compilación o contenga la misma tabla de opcodes.
+3. La implementación revisada es de 32 bits; sus direcciones, valores y tamaños de memoria se manejan como uint32_t. La captura del APK confirma bibliotecas dentro de armeabi-v7a, por lo que la ABI coincide.
+4. El riesgo del mutex ante una terminación inesperada sigue siendo un riesgo residual conocido. No se modificó porque añadir un timeout o liberar el mutex desde otra ruta podría permitir dos ejecuciones simultáneas y no se ha demostrado que sea seguro.
+Referencias de código:
+https://github.com/cleolibrary/CLEO-ANDROID/blob/4c20d9a0a89688a8526fc2a802631ac178449d9d/src/core.cpp
+https://github.com/cleolibrary/CLEO-ANDROID/blob/4c20d9a0a89688a8526fc2a802631ac178449d9d/src/memutils.cpp
