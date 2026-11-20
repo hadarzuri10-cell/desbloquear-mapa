@@ -184,3 +184,17 @@ https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/Radar.cp
 https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/EntryExitManager.cpp
 https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/EntryExit.h
 https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/TheZones.cpp
+
+
+VALIDACIÓN DE LOS PRIMEROS TRES SLOTS DE MARCADORES (20-11-2026)
+Se cotejó v1.4.5 con una reconstrucción pública del bloque de inicialización de propiedades de GTA SA:
+- La fuente original crea 32 marcadores en el orden de los 32 elementos de X/Y/Z_PROPERTY_TO_BUY.
+- Para los elementos 0, 1 y 2, usa los globals PC $MARKER_WANG_CARS, $527 y $55.
+- El mapeo móvil de OrionSR documenta $65 como Marker_Wang_Cars y marca $54 como Marker_Asset created. La indexación PC/móvil consultada presenta un desfase de un índice en estos ejemplos; por correspondencia, $527 PC y $55 PC concuerdan con $526 y $54 móviles.
+- v1.4.5 guarda los handles de los primeros tres marcadores en $65, $526 y $54, respectivamente.
+Por ello los tres globals de la versión móvil coinciden con los slots esperados de los primeros tres marcadores del juego; su uso en v1.4.5 parece intencional y no un choque arbitrario.
+Para los marcadores 4–32, el reconstruido PC usa $1624–$1652, mientras la fuente móvil v1.4.5 usa $3010–$3038. Todavía no se ha demostrado una equivalencia índice por índice para esa secuencia móvil. No se modificó la fuente.
+La referencia pública no equivale al main.scm exacto del APK 2.10 del usuario.
+Fuentes:
+https://github.com/Laremi/GTASA-SEM/blob/421a2de3c29197f384c045a89885c4c90fd11f40/_source/missions/initial.txt
+https://gist.github.com/OrionSR/dea483bd2f86842c8725
