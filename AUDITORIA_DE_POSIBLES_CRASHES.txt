@@ -273,3 +273,17 @@ https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/Radar.cp
 https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/EntryExitManager.cpp
 https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/EntryExit.h
 https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/TheZones.cpp
+
+
+CORROBORACIÓN DEL ORIGEN DE LOS 32 HANDLES DE MARCADORES (20-11-2026)
+Se comparó la fuente v1.4.5 con el código público reconstruido de la inicialización original de GTA SA en Laremi/GTASA-SEM, archivo _source/missions/initial.txt:
+- El código original crea los marcadores de las propiedades en el mismo orden de los 32 elementos de X/Y/Z_PROPERTY_TO_BUY.
+- Para los primeros tres elementos, la fuente original usa los globals PC $MARKER_WANG_CARS, $527 y $55, respectivamente.
+- En el mapeo de variables móvil de OrionSR, el primero figura como $65=Marker_Wang_Cars y el tercer slot $54 aparece comentado como Marker_Asset created. Los índices de los globals del script Android difieren en uno respecto a los nombres/índices PC usados por la fuente reconstruida; el segundo handle $526 corresponde al índice móvil inferido desde el $527 PC.
+- La fuente 1.4.5 utiliza precisamente $65, $526 y $54 para los marcadores de propiedades 1, 2 y 3, respectivamente.
+Esto es evidencia directa de que los tres índices no fueron seleccionados aleatoriamente: corresponden a los slots originales destinados a los tres primeros marcadores de activos. Por eso se retira la duda previa de que el uso de $65/$54 por sí solo demuestre una colisión. El código original respalda que se reutilizan para la misma función de marcador.
+Para las propiedades 4–32, el código reconstruido usa una secuencia de handles PC $1624–$1652; v1.4.5 usa una secuencia Android $3010–$3038. No se ha localizado un mapeo 1:1 publicado que demuestre el origen exacto de esos 29 índices móviles, así que esa parte sigue validada por la estructura propia de la fuente y el hueco de variables del mapa móvil, no por una correspondencia de índices certificada.
+La fuente Laremi es una reconstrucción pública, no el main.scm exacto del APK Android 2.10. La comparación refuerza el diseño, pero no sustituye la prueba sobre ese binario.
+Referencias:
+https://github.com/Laremi/GTASA-SEM/blob/421a2de3c29197f384c045a89885c4c90fd11f40/_source/missions/initial.txt
+https://gist.github.com/OrionSR/dea483bd2f86842c8725
