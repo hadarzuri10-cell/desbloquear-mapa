@@ -168,3 +168,19 @@ Fuentes:
 https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/TheZones.cpp
 https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/GenericGameStorage.cpp
 https://thegta.wiki/wiki/saves-gta-sa/
+
+
+PERSISTENCIA DE LOS OBJETOS Y ACCESOS DE v1.4.5 — REVISIÓN DE SAVE/LOAD (20-11-2026)
+En gta-reversed/source/game_sa/GenericGameStorage.cpp, los bloques PICKUPS, RADAR, ZONES y ENTRY_EXITS delegan respectivamente en CPickups::Save/Load, CRadar::Save/Load, CTheZones::Save/Load y CEntryExitManager::Save/Load.
+- CPickups serializa/restaura el array lógico de pickups. Antes del guardado se eliminan los objetos RenderWare de pickups; esto no es lo mismo que borrar la información lógica serializada.
+- CRadar serializa/restaura ms_RadarTrace, donde residen los trazos del radar.
+- CEntryExitManager serializa/restaura las flags m_nFlags de los ENEX. El header EntryExit.h identifica ENABLE_ACCESS como el bit 0x4000. El opcode 07FB se describe como `set_interior '<nombre>' access <0/1>`, así que la asociación con estos flags es plausible; no se localizó el handler exacto para confirmar sin reservas qué bit escribe.
+- CTheZones serializa/restaura ZonesVisited y ZonesRevealed.
+Esto aporta evidencia estática de que las cuatro clases de estado que usa v1.4.5 están incluidas en los bloques del save clásico. Límite importante: el código consultado corresponde a GTA SA clásica/PC, no al binario Android 2.10 exacto. La persistencia dentro del APK objetivo no se ha probado aún.
+Fuentes:
+https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/GenericGameStorage.cpp
+https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/Pickups.cpp
+https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/Radar.cpp
+https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/EntryExitManager.cpp
+https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/EntryExit.h
+https://github.com/gta-reversed/gta-reversed/blob/master/source/game_sa/TheZones.cpp
