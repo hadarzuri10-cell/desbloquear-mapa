@@ -27,10 +27,10 @@ Se encontró una referencia independiente de código Android que coincide con lo
 MAP ERROR: el script aborta si no se detecta la base de imagen.
 
 COMPILACIÓN DE LA REVISIÓN ACTUAL
-Run de GitHub Actions: 44366859260 (success).
-Commit compilado: 0c12413bac68162acf4ecb52e1f46bece2b562a7.
-Artefacto: Desbloquear-Mapa-compiled-test, ID 14457995227, 8536 bytes.
-SHA-256 del ZIP del artefacto: d2695d3715b2590e1d163f2943840746c3efc47a332b47dd18ebd5d9b13f6abc.
+Run de GitHub Actions: 44367239879 (success).
+Commit compilado: b213285005f29f9bd66eb1eee7712e245b5b1a61.
+Artefacto: Desbloquear-Mapa-compiled-test, ID 14458890340, 9328 bytes.
+SHA-256 del ZIP del artefacto: a13ec125aa63089539d719946d32664ba3710f194f490b492ac1bfe352cb4b1a.
 
 ARQUITECTURA
 El código público de CLEO Android guarda image_base y calcula las direcciones de 0DD9 usando enteros uint32_t/int32_t. Esta ruta de memoria es de 32 bits. La referencia Android externa de los offsets muestra alternativas distintas para 64 bits; no se deben intercambiar sin una ruta de CLEO capaz de manejar direcciones de 64 bits. Los offsets de 32 bits están fuertemente corroborados, pero no se ha verificado el binario exacto del usuario.
