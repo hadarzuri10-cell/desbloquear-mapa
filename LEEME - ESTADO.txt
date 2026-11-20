@@ -1,61 +1,67 @@
 DESBLOQUEAR MAPA v1.4.5 — ESTADO TÉCNICO
 
 ESTADO
-- Fuente activa en main: Desbloquear Mapa v1.4.5.source.txt.
-- La fuente no ha sido modificada en la revisión técnica actual.
+- Versión activa: 1.4.5 en main.
+- Fuente activa: Desbloquear Mapa v1.4.5.source.txt.
+- SHA-256/blob SHA de la fuente activa: daca0d43270358dac3dbd84bbed840c3ade3ab69.
+- La fuente activa no ha sido modificada en las revisiones documentales.
 - La creación de los 32 bloques de propiedades está espaciada con esperas de 50 ms.
-- Antes de escribir memoria, el script comprueba que CLEO devuelva una base de imagen distinta de cero. Esa comprobación no valida la ABI, los offsets ni los permisos de memoria.
-- MAPLOAD: 1.5 segundos.
-- MAP READY: 5 segundos continuos, sin parpadeo.
-- MAPBUSY: se muestra si se intenta ejecutar durante una misión.
-- MAP ERROR: se muestra y aborta si la base de imagen devuelta es cero.
+- Antes de escribir memoria, comprueba que get_image_base no devuelva cero. Esto no valida ABI, offsets ni permisos de memoria.
+- MAPLOAD: 1.5 s; MAP READY: 5 s continuos sin parpadeo; MAPBUSY y MAP ERROR según condiciones.
 
-AUDITORÍA ESTÁTICA DE LA FUENTE
+AUDITORÍA ESTÁTICA DE LA FUENTE ACTIVA
 - 1086 líneas.
-- 101 escrituras de memoria: 100 bytes consecutivos desde 0x0098D252 hasta 0x0098D2B5 y una escritura de 4 bytes en 0x0098D2B8.
-- 32 bloques de propiedades, índices de matriz 1 a 32.
-- 32 pickups y 32 marcadores; 32 comprobaciones 09D1 para pickups y 32 comprobaciones 075C para marcadores antes de limpiarlos.
-- 42 esperas de 50 ms: 32 al terminar los bloques y 10 anteriores.
+- 101 escrituras: 100 bytes consecutivos desde 0x0098D252 hasta 0x0098D2B5 y una escritura de 4 bytes en 0x0098D2B8.
+- 32 bloques de propiedades, índices 1 a 32.
+- 32 pickups y 32 marcadores.
+- 32 comprobaciones 09D1 antes de limpiar pickups y 32 comprobaciones 075C antes de limpiar marcadores.
+- 42 esperas de 50 ms: 32 al terminar bloques y 10 anteriores.
 - 22 interiores normales.
 - 131 saltos condicionales; 130 destinos distintos existentes; 194 etiquetas únicas; sin etiquetas duplicadas.
 - Las 101 escrituras usan protect 0.
 
 COMPILACIÓN DE REFERENCIA
-- Última compilación verificada de la fuente 1.4.5: GitHub Actions run 44367239879.
-- Estado del run: success.
+- Última compilación de main verificada: run 44367239879.
+- Estado: success.
 - Commit compilado: b213285005f29f9bd66eb1eee7712e245b5b1a61.
 - Artefacto: Desbloquear-Mapa-compiled-test, ID 14458890340, 9328 bytes.
-- Esta revisión reciente modificó documentación solamente; no disparó una compilación nueva.
-- Compilar correctamente no demuestra estabilidad ni funcionamiento dentro del juego.
+- Revisiones documentales posteriores no generaron nueva compilación de main.
+- La compilación no demuestra estabilidad ni funcionamiento dentro del juego.
 
 ARQUITECTURA Y OFFSETS
-- Un proyecto público identificado como GTA SA 2.10 (FINAL) define VER_x32=true para armeabi-v7a y VER_x32=false para arm64-v8a.
-- En ese proyecto, CTheZones::ZonesVisited[100] usa 0x0098D252 en ARM32 y 0xC1BF92 en ARM64.
-- CTheZones::ZonesRevealed usa 0x0098D2B8 en ARM32 y 0xC1BFF8 en ARM64.
-- El mismo par de offsets y selector por ABI aparece en otro proyecto público.
-- La fuente actual usa exclusivamente el par ARM32.
-- CLEO-ANDROID público revisado implementa 0DD7/0DD9 con enteros de 32 bits y se compila ARMv7/Thumb. El proyecto AndroidModLoader/GTA_CLEOMod consultado también declara APP_ABI := armeabi-v7a.
-- LuJimCLEO64 se compila para arm64-v8a, pero su v0.2.0-alpha no ejecuta scripts ni interpreta opcodes.
-- Existe una publicación de terceros que anuncia GTA SA 2.10 ARM64 con AML/CLEO/FLA, pero la ficha no explica su runtime de opcodes ni prueba 0DD7/0DD9 en 64 bits. No demuestra que el paquete ModsGamer del usuario incluya esa implementación.
-- La ficha de ModsGamer que coincide con el título y tamaño del paquete del usuario muestra Suitable game version: 2.00 y no detalla ABI ni versión interna de CLEO.
+- El usuario mostró libGTASA.so, libcleo.so y libpluginCleoExtender.so dentro de lib/armeabi-v7a. Esto confirma que esas bibliotecas incluidas en el APK son ARM32.
+- El par de offsets utilizado por v1.4.5 está corroborado por dos proyectos públicos independientes:
+  - ZonesVisited[100]: ARM32 0x0098D252; ARM64 0xC1BF92.
+  - ZonesRevealed: ARM32 0x0098D2B8; ARM64 0xC1BFF8.
+- Por tanto, el par ARM32 corresponde a los binarios empaquetados que aparecen en la captura.
+- La captura no proporciona hash/versión de libcleo.so ni demuestra qué se carga efectivamente al ejecutar el juego.
+- CLEO-ANDROID público revisado implementa 0DD7/0DD9 con uint32_t y se compila ARMv7/Thumb; también implementa 0DDC/0DDD mediante una tabla de mutex.
+- CLEOAndroid Extender 1.0, al que corresponde el nombre público libpluginCleoExtender.so, se describe como plugin para menú, textos FXT y comportamiento de cámara; su ficha lista SA 2.00/1.08 y CLEO Android + FLA 5.0+. No documenta 0DD7/0DD9.
+- En consecuencia, la ABI ARM32 está confirmada para las bibliotecas mostradas, pero la implementación exacta de los opcodes en la build instalada sigue sin confirmarse.
+- El número 2.10 por sí solo no determina ABI; en este caso la captura concreta aporta evidencia de ARM32.
+
+HALLAZGO DE VARIABLES GLOBALES — PRIORIDAD ALTA
+- La tabla pública CustomVariables.ini de FSSRepo/cleo-script-java identifica $54 = Help_INTRO_Shown y $65 = Help_Groove_Shown.
+- La fuente 1.4.5 usa $54 y $65 como almacenamiento de handles de marcadores y los pone a cero al limpiar. Eso puede sobrescribir estados de ayuda/tutorial del juego.
+- $526 no aparece nombrada en la tabla; no se puede asegurar que esté libre.
+- Se creó una variante aislada que cambia los tres handles a $3103–$3105, pero no se ha demostrado que dichos índices estén libres en el main.scm exacto del APK. No se integró a main ni se considera solución final.
+- No se deben promover esos índices ni alterar la fuente oficial hasta comprobar un almacenamiento seguro que respete los estados del juego.
 
 RIESGOS ABIERTOS
-- No se ha identificado la ABI real de libGTASA dentro del paquete instalado ni la compilación exacta de CLEO integrada.
-- Si el proceso de GTA es ARM64, la fuente actual no debe ejecutarse: sus opcodes de memoria revisados manejan direcciones de 32 bits y los offsets que usa son los de ARM32.
-- La comprobación de base de imagen no valida los offsets ni que las páginas de memoria sean escribibles.
-- Las limpiezas comprueban existencia/estado con 09D1 y 075C; un identificador reciclado aún podría referirse a otro objeto activo.
-- La documentación pública de CLEO 2.0.1 enumera soporte hasta GTA SA 2.00 y Android 11; no certifica GTA SA 2.10 ni Android 13.
-- No se ha realizado prueba real dentro del juego. No declarar la fuente compatible ni libre de crashes todavía.
+- Identidad/hash exacto de libcleo.so y registro efectivo de 0DD7, 0DD9, 0DDC y 0DDD en el paquete.
+- Resolver el uso de variables globales $54/$65 en la fuente 1.4.5.
+- get_image_base != 0 no valida la dirección final ni los permisos de la página.
+- Un handle reciclado todavía podría apuntar a otro objeto antes de las comprobaciones de limpieza.
+- No se ha realizado prueba real dentro del juego. No declarar compatibilidad ni ausencia de crashes todavía.
 
-REFERENCIAS TÉCNICAS
-https://github.com/JohnPeriaX/KotlinJava-DSL-SampMobile-2.10/blob/552cbfbe64a478bf689c950af447233edaf7818b/app/src/main/cpp/samp/CMakeLists.txt
-https://github.com/JohnPeriaX/KotlinJava-DSL-SampMobile-2.10/blob/552cbfbe64a478bf689c950af447233edaf7818b/app/src/main/cpp/samp/game/patches.cpp
+REFERENCIAS
 https://github.com/Eeykal46/holy-sa/blob/0f76d40ef5eefb05a31b820492e73b19f8aac879/app/src/main/cpp/multiplayer/game/patches.cpp
-https://github.com/cleolibrary/CLEO-ANDROID/blob/main/src/Android.mk
-https://github.com/cleolibrary/CLEO-ANDROID/blob/main/src/core.cpp
-https://github.com/AndroidModLoader/GTA_CLEOMod/blob/RUSJJ_CLEO_MOD/Application.mk
-https://github.com/LuJimMods/LuJimCLEO64/blob/main/README.md
+https://github.com/cleolibrary/CLEO-ANDROID/blob/4c20d9a0a89688a8526fc2a802631ac178449d9d/src/core.cpp
+https://github.com/cleolibrary/CLEO-ANDROID/blob/4c20d9a0a89688a8526fc2a802631ac178449d9d/src/memutils.cpp
+https://www.mobilegta.net/en/download.php?cat=580&do=detail&id=143993
+https://github.com/FSSRepo/cleo-script-java/blob/main/res/CustomVariables.ini
 
-FUENTE ACTUAL
-SHA-256 de la fuente: daca0d43270358dac3dbd84bbed840c3ade3ab69.
-La fuente no ha cambiado en esta revisión. Todas las pruebas reales deberán hacerse en partidas nuevas cuando ABI y CLEO estén identificados.
+FUENTE ACTIVA
+main / Desbloquear Mapa v1.4.5.source.txt
+Blob SHA: daca0d43270358dac3dbd84bbed840c3ade3ab69
+La fuente activa no se le hicieron cambios. Las pruebas reales que se autoricen deberán hacerse en partidas nuevas.
