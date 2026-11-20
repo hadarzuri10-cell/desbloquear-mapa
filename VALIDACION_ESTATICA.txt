@@ -42,3 +42,18 @@ La revisión del commit público de CLEO-ANDROID 4c20d9a0a89688a8526fc2a802631ac
 
 ACLARACIÓN SOBRE GTA SA 2.10
 El número de versión 2.10 no determina por sí solo la arquitectura: existen variantes ARM32 y ARM64. La ficha de ModsGamer del paquete referido tiene además un campo de versión compatible que indica 2.00, pese al título 2.10, y no publica el ABI. No está confirmado si el CLEO incluido corresponde a la implementación ARMv7/32-bit revisada. Por tanto, esta validación estática no certifica compatibilidad con el binario instalado.
+
+
+INVESTIGACIÓN ARM64 (20-11-2026)
+- CLEO-ANDROID público: Android.mk declara ARMv7/Thumb; la ruta 0DD7/0DD9 usa tipos de 32 bits. No se certifica como runtime ARM64.
+- LuJimCLEO64: Application.mk declara arm64-v8a, pero v0.2.0-alpha todavía no ejecuta scripts CLEO ni interpreta opcodes. Su registro de opcodes y módulo de memoria son placeholders.
+- Resultado: no se encontró en esta revisión un runtime ARM64 verificable que ejecute los opcodes de memoria que usa el script.
+- La arquitectura del teléfono no determina la ABI de GTA ni la del CLEO integrado.
+- Fuente 1.4.5 sin cambios; offsets sin cambios; no probado dentro del juego.
+Referencias:
+https://github.com/cleolibrary/CLEO-ANDROID/blob/main/src/Android.mk
+https://github.com/cleolibrary/CLEO-ANDROID/blob/main/src/core.cpp
+https://github.com/LuJimMods/LuJimCLEO64/blob/main/README.md
+https://github.com/LuJimMods/LuJimCLEO64/blob/main/Application.mk
+https://github.com/LuJimMods/LuJimCLEO64/blob/main/core/src/OpcodeEngine/OpcodeRegistry.cpp
+https://github.com/LuJimMods/LuJimCLEO64/blob/main/core/src/Memory/MemoryStub.cpp
